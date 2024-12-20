@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="2_nl8bb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tqr0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5uvs"]
+size = Vector2(922, 20)
 
 [node name="DebugScene" type="Node2D"]
 
@@ -12,7 +13,7 @@
 [node name="BasePlayer" parent="." instance=ExtResource("2_nl8bb")]
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(49, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_1tqr0")
+position = Vector2(-20, 202)
+shape = SubResource("RectangleShape2D_n5uvs")
