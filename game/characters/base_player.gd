@@ -9,6 +9,7 @@ class_name BasePlayer
 @onready var cooldown_timer: Timer = $Timers/CooldownTimer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 
+const JUMP_VELOCITY = -400.0
 var SPEED: float = 300.0
 var ATTACK: int = 8
 var ATTACK_SPEED: float = 1.2
@@ -36,6 +37,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	##PLAYER MOVEMENT##
+	#Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 	#Change to controller compatible inputs when nicholas updates the controller-controller
 	var horizontalDirection = Input.get_axis("ui_left", "ui_right")
 	var verticalDirection = Input.get_axis("ui_up", "ui_down")
@@ -44,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = (horizontalDirection == -1)
 		face_right = (horizontalDirection == 1)
 	velocity.x = horizontalDirection * SPEED
-	velocity.y = verticalDirection * SPEED
+	#velocity.y = verticalDirection * SPEED
 	#Normalize velocity when moving diagonally
 	velocity = velocity.normalized() * min(velocity.length(), SPEED)
 	#Idle
@@ -53,9 +61,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func attack() -> void:
-	for item in items.attacks:
-		print(item)
-
+	pass
 
 
 #TODO Split out the attack cursor as its own node?
@@ -70,3 +76,23 @@ func update_cursor(event):
 	attack_direction = cursor.rotation
 	#TODO smoothing by updating attack direction and instead moving the cursor to look at in update
 	pass
+
+#
+#extends CharacterBody2D
+#
+#
+#const SPEED = 300.0
+
+
+
+#func _physics_process(delta):
+#
+	## Get the input direction and handle the movement/deceleration.
+	## As good practice, you should replace UI actions with custom gameplay actions.
+	#var direction = Input.get_axis("ui_left", "ui_right")
+	#if direction:
+		#velocity.x = direction * SPEED
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
+#
+	#move_and_slide()

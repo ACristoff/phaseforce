@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=5 format=3 uid="uid://bhvj1gnroht24"]
 
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="2_nl8bb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5uvs"]
 size = Vector2(922, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kklkg"]
+size = Vector2(223, 20)
 
 [node name="DebugScene" type="Node2D"]
 
@@ -13,7 +16,14 @@ size = Vector2(922, 20)
 [node name="BasePlayer" parent="." instance=ExtResource("2_nl8bb")]
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-20, 202)
 shape = SubResource("RectangleShape2D_n5uvs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-25.5, 286)
+shape = SubResource("RectangleShape2D_kklkg")
