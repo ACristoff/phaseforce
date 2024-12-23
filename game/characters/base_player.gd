@@ -39,12 +39,14 @@ func _physics_process(delta: float) -> void:
 	var horizontalDirection = Input.get_axis("move_left", "move_right")
 	#Flip the sprite whether moving left or right
 	if horizontalDirection:
+		anim_player.play("Run")
 		sprite.flip_h = (horizontalDirection == -1)
 		face_right = (horizontalDirection == 1)
 	velocity.x = horizontalDirection * SPEED
 	#velocity = velocity.normalized() * min(velocity.length(), SPEED)
 	#Idle
 	if velocity.x == 0 and velocity.y == 0:
+		anim_player.play("Idle")
 		pass
 	move_and_slide()
 
