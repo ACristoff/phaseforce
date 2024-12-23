@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://4v6wc1fa3ym7" path="res://assets/characters/panko/base_form/Panko_Sprite.png" id="2_t1s0p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m540u"]
-radius = 13.0
-height = 36.0
+radius = 8.0
+height = 28.0
 
 [node name="BasePlayer" type="CharacterBody2D"]
 script = ExtResource("1_lf5mu")
