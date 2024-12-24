@@ -95,6 +95,6 @@ hframes = 10
 [node name="AttackCursor" type="Node2D" parent="."]
 
 [node name="CursorSprite" type="Sprite2D" parent="AttackCursor"]
-position = Vector2(30, 0)
+position = Vector2(15, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_h7amh")
