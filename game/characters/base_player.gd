@@ -28,6 +28,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	##ACTIONS
+	if Input.is_action_just_pressed("shoot"):
+		attack()
+		pass
+	
 	##PLAYER MOVEMENT##
 	#Add the gravity.
 	if not is_on_floor():
@@ -51,6 +56,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func attack() -> void:
+	prints('ATTACKO', attack_direction)
 	pass
 
 
