@@ -30,4 +30,4 @@ position = Vector2(-25.5, 286)
 shape = SubResource("RectangleShape2D_kklkg")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("3_5xu7y")]
-position = Vector2(1, 17)
+position = Vector2(0, 17)
