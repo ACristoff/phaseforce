@@ -15,6 +15,7 @@ class_name BasePlayer
 var ATTACK: int = 8
 var ATTACK_SPEED: float = 1.2
 var HEALTH: int = 20
+var powered_up: bool = false
 
 var face_right: bool = true
 var attack_direction 
@@ -47,10 +48,11 @@ func _physics_process(delta: float) -> void:
 	if horizontalDirection:
 		anim_player.play("Run")
 		sprite.flip_h = (horizontalDirection == -1)
-		#Unsure about this
+		##Unsure about this
 		cursor_sprite.flip_v = (horizontalDirection == -1)
 		face_right = (horizontalDirection == 1)
 	velocity.x = horizontalDirection * SPEED
+
 	#velocity = velocity.normalized() * min(velocity.length(), SPEED)
 	#Idle
 	if velocity.x == 0 and velocity.y == 0:
@@ -59,9 +61,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func attack() -> void:
-	prints('ATTACKO', attack_direction)
+	prints('ATTACKO', attack_direction, modulo_direction, cursor_sprite.flip_v)
 	pass
 
+var modulo_direction
 
 #TODO Split out the attack cursor as its own node?
 func update_cursor(event):
@@ -74,4 +77,17 @@ func update_cursor(event):
 	#Gonna have to fix this but I think it works as a radian
 	attack_direction = cursor.rotation_degrees
 	#TODO smoothing by updating attack direction and instead moving the cursor to look at in update
+	
+	#TODO I was trying to flip the gun based on the angle 
+	#but my brain isn't up to the task rn, kinda sick :c
+	#var modulo_direction = int(attack_direction) % 180
+	#modulo_direction = int(attack_direction) % 360
+	#if attack_direction < 0:
+		#modulo_direction = (int(attack_direction) % 360) * -1
+		#prints("negative!", attack_direction, modulo_direction)
+	#if modulo_direction + 90 < 180:
+		#cursor_sprite.flip_v = true
+		#pass
+	#else:
+		#cursor_sprite.flip_v = false
 	pass
