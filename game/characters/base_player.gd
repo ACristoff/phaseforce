@@ -9,8 +9,8 @@ class_name BasePlayer
 @onready var cooldown_timer: Timer = $Timers/CooldownTimer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 
-const JUMP_VELOCITY = -400.0
-var SPEED: float = 300.0
+@export var JUMP_VELOCITY = -400.0
+@export var SPEED: float = 300.0
 var ATTACK: int = 8
 var ATTACK_SPEED: float = 1.2
 var HEALTH: int = 20

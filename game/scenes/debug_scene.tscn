@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=6 format=3 uid="uid://bhvj1gnroht24"]
 
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="2_nl8bb"]
+[ext_resource type="PackedScene" uid="uid://bmoi4pv3l72ml" path="res://game/scenes/tileset_level.tscn" id="3_5xu7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5uvs"]
 size = Vector2(922, 20)
@@ -27,3 +28,6 @@ shape = SubResource("RectangleShape2D_n5uvs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-25.5, 286)
 shape = SubResource("RectangleShape2D_kklkg")
+
+[node name="TileMapLayer" parent="." instance=ExtResource("3_5xu7y")]
+position = Vector2(1, 17)
