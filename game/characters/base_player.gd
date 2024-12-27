@@ -4,6 +4,7 @@ class_name BasePlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
 @onready var cursor = $AttackCursor
+@onready var cursor_sprite = $AttackCursor/CursorSprite
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_timer: Timer = $Timers/AttackTimer
 @onready var cooldown_timer: Timer = $Timers/CooldownTimer
@@ -37,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	#Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -46,6 +47,8 @@ func _physics_process(delta: float) -> void:
 	if horizontalDirection:
 		anim_player.play("Run")
 		sprite.flip_h = (horizontalDirection == -1)
+		#Unsure about this
+		cursor_sprite.flip_v = (horizontalDirection == -1)
 		face_right = (horizontalDirection == 1)
 	velocity.x = horizontalDirection * SPEED
 	#velocity = velocity.normalized() * min(velocity.length(), SPEED)
@@ -69,6 +72,6 @@ func update_cursor(event):
 	#TODO create a case for controller input, right stick angle
 	cursor.look_at(get_global_mouse_position())
 	#Gonna have to fix this but I think it works as a radian
-	attack_direction = cursor.rotation
+	attack_direction = cursor.rotation_degrees
 	#TODO smoothing by updating attack direction and instead moving the cursor to look at in update
 	pass
