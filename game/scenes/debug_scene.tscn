@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="2_nl8bb"]
-[ext_resource type="PackedScene" uid="uid://bmoi4pv3l72ml" path="res://game/scenes/tileset_level.tscn" id="3_5xu7y"]
+[ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="4_ukrgw"]
 [ext_resource type="PackedScene" uid="uid://fa5wt6pqvpjg" path="res://game/projectiles/bullet.tscn" id="4_yxo2b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5uvs"]
@@ -30,8 +30,7 @@ shape = SubResource("RectangleShape2D_n5uvs")
 position = Vector2(-25.5, 286)
 shape = SubResource("RectangleShape2D_kklkg")
 
-[node name="TileMapLayer" parent="." instance=ExtResource("3_5xu7y")]
-position = Vector2(0, 17)
-
 [node name="Bullet" parent="." instance=ExtResource("4_yxo2b")]
 position = Vector2(-9, -29)
+
+[node name="Node2D" parent="." instance=ExtResource("4_ukrgw")]

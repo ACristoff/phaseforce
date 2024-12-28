@@ -4,12 +4,14 @@ class_name BasePlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
 @onready var cursor = $AttackCursor
-@onready var cursor_sprite = $AttackCursor/CursorSprite
-@onready var cursor_spout = $AttackCursor/Marker2D
+@onready var cursor_sprite = $AttackCursor/PankoArm/CursorSprite
+@onready var arm = $AttackCursor/PankoArm
+@onready var cursor_spout = $AttackCursor/PankoArm/CursorSprite/Marker2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_timer: Timer = $Timers/AttackTimer
 @onready var cooldown_timer: Timer = $Timers/CooldownTimer
 @onready var invul_timer: Timer = $Timers/InvulTimer
+@onready var debug_text: Label = $Label
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
@@ -41,6 +43,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	##ACTIONS
 	
+	
+	debug_text.text = str(cursor.rotation_degrees)
 	#If the shoot button is held shoot
 		#check if the cooldown has been reached and shoot again if still held
 		#if the cooldown has been reached then return
@@ -77,7 +81,7 @@ func _physics_process(delta: float) -> void:
 		anim_player.play("Run")
 		sprite.flip_h = (horizontalDirection == -1)
 		##Unsure about this
-		cursor_sprite.flip_v = (horizontalDirection == -1)
+		#cursor_sprite.flip_v = (horizontalDirection == -1)
 		face_right = (horizontalDirection == 1)
 	velocity.x = horizontalDirection * SPEED
 
@@ -87,6 +91,8 @@ func _physics_process(delta: float) -> void:
 		anim_player.play("Idle")
 		pass
 	move_and_slide()
+	
+	
 
 func attack() -> void:
 	#prints('ATTACKO', attack_direction, modulo_direction, cursor_sprite.flip_v)
@@ -108,6 +114,10 @@ func update_cursor(event):
 	cursor.look_at(get_global_mouse_position())
 	#Gonna have to fix this but I think it works as a radian
 	attack_direction = cursor.rotation_degrees
+	if cursor.rotation_degrees >= 90 or cursor.rotation_degrees <= -90:
+		arm.scale = Vector2(1, -1)
+	else:
+		arm.scale = Vector2(1, 1)
 	#TODO smoothing by updating attack direction and instead moving the cursor to look at in update
 	
 	#TODO I was trying to flip the gun based on the angle 
