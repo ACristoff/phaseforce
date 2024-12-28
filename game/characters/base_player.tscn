@@ -100,3 +100,7 @@ hframes = 10
 [node name="CursorSprite" type="Sprite2D" parent="AttackCursor"]
 position = Vector2(15, 0)
 texture = ExtResource("3_kgh7l")
+
+[node name="Marker2D" type="Marker2D" parent="AttackCursor"]
+position = Vector2(31, 5)
+gizmo_extents = 5.0

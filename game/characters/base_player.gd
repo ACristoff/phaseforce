@@ -5,22 +5,31 @@ class_name BasePlayer
 @onready var camera: Camera2D = $Camera2D
 @onready var cursor = $AttackCursor
 @onready var cursor_sprite = $AttackCursor/CursorSprite
+@onready var cursor_spout = $AttackCursor/Marker2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_timer: Timer = $Timers/AttackTimer
 @onready var cooldown_timer: Timer = $Timers/CooldownTimer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 
+##TODO Destructurize this
+@onready var bullet = preload("res://game/projectiles/bullet.tscn")
+
 @export var JUMP_VELOCITY = -400.0
 @export var SPEED: float = 300.0
 var ATTACK: int = 8
-var ATTACK_SPEED: float = 1.2
+#var ATTACK_SPEED: float = 13.0 / 60.0
+var ATTACK_SPEED: float = 0.07692
+var attack_cooldown:float = 0
 var HEALTH: int = 20
 var powered_up: bool = false
 
 var face_right: bool = true
-var attack_direction 
+var attack_direction
+
+#var modulo_direction
 
 func _ready() -> void:
+	print(attack_cooldown)
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -31,9 +40,28 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	##ACTIONS
-	if Input.is_action_just_pressed("shoot"):
-		attack()
+	
+	#If the shoot button is held shoot
+		#check if the cooldown has been reached and shoot again if still held
+		#if the cooldown has been reached then return
+	if Input.is_action_pressed("shoot"):
+		if attack_cooldown > ATTACK_SPEED || attack_cooldown == 0:
+			attack()
+			attack_cooldown += delta
+			return
+		#attack_cooldown = 0 
+		#if attack_cooldown > 0:
+			#pass
+		#attack()
 		pass
+	
+	if attack_cooldown > 0:
+		attack_cooldown += delta
+		pass
+	if attack_cooldown > ATTACK_SPEED:
+		attack_cooldown = 0
+		pass
+	prints(attack_cooldown, ATTACK_SPEED)
 	
 	##PLAYER MOVEMENT##
 	#Add the gravity.
@@ -61,10 +89,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func attack() -> void:
-	prints('ATTACKO', attack_direction, modulo_direction, cursor_sprite.flip_v)
+	#prints('ATTACKO', attack_direction, modulo_direction, cursor_sprite.flip_v)
+	var new_bullet = bullet.instantiate()
+	new_bullet.global_position = cursor_spout.global_position
+	new_bullet.rotation_degrees = attack_direction
+	get_parent().add_child(new_bullet)
 	pass
 
-var modulo_direction
+
 
 #TODO Split out the attack cursor as its own node?
 func update_cursor(event):
