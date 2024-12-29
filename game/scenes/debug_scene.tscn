@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=11 format=3 uid="uid://bhvj1gnroht24"]
 
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="2_nl8bb"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://fa5wt6pqvpjg" path="res://game/projectiles/bullet.tscn" id="4_yxo2b"]
 [ext_resource type="Texture2D" uid="uid://dvk6tnf21cspc" path="res://assets/environment/placeables/interactables/electric-powered_door.png" id="5_gtqwe"]
 [ext_resource type="PackedScene" uid="uid://bm5mdiuoh8qbi" path="res://game/objects/passthrough_platform.tscn" id="6_vs33k"]
+[ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="7_62t8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5uvs"]
 size = Vector2(922, 20)
@@ -80,3 +81,15 @@ position = Vector2(252, 147)
 [node name="passthrough-platform9" parent="Objects" instance=ExtResource("6_vs33k")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(228, 147)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -10
+texture_filter = 3
+scroll_offset = Vector2(451, -9)
+repeat_size = Vector2(320, 0)
+repeat_times = 5
+
+[node name="Parallax1" type="Sprite2D" parent="Parallax2D"]
+modulate = Color(0.4761, 0.56879, 0.69, 1)
+position = Vector2(-160, 105)
+texture = ExtResource("7_62t8p")
