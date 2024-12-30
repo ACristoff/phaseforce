@@ -15,6 +15,8 @@ class_name SnowGround
 	#
 	##particle.type = 1
 	#pass
+func emit(emit_position):
+	pass
 
 #func _on_body_entered(body):
 	#if body.has_method("metal"):
