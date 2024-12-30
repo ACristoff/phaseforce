@@ -65,7 +65,6 @@ func _physics_process(delta: float) -> void:
 	if attack_cooldown > ATTACK_SPEED:
 		attack_cooldown = 0
 		pass
-	#prints(attack_cooldown, ATTACK_SPEED)
 	
 	##PLAYER MOVEMENT##
 	#Add the gravity.
@@ -98,7 +97,7 @@ func attack() -> void:
 	#prints('ATTACKO', attack_direction, modulo_direction, cursor_sprite.flip_v)
 	var new_bullet = bullet.instantiate()
 	new_bullet.global_position = cursor_spout.global_position
-	new_bullet.rotation_degrees = attack_direction
+	new_bullet.rotation_degrees = cursor.rotation_degrees
 	get_parent().add_child(new_bullet)
 	pass
 
