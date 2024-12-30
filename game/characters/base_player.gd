@@ -92,10 +92,7 @@ func update_cursor(event):
 	cursor.look_at(get_global_mouse_position())
 	attack_direction = int(cursor.rotation_degrees) % 360
 	
-	if attack_direction > 90 && attack_direction < 270:
-		arm.scale = Vector2(1, -1)
-	elif attack_direction < -90 && attack_direction > -270:
-		print('use case')
+	if (attack_direction > 90 && attack_direction < 270) || (attack_direction < -90 && attack_direction > -270):
 		arm.scale = Vector2(1, -1)
 	else:
 		arm.scale = Vector2(1, 1)
