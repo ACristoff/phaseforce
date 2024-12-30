@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bes2j1aqee01f"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2ghh2"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 100.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 57.56, 0)
+
+[node name="Node2D" type="GPUParticles2D"]
+emitting = false
+amount = 7
+process_material = SubResource("ParticleProcessMaterial_2ghh2")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+trail_enabled = true

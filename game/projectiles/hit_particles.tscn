@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxn78xkmfne5m"]
+[gd_scene load_steps=4 format=3 uid="uid://byw8klefiyt72"]
 
 [ext_resource type="Script" path="res://game/projectiles/hit_particles.gd" id="1_5sj5a"]
 [ext_resource type="Texture2D" uid="uid://tdct8bik7bq2" path="res://icon.svg" id="2_2i433"]
