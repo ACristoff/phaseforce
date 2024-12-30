@@ -47,7 +47,10 @@ func _physics_process(delta: float) -> void:
 	#If the shoot button is held shoot
 		#check if the cooldown has been reached and shoot again if still held
 		#if the cooldown has been reached then return
-	#if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") && attack_timer.is_stopped():
+		attack_timer.start()
+		attack()
+		pass
 		#if attack_cooldown > ATTACK_SPEED || attack_cooldown == 0:
 			#attack()
 			#attack_cooldown += delta
