@@ -19,8 +19,7 @@ class_name BasePlayer
 @export var JUMP_VELOCITY = -400.0
 @export var SPEED: float = 300.0
 var ATTACK: int = 8
-#var ATTACK_SPEED: float = 13.0 / 60.0
-var ATTACK_SPEED: float = 0.07692
+#var ATTACK_SPEED: float = 0.07692
 var attack_cooldown:float = 0
 var HEALTH: int = 20
 var powered_up: bool = false
@@ -48,23 +47,23 @@ func _physics_process(delta: float) -> void:
 	#If the shoot button is held shoot
 		#check if the cooldown has been reached and shoot again if still held
 		#if the cooldown has been reached then return
-	if Input.is_action_pressed("shoot"):
-		if attack_cooldown > ATTACK_SPEED || attack_cooldown == 0:
-			attack()
-			attack_cooldown += delta
-			return
+	#if Input.is_action_pressed("shoot"):
+		#if attack_cooldown > ATTACK_SPEED || attack_cooldown == 0:
+			#attack()
+			#attack_cooldown += delta
+			#return
 		#attack_cooldown = 0 
 		#if attack_cooldown > 0:
 			#pass
 		#attack()
-		pass
+		#pass
 	
-	if attack_cooldown > 0:
-		attack_cooldown += delta
-		pass
-	if attack_cooldown > ATTACK_SPEED:
-		attack_cooldown = 0
-		pass
+	#if attack_cooldown > 0:
+		#attack_cooldown += delta
+		#pass
+	#if attack_cooldown > ATTACK_SPEED:
+		#attack_cooldown = 0
+		#pass
 	
 	##PLAYER MOVEMENT##
 	#Add the gravity.
@@ -94,7 +93,6 @@ func _physics_process(delta: float) -> void:
 	
 
 func attack() -> void:
-	#prints('ATTACKO', attack_direction, modulo_direction, cursor_sprite.flip_v)
 	var new_bullet = bullet.instantiate()
 	new_bullet.global_position = cursor_spout.global_position
 	new_bullet.rotation_degrees = cursor.rotation_degrees
@@ -112,8 +110,8 @@ func update_cursor(event):
 	#TODO create a case for controller input, right stick angle
 	cursor.look_at(get_global_mouse_position())
 	attack_direction = int(cursor.rotation_degrees) % 360
-	if attack_direction < 0:
-		attack_direction = attack_direction * -1
+	#if attack_direction < 0:
+		#attack_direction = attack_direction * -1
 
 	if attack_direction >= 90 or attack_direction <= -90:
 		arm.scale = Vector2(1, -1)
