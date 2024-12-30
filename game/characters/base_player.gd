@@ -13,6 +13,7 @@ class_name BasePlayer
 @onready var step_timer: Timer = $Timers/StepTimer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 @onready var debug_text: Label = $Label
+@onready var tommy_anim: AnimationPlayer = $AttackCursor/PankoArm/CursorSprite/AnimationPlayer
 
 @onready var steps = [
 	preload("res://assets/sfx/misc/SNOW_STEP_1.mp3"), 
@@ -91,6 +92,8 @@ func _physics_process(delta: float) -> void:
 
 
 func attack() -> void:
+	tommy_anim.stop()
+	tommy_anim.play("TommyKick")
 	var new_bullet = bullet.instantiate()
 	new_bullet.global_position = cursor_spout.global_position
 	var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
