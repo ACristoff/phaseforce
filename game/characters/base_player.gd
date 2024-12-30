@@ -41,32 +41,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	##ACTIONS
-	
-	
 	debug_text.text = str(attack_direction)
-	#If the shoot button is held shoot
-		#check if the cooldown has been reached and shoot again if still held
-		#if the cooldown has been reached then return
 	if Input.is_action_pressed("shoot") && attack_timer.is_stopped():
 		attack_timer.start()
 		attack()
-		pass
-		#if attack_cooldown > ATTACK_SPEED || attack_cooldown == 0:
-			#attack()
-			#attack_cooldown += delta
-			#return
-		#attack_cooldown = 0 
-		#if attack_cooldown > 0:
-			#pass
-		#attack()
-		#pass
-	
-	#if attack_cooldown > 0:
-		#attack_cooldown += delta
-		#pass
-	#if attack_cooldown > ATTACK_SPEED:
-		#attack_cooldown = 0
-		#pass
 	
 	##PLAYER MOVEMENT##
 	#Add the gravity.
