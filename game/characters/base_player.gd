@@ -6,7 +6,8 @@ class_name BasePlayer
 @onready var cursor = $AttackCursor
 @onready var cursor_sprite = $AttackCursor/PankoArm/CursorSprite
 @onready var arm = $AttackCursor/PankoArm
-@onready var cursor_spout = $AttackCursor/PankoArm/CursorSprite/Marker2D
+@onready var cursor_spout = $AttackCursor/PankoArm/CursorSprite/Bullet_Spawn_Point
+@onready var shell_spout = $AttackCursor/PankoArm/CursorSprite/Shell_Spawn_Point
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_timer: Timer = $Timers/AttackTimer
 @onready var cooldown_timer: Timer = $Timers/CooldownTimer
@@ -24,6 +25,7 @@ class_name BasePlayer
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
+@onready var shell = preload("res://game/projectiles/spent_shell.tscn")
 var gun_spread = [-1,2]
 #@onready var tommy_first = preload("res://assets/sfx/TOMMY GUN ONESHOT_FIRST.mp3")
 @onready var tommy_last = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
@@ -95,10 +97,13 @@ func attack() -> void:
 	tommy_anim.stop()
 	tommy_anim.play("TommyKick")
 	var new_bullet = bullet.instantiate()
+	var new_shell = shell.instantiate()
 	new_bullet.global_position = cursor_spout.global_position
+	new_shell.global_position = shell_spout.global_position
 	var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
 	new_bullet.rotation_degrees = adjusted_angle
 	get_parent().add_child(new_bullet)
+	get_parent().add_child(new_shell)
 	pass
 
 

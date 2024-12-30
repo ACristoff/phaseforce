@@ -151,9 +151,12 @@ position = Vector2(1, 1)
 texture = ExtResource("3_kgh7l")
 offset = Vector2(5, -8)
 
-[node name="Marker2D" type="Marker2D" parent="AttackCursor/PankoArm/CursorSprite"]
+[node name="Bullet_Spawn_Point" type="Marker2D" parent="AttackCursor/PankoArm/CursorSprite"]
 position = Vector2(20, -3)
 gizmo_extents = 5.0
+
+[node name="Shell_Spawn_Point" type="Marker2D" parent="AttackCursor/PankoArm/CursorSprite"]
+position = Vector2(-2, -3)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AttackCursor/PankoArm/CursorSprite"]
 libraries = {
