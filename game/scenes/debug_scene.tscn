@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=12 format=3 uid="uid://bhvj1gnroht24"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_hmkun"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
@@ -13,6 +13,12 @@ size = Vector2(24, 72)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bh078"]
 polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -184, -16, -184, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_atu86"]
+polygon = PackedVector2Array(-61, 35, -62, 36, -60, 42, -22, 42, -22, 62, 48, 62, 48, 35.2672, 242.932, 35.0283, 243, 107, 243, 134, 314, 134, 314, 107, 266, 107, 266, 35, 266, 11, 26, 11, 26, 35)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k03yi"]
+polygon = PackedVector2Array(-23, -14, 49, -14, 49, 13, 38, 34, 121, 34, 121, 58, -159, 58, -143, 34, -12, 34, -23, 13)
 
 [node name="DebugScene" type="Node2D"]
 script = ExtResource("1_hmkun")
@@ -41,7 +47,7 @@ position = Vector2(-36, -36)
 position = Vector2(588, 123)
 
 [node name="passthrough-platform2" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(612, 123)
+position = Vector2(588, 130)
 
 [node name="passthrough-platform3" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(636, 123)
@@ -83,3 +89,11 @@ position = Vector2(52, 100)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Particle_Colliders"]
 occluder = SubResource("OccluderPolygon2D_bh078")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Particle_Colliders"]
+position = Vector2(198, -27)
+occluder = SubResource("OccluderPolygon2D_atu86")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="Particle_Colliders"]
+position = Vector2(535, 190)
+occluder = SubResource("OccluderPolygon2D_k03yi")
