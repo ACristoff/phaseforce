@@ -1,18 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=8 format=3 uid="uid://bhvj1gnroht24"]
 
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="2_nl8bb"]
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="4_ukrgw"]
-[ext_resource type="PackedScene" uid="uid://fa5wt6pqvpjg" path="res://game/projectiles/bullet.tscn" id="4_yxo2b"]
 [ext_resource type="Texture2D" uid="uid://dvk6tnf21cspc" path="res://assets/environment/placeables/interactables/electric-powered_door.png" id="5_gtqwe"]
 [ext_resource type="PackedScene" uid="uid://bm5mdiuoh8qbi" path="res://game/objects/passthrough_platform.tscn" id="6_vs33k"]
 [ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="7_62t8p"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5uvs"]
-size = Vector2(922, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kklkg"]
-size = Vector2(223, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtdel"]
 size = Vector2(24, 72)
@@ -22,22 +15,6 @@ size = Vector2(24, 72)
 [node name="WorldGenerator" parent="." instance=ExtResource("1_uxllv")]
 
 [node name="BasePlayer" parent="." instance=ExtResource("2_nl8bb")]
-
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-20, 202)
-shape = SubResource("RectangleShape2D_n5uvs")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-25.5, 286)
-shape = SubResource("RectangleShape2D_kklkg")
-
-[node name="Bullet" parent="." instance=ExtResource("4_yxo2b")]
-position = Vector2(-9, -29)
 
 [node name="Node2D" parent="." instance=ExtResource("4_ukrgw")]
 
