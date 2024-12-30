@@ -10,6 +10,7 @@ class_name BasePlayer
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_timer: Timer = $Timers/AttackTimer
 @onready var cooldown_timer: Timer = $Timers/CooldownTimer
+@onready var step_timer: Timer = $Timers/StepTimer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 @onready var debug_text: Label = $Label
 
@@ -72,9 +73,12 @@ func _physics_process(delta: float) -> void:
 	if horizontalDirection:
 		anim_player.play("Run")
 		sprite.flip_h = (horizontalDirection == -1)
-		##Unsure about this
-		#cursor_sprite.flip_v = (horizontalDirection == -1)
 		face_right = (horizontalDirection == 1)
+		if is_on_floor() && step_timer.is_stopped():
+			step_timer.start()
+			var random = randi_range(0,3)
+			AudioManager.play_sfx(steps[random], -10)
+			
 	velocity.x = horizontalDirection * SPEED
 
 	#velocity = velocity.normalized() * min(velocity.length(), SPEED)
