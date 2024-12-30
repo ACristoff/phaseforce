@@ -27,7 +27,7 @@ script = ExtResource("1_hmkun")
 [node name="WorldGenerator" parent="." instance=ExtResource("1_uxllv")]
 
 [node name="BasePlayer" parent="." instance=ExtResource("2_nl8bb")]
-position = Vector2(785, 265)
+position = Vector2(1590, -424)
 
 [node name="Node2D" parent="." instance=ExtResource("4_ukrgw")]
 position = Vector2(-36, -36)
@@ -66,6 +66,85 @@ position = Vector2(588, 130)
 
 [node name="PassthroughPlatform3" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(636, 123)
+
+[node name="PassthroughPlatform10" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(2052, -285)
+
+[node name="PassthroughPlatform11" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(2076, -285)
+
+[node name="PassthroughPlatform12" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(2100, -285)
+
+[node name="PassthroughPlatform13" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(2292, -333)
+
+[node name="PassthroughPlatform14" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(2316, -333)
+
+[node name="PassthroughPlatform15" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(2340, -333)
+
+[node name="PassthroughPlatform16" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(2364, -333)
+
+[node name="PassthroughPlatform17" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(2388, -333)
+
+[node name="PassthroughPlatform18" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(1980, -309)
+
+[node name="PassthroughPlatform19" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(2004, -334)
+
+[node name="PassthroughPlatform20" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(1980, -357)
+
+[node name="PassthroughPlatform21" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(2004, -381)
+
+[node name="PassthroughPlatform22" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(1716, -429)
+
+[node name="PassthroughPlatform23" parent="Objects" instance=ExtResource("6_vs33k")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1692, -429)
+
+[node name="PassthroughPlatform24" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(1620, -429)
+
+[node name="PassthroughPlatform25" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(1524, -453)
+
+[node name="PassthroughPlatform26" parent="Objects" instance=ExtResource("6_vs33k")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1548, -453)
+
+[node name="PassthroughPlatform27" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(1404, -429)
+
+[node name="PassthroughPlatform28" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(1428, -429)
+
+[node name="PassthroughPlatform29" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(1380, -429)
+
+[node name="PassthroughPlatform30" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(1356, -429)
+
+[node name="PassthroughPlatform31" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(1476, -333)
+
+[node name="PassthroughPlatform32" parent="Objects" instance=ExtResource("6_vs33k")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1500, -333)
+
+[node name="PassthroughPlatform33" parent="Objects" instance=ExtResource("6_vs33k")]
+position = Vector2(1572, -333)
+
+[node name="PassthroughPlatform34" parent="Objects" instance=ExtResource("6_vs33k")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1548, -333)
 
 [node name="PassthroughPlatform4" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(564, 123)
