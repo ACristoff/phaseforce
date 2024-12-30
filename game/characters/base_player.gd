@@ -31,7 +31,7 @@ var attack_direction
 #var modulo_direction
 
 func _ready() -> void:
-	print(attack_cooldown)
+	#print(attack_cooldown)
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	##ACTIONS
 	
 	
-	debug_text.text = str(cursor.rotation_degrees)
+	debug_text.text = str(attack_direction)
 	#If the shoot button is held shoot
 		#check if the cooldown has been reached and shoot again if still held
 		#if the cooldown has been reached then return
@@ -65,7 +65,7 @@ func _physics_process(delta: float) -> void:
 	if attack_cooldown > ATTACK_SPEED:
 		attack_cooldown = 0
 		pass
-	prints(attack_cooldown, ATTACK_SPEED)
+	#prints(attack_cooldown, ATTACK_SPEED)
 	
 	##PLAYER MOVEMENT##
 	#Add the gravity.
@@ -112,24 +112,13 @@ func update_cursor(event):
 	
 	#TODO create a case for controller input, right stick angle
 	cursor.look_at(get_global_mouse_position())
-	#Gonna have to fix this but I think it works as a radian
-	attack_direction = cursor.rotation_degrees
-	if cursor.rotation_degrees >= 90 or cursor.rotation_degrees <= -90:
+	attack_direction = int(cursor.rotation_degrees) % 360
+	if attack_direction < 0:
+		attack_direction = attack_direction * -1
+
+	if attack_direction >= 90 or attack_direction <= -90:
 		arm.scale = Vector2(1, -1)
 	else:
 		arm.scale = Vector2(1, 1)
 	#TODO smoothing by updating attack direction and instead moving the cursor to look at in update
-	
-	#TODO I was trying to flip the gun based on the angle 
-	#but my brain isn't up to the task rn, kinda sick :c
-	#var modulo_direction = int(attack_direction) % 180
-	#modulo_direction = int(attack_direction) % 360
-	#if attack_direction < 0:
-		#modulo_direction = (int(attack_direction) % 360) * -1
-		#prints("negative!", attack_direction, modulo_direction)
-	#if modulo_direction + 90 < 180:
-		#cursor_sprite.flip_v = true
-		#pass
-	#else:
-		#cursor_sprite.flip_v = false
 	pass
