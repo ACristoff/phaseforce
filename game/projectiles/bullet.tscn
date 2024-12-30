@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://5ao3mguglpww" path="res://assets/particles/bullets/bullet1.png" id="2_sewkw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_th0lw"]
-size = Vector2(12, 4)
+size = Vector2(8, 4)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_0p51f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_th0lw")
 debug_color = Color(0.956227, 0, 0.539048, 0.42)
 
