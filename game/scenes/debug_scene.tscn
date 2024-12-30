@@ -20,7 +20,7 @@ size = Vector2(24, 72)
 position = Vector2(-36, -36)
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-position = Vector2(659, 48)
+position = Vector2(648, 48)
 
 [node name="Electric-poweredDoor" type="Sprite2D" parent="AnimatableBody2D"]
 texture_filter = 3
@@ -30,6 +30,7 @@ texture = ExtResource("5_gtqwe")
 shape = SubResource("RectangleShape2D_gtdel")
 
 [node name="Objects" type="Node2D" parent="."]
+position = Vector2(-36, -36)
 
 [node name="passthrough-platform" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(588, 123)
