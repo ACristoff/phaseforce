@@ -18,7 +18,7 @@ polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -
 polygon = PackedVector2Array(-61, 35, -62, 36, -60, 42, -22, 42, -22, 62, 48, 62, 48, 35.2672, 242.932, 35.0283, 243, 107, 243, 134, 290, 134, 290, 107, 266, 107, 266, 35, 266, 11, 26, 11, 26, 35)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k03yi"]
-polygon = PackedVector2Array(-23, -14, 49, -14, 49, 13, 38, 34, 121, 34, 121, 58, -178, 58, -166, 34, -47, 34, -60, 16, -51, 10, -23, 10)
+polygon = PackedVector2Array(-28, -14, 49, -14, 49, 13, 38, 34, 121, 34, 121, 58, -178, 58, -166, 34, -47, 34, -60, 15, -51, 10, -23, 10, -23, 4, -36, -9)
 
 [node name="DebugScene" type="Node2D"]
 script = ExtResource("1_hmkun")
@@ -31,14 +31,27 @@ position = Vector2(785, 265)
 [node name="Node2D" parent="." instance=ExtResource("4_ukrgw")]
 position = Vector2(-36, -36)
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+[node name="ElectricDoors" type="Node2D" parent="."]
 position = Vector2(648, 48)
 
-[node name="ElectricDoor" type="Sprite2D" parent="AnimatableBody2D"]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="ElectricDoors"]
+
+[node name="ElectricDoor" type="Sprite2D" parent="ElectricDoors/AnimatableBody2D"]
 texture_filter = 3
 texture = ExtResource("5_gtqwe")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElectricDoors/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_gtdel")
+
+[node name="AnimatableBody2D2" type="AnimatableBody2D" parent="ElectricDoors"]
+position = Vector2(384, -192)
+scale = Vector2(-1, 1)
+
+[node name="ElectricDoor" type="Sprite2D" parent="ElectricDoors/AnimatableBody2D2"]
+texture_filter = 3
+texture = ExtResource("5_gtqwe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElectricDoors/AnimatableBody2D2"]
 shape = SubResource("RectangleShape2D_gtdel")
 
 [node name="Objects" type="Node2D" parent="."]
