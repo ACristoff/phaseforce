@@ -38,6 +38,8 @@ var ATTACK: int = 8
 var attack_cooldown:float = 0
 var HEALTH: int = 20
 var powered_up: bool = false
+@export var coyote_time = 0.3
+var coyote_timer = 0.3
 
 var face_right: bool = true
 var attack_direction
@@ -47,6 +49,11 @@ var attack_direction
 func _ready() -> void:
 	#print(attack_cooldown)
 	blast_graphic.visible = false
+	
+func jump(force):
+	#AudioManager.play_sfx()
+	velocity.y = force
+	coyote_timer = 0
 
 func _unhandled_input(event: InputEvent) -> void:
 	#TODO Add case for controller related input
@@ -69,10 +76,15 @@ func _physics_process(delta: float) -> void:
 	#Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		coyote_timer -= 1 * delta
+		print(coyote_timer)
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump") && coyote_timer > 0:
+		jump(JUMP_VELOCITY)
+	if is_on_floor() && !Input.is_action_just_pressed("jump") && coyote_timer != coyote_time:
+		print('reset coyote time')
+		coyote_timer = coyote_time
 	var horizontalDirection = Input.get_axis("move_left", "move_right")
 	#Flip the sprite whether moving left or right
 	if horizontalDirection:
