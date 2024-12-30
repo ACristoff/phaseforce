@@ -26,6 +26,7 @@ script = ExtResource("1_hmkun")
 [node name="WorldGenerator" parent="." instance=ExtResource("1_uxllv")]
 
 [node name="BasePlayer" parent="." instance=ExtResource("2_nl8bb")]
+position = Vector2(-330, 69)
 
 [node name="Node2D" parent="." instance=ExtResource("4_ukrgw")]
 position = Vector2(-36, -36)
