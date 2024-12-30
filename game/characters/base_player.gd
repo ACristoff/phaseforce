@@ -23,6 +23,7 @@ class_name BasePlayer
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
+var gun_spread = [-1,2]
 #@onready var tommy_first = preload("res://assets/sfx/TOMMY GUN ONESHOT_FIRST.mp3")
 @onready var tommy_last = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
 
@@ -87,13 +88,13 @@ func _physics_process(delta: float) -> void:
 		anim_player.play("Idle")
 		pass
 	move_and_slide()
-	
-	
+
 
 func attack() -> void:
 	var new_bullet = bullet.instantiate()
 	new_bullet.global_position = cursor_spout.global_position
-	new_bullet.rotation_degrees = cursor.rotation_degrees
+	var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
+	new_bullet.rotation_degrees = adjusted_angle
 	get_parent().add_child(new_bullet)
 	pass
 
