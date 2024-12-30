@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxn78xkmfne5m"]
 
-[ext_resource type="Script" path="res://assets/particles/hit_particles.gd" id="1_1q4h2"]
+[ext_resource type="Script" path="res://game/projectiles/hit_particles.gd" id="1_5sj5a"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u22l4"]
 particle_flag_disable_z = true
@@ -12,7 +12,7 @@ initial_velocity_max = 55.0
 gravity = Vector3(0, 57.56, 0)
 
 [node name="hit_particles" type="Node2D"]
-script = ExtResource("1_1q4h2")
+script = ExtResource("1_5sj5a")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
