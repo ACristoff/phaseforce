@@ -15,8 +15,8 @@ class_name BasePlayer
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
-@onready var tommy_first = preload("res://assets/sfx/TOMMY GUN ONESHOT_FIRST.mp3")
-@onready var tommy_last = preload("res://assets/sfx/TOMMY_GUN_ONESHOT_LAST.mp3")
+#@onready var tommy_first = preload("res://assets/sfx/TOMMY GUN ONESHOT_FIRST.mp3")
+@onready var tommy_last = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
 
 @export var JUMP_VELOCITY = -400.0
 @export var SPEED: float = 300.0
