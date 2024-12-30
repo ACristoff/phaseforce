@@ -91,10 +91,11 @@ func update_cursor(event):
 	#TODO create a case for controller input, right stick angle
 	cursor.look_at(get_global_mouse_position())
 	attack_direction = int(cursor.rotation_degrees) % 360
-	#if attack_direction < 0:
-		#attack_direction = attack_direction * -1
-
-	if attack_direction >= 90 or attack_direction <= -90:
+	
+	if attack_direction > 90 && attack_direction < 270:
+		arm.scale = Vector2(1, -1)
+	elif attack_direction < -90 && attack_direction > -270:
+		print('use case')
 		arm.scale = Vector2(1, -1)
 	else:
 		arm.scale = Vector2(1, 1)
