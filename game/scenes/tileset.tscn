@@ -772,7 +772,7 @@ texture_region_size = Vector2i(24, 24)
 tile_size = Vector2i(24, 24)
 sources/0 = SubResource("TileSetAtlasSource_ewdn1")
 
-[node name="Node2D" type="Node2D"]
+[node name="tileset_level" type="Node2D"]
 texture_filter = 3
 
 [node name="Snowground" type="TileMapLayer" parent="."]
