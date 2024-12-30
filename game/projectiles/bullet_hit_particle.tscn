@@ -13,7 +13,7 @@ collision_mode = 1
 collision_friction = 0.2
 collision_bounce = 0.22
 
-[node name="Node2D" type="GPUParticles2D"]
+[node name="BulletHitParticle" type="GPUParticles2D"]
 emitting = false
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_2ghh2")

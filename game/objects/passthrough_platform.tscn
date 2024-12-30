@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7sld"]
 size = Vector2(24, 7)
 
-[node name="passthrough-platform" type="Node2D"]
+[node name="PassthroughPlatform" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

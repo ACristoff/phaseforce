@@ -34,7 +34,7 @@ position = Vector2(-36, -36)
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 position = Vector2(648, 48)
 
-[node name="Electric-poweredDoor" type="Sprite2D" parent="AnimatableBody2D"]
+[node name="ElectricDoor" type="Sprite2D" parent="AnimatableBody2D"]
 texture_filter = 3
 texture = ExtResource("5_gtqwe")
 
@@ -44,32 +44,32 @@ shape = SubResource("RectangleShape2D_gtdel")
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2(-36, -36)
 
-[node name="passthrough-platform" parent="Objects" instance=ExtResource("6_vs33k")]
+[node name="PassthroughPlatform" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(588, 123)
 
-[node name="passthrough-platform2" parent="Objects" instance=ExtResource("6_vs33k")]
+[node name="PassthroughPlatform2" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(588, 130)
 
-[node name="passthrough-platform3" parent="Objects" instance=ExtResource("6_vs33k")]
+[node name="PassthroughPlatform3" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(636, 123)
 
-[node name="passthrough-platform4" parent="Objects" instance=ExtResource("6_vs33k")]
+[node name="PassthroughPlatform4" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(564, 123)
 
-[node name="passthrough-platform5" parent="Objects" instance=ExtResource("6_vs33k")]
+[node name="PassthroughPlatform5" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(108, 123)
 
-[node name="passthrough-platform6" parent="Objects" instance=ExtResource("6_vs33k")]
+[node name="PassthroughPlatform6" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(132, 123)
 
-[node name="passthrough-platform7" parent="Objects" instance=ExtResource("6_vs33k")]
+[node name="PassthroughPlatform7" parent="Objects" instance=ExtResource("6_vs33k")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(156, 123)
 
-[node name="passthrough-platform8" parent="Objects" instance=ExtResource("6_vs33k")]
+[node name="PassthroughPlatform8" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(252, 147)
 
-[node name="passthrough-platform9" parent="Objects" instance=ExtResource("6_vs33k")]
+[node name="PassthroughPlatform9" parent="Objects" instance=ExtResource("6_vs33k")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(228, 147)
 
@@ -85,16 +85,16 @@ modulate = Color(0.4761, 0.56879, 0.69, 1)
 position = Vector2(-160, 105)
 texture = ExtResource("7_62t8p")
 
-[node name="Particle_Colliders" type="Node2D" parent="."]
+[node name="ParticleColliders" type="Node2D" parent="."]
 position = Vector2(52, 100)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Particle_Colliders"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="ParticleColliders"]
 occluder = SubResource("OccluderPolygon2D_bh078")
 
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="Particle_Colliders"]
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="ParticleColliders"]
 position = Vector2(198, -27)
 occluder = SubResource("OccluderPolygon2D_atu86")
 
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="Particle_Colliders"]
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="ParticleColliders"]
 position = Vector2(535, 190)
 occluder = SubResource("OccluderPolygon2D_k03yi")

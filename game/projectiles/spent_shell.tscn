@@ -25,7 +25,7 @@ collision_mode = 1
 collision_friction = 0.19
 collision_bounce = 0.19
 
-[node name="spent_shell" type="GPUParticles2D"]
+[node name="SpentShell" type="GPUParticles2D"]
 emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_audom")

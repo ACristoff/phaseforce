@@ -4,10 +4,10 @@ class_name BasePlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
 @onready var cursor = $AttackCursor
-@onready var cursor_sprite = $AttackCursor/PankoArm/CursorSprite
-@onready var arm = $AttackCursor/PankoArm
-@onready var cursor_spout = $AttackCursor/PankoArm/CursorSprite/Bullet_Spawn_Point
-@onready var shell_spout = $AttackCursor/PankoArm/CursorSprite/Shell_Spawn_Point
+@onready var cursor_sprite = $AttackCursor/Arm/CursorSprite
+@onready var arm = $AttackCursor/Arm
+@onready var cursor_spout = $AttackCursor/Arm/CursorSprite/BulletSpawnPoint
+@onready var shell_spout = $AttackCursor/Arm/CursorSprite/ShellSpawnPoint
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_timer: Timer = $Timers/AttackTimer
 @onready var cooldown_timer: Timer = $Timers/CooldownTimer
@@ -15,7 +15,7 @@ class_name BasePlayer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 @onready var debug_text: Label = $Label
 @onready var tommy_anim: AnimationPlayer = $AttackCursor/PankoArm/CursorSprite/AnimationPlayer
-@onready var blast_graphic: Sprite2D = $AttackCursor/PankoArm/CursorSprite/GunExplosion
+@onready var blast_graphic: Sprite2D = $AttackCursor/Arm/CursorSprite/GunExplosion
 
 @onready var steps = [
 	preload("res://assets/sfx/misc/SNOW_STEP_1.mp3"), 
