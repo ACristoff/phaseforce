@@ -13,6 +13,13 @@ class_name BasePlayer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 @onready var debug_text: Label = $Label
 
+@onready var steps = [
+	preload("res://assets/sfx/misc/SNOW_STEP_1.mp3"), 
+	preload("res://assets/sfx/misc/SNOW_STEP_2.mp3"), 
+	preload("res://assets/sfx/misc/SNOW_STEP_3.mp3"),
+	preload("res://assets/sfx/misc/SNOW_STEP_4.mp3")
+]
+
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
 #@onready var tommy_first = preload("res://assets/sfx/TOMMY GUN ONESHOT_FIRST.mp3")
