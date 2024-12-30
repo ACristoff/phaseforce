@@ -15,6 +15,7 @@ class_name BasePlayer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 @onready var debug_text: Label = $Label
 @onready var tommy_anim: AnimationPlayer = $AttackCursor/PankoArm/CursorSprite/AnimationPlayer
+@onready var blast_graphic: Sprite2D = $AttackCursor/PankoArm/CursorSprite/GunExplosion
 
 @onready var steps = [
 	preload("res://assets/sfx/misc/SNOW_STEP_1.mp3"), 
@@ -45,7 +46,7 @@ var attack_direction
 
 func _ready() -> void:
 	#print(attack_cooldown)
-	pass
+	blast_graphic.visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	#TODO Add case for controller related input
