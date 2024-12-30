@@ -9,7 +9,6 @@ initial_velocity_max = 40.0
 gravity = Vector3(0, 57.56, 0)
 
 [node name="Node2D" type="GPUParticles2D"]
-emitting = false
 amount = 7
 process_material = SubResource("ParticleProcessMaterial_2ghh2")
 lifetime = 5.0

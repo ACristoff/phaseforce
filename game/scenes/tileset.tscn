@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=4 uid="uid://bm0r8wyfxkasj"]
 
 [ext_resource type="Texture2D" uid="uid://bmuk2sf38h4rv" path="res://assets/environment/tilesets/tileset.png" id="1_g5sya"]
-[ext_resource type="Script" path="res://assets/environment/tilesets/snowground.gd" id="2_ofyai"]
-[ext_resource type="Script" path="res://assets/environment/tilesets/metalground.gd" id="3_tcn5d"]
+[ext_resource type="Script" path="res://game/world/snowground.gd" id="2_ofyai"]
+[ext_resource type="Script" path="res://game/world/metalground.gd" id="3_tcn5d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h38wu"]
 texture = ExtResource("1_g5sya")
