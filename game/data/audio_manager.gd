@@ -13,7 +13,7 @@ func _process(delta):
 func switch_songs():
 	fade_timer.start()
 
-func _play_music(music: AudioStreamMP3, volume = 0.0):
+func play_music(music: AudioStreamMP3, volume = 0.0):
 	if current_music:
 		new_music = music
 		new_volume = volume

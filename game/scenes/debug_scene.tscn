@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=9 format=3 uid="uid://bhvj1gnroht24"]
 
+[ext_resource type="Script" path="res://game/world/level.gd" id="1_hmkun"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="2_nl8bb"]
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="4_ukrgw"]
@@ -11,6 +12,7 @@
 size = Vector2(24, 72)
 
 [node name="DebugScene" type="Node2D"]
+script = ExtResource("1_hmkun")
 
 [node name="WorldGenerator" parent="." instance=ExtResource("1_uxllv")]
 
