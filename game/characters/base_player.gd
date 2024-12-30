@@ -46,10 +46,11 @@ func _physics_process(delta: float) -> void:
 	debug_text.text = str(attack_direction)
 	if Input.is_action_pressed("shoot") && attack_timer.is_stopped():
 		attack_timer.start()
-		AudioManager.play_sfx(tommy_first)
+		AudioManager.play_sfx(tommy_last)
 		attack()
 	if Input.is_action_just_released("shoot"):
-		AudioManager.play_sfx(tommy_last)
+		#AudioManager.play_sfx(tommy_last)
+		pass
 	
 	##PLAYER MOVEMENT##
 	#Add the gravity.
