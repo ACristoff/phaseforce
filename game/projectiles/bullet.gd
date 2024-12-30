@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed = 600
-@onready var PARTICLE = preload("res://assets/particles/hit_particles.tscn")
+#@onready var PARTICLE = preload("res://assets/particles/hit_particles.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,15 +21,15 @@ func _on_area_entered(area):
 	
 
 
-
-func _on_body_entered(body):
-	if body.has_method("metal"):
-		print("hit metal tile")
-		
-	elif body.has_method("snow"):
-		var particle = PARTICLE.instantiate()
-		get_tree().current_scene.add_child(particle)
-		#particle.global_position = $".".global_position
-		particle.type = 1
-		print("hit snow tile")
-		queue_free()
+#
+#func _on_body_entered(body):
+	#if body.has_method("metal"):
+		#print("hit metal tile")
+		#
+	#elif body.has_method("snow"):
+		#var particle = PARTICLE.instantiate()
+		#get_tree().current_scene.add_child(particle)
+		##particle.global_position = $".".global_position
+		#particle.type = 1
+		#print("hit snow tile")
+		#queue_free()
