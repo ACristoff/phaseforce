@@ -12,13 +12,13 @@
 size = Vector2(24, 72)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bh078"]
-polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -184, -16, -184, 1)
+polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -616, -16, -627, 1)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_atu86"]
-polygon = PackedVector2Array(-61, 35, -62, 36, -60, 42, -22, 42, -22, 62, 48, 62, 48, 35.2672, 242.932, 35.0283, 243, 107, 243, 134, 314, 134, 314, 107, 266, 107, 266, 35, 266, 11, 26, 11, 26, 35)
+polygon = PackedVector2Array(-61, 35, -62, 36, -60, 42, -22, 42, -22, 62, 48, 62, 48, 35.2672, 242.932, 35.0283, 243, 107, 243, 134, 290, 134, 290, 107, 266, 107, 266, 35, 266, 11, 26, 11, 26, 35)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k03yi"]
-polygon = PackedVector2Array(-23, -14, 49, -14, 49, 13, 38, 34, 121, 34, 121, 58, -159, 58, -143, 34, -12, 34, -23, 13)
+polygon = PackedVector2Array(-23, -14, 49, -14, 49, 13, 38, 34, 121, 34, 121, 58, -178, 58, -166, 34, -47, 34, -60, 16, -51, 10, -23, 10)
 
 [node name="DebugScene" type="Node2D"]
 script = ExtResource("1_hmkun")
@@ -26,7 +26,7 @@ script = ExtResource("1_hmkun")
 [node name="WorldGenerator" parent="." instance=ExtResource("1_uxllv")]
 
 [node name="BasePlayer" parent="." instance=ExtResource("2_nl8bb")]
-position = Vector2(-330, 69)
+position = Vector2(785, 265)
 
 [node name="Node2D" parent="." instance=ExtResource("4_ukrgw")]
 position = Vector2(-36, -36)
