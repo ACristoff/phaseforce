@@ -15,6 +15,8 @@ class_name BasePlayer
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
+@onready var tommy_first = preload("res://assets/sfx/TOMMY GUN ONESHOT_FIRST.mp3")
+@onready var tommy_last = preload("res://assets/sfx/TOMMY_GUN_ONESHOT_LAST.mp3")
 
 @export var JUMP_VELOCITY = -400.0
 @export var SPEED: float = 300.0
@@ -44,7 +46,10 @@ func _physics_process(delta: float) -> void:
 	debug_text.text = str(attack_direction)
 	if Input.is_action_pressed("shoot") && attack_timer.is_stopped():
 		attack_timer.start()
+		AudioManager.play_sfx(tommy_first)
 		attack()
+	if Input.is_action_just_released("shoot"):
+		AudioManager.play_sfx(tommy_last)
 	
 	##PLAYER MOVEMENT##
 	#Add the gravity.
