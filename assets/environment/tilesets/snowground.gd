@@ -6,17 +6,13 @@ class_name SnowGround
 #@onready var PARTICLE = preload("res://assets/particles/hit_particles_debug.tscn")
 #@onready var PARTICLE = preload("res://game/projectiles/basic_particle.tscn")
 #@onready var PARTICLE = preload("res://game/projectiles/basic_particle.tscn")
-#
-#func emit(emit_position):
-	#print('yipee', emit_position)
-	#var particle = PARTICLE.instantiate()
-	#particle.global_position = emit_position
-	#get_tree().current_scene.add_child(particle)
-	#
-	##particle.type = 1
-	#pass
+@onready var PARTICLE = preload("res://game/projectiles/bullet_hit_particle.tscn")
+
 func emit(emit_position):
-	pass
+	print('yipee', emit_position)
+	var particle = PARTICLE.instantiate()
+	particle.global_position = emit_position
+	get_tree().current_scene.add_child(particle)
 
 #func _on_body_entered(body):
 	#if body.has_method("metal"):
