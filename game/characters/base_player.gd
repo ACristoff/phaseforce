@@ -75,13 +75,11 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		coyote_timer -= 1 * delta
-		print(coyote_timer)
-	
+		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") && coyote_timer > 0:
 		jump(JUMP_VELOCITY)
 	if is_on_floor() && !Input.is_action_just_pressed("jump") && coyote_timer != coyote_time:
-		print('reset coyote time')
 		coyote_timer = coyote_time
 	var horizontalDirection = Input.get_axis("move_left", "move_right")
 	#Flip the sprite whether moving left or right
@@ -95,8 +93,6 @@ func _physics_process(delta: float) -> void:
 			AudioManager.play_sfx(steps[random], -10)
 			
 	velocity.x = horizontalDirection * SPEED
-
-	#velocity = velocity.normalized() * min(velocity.length(), SPEED)
 	#Idle
 	if velocity.x == 0 and velocity.y == 0:
 		anim_player.play("Idle")
