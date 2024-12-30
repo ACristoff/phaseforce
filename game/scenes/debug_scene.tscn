@@ -11,6 +11,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtdel"]
 size = Vector2(24, 72)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bh078"]
+polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -184, -16, -184, 1)
+
 [node name="DebugScene" type="Node2D"]
 script = ExtResource("1_hmkun")
 
@@ -74,3 +77,9 @@ repeat_times = 5
 modulate = Color(0.4761, 0.56879, 0.69, 1)
 position = Vector2(-160, 105)
 texture = ExtResource("7_62t8p")
+
+[node name="Particle_Colliders" type="Node2D" parent="."]
+position = Vector2(52, 100)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Particle_Colliders"]
+occluder = SubResource("OccluderPolygon2D_bh078")

@@ -9,6 +9,9 @@ direction = Vector3(0, -1, 0)
 initial_velocity_min = 40.0
 initial_velocity_max = 40.0
 gravity = Vector3(0, 57.56, 0)
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.22
 
 [node name="Node2D" type="GPUParticles2D"]
 emitting = false
