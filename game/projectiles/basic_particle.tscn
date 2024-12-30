@@ -1,10 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8lm23bhd52hy"]
+[gd_scene load_steps=2 format=3 uid="uid://bdy0f6m0vuv7n"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ndrj6"]
 particle_flag_disable_z = true
 gravity = Vector3(0, 98, 0)
 
 [node name="GPUParticles2D" type="GPUParticles2D"]
-emitting = false
 process_material = SubResource("ParticleProcessMaterial_ndrj6")
-one_shot = true

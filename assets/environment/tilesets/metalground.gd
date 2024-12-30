@@ -1,14 +1,10 @@
 extends TileMapLayer
 
+#This could be better planned but we're 6 days out now
+class_name MetalGround
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var PARTICLE = preload("res://game/projectiles/hit_particles.tscn")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func metal():
+func emit(position):
+	
 	pass
