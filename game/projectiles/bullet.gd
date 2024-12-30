@@ -17,9 +17,18 @@ func _process(delta):
 
 
 func _on_area_entered(area):
+	print(area)
+	if area is BasePlayer:
+		return
+	queue_free()
 	pass # Replace with function body.
-	
 
+func _on_body_entered(body):
+	print(body)
+	if body is BasePlayer:
+		return
+	queue_free()
+	pass
 
 #
 #func _on_body_entered(body):
