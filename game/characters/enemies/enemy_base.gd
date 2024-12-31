@@ -2,24 +2,29 @@ extends CharacterBody2D
 
 class_name EnemyBase
 
-enum ENEMY_STATES {IDLE, ALERTED}
+@onready var idle_timer = $Timers/IdleTimer
+@onready var anim = $AnimationPlayer
+
+enum ENEMY_STATES {IDLE, IDLEWALK, ALERTED}
+var enemy_state: ENEMY_STATES = ENEMY_STATES.IDLE
 var alert: bool = false
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
 
 func _physics_process(delta):
+	
+	if enemy_state == ENEMY_STATES.IDLE && idle_timer.is_stopped():
+		idle(delta)
+	
 	#Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	move_and_slide()
-
-func idle():
-	
-	pass
 
 func track_player():
 	
@@ -29,11 +34,15 @@ func attack():
 	
 	pass
 
-#extends CharacterBody2D
-#
-#
-#const SPEED = 300.0
-#const JUMP_VELOCITY = -400.0
+func idle(_delta):
+	anim.play("idle")
+	idle_timer.start()
+	pass
+
+func _on_idle_timer_timeout():
+	#print('finish idle')
+	
+	pass # Replace with function body.
 
 
 #func _physics_process(delta):
