@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccx2fjhxtjhin"
-path="res://.godot/imported/Panko_Brick.png-fac3d388efbbb8924f11bfd8aabedb0a.ctex"
+uid="uid://dpa2liye4sdv8"
+path="res://.godot/imported/tenma_brick.png-ab792dc144bc1fca7d82f0b72ffacaf7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/panko/base_form/Panko_Brick.png"
-dest_files=["res://.godot/imported/Panko_Brick.png-fac3d388efbbb8924f11bfd8aabedb0a.ctex"]
+source_file="res://assets/characters/tenma/base_form/tenma_brick.png"
+dest_files=["res://.godot/imported/tenma_brick.png-ab792dc144bc1fca7d82f0b72ffacaf7.ctex"]
 
 [params]
 
