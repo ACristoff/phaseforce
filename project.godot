@@ -78,3 +78,4 @@ jump={
 
 2d_physics/layer_2="Ladders"
 2d_physics/layer_3="Passable Platforms"
+2d_physics/layer_4="Floor_Tiles"
