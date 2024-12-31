@@ -5,6 +5,7 @@
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_831tx")
-debug_mode = true
 
 [node name="Title" parent="." instance=ExtResource("1_yo12b")]
+
+[connection signal="character_select" from="Title" to="." method="_on_title_character_select"]

@@ -15,3 +15,8 @@ func _ready():
 		add_child(start_level_man)
 		start_level_man.load_level(0)
 		pass
+
+
+func _on_title_character_select():
+	print('go to character select')
+	pass # Replace with function body.

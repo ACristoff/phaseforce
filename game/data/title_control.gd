@@ -1,16 +1,6 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on__x_720_pressed():
 	DisplayServer.window_set_size(Vector2i(1280, 720))
 	
@@ -28,5 +18,7 @@ func _on__x_1440_pressed():
 
 
 func _on_start_pressed():
-	print("play first level")
+	character_select.emit()
 	pass # Replace with function body.
+
+signal character_select
