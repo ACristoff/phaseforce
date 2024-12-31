@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1oatn1lxrden"]
+
+[ext_resource type="Script" path="res://game/UI/menus/character_select.gd" id="1_lnse3"]
+
+[node name="Character Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lnse3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+text = "KOMACHI
+PANKO
+🎋🍭"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+text = "RINKOU
+ASHELIA
+⚡️"
+
+[node name="Button3" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+text = "TENMA
+MAEMI
+🍶🦊"
+
+[node name="Button4" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+text = "PIPKIN
+PIPPA
+🔌🐰"

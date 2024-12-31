@@ -24,9 +24,9 @@ func play_music(music: AudioStreamMP3, volume = 0.0):
 	volume_db = volume
 	play()
 
-func play_sfx(stream: AudioStreamMP3, volume = 0.0):
+func play_sfx(new_stream: AudioStreamMP3, volume = 0.0):
 	var fx_player = AudioStreamPlayer.new()
-	fx_player.stream = stream
+	fx_player.stream = new_stream
 	fx_player.name = "FX_Player"
 	fx_player.volume_db = volume
 	add_child(fx_player)
@@ -36,9 +36,9 @@ func play_sfx(stream: AudioStreamMP3, volume = 0.0):
 	fx_player.queue_free()
 
 
-func play_sfx_wav(stream: AudioStreamWAV, volume = 0.0):
+func play_sfx_wav(new_stream: AudioStreamWAV, volume = 0.0):
 	var fx_player = AudioStreamPlayer.new()
-	fx_player.stream = stream
+	fx_player.stream = new_stream
 	fx_player.name = "FX_Player"
 	fx_player.volume_db = volume
 	add_child(fx_player)
