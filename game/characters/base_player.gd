@@ -48,6 +48,10 @@ var attack_direction
 
 func _ready() -> void:
 	blast_graphic.visible = false
+	var game_man: game_manager = get_node("/root/GameManager")
+	if game_man.debug_mode:
+		debug_text.visible = true
+		pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	#TODO Add case for controller related input

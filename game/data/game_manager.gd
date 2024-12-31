@@ -1,5 +1,7 @@
 extends Node
 
+class_name game_manager
+
 @export var debug_mode = false
 @onready var title = $Title
 
