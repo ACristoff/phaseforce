@@ -1,0 +1,210 @@
+[gd_scene load_steps=16 format=3 uid="uid://cc67ipn27qvd1"]
+
+[ext_resource type="Script" path="res://game/characters/base_player.gd" id="1_4arsp"]
+[ext_resource type="Texture2D" uid="uid://4v6wc1fa3ym7" path="res://assets/characters/panko/base_form/Panko_Sprite.png" id="2_driv5"]
+[ext_resource type="Texture2D" uid="uid://mtl87x1gxico" path="res://assets/characters/panko/powerup_form/Panko_Sprite2.png" id="3_o4v0w"]
+[ext_resource type="PackedScene" uid="uid://dmaggeemra8ey" path="res://game/characters/Panko/panko_arm.tscn" id="4_qbh8u"]
+[ext_resource type="Texture2D" uid="uid://dp74hhbbk8upj" path="res://assets/characters/panko/base_form/Panko_Arm.png" id="5_qsafx"]
+[ext_resource type="Texture2D" uid="uid://bcqdg48xuiv6j" path="res://assets/characters/panko/powerup_form/tommy_gun.png" id="6_kx0dj"]
+[ext_resource type="Texture2D" uid="uid://b6lap5f70hqu" path="res://assets/particles/gun_explosion.png" id="7_srskn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m540u"]
+radius = 8.0
+height = 22.0
+
+[sub_resource type="Animation" id="Animation_7my8u"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_8mmnu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_st7uv"]
+resource_name = "Run"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1lrav"]
+_data = {
+"Idle": SubResource("Animation_7my8u"),
+"RESET": SubResource("Animation_8mmnu"),
+"Run": SubResource("Animation_st7uv")
+}
+
+[sub_resource type="Animation" id="Animation_v4qri"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_r1jxx"]
+resource_name = "TommyKick"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, -8), Vector2(5, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yxk3"]
+_data = {
+"RESET": SubResource("Animation_v4qri"),
+"TommyKick": SubResource("Animation_r1jxx")
+}
+
+[node name="BasePlayer" type="CharacterBody2D"]
+texture_filter = 3
+script = ExtResource("1_4arsp")
+normal_sprite = ExtResource("2_driv5")
+normal_gun = ExtResource("4_qbh8u")
+powered_up_gun = ExtResource("4_qbh8u")
+powered_up_sprite = ExtResource("3_o4v0w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_m540u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1lrav")
+}
+autoplay = "Idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_driv5")
+hframes = 10
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="Timers"]
+wait_time = 0.077
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="Timers"]
+
+[node name="InvulTimer" type="Timer" parent="Timers"]
+
+[node name="StepTimer" type="Timer" parent="Timers"]
+wait_time = 0.27
+one_shot = true
+
+[node name="JumpBufferTimer" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AttackCursor" type="Node2D" parent="."]
+position = Vector2(0, 7)
+
+[node name="Arm" type="Sprite2D" parent="AttackCursor"]
+texture = ExtResource("5_qsafx")
+offset = Vector2(0, -7)
+
+[node name="CursorSprite" type="Sprite2D" parent="AttackCursor/Arm"]
+position = Vector2(1, 1)
+texture = ExtResource("6_kx0dj")
+offset = Vector2(5, -8)
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="AttackCursor/Arm/CursorSprite"]
+position = Vector2(20, -3)
+gizmo_extents = 5.0
+
+[node name="ShellSpawnPoint" type="Marker2D" parent="AttackCursor/Arm/CursorSprite"]
+position = Vector2(-2, -3)
+
+[node name="GunExplosion" type="Sprite2D" parent="AttackCursor/Arm/CursorSprite"]
+position = Vector2(29, -3)
+texture = ExtResource("7_srskn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackCursor/Arm/CursorSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_7yxk3")
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 20.0
+offset_top = -28.0
+offset_right = 60.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 10

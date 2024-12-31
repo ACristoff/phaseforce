@@ -3,10 +3,16 @@ class_name BasePlayer
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
+
+##Gun Specific stuff loaded and assigned on ready
 @onready var cursor = $AttackCursor
-@onready var cursor_sprite = $AttackCursor/Arm/CursorSprite
-@onready var arm = $AttackCursor/Arm
-@onready var cursor_spout = $AttackCursor/Arm/CursorSprite/BulletSpawnPoint
+@onready var cursor_sprite
+@onready var arm
+@onready var cursor_spout
+@onready var shell_spout
+@onready var blast_graphic: Sprite2D
+@onready var gun_anim: AnimationPlayer
+
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var debug_text: Label = $Label
 
@@ -23,23 +29,30 @@ class_name BasePlayer
 	preload("res://assets/sfx/misc/SNOW_STEP_4.mp3")
 ]
 
+@export_group("Normal Mode")
 @export var normal_sprite: Texture2D 
-@export var powered_up_sprite: Texture2D
+@export var normal_gun: PackedScene
+@export var fire_rate: float
 
-@export var gun: PackedScene
+@export_group("Powered Up Mode")
+@export var powered_up_gun: PackedScene
+@export var powered_up_sprite: Texture2D
+@export var powered_up_fire_rate: float
+
+var gun_spread = [0,0]
 
 ##TODO Destructurize this
-@onready var blast_graphic: Sprite2D = $AttackCursor/Arm/CursorSprite/GunExplosion
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
 @onready var shell = preload("res://game/projectiles/spent_shell.tscn")
-@onready var shell_spout = $AttackCursor/Arm/CursorSprite/ShellSpawnPoint
-@onready var tommy_anim: AnimationPlayer = $AttackCursor/Arm/CursorSprite/AnimationPlayer
-var gun_spread = [-1,2]
+
+#@onready var tommy_anim: AnimationPlayer = $AttackCursor/Arm/CursorSprite/AnimationPlayer
+#var gun_spread = [-1,2]
 #@onready var tommy_first = preload("res://assets/sfx/TOMMY GUN ONESHOT_FIRST.mp3")
 @onready var tommy_last = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
 
-@export var JUMP_VELOCITY = -400.0
-@export var SPEED: float = 300.0
+@export_group("Base Stats")
+@export var JUMP_VELOCITY = -280.0
+@export var SPEED: float = 150
 @export var coyote_time: float = 0.25
 @onready var coyote_timer: float = coyote_time
 
@@ -51,17 +64,34 @@ var face_right: bool = true
 var attack_direction
 
 func _ready() -> void:
-	blast_graphic.visible = false
 	var game_man: game_manager = get_node("/root/GameManager")
 	if game_man.debug_mode:
 		debug_text.visible = true
-		pass
+	sprite.texture = normal_sprite
+	load_gun(normal_gun)
+
+func load_gun(gun):
+	var new_gun = gun.instantiate()
+	cursor.add_child(new_gun)
+	cursor_sprite = $AttackCursor/Arm/CursorSprite
+	arm = $AttackCursor/Arm
+	cursor_spout = $AttackCursor/Arm/CursorSprite/BulletSpawnPoint
+	shell_spout = $AttackCursor/Arm/CursorSprite/ShellSpawnPoint
+	blast_graphic = $AttackCursor/Arm/CursorSprite/GunExplosion
+	blast_graphic.visible = false
+	gun_anim = $AttackCursor/Arm/CursorSprite/AnimationPlayer
 
 func _unhandled_input(event: InputEvent) -> void:
 	#TODO Add case for controller related input
 	if event is InputEventMouse:
 		update_cursor(event)
 	pass
+
+func power_up():
+	sprite.texture = powered_up_sprite
+
+func power_down():
+	sprite.texture = normal_sprite
 
 func jump(force):
 	#AudioManager.play_sfx()
@@ -118,8 +148,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func attack() -> void:
-	tommy_anim.stop()
-	tommy_anim.play("TommyKick")
+	#tommy_anim.stop()
+	gun_anim.stop()
+	gun_anim.play("kickback")
+	#tommy_anim.play("TommyKick")
 	var new_bullet = bullet.instantiate()
 	var new_shell = shell.instantiate()
 	new_bullet.global_position = cursor_spout.global_position

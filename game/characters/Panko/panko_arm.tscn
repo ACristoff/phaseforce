@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmaggeemra8ey"]
+
+[ext_resource type="Texture2D" uid="uid://dp74hhbbk8upj" path="res://assets/characters/panko/base_form/Panko_Arm.png" id="1_i6tr5"]
+[ext_resource type="Texture2D" uid="uid://b6kub345v55ar" path="res://assets/characters/panko/base_form/garand2.png" id="2_teej0"]
+[ext_resource type="Texture2D" uid="uid://b6lap5f70hqu" path="res://assets/particles/gun_explosion.png" id="3_7ogr1"]
+
+[sub_resource type="Animation" id="Animation_gc4ut"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_u4aqw"]
+resource_name = "TommyKick"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, -8), Vector2(5, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u3x4k"]
+_data = {
+"RESET": SubResource("Animation_gc4ut"),
+"kickback": SubResource("Animation_u4aqw")
+}
+
+[node name="Arm" type="Sprite2D"]
+texture_filter = 3
+texture = ExtResource("1_i6tr5")
+offset = Vector2(0, -7)
+
+[node name="CursorSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(4, 5)
+texture = ExtResource("2_teej0")
+offset = Vector2(5, -8)
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="CursorSprite"]
+position = Vector2(27, -7)
+gizmo_extents = 5.0
+
+[node name="ShellSpawnPoint" type="Marker2D" parent="CursorSprite"]
+position = Vector2(2, -7)
+
+[node name="GunExplosion" type="Sprite2D" parent="CursorSprite"]
+position = Vector2(35, -7)
+texture = ExtResource("3_7ogr1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CursorSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_u3x4k")
+}

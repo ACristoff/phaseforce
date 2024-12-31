@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpewbgbsovbuf"]
+[gd_scene load_steps=3 format=3 uid="uid://bpewbgbsovbuf"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_kkwol"]
+[ext_resource type="Script" path="res://game/characters/Panko/panko_player.gd" id="2_j36ei"]
 
 [node name="PankoPlayer" instance=ExtResource("1_kkwol")]
-
-[node name="Arm" parent="AttackCursor" index="0"]
-visible = false
+script = ExtResource("2_j36ei")
+fire_rate = 2.0
+powered_up_fire_rate = 0.77
