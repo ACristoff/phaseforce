@@ -35,12 +35,15 @@ var gun_spread = [-1,2]
 
 @export var JUMP_VELOCITY = -400.0
 @export var SPEED: float = 300.0
-var ATTACK: int = 8
+@export var coyote_time: float = 0.25
+@onready var coyote_timer: float = coyote_time
+@export var jump_buffer_time: float = 0.25
+@onready var jump_buffer_timer: float = jump_buffer_time
+
+var health: int = 20
 var attack_cooldown:float = 0
-var HEALTH: int = 20
 var powered_up: bool = false
-@export var coyote_time = 0.3
-var coyote_timer = 0.3
+
 
 var face_right: bool = true
 var attack_direction
@@ -75,30 +78,31 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		coyote_timer -= 1 * delta
-		
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") && coyote_timer > 0:
 		jump(JUMP_VELOCITY)
 	if is_on_floor() && !Input.is_action_just_pressed("jump") && coyote_timer != coyote_time:
 		coyote_timer = coyote_time
 	var horizontalDirection = Input.get_axis("move_left", "move_right")
+	
 	#Flip the sprite whether moving left or right
 	if horizontalDirection:
 		anim_player.play("Run")
 		sprite.flip_h = (horizontalDirection == -1)
 		face_right = (horizontalDirection == 1)
+		##Footsteps
 		if is_on_floor() && step_timer.is_stopped():
 			step_timer.start()
 			var random = randi_range(0,3)
 			AudioManager.play_sfx(steps[random], -10)
-			
+	
 	velocity.x = horizontalDirection * SPEED
 	#Idle
 	if velocity.x == 0 and velocity.y == 0:
 		anim_player.play("Idle")
 		pass
 	move_and_slide()
-
 
 func attack() -> void:
 	tommy_anim.stop()
