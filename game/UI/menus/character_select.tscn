@@ -33,31 +33,42 @@ alignment = 1
 layout_mode = 2
 text = "KOMACHI
 PANKO
-🎋🍭"
+🎋🍭
+LEWDEST
+CHUUBA
+2025"
 
 [node name="ButtonLia" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "RINKOU
 ASHELIA
-⚡️"
+⚡️
+YIPEE
+INCEST"
 
 [node name="ButtonTenma" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "TENMA
 MAEMI
-🍶🦊"
+🍶🦊
+FOXY
+LADY"
 
 [node name="ButtonPippa" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "PIPKIN
 PIPPA
-🔌🐰"
+🔌🐰
+SCHIZO
+YABBIT"
 
 [node name="Button" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "KANEKO
 LUMI
-💫💥"
+💫💥
+LEMON
+WOMAN"
 
 [connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonPanko" to="." method="_on_button_panko_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonLia" to="." method="_on_button_lia_pressed"]

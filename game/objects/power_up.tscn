@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bytrjfsir7c6d"]
+[gd_scene load_steps=11 format=3 uid="uid://brou5oy0grhjf"]
 
 [ext_resource type="Script" path="res://game/objects/power_up.gd" id="1_scgnr"]
 [ext_resource type="Shader" path="res://assets/shaders/power_up.gdshader" id="2_f1dcb"]
@@ -15,6 +15,21 @@ shader_parameter/BLUR_ITERATIONS = 3
 shader_parameter/BLUR_SIZE = 0.02
 shader_parameter/BLUR_SUBDIVISIONS = 80
 
+[sub_resource type="Animation" id="Animation_hlbco"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Powerup:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_t5ekl"]
 resource_name = "powerup"
 loop_mode = 1
@@ -30,21 +45,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-}
-
-[sub_resource type="Animation" id="Animation_hlbco"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Powerup:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xw1gt"]
