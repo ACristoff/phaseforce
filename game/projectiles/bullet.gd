@@ -7,7 +7,7 @@ func _process(delta):
 	position += transform.x * speed * delta
 	pass
 
-func _on_area_entered(area):
+func _on_area_entered(_area):
 	#print(area)
 	#if area is BasePlayer:
 		#return

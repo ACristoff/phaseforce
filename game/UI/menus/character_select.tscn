@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/UI/menus/character_select.gd" id="1_lnse3"]
 
-[node name="Character Select" type="Control"]
+[node name="CharacterSelect" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,26 +29,31 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="ButtonPanko" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "KOMACHI
 PANKO
 🎋🍭"
 
-[node name="Button2" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="ButtonLia" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "RINKOU
 ASHELIA
 ⚡️"
 
-[node name="Button3" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="ButtonTenma" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "TENMA
 MAEMI
 🍶🦊"
 
-[node name="Button4" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="ButtonPippa" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "PIPKIN
 PIPPA
 🔌🐰"
+
+[connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonPanko" to="." method="_on_button_panko_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonLia" to="." method="_on_button_lia_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonTenma" to="." method="_on_button_tenma_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonPippa" to="." method="_on_button_pippa_pressed"]

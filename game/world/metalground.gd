@@ -5,6 +5,6 @@ class_name MetalGround
 
 @onready var PARTICLE = preload("res://game/projectiles/hit_particles.tscn")
 
-func emit(position):
-	print(position)
+func emit(_new_position):
+	#print(position)
 	pass

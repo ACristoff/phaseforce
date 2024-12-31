@@ -129,7 +129,7 @@ func attack() -> void:
 
 
 #TODO Split out the attack cursor as its own node?
-func update_cursor(event):
+func update_cursor(_event):
 	#Get mouse cursor relative to player
 	#Smoothly rotate the aiming cursor towards mouse
 	#Update attack_direction var
