@@ -60,8 +60,9 @@ var gun_spread = normal_gun_spread
 var fire_rate = normal_fire_rate
 
 var health: int = 3
-var powered_up: bool = false
 
+var powered_up: bool = false
+var knockback = Vector2.ZERO
 var face_right: bool = true
 var attack_direction
 
@@ -97,16 +98,16 @@ func power_up():
 	sprite.texture = powered_up_sprite
 	load_gun(powered_up_gun, true)
 	fire_rate = powered_up_fire_rate
-	print(fire_rate)
 	attack_timer.wait_time = fire_rate
+	powered_up = true
 
 
 func power_down():
 	sprite.texture = normal_sprite
 	load_gun(normal_gun, true)
 	fire_rate = normal_fire_rate
-	print(fire_rate)
 	attack_timer.wait_time = fire_rate
+	powered_up = false
 
 
 func jump(force):
@@ -156,7 +157,11 @@ func _physics_process(delta: float) -> void:
 			var random = randi_range(0,3)
 			AudioManager.play_sfx(steps[random], -10)
 	
-	velocity.x = horizontalDirection * SPEED
+	velocity.x = horizontalDirection * SPEED + knockback.x
+	
+	if knockback.x != 0:
+		knockback = lerp(knockback, Vector2.ZERO, 0.1)
+		pass
 	#Idle
 	if velocity.x == 0 and velocity.y == 0:
 		anim_player.play("Idle")
