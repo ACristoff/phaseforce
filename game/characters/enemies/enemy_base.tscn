@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8jo543xm1x0a"]
+
+[ext_resource type="Texture2D" uid="uid://p2ig4n01komu" path="res://assets/enemies/enemysnowman.png" id="1_6op3j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4elen"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qfxbf"]
+radius = 8.0
+height = 24.0
+
+[node name="EnemyBase" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(3, -13)
+texture = ExtResource("1_6op3j")
+hframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+
+[node name="ColissionBox" type="StaticBody2D" parent="."]
+position = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColissionBox"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_4elen")
+debug_color = Color(0, 0.627451, 0.501961, 0.168627)
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_qfxbf")
+debug_color = Color(0.988235, 0, 0.309804, 0.133333)

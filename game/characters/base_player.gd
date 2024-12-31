@@ -19,7 +19,7 @@ class_name BasePlayer
 @onready var platform_area: Area2D = $PlatformDetector
 
 @onready var attack_timer: Timer = $Timers/AttackTimer
-#@onready var cooldown_timer: Timer = $Timers/CooldownTimer
+@onready var reload_timer: Timer = $Timers/CooldownTimer
 @onready var step_timer: Timer = $Timers/StepTimer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 @onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
@@ -100,7 +100,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	#TODO Add case for controller related input
 	if event is InputEventMouse:
 		update_cursor(event)
-	pass
 
 func power_up():
 	sprite.texture = powered_up_sprite
@@ -181,10 +180,6 @@ func _physics_process(delta: float) -> void:
 		if is_ladder():
 			if Input.is_action_pressed("move_up") or Input.is_action_pressed("jump"):
 				velocity.y = -SPEED
-		#var platform = is_passthrough_platform()
-		#if platform:
-			#if Input.is_action_pressed("move_down"):
-				#platform.disable_platform()
 	
 	if current_platform_stack.size() > 0:
 		if Input.is_action_pressed("move_down"):
