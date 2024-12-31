@@ -8,6 +8,7 @@ class_name EnemyBase
 enum ENEMY_STATES {IDLE, IDLEWALK, ALERTED}
 var enemy_state: ENEMY_STATES = ENEMY_STATES.IDLE
 var alert: bool = false
+var health: int = 100
 
 
 
@@ -15,6 +16,10 @@ var alert: bool = false
 func _ready():
 	
 	pass # Replace with function body.
+
+func die():
+	
+	pass
 
 func _physics_process(delta):
 	
