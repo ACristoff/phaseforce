@@ -25,6 +25,8 @@ shape = SubResource("RectangleShape2D_g7sld")
 one_way_collision = true
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_pg64o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -34,3 +36,4 @@ shape = SubResource("RectangleShape2D_gk0cu")
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="disable" from="Area2D" to="." method="_on_area_2d_disable"]
+[connection signal="enable" from="Area2D" to="." method="_on_area_2d_enable"]

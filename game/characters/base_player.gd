@@ -16,6 +16,7 @@ class_name BasePlayer
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var debug_text: Label = $Label
 @onready var floor_cast: RayCast2D = $RayCast2D
+@onready var platform_area: Area2D = $PlatformDetector
 
 @onready var attack_timer: Timer = $Timers/AttackTimer
 #@onready var cooldown_timer: Timer = $Timers/CooldownTimer
@@ -69,6 +70,7 @@ var powered_up: bool = false
 var knockback = Vector2.ZERO
 var face_right: bool = true
 var attack_direction
+var current_platform_stack: Array = [] 
 
 func _ready() -> void:
 	var game_man: game_manager = get_node("/root/GameManager")
@@ -179,11 +181,18 @@ func _physics_process(delta: float) -> void:
 		if is_ladder():
 			if Input.is_action_pressed("move_up") or Input.is_action_pressed("jump"):
 				velocity.y = -SPEED
-		var platform = is_passthrough_platform()
-		if platform:
-			if Input.is_action_pressed("move_down"):
-				print('drop down', platform)
+		#var platform = is_passthrough_platform()
+		#if platform:
+			#if Input.is_action_pressed("move_down"):
+				#platform.disable_platform()
+	
+	if current_platform_stack.size() > 0:
+		if Input.is_action_pressed("move_down"):
+			for platform in current_platform_stack:
 				platform.disable_platform()
+		elif Input.is_action_just_released("move_down"):
+			for platform in current_platform_stack:
+				platform.enable_platform()
 	
 	#Idle
 	if velocity == Vector2(0,0) or velocity == Vector2.ZERO:
@@ -236,3 +245,11 @@ func update_cursor(_event):
 			arm.scale = Vector2(1, 1)
 	#TODO smoothing by updating attack direction and instead moving the cursor to look at in update
 	pass
+
+
+func _on_platform_detector_area_entered(area):
+	current_platform_stack.append(area)
+
+func _on_platform_detector_area_exited(area):
+	area.enable_platform()
+	current_platform_stack.erase(area)

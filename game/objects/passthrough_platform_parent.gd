@@ -6,10 +6,16 @@ extends Node2D
 
 func disable():
 	collision.set_deferred("disabled", true)
-	
 
-func _on_area_2d_area_exited(area):
+func enable():
 	collision.set_deferred("disabled", false)
+
+func _on_area_2d_area_exited(_area):
+	#collision.set_deferred("disabled", false)
+	pass
 
 func _on_area_2d_disable():
 	disable()
+
+func _on_area_2d_enable():
+	enable()
