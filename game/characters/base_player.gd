@@ -32,14 +32,16 @@ class_name BasePlayer
 @export_group("Normal Mode")
 @export var normal_sprite: Texture2D 
 @export var normal_gun: PackedScene
-@export var fire_rate: float
+@export var normal_fire_rate: float
+@export var normal_gun_spread: Array[int] = [0,0]
 
 @export_group("Powered Up Mode")
 @export var powered_up_gun: PackedScene
 @export var powered_up_sprite: Texture2D
 @export var powered_up_fire_rate: float
+@export var powered_up_gun_spread: Array[int] = [-1, 2]
 
-var gun_spread = [0,0]
+var gun_spread = normal_gun_spread
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
