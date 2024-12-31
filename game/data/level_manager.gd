@@ -1,5 +1,7 @@
 extends Node
 
+class_name Level_Manager
+
 @export var levels: Array[PackedScene] = []
 
 # Called when the node enters the scene tree for the first time.

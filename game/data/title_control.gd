@@ -25,3 +25,8 @@ func _on__x_1080_pressed():
 
 func _on__x_1440_pressed():
 	DisplayServer.window_set_size(Vector2i(2560, 1440))
+
+
+func _on_start_pressed():
+	print("play first level")
+	pass # Replace with function body.
