@@ -11,4 +11,3 @@ func _ready():
 	var spawn_char = character.instantiate()
 	spawn_char.global_position = spawn.global_position
 	add_child(spawn_char)
-	pass # Replace with function body.

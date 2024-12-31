@@ -17,7 +17,7 @@ class_name BasePlayer
 @onready var debug_text: Label = $Label
 
 @onready var attack_timer: Timer = $Timers/AttackTimer
-@onready var cooldown_timer: Timer = $Timers/CooldownTimer
+#@onready var cooldown_timer: Timer = $Timers/CooldownTimer
 @onready var step_timer: Timer = $Timers/StepTimer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 @onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
@@ -37,7 +37,6 @@ class_name BasePlayer
 @export var normal_bullet_speed: int =  700
 @export var normal_damage: int
 
-
 @export_group("Powered Up Mode")
 @export var powered_up_gun: PackedScene
 @export var powered_up_sprite: Texture2D
@@ -46,16 +45,10 @@ class_name BasePlayer
 @export var powered_up_bullet_speed: int =  500
 @export var powered_up_damage: int
 
-
-
-
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
 @onready var shell = preload("res://game/projectiles/spent_shell.tscn")
 
-#@onready var tommy_anim: AnimationPlayer = $AttackCursor/Arm/CursorSprite/AnimationPlayer
-#var gun_spread = [-1,2]
-#@onready var tommy_first = preload("res://assets/sfx/TOMMY GUN ONESHOT_FIRST.mp3")
 @onready var tommy_last = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
 
 @export_group("Base Stats")
@@ -77,14 +70,17 @@ func _ready() -> void:
 	if game_man.debug_mode:
 		debug_text.visible = true
 	sprite.texture = normal_sprite
-	load_gun(normal_gun)
+	load_gun(normal_gun, false)
 	attack_timer.wait_time = fire_rate
 
-func load_gun(gun):
+func load_gun(gun, is_new):
+	if is_new:
+		cursor.remove_child(arm)
+		arm.queue_free()
 	var new_gun = gun.instantiate()
 	cursor.add_child(new_gun)
-	cursor_sprite = $AttackCursor/Arm/CursorSprite
 	arm = $AttackCursor/Arm
+	cursor_sprite = $AttackCursor/Arm/CursorSprite
 	cursor_spout = $AttackCursor/Arm/CursorSprite/BulletSpawnPoint
 	shell_spout = $AttackCursor/Arm/CursorSprite/ShellSpawnPoint
 	blast_graphic = $AttackCursor/Arm/CursorSprite/GunExplosion
@@ -99,9 +95,19 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func power_up():
 	sprite.texture = powered_up_sprite
+	load_gun(powered_up_gun, true)
+	fire_rate = powered_up_fire_rate
+	print(fire_rate)
+	attack_timer.wait_time = fire_rate
+
 
 func power_down():
 	sprite.texture = normal_sprite
+	load_gun(normal_gun, true)
+	fire_rate = normal_fire_rate
+	print(fire_rate)
+	attack_timer.wait_time = fire_rate
+
 
 func jump(force):
 	#AudioManager.play_sfx()
@@ -183,10 +189,10 @@ func update_cursor(_event):
 	#TODO create a case for controller input, right stick angle
 	cursor.look_at(get_global_mouse_position())
 	attack_direction = int(cursor.rotation_degrees) % 360
-	
-	if (attack_direction > 90 && attack_direction < 270) || (attack_direction < -90 && attack_direction > -270):
-		arm.scale = Vector2(1, -1)
-	else:
-		arm.scale = Vector2(1, 1)
+	if arm:
+		if (attack_direction > 90 && attack_direction < 270) || (attack_direction < -90 && attack_direction > -270):
+			arm.scale = Vector2(1, -1)
+		else:
+			arm.scale = Vector2(1, 1)
 	#TODO smoothing by updating attack direction and instead moving the cursor to look at in update
 	pass

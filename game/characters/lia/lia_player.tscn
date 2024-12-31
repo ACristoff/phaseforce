@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://by1xslelif07n"]
+
+[ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_7os3g"]
+[ext_resource type="Texture2D" uid="uid://dt7drd5slxlhk" path="res://assets/characters/lia/base_form/LiaSprite.png" id="2_jea0j"]
+[ext_resource type="Texture2D" uid="uid://bmve145j3ghn7" path="res://assets/characters/lia/powerup_form/LiaMom_Sprite.png" id="3_esohs"]
+
+[node name="LiaPlayer" instance=ExtResource("1_7os3g")]
+normal_sprite = ExtResource("2_jea0j")
+powered_up_sprite = ExtResource("3_esohs")
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_jea0j")
