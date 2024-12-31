@@ -7,7 +7,7 @@ class_name game_manager
 @onready var level_manager = preload("res://game/data/level_manager.tscn")
 
 @export var debug_mode = false
-var current_character 
+var current_character = "panko"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,4 +30,4 @@ func selected_character(new_character, char_screen):
 	var level_man = level_manager.instantiate()
 	add_child(level_man)
 	level_man.load_level(0)
-	level_man.use_character(current_character)
+	#level_man.use_character(current_character)
