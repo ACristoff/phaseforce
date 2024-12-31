@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbdfutg8t6gj3"]
 
 [ext_resource type="Script" path="res://game/data/game_manager.gd" id="1_831tx"]
-[ext_resource type="PackedScene" uid="uid://bo8235t87pkb1" path="res://game/data/title.tscn" id="1_yo12b"]
+[ext_resource type="PackedScene" uid="uid://2ysgg3kri6dl" path="res://game/data/title2.tscn" id="2_rv2vq"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_831tx")
 
-[node name="Title" parent="." instance=ExtResource("1_yo12b")]
+[node name="Title2" parent="." instance=ExtResource("2_rv2vq")]
 
-[connection signal="character_select" from="Title" to="." method="_on_title_character_select"]
+[connection signal="character_select" from="Title2" to="." method="_on_title_2_character_select"]
