@@ -22,3 +22,7 @@ func _on_start_pressed():
 	pass # Replace with function body.
 
 signal character_select
+
+
+func _on_character_select() -> void:
+	pass # Replace with function body.

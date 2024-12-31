@@ -2,7 +2,7 @@ extends Node
 
 class_name game_manager
 
-@onready var title = $Title
+@onready var title = $Title2
 
 @onready var level_manager = preload("res://game/data/level_manager.tscn")
 
@@ -31,3 +31,10 @@ func selected_character(new_character, char_screen):
 	add_child(level_man)
 	level_man.load_level(0)
 	#level_man.use_character(current_character)
+
+#For the second title UI
+func _on_title_2_character_select() -> void:
+	var char_select = preload("res://game/UI/menus/character_select.tscn").instantiate()
+	title.queue_free()
+	add_child(char_select)
+	char_select.chosen_character.connect(selected_character.bind(char_select))
