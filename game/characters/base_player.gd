@@ -32,16 +32,22 @@ class_name BasePlayer
 @export_group("Normal Mode")
 @export var normal_sprite: Texture2D 
 @export var normal_gun: PackedScene
-@export var normal_fire_rate: float
+@export var normal_fire_rate: float = 1
 @export var normal_gun_spread: Array[int] = [0,0]
+@export var normal_bullet_speed: int =  700
+@export var normal_damage: int
+
 
 @export_group("Powered Up Mode")
 @export var powered_up_gun: PackedScene
 @export var powered_up_sprite: Texture2D
-@export var powered_up_fire_rate: float
+@export var powered_up_fire_rate: float = 1
 @export var powered_up_gun_spread: Array[int] = [-1, 2]
+@export var powered_up_bullet_speed: int =  500
+@export var powered_up_damage: int
 
-var gun_spread = normal_gun_spread
+
+
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
@@ -57,9 +63,10 @@ var gun_spread = normal_gun_spread
 @export var SPEED: float = 150
 @export var coyote_time: float = 0.25
 @onready var coyote_timer: float = coyote_time
+var gun_spread = normal_gun_spread
+var fire_rate = normal_fire_rate
 
-var health: int = 20
-var attack_cooldown:float = 0
+var health: int = 3
 var powered_up: bool = false
 
 var face_right: bool = true
@@ -71,6 +78,7 @@ func _ready() -> void:
 		debug_text.visible = true
 	sprite.texture = normal_sprite
 	load_gun(normal_gun)
+	attack_timer.wait_time = fire_rate
 
 func load_gun(gun):
 	var new_gun = gun.instantiate()

@@ -6,4 +6,6 @@
 [node name="PankoPlayer" instance=ExtResource("1_kkwol")]
 script = ExtResource("2_j36ei")
 normal_fire_rate = 2.0
+normal_damage = 10
 powered_up_fire_rate = 0.77
+powered_up_damage = 2
