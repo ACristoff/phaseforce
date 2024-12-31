@@ -171,9 +171,13 @@ func _physics_process(delta: float) -> void:
 	
 	if knockback.x != 0:
 		knockback = lerp(knockback, Vector2.ZERO, 0.1)
-		pass
+	prints(velocity, knockback.x)
+	
+	if knockback.x < 1 && knockback.x > -1:
+		knockback = Vector2.ZERO
+	
 	#Idle
-	if velocity.x == 0 and velocity.y == 0:
+	if velocity == Vector2(0,0) or velocity == Vector2.ZERO:
 		anim_player.play("Idle")
 		pass
 	move_and_slide()
