@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 class_name EnemyBase
 
@@ -16,6 +16,7 @@ func _ready():
 func _process(delta):
 	#Add the gravity.
 	#velocity += get_gravity() * delta
+	
 	pass
 
 func idle():
