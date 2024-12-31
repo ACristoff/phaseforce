@@ -14,7 +14,7 @@ class_name BasePlayer
 @onready var cooldown_timer: Timer = $Timers/CooldownTimer
 @onready var step_timer: Timer = $Timers/StepTimer
 @onready var invul_timer: Timer = $Timers/InvulTimer
-#@onready var coyote_timer: Timer = $Timers/CoyoteTimer
+@onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
 
 @onready var steps = [
 	preload("res://assets/sfx/misc/SNOW_STEP_1.mp3"), 
@@ -37,8 +37,6 @@ var gun_spread = [-1,2]
 @export var SPEED: float = 300.0
 @export var coyote_time: float = 0.25
 @onready var coyote_timer: float = coyote_time
-@export var jump_buffer_time: float = 0.25
-@onready var jump_buffer_timer: float = jump_buffer_time
 
 var health: int = 20
 var attack_cooldown:float = 0
@@ -59,8 +57,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func jump(force):
 	#AudioManager.play_sfx()
-	velocity.y = force
 	coyote_timer = 0
+	velocity.y = force
 
 func _physics_process(delta: float) -> void:
 	##ACTIONS
@@ -79,11 +77,18 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		coyote_timer -= 1 * delta
 	
-	# Handle jump.
+	#Jump Buffering
+	if Input.is_action_just_pressed("jump") && !is_on_floor() && jump_buffer_timer.is_stopped():
+		jump_buffer_timer.start()
+	if !jump_buffer_timer.is_stopped() && is_on_floor():
+		jump(JUMP_VELOCITY)
+	
+	#Coyote Time and Jumping
 	if Input.is_action_just_pressed("jump") && coyote_timer > 0:
 		jump(JUMP_VELOCITY)
 	if is_on_floor() && !Input.is_action_just_pressed("jump") && coyote_timer != coyote_time:
-		coyote_timer = coyote_time
+		if jump_buffer_timer.is_stopped():
+			coyote_timer = coyote_time
 	var horizontalDirection = Input.get_axis("move_left", "move_right")
 	
 	#Flip the sprite whether moving left or right

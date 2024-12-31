@@ -163,6 +163,10 @@ one_shot = true
 wait_time = 0.27
 one_shot = true
 
+[node name="JumpBufferTimer" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AttackCursor" type="Node2D" parent="."]
