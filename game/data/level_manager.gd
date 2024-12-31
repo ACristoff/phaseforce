@@ -11,3 +11,6 @@ func _ready():
 func load_level(id):
 	var new_level = levels[id].instantiate()
 	add_child(new_level)
+
+func use_character(character):
+	print(character)

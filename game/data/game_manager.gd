@@ -17,8 +17,6 @@ func _ready():
 		var start_level_man = level_manager.instantiate()
 		add_child(start_level_man)
 		start_level_man.load_level(0)
-		pass
-
 
 func _on_title_character_select():
 	var char_select = preload("res://game/UI/menus/character_select.tscn").instantiate()
@@ -29,6 +27,7 @@ func _on_title_character_select():
 func selected_character(new_character, char_screen):
 	current_character = new_character
 	char_screen.queue_free()
-	var start_level_man = level_manager.instantiate()
-	add_child(start_level_man)
-	start_level_man.load_level(0)
+	var level_man = level_manager.instantiate()
+	add_child(level_man)
+	level_man.load_level(0)
+	level_man.use_character(current_character)
