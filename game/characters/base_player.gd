@@ -8,13 +8,14 @@ class_name BasePlayer
 @onready var cursor = $AttackCursor
 @onready var cursor_sprite
 @onready var arm
-@onready var cursor_spout
-@onready var shell_spout
+@onready var cursor_spout: Marker2D
+@onready var shell_spout: Marker2D
 @onready var blast_graphic: Sprite2D
 @onready var gun_anim: AnimationPlayer
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var debug_text: Label = $Label
+@onready var floor_cast: RayCast2D = $RayCast2D
 
 @onready var attack_timer: Timer = $Timers/AttackTimer
 #@onready var cooldown_timer: Timer = $Timers/CooldownTimer
@@ -51,14 +52,13 @@ class_name BasePlayer
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
 @onready var shell = preload("res://game/projectiles/spent_shell.tscn")
 
-@onready var gun_sound: AudioStreamMP3 = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
-#@onready var tommy_last = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
 
 @export_group("Base Stats")
 @export var JUMP_VELOCITY = -280.0
 @export var SPEED: float = 150
 @export var coyote_time: float = 0.25
 @onready var coyote_timer: float = coyote_time
+@onready var gun_sound: AudioStreamMP3 = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
 var gun_spread = normal_gun_spread
 var fire_rate = normal_fire_rate
 var bullet_speed

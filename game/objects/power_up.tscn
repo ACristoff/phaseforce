@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bytrjfsir7c6d"]
+[gd_scene load_steps=11 format=3 uid="uid://brou5oy0grhjf"]
 
 [ext_resource type="Script" path="res://game/objects/power_up.gd" id="1_scgnr"]
 [ext_resource type="Shader" path="res://assets/shaders/power_up.gdshader" id="2_f1dcb"]

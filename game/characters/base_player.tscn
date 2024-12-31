@@ -119,3 +119,5 @@ offset_top = -28.0
 offset_right = 60.0
 offset_bottom = 27.0
 theme_override_font_sizes/font_size = 10
+
+[node name="RayCast2D" type="RayCast2D" parent="."]

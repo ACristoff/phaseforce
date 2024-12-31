@@ -14,7 +14,6 @@ func attack():
 			knockback_vector.y = knockback_vector.y - 40
 			if knockback_vector.y < 0:
 				velocity.y = knockback_vector.y * 4
-				pass
 			velocity.y = knockback_vector.y - 30
 			
 		knockback = knockback_vector * 3
