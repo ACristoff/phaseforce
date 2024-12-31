@@ -19,6 +19,8 @@ func _on_body_entered(body):
 		return
 	if body is SnowGround:
 		body.emit(self.global_position)
+		queue_free()
 	elif body is MetalGround:
 		body.emit(self.global_position)
-	queue_free()
+		queue_free()
+	#queue_free()

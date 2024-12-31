@@ -171,22 +171,30 @@ func _physics_process(delta: float) -> void:
 	
 	if knockback.x != 0:
 		knockback = lerp(knockback, Vector2.ZERO, 0.1)
-	prints(velocity, knockback.x)
 	
 	if knockback.x < 1 && knockback.x > -1:
 		knockback = Vector2.ZERO
 	
+	if floor_cast.is_colliding():
+		if is_ladder():
+			if Input.is_action_pressed("move_up") or Input.is_action_pressed("jump"):
+				velocity.y = -SPEED
+	
 	#Idle
 	if velocity == Vector2(0,0) or velocity == Vector2.ZERO:
 		anim_player.play("Idle")
-		pass
 	move_and_slide()
 
+func is_ladder():
+	var first_collide = floor_cast.get_collider()
+	if first_collide is ladder:
+		return true
+	else:
+		return false
+
 func attack() -> void:
-	#tommy_anim.stop()
 	gun_anim.stop()
 	gun_anim.play("kickback")
-	#tommy_anim.play("TommyKick")
 	var new_bullet = bullet.instantiate()
 	var new_shell = shell.instantiate()
 	new_bullet.speed = bullet_speed
@@ -194,7 +202,6 @@ func attack() -> void:
 	new_shell.global_position = shell_spout.global_position
 	var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
 	new_bullet.rotation_degrees = adjusted_angle
-	
 	get_parent().add_child(new_bullet)
 	get_parent().add_child(new_shell)
 
