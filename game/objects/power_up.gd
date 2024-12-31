@@ -5,4 +5,5 @@ func _on_body_entered(body):
 	if body is BasePlayer:
 		var player: BasePlayer = body
 		player.power_up()
-	pass # Replace with function body.
+	
+	queue_free()
