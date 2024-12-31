@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm5mdiuoh8qbi"]
+[gd_scene load_steps=6 format=3 uid="uid://bm5mdiuoh8qbi"]
 
 [ext_resource type="Texture2D" uid="uid://0o8skv18k6tu" path="res://assets/environment/placeables/interactables/platform.png" id="1_3ke6h"]
+[ext_resource type="Script" path="res://game/objects/passthrough_platform_parent.gd" id="1_le4vf"]
+[ext_resource type="Script" path="res://game/objects/passthrough_platform.gd" id="1_pg64o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7sld"]
 size = Vector2(24, 7)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk0cu"]
+size = Vector2(24, 13.5)
+
 [node name="PassthroughPlatform" type="Node2D"]
+script = ExtResource("1_le4vf")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -17,3 +23,14 @@ texture = ExtResource("1_3ke6h")
 position = Vector2(-7.54979e-08, 0.5)
 shape = SubResource("RectangleShape2D_g7sld")
 one_way_collision = true
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_pg64o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2.75)
+shape = SubResource("RectangleShape2D_gk0cu")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="disable" from="Area2D" to="." method="_on_area_2d_disable"]

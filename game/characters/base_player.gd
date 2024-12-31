@@ -179,11 +179,24 @@ func _physics_process(delta: float) -> void:
 		if is_ladder():
 			if Input.is_action_pressed("move_up") or Input.is_action_pressed("jump"):
 				velocity.y = -SPEED
+		var platform = is_passthrough_platform()
+		if platform:
+			if Input.is_action_pressed("move_down"):
+				print('drop down', platform)
+				platform.disable_platform()
 	
 	#Idle
 	if velocity == Vector2(0,0) or velocity == Vector2.ZERO:
 		anim_player.play("Idle")
 	move_and_slide()
+
+func is_passthrough_platform():
+	var first_collide = floor_cast.get_collider()
+	#print(first_collide)
+	if first_collide is passthrough_platform:
+		return first_collide
+	else:
+		return false
 
 func is_ladder():
 	var first_collide = floor_cast.get_collider()
