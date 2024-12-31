@@ -192,7 +192,6 @@ func _physics_process(delta: float) -> void:
 
 func is_passthrough_platform():
 	var first_collide = floor_cast.get_collider()
-	#print(first_collide)
 	if first_collide is passthrough_platform:
 		return first_collide
 	else:
