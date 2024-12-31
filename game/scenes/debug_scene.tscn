@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=16 format=3 uid="uid://bhvj1gnroht24"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_hmkun"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="4_ukrgw"]
 [ext_resource type="Texture2D" uid="uid://dvk6tnf21cspc" path="res://assets/environment/placeables/interactables/electric-powered_door.png" id="5_gtqwe"]
-[ext_resource type="PackedScene" uid="uid://brou5oy0grhjf" path="res://game/objects/power_up.tscn" id="6_gnwae"]
+[ext_resource type="PackedScene" uid="uid://bytrjfsir7c6d" path="res://game/objects/power_up.tscn" id="6_gnwae"]
 [ext_resource type="PackedScene" uid="uid://bm5mdiuoh8qbi" path="res://game/objects/passthrough_platform.tscn" id="6_vs33k"]
 [ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="7_2d2y8"]
 [ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="7_62t8p"]
 [ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="7_ocm63"]
 [ext_resource type="Texture2D" uid="uid://cxtvffj8juoax" path="res://assets/environment/placeables/decorations/militaryvehicle.png" id="8_oo6ab"]
+[ext_resource type="PackedScene" uid="uid://b4ir8rl8balvy" path="res://game/objects/climbable_ladder.tscn" id="11_tbj4l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtdel"]
 size = Vector2(24, 72)
@@ -243,3 +244,147 @@ texture = ExtResource("8_oo6ab")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-352, -24)
+
+[node name="Ladders" type="Node2D" parent="."]
+position = Vector2(-36, -36)
+
+[node name="ClimbableLadder" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(996, -132)
+
+[node name="ClimbableLadder2" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(996, -108)
+
+[node name="ClimbableLadder3" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(996, -84)
+
+[node name="ClimbableLadder4" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(996, -60)
+
+[node name="ClimbableLadder5" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(996, -36)
+
+[node name="ClimbableLadder6" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(996, -12)
+
+[node name="ClimbableLadder7" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(996, 12)
+
+[node name="ClimbableLadder8" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(996, 36)
+
+[node name="ClimbableLadder9" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(996, 60)
+
+[node name="ClimbableLadder10" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(996, 84)
+
+[node name="ClimbableLadder11" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(996, 108)
+
+[node name="ClimbableLadder12" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -108)
+
+[node name="ClimbableLadder13" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -132)
+
+[node name="ClimbableLadder14" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -156)
+
+[node name="ClimbableLadder15" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -180)
+
+[node name="ClimbableLadder16" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -204)
+
+[node name="ClimbableLadder17" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -228)
+
+[node name="ClimbableLadder18" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -252)
+
+[node name="ClimbableLadder19" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -276)
+
+[node name="ClimbableLadder20" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -300)
+
+[node name="ClimbableLadder21" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -324)
+
+[node name="ClimbableLadder22" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -348)
+
+[node name="ClimbableLadder23" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1860, -372)
+
+[node name="ClimbableLadder24" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2076, -180)
+
+[node name="ClimbableLadder25" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2076, -204)
+
+[node name="ClimbableLadder26" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2076, -228)
+
+[node name="ClimbableLadder27" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2076, -252)
+
+[node name="ClimbableLadder28" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2076, -276)
+
+[node name="ClimbableLadder29" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2076, -300)
+
+[node name="ClimbableLadder30" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2076, -324)
+
+[node name="ClimbableLadder31" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2220, -276)
+
+[node name="ClimbableLadder32" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2220, -300)
+
+[node name="ClimbableLadder33" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2220, -324)
+
+[node name="ClimbableLadder34" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2220, -348)
+
+[node name="ClimbableLadder35" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(2220, -372)
+
+[node name="ClimbableLadder36" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1500, -468)
+
+[node name="ClimbableLadder37" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1500, -492)
+
+[node name="ClimbableLadder38" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1500, -516)
+
+[node name="ClimbableLadder39" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1500, -540)
+
+[node name="ClimbableLadder40" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1500, -564)
+
+[node name="ClimbableLadder41" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1500, -588)
+
+[node name="ClimbableLadder42" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1428, -468)
+
+[node name="ClimbableLadder43" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1428, -492)
+
+[node name="ClimbableLadder44" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1428, -516)
+
+[node name="ClimbableLadder45" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1428, -540)
+
+[node name="ClimbableLadder46" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1428, -564)
+
+[node name="ClimbableLadder47" parent="Ladders" instance=ExtResource("11_tbj4l")]
+position = Vector2(1428, -588)
