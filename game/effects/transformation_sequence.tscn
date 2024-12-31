@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dr4vpj5na3524"]
+[gd_scene load_steps=12 format=3 uid="uid://dr4vpj5na3524"]
 
 [ext_resource type="Texture2D" uid="uid://cykvokrni31t" path="res://assets/particles/energyball.png" id="1_b4k0t"]
+[ext_resource type="Texture2D" uid="uid://dqlbx42lbfhfl" path="res://assets/particles/sparkles.png" id="2_0wiow"]
 
 [sub_resource type="Animation" id="Animation_mrbw4"]
 length = 0.001
@@ -64,6 +65,26 @@ _data = {
 "transform": SubResource("Animation_a543u")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sqhuy"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_i4npr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.482518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ud7gw"]
+curve = SubResource("Curve_i4npr")
+
+[sub_resource type="Curve" id="Curve_uq4gp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.818182, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t1xdd"]
+curve = SubResource("Curve_uq4gp")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e2amu"]
 particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
@@ -71,6 +92,8 @@ spread = 180.0
 initial_velocity_min = 30.0
 initial_velocity_max = 30.0
 gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_t1xdd")
+anim_offset_curve = SubResource("CurveTexture_ud7gw")
 
 [node name="Transformation_Sequence" type="Node2D"]
 texture_filter = 3
@@ -85,4 +108,10 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_b4k0t")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_sqhuy")
+emitting = false
+amount = 16
 process_material = SubResource("ParticleProcessMaterial_e2amu")
+texture = ExtResource("2_0wiow")
+one_shot = true
+explosiveness = 0.22
