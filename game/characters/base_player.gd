@@ -34,8 +34,9 @@ class_name BasePlayer
 @export var normal_gun: PackedScene
 @export var normal_fire_rate: float = 1
 @export var normal_gun_spread: Array[int] = [0,0]
-@export var normal_bullet_speed: int =  700
+@export var normal_bullet_speed: int
 @export var normal_damage: int
+@export var normal_gun_sound: AudioStreamMP3
 
 @export_group("Powered Up Mode")
 @export var powered_up_gun: PackedScene
@@ -44,12 +45,14 @@ class_name BasePlayer
 @export var powered_up_gun_spread: Array[int] = [-1, 2]
 @export var powered_up_bullet_speed: int =  500
 @export var powered_up_damage: int
+@export var powered_up_gun_sound: AudioStreamMP3
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
 @onready var shell = preload("res://game/projectiles/spent_shell.tscn")
 
-@onready var tommy_last = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
+@onready var gun_sound: AudioStreamMP3 = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
+#@onready var tommy_last = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
 
 @export_group("Base Stats")
 @export var JUMP_VELOCITY = -280.0
@@ -58,6 +61,7 @@ class_name BasePlayer
 @onready var coyote_timer: float = coyote_time
 var gun_spread = normal_gun_spread
 var fire_rate = normal_fire_rate
+var bullet_speed
 
 var health: int = 3
 
@@ -73,6 +77,8 @@ func _ready() -> void:
 	sprite.texture = normal_sprite
 	load_gun(normal_gun, false)
 	attack_timer.wait_time = fire_rate
+	gun_sound = normal_gun_sound
+	bullet_speed = normal_bullet_speed
 
 func load_gun(gun, is_new):
 	if is_new:
@@ -99,6 +105,8 @@ func power_up():
 	load_gun(powered_up_gun, true)
 	fire_rate = powered_up_fire_rate
 	attack_timer.wait_time = fire_rate
+	gun_sound = powered_up_gun_sound
+	bullet_speed = powered_up_bullet_speed
 	powered_up = true
 
 
@@ -107,6 +115,8 @@ func power_down():
 	load_gun(normal_gun, true)
 	fire_rate = normal_fire_rate
 	attack_timer.wait_time = fire_rate
+	gun_sound = normal_gun_sound
+	bullet_speed = normal_bullet_speed
 	powered_up = false
 
 
@@ -120,7 +130,7 @@ func _physics_process(delta: float) -> void:
 	debug_text.text = str(attack_direction)
 	if Input.is_action_pressed("shoot") && attack_timer.is_stopped():
 		attack_timer.start()
-		AudioManager.play_sfx(tommy_last)
+		AudioManager.play_sfx(gun_sound)
 		attack()
 	if Input.is_action_just_released("shoot"):
 		#AudioManager.play_sfx(tommy_last)
@@ -175,13 +185,15 @@ func attack() -> void:
 	#tommy_anim.play("TommyKick")
 	var new_bullet = bullet.instantiate()
 	var new_shell = shell.instantiate()
+	new_bullet.speed = bullet_speed
 	new_bullet.global_position = cursor_spout.global_position
 	new_shell.global_position = shell_spout.global_position
 	var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
 	new_bullet.rotation_degrees = adjusted_angle
+	
 	get_parent().add_child(new_bullet)
 	get_parent().add_child(new_shell)
-	pass
+
 
 
 

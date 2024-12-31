@@ -17,7 +17,6 @@ func _on_area_entered(_area):
 func _on_body_entered(body):
 	if body is BasePlayer:
 		return
-	
 	if body is SnowGround:
 		body.emit(self.global_position)
 	elif body is MetalGround:

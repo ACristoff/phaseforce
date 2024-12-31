@@ -53,6 +53,12 @@ text = "PIPKIN
 PIPPA
 🔌🐰"
 
+[node name="Button" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+text = "KANEKO
+LUMI
+💫💥"
+
 [connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonPanko" to="." method="_on_button_panko_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonLia" to="." method="_on_button_lia_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonTenma" to="." method="_on_button_tenma_pressed"]
