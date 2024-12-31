@@ -17,6 +17,7 @@ func _ready():
 		var start_level_man = level_manager.instantiate()
 		add_child(start_level_man)
 		start_level_man.load_level(0)
+		get_tree().set_debug_collisions_hint(true)
 
 func _on_title_character_select():
 	var char_select = preload("res://game/UI/menus/character_select.tscn").instantiate()
