@@ -23,6 +23,11 @@ class_name BasePlayer
 	preload("res://assets/sfx/misc/SNOW_STEP_4.mp3")
 ]
 
+@export var normal_sprite: Texture2D 
+@export var powered_up_sprite: Texture2D
+
+@export var gun: PackedScene
+
 ##TODO Destructurize this
 @onready var blast_graphic: Sprite2D = $AttackCursor/Arm/CursorSprite/GunExplosion
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
@@ -41,7 +46,6 @@ var gun_spread = [-1,2]
 var health: int = 20
 var attack_cooldown:float = 0
 var powered_up: bool = false
-
 
 var face_right: bool = true
 var attack_direction

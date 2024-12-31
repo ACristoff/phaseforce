@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcyvqrwjcn8dt"]
+[gd_scene load_steps=15 format=3 uid="uid://bcyvqrwjcn8dt"]
 
 [ext_resource type="Script" path="res://game/characters/base_player.gd" id="1_lf5mu"]
 [ext_resource type="Texture2D" uid="uid://4v6wc1fa3ym7" path="res://assets/characters/panko/base_form/Panko_Sprite.png" id="2_t1s0p"]
 [ext_resource type="Texture2D" uid="uid://bcqdg48xuiv6j" path="res://assets/characters/panko/powerup_form/tommy_gun.png" id="3_kgh7l"]
 [ext_resource type="Texture2D" uid="uid://dp74hhbbk8upj" path="res://assets/characters/panko/base_form/Panko_Arm.png" id="3_vf0db"]
+[ext_resource type="Texture2D" uid="uid://mtl87x1gxico" path="res://assets/characters/panko/powerup_form/Panko_Sprite2.png" id="3_wi2dk"]
 [ext_resource type="Texture2D" uid="uid://b6lap5f70hqu" path="res://assets/particles/gun_explosion.png" id="5_xqrby"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m540u"]
@@ -132,6 +133,8 @@ _data = {
 [node name="BasePlayer" type="CharacterBody2D"]
 texture_filter = 3
 script = ExtResource("1_lf5mu")
+normal_sprite = ExtResource("2_t1s0p")
+powered_up_sprite = ExtResource("3_wi2dk")
 JUMP_VELOCITY = -280.0
 SPEED = 150.0
 
