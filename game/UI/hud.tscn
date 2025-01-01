@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcnjabyfgy3tm"]
+[gd_scene load_steps=7 format=3 uid="uid://dcnjabyfgy3tm"]
 
 [ext_resource type="Script" path="res://game/UI/hud.gd" id="1_g4rpk"]
 [ext_resource type="Texture2D" uid="uid://cc3f4swujlpu2" path="res://assets/ui/ammo_types/223remington.png" id="2_5nkkh"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_68nfx"]
 [ext_resource type="Texture2D" uid="uid://d4lx7mqd0g5nh" path="res://assets/ui/checkbox1.png" id="4_fopok"]
+[ext_resource type="Texture2D" uid="uid://cjocwybbd0qxm" path="res://assets/ui/healthbottom.png" id="5_f2ved"]
+[ext_resource type="Texture2D" uid="uid://cats31d6vmo5o" path="res://assets/ui/healthtop.png" id="6_7t315"]
 
 [node name="Node2D" type="Control"]
 texture_filter = 3
@@ -102,3 +104,17 @@ layout_mode = 2
 theme = ExtResource("2_68nfx")
 theme_override_font_sizes/font_size = 8
 text = "Escape"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+texture_filter = 3
+offset_right = 162.0
+offset_bottom = 52.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+max_value = 3.0
+value = 2.0
+texture_under = ExtResource("5_f2ved")
+texture_progress = ExtResource("6_7t315")
