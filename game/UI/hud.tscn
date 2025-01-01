@@ -89,7 +89,6 @@ stretch_mode = 2
 layout_mode = 2
 theme = ExtResource("2_68nfx")
 theme_override_font_sizes/font_size = 8
-text = "Kill  0/10  Snowmen"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Objective_Container/VBoxContainer"]
 layout_mode = 2
@@ -118,3 +117,11 @@ max_value = 3.0
 value = 2.0
 texture_under = ExtResource("5_f2ved")
 texture_progress = ExtResource("6_7t315")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 556.0
+offset_top = 319.0
+offset_right = 624.0
+offset_bottom = 346.0
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
