@@ -8,13 +8,14 @@ func _process(delta):
 	pass
 
 func _on_area_entered(_area):
-	#print(area)
+	prints('area: ',_area)
 	#if area is BasePlayer:
 		#return
 	queue_free()
 	pass # Replace with function body.
 
 func _on_body_entered(body):
+	prints('body: ',body)
 	if body is BasePlayer:
 		return
 	if body is SnowGround:
