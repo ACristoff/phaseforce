@@ -22,6 +22,6 @@ func power_up():
 	super()
 	var trans = TRANSEFFECT.instantiate()
 	self.add_child(trans)
-	trans.type = 1
+	trans.type = 2
 	trans.begin()
 	trans.global_position = self.global_position

@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddoegd7o3j6lt"]
+
+[ext_resource type="Script" path="res://game/objects/generator.gd" id="1_p2k5v"]
+[ext_resource type="Texture2D" uid="uid://7slt6piexpou" path="res://assets/environment/placeables/interactables/generator.png" id="1_ywk00"]
+[ext_resource type="AudioStream" uid="uid://bw3wg8ravboqa" path="res://assets/sfx/misc/generator-87782.mp3" id="2_q35hg"]
+[ext_resource type="Texture2D" uid="uid://cx351xvbj2njp" path="res://assets/particles/generator/generator_debris.png" id="4_tr7pn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lok6"]
+size = Vector2(34, 24)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_657ri"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hnwxg"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = 60.0
+angular_velocity_max = 60.0
+gravity = Vector3(0, 98, 0)
+anim_offset_max = 1.0
+
+[node name="Generator" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_p2k5v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 4)
+shape = SubResource("RectangleShape2D_7lok6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_ywk00")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_q35hg")
+autoplay = true
+max_distance = 200.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture_filter = 3
+material = SubResource("CanvasItemMaterial_657ri")
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_hnwxg")
+texture = ExtResource("4_tr7pn")
+one_shot = true
+explosiveness = 0.89

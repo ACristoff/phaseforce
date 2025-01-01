@@ -24,4 +24,8 @@ func _on_body_entered(body):
 	elif body is MetalGround:
 		body.emit(self.global_position)
 		queue_free()
+	elif body is Generator:
+		body.emit(self.global_position)
+		queue_free()
+		
 	#queue_free()

@@ -30,12 +30,16 @@ func _process(delta):
 	if level == 1:
 		obj1label.text = "Destroy the Generator"
 		obj2label.text = "Kill  "+str(killed_snowmen)+"/"+str(amount_to_kill)+"  Snowmen"
-		if killed_snowmen == amount_to_kill:
-			completeobj2()
 		obj3label.text = "Escape"
 	
-func kill_snowman():
+func killed_snowman():
+	obj2.pivot_offset = obj2.size/2
+	var tween = create_tween()
+	tween.tween_property(obj2, "scale", Vector2(1.2, 1), .15)
+	tween.tween_property(obj2, "scale", Vector2(1, 1), .15)
 	killed_snowmen += 1
+	if killed_snowmen == amount_to_kill:
+			completeobj2()
 	
 func completeob1():
 	obj1.pivot_offset = obj1.size/2
@@ -44,13 +48,13 @@ func completeob1():
 	tween.tween_property(obj1, "scale", Vector2(1, 1), .15)
 	obj1.modulate = Color.GREEN_YELLOW
 func completeobj2():
-	obj2.pivot_offset = obj1.size/2
+	obj2.pivot_offset = obj2.size/2
 	var tween = create_tween()
 	tween.tween_property(obj2, "scale", Vector2(1.2, 1), .15)
 	tween.tween_property(obj2, "scale", Vector2(1, 1), .15)
 	obj2.modulate = Color.GREEN_YELLOW
 func completeobj3():
-	obj3.pivot_offset = obj1.size/2
+	obj3.pivot_offset = obj3.size/2
 	var tween = create_tween()
 	tween.tween_property(obj3, "scale", Vector2(1.2, 1), .15)
 	tween.tween_property(obj3, "scale", Vector2(1, 1), .15)
@@ -58,4 +62,4 @@ func completeobj3():
 
 
 func _on_button_pressed():
-	completeob1()
+	killed_snowman()
