@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://nupa2mkacopf"]
+[gd_scene load_steps=6 format=3 uid="uid://nupa2mkacopf"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_h75yb"]
 [ext_resource type="Texture2D" uid="uid://dsugoh3hgabw4" path="res://assets/characters/tenma/base_form/Tenma_Sprite.png" id="2_b3wq4"]
+[ext_resource type="PackedScene" uid="uid://diojbx0luw1nw" path="res://game/characters/tenma/tenma_arm.tscn" id="3_nke10"]
 [ext_resource type="Texture2D" uid="uid://xsbbu573qjhd" path="res://assets/characters/tenma/powerup_form/Tenmaoffice_Sprite.png" id="3_rauom"]
+[ext_resource type="PackedScene" uid="uid://u7b7iyo0ybi6" path="res://game/characters/tenma/tenma_arm_powered_up.tscn" id="4_arfvs"]
 
 [node name="BasePlayer" instance=ExtResource("1_h75yb")]
 collision_mask = 13
 normal_sprite = ExtResource("2_b3wq4")
+normal_gun = ExtResource("3_nke10")
+normal_bullet_speed = 20
+normal_damage = 20
+powered_up_gun = ExtResource("4_arfvs")
 powered_up_sprite = ExtResource("3_rauom")
+powered_up_damage = 50
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_b3wq4")
