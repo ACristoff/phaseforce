@@ -115,7 +115,10 @@ collide_with_areas = true
 
 [node name="IdleTimer" type="Timer" parent="Timers"]
 wait_time = 2.0
-autostart = true
+one_shot = true
+
+[node name="WalkTimer" type="Timer" parent="Timers"]
+one_shot = true
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -133,3 +136,4 @@ position = Vector2(-12, -26)
 polygon = PackedVector2Array(-106, -40, -30, -15, 200, -75, 200, 53, -30, 17, -106, 40)
 
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="Timers/WalkTimer" to="." method="_on_walk_timer_timeout"]
