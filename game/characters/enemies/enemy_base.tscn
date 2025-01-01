@@ -115,9 +115,10 @@ collide_with_areas = true
 
 [node name="IdleTimer" type="Timer" parent="Timers"]
 wait_time = 2.0
-autostart = true
+one_shot = true
 
 [node name="WalkTimer" type="Timer" parent="Timers"]
+one_shot = true
 
 [node name="Label" type="Label" parent="."]
 visible = false
