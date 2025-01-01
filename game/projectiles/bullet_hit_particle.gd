@@ -1,6 +1,7 @@
 extends GPUParticles2D
 @export var type = 1
-
+@export var hit_snow: AudioStreamMP3
+@export var hit_metal: AudioStreamRandomizer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emitting = true
