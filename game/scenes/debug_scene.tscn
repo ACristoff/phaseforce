@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=18 format=3 uid="uid://bhvj1gnroht24"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_hmkun"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
@@ -24,6 +24,9 @@ polygon = PackedVector2Array(-61, 35, -62, 36, -60, 42, -22, 42, -22, 62, 48, 62
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k03yi"]
 polygon = PackedVector2Array(-28, -14, 49, -14, 49, 13, 38, 34, 121, 34, 121, 58, -178, 58, -166, 34, -47, 34, -60, 15, -51, 10, -23, 10, -23, 4, -36, -9)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_24wkg"]
+distance = -360.0
 
 [node name="DebugScene" type="Node2D"]
 script = ExtResource("1_hmkun")
@@ -398,3 +401,10 @@ position = Vector2(-128, 34)
 
 [node name="EnemyBase2" parent="." instance=ExtResource("12_lij35")]
 position = Vector2(27, 35)
+
+[node name="Death_Barrier" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Barrier"]
+shape = SubResource("WorldBoundaryShape2D_24wkg")
+
+[connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
