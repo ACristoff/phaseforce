@@ -60,6 +60,9 @@ func _on_idle_timer_timeout():
 	var direction = randi_range(-5, 5)
 	idle_walk_to(direction)
 
+func _on_walk_timer_timeout():
+	pass # Replace with function body.
+
 	## Handle jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		#velocity.y = JUMP_VELOCITY
