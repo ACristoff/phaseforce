@@ -39,6 +39,11 @@ position = Vector2(-36, -36)
 [node name="ElectricDoors" type="Node2D" parent="."]
 position = Vector2(648, 48)
 
+[node name="Edoorstart1" type="Marker2D" parent="ElectricDoors"]
+
+[node name="Edoorstart2" type="Marker2D" parent="ElectricDoors"]
+position = Vector2(0, -72)
+
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="ElectricDoors"]
 
 [node name="ElectricDoor" type="Sprite2D" parent="ElectricDoors/AnimatableBody2D"]
@@ -72,83 +77,83 @@ position = Vector2(612, 123)
 position = Vector2(636, 123)
 
 [node name="PassthroughPlatform10" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(2052, -285)
+position = Vector2(2388, -285)
 
 [node name="PassthroughPlatform11" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(2076, -285)
+position = Vector2(2412, -285)
 
 [node name="PassthroughPlatform12" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(2100, -285)
+position = Vector2(2436, -285)
 
 [node name="PassthroughPlatform13" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(2292, -333)
+position = Vector2(2628, -333)
 
 [node name="PassthroughPlatform14" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(2316, -333)
+position = Vector2(2652, -333)
 
 [node name="PassthroughPlatform15" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(2340, -333)
+position = Vector2(2676, -333)
 
 [node name="PassthroughPlatform16" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(2364, -333)
+position = Vector2(2700, -333)
 
 [node name="PassthroughPlatform17" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(2388, -333)
+position = Vector2(2724, -333)
 
 [node name="PassthroughPlatform18" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(1980, -309)
+position = Vector2(2316, -309)
 
 [node name="PassthroughPlatform19" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(2004, -334)
+position = Vector2(2340, -334)
 
 [node name="PassthroughPlatform20" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(1980, -357)
+position = Vector2(2316, -357)
 
 [node name="PassthroughPlatform21" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(2004, -381)
+position = Vector2(2340, -381)
 
 [node name="PassthroughPlatform22" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(1716, -429)
+position = Vector2(2052, -429)
 
 [node name="PassthroughPlatform23" parent="Objects" instance=ExtResource("6_vs33k")]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(1692, -429)
+position = Vector2(2028, -429)
 
 [node name="PassthroughPlatform24" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(1620, -429)
+position = Vector2(1956, -429)
 
 [node name="PassthroughPlatform25" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(1524, -453)
+position = Vector2(1860, -453)
 
 [node name="PassthroughPlatform26" parent="Objects" instance=ExtResource("6_vs33k")]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(1548, -453)
+position = Vector2(1884, -453)
 
 [node name="PassthroughPlatform27" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(1404, -429)
+position = Vector2(1740, -429)
 
 [node name="PassthroughPlatform28" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(1428, -429)
+position = Vector2(1764, -429)
 
 [node name="PassthroughPlatform29" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(1380, -429)
+position = Vector2(1716, -429)
 
 [node name="PassthroughPlatform30" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(1356, -429)
+position = Vector2(1692, -429)
 
 [node name="PassthroughPlatform31" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(1476, -333)
+position = Vector2(1812, -333)
 
 [node name="PassthroughPlatform32" parent="Objects" instance=ExtResource("6_vs33k")]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(1500, -333)
+position = Vector2(1836, -333)
 
 [node name="PassthroughPlatform33" parent="Objects" instance=ExtResource("6_vs33k")]
-position = Vector2(1572, -333)
+position = Vector2(1908, -333)
 
 [node name="PassthroughPlatform34" parent="Objects" instance=ExtResource("6_vs33k")]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(1548, -333)
+position = Vector2(1884, -333)
 
 [node name="PassthroughPlatform4" parent="Objects" instance=ExtResource("6_vs33k")]
 position = Vector2(564, 123)
@@ -243,7 +248,13 @@ occluder = SubResource("OccluderPolygon2D_k03yi")
 texture_filter = 3
 
 [node name="MilitaryVehicle" type="Sprite2D" parent="Decorations"]
-position = Vector2(1368, -144)
+position = Vector2(1721, -144)
+texture = ExtResource("8_oo6ab")
+
+[node name="MilitaryVehicle2" type="Sprite2D" parent="Decorations"]
+z_index = -10
+position = Vector2(1389, -138)
+rotation = -0.109159
 texture = ExtResource("8_oo6ab")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
@@ -286,112 +297,112 @@ position = Vector2(996, 84)
 position = Vector2(996, 108)
 
 [node name="ClimbableLadder12" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -108)
+position = Vector2(2196, -108)
 
 [node name="ClimbableLadder13" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -132)
+position = Vector2(2196, -132)
 
 [node name="ClimbableLadder14" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -156)
+position = Vector2(2196, -156)
 
 [node name="ClimbableLadder15" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -180)
+position = Vector2(2196, -180)
 
 [node name="ClimbableLadder16" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -204)
+position = Vector2(2196, -204)
 
 [node name="ClimbableLadder17" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -228)
+position = Vector2(2196, -228)
 
 [node name="ClimbableLadder18" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -252)
+position = Vector2(2196, -252)
 
 [node name="ClimbableLadder19" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -276)
+position = Vector2(2196, -276)
 
 [node name="ClimbableLadder20" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -300)
+position = Vector2(2196, -300)
 
 [node name="ClimbableLadder21" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -324)
+position = Vector2(2196, -324)
 
 [node name="ClimbableLadder22" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -348)
+position = Vector2(2196, -348)
 
 [node name="ClimbableLadder23" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1860, -372)
+position = Vector2(2196, -372)
 
 [node name="ClimbableLadder24" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2076, -180)
+position = Vector2(2412, -180)
 
 [node name="ClimbableLadder25" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2076, -204)
+position = Vector2(2412, -204)
 
 [node name="ClimbableLadder26" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2076, -228)
+position = Vector2(2412, -228)
 
 [node name="ClimbableLadder27" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2076, -252)
+position = Vector2(2412, -252)
 
 [node name="ClimbableLadder28" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2076, -276)
+position = Vector2(2412, -276)
 
 [node name="ClimbableLadder29" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2076, -300)
+position = Vector2(2412, -300)
 
 [node name="ClimbableLadder30" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2076, -324)
+position = Vector2(2412, -324)
 
 [node name="ClimbableLadder31" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2220, -276)
+position = Vector2(2556, -276)
 
 [node name="ClimbableLadder32" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2220, -300)
+position = Vector2(2556, -300)
 
 [node name="ClimbableLadder33" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2220, -324)
+position = Vector2(2556, -324)
 
 [node name="ClimbableLadder34" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2220, -348)
+position = Vector2(2556, -348)
 
 [node name="ClimbableLadder35" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(2220, -372)
+position = Vector2(2556, -372)
 
 [node name="ClimbableLadder36" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1500, -468)
+position = Vector2(1836, -468)
 
 [node name="ClimbableLadder37" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1500, -492)
+position = Vector2(1836, -492)
 
 [node name="ClimbableLadder38" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1500, -516)
+position = Vector2(1836, -516)
 
 [node name="ClimbableLadder39" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1500, -540)
+position = Vector2(1836, -540)
 
 [node name="ClimbableLadder40" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1500, -564)
+position = Vector2(1836, -564)
 
 [node name="ClimbableLadder41" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1500, -588)
+position = Vector2(1836, -588)
 
 [node name="ClimbableLadder42" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1428, -468)
+position = Vector2(1764, -468)
 
 [node name="ClimbableLadder43" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1428, -492)
+position = Vector2(1764, -492)
 
 [node name="ClimbableLadder44" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1428, -516)
+position = Vector2(1764, -516)
 
 [node name="ClimbableLadder45" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1428, -540)
+position = Vector2(1764, -540)
 
 [node name="ClimbableLadder46" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1428, -564)
+position = Vector2(1764, -564)
 
 [node name="ClimbableLadder47" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(1428, -588)
+position = Vector2(1764, -588)
 
 [node name="ClimbableLadder48" parent="Ladders" instance=ExtResource("11_tbj4l")]
 position = Vector2(-221, 106)
