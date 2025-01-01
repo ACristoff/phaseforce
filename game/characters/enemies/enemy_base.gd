@@ -52,34 +52,21 @@ func idle_walk_to(distance):
 		walk_timer.wait_time = distance
 	walk_timer.start()
 
-
 func idle():
 	anim.play("idle")
 	idle_timer.start()
 	pass
 
 func _on_idle_timer_timeout():
-	#choose a direction
-	#send to idle_walk
-	print('stop idling')
 	var direction = randi_range(-5, 5)
 	idle_walk_to(direction)
 
 func _on_walk_timer_timeout():
-	print('stop walking')
 	velocity.x = 0
 	idle()
 
 	## Handle jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		#velocity.y = JUMP_VELOCITY
-#
-	## Get the input direction and handle the movement/deceleration.
-	## As good practice, you should replace UI actions with custom gameplay actions.
-	#var direction = Input.get_axis("ui_left", "ui_right")
-	#if direction:
-		#velocity.x = direction * SPEED
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
 #
 	#move_and_slide()

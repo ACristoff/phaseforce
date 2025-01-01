@@ -15,7 +15,3 @@ powered_up_gun = ExtResource("3_5mmsr")
 powered_up_fire_rate = 0.077
 powered_up_damage = 2
 powered_up_gun_sound = ExtResource("5_fj0uu")
-
-[node name="RayCast2D" parent="." index="7"]
-hit_from_inside = true
-collide_with_areas = true
