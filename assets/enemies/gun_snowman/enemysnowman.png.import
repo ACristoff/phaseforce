@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://p2ig4n01komu"
-path="res://.godot/imported/enemysnowman.png-15af3e3b02e5dedea1d1d9b00cf4a8fa.ctex"
+path="res://.godot/imported/enemysnowman.png-1488a3fb34a6267cf129b95f26866868.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/enemysnowman.png"
-dest_files=["res://.godot/imported/enemysnowman.png-15af3e3b02e5dedea1d1d9b00cf4a8fa.ctex"]
+source_file="res://assets/enemies/gun_snowman/enemysnowman.png"
+dest_files=["res://.godot/imported/enemysnowman.png-1488a3fb34a6267cf129b95f26866868.ctex"]
 
 [params]
 
