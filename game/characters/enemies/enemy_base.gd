@@ -4,8 +4,10 @@ class_name EnemyBase
 
 @onready var idle_timer = $Timers/IdleTimer
 @onready var anim = $AnimationPlayer
+@onready var scan_zone = $ScanArea
 
 enum ENEMY_STATES {IDLE, IDLEWALK, ALERTED}
+@export var speed: int = 50
 var enemy_state: ENEMY_STATES = ENEMY_STATES.IDLE
 var alert: bool = false
 var health: int = 100
@@ -39,6 +41,14 @@ func attack():
 	
 	pass
 
+func idle_walk_to(distance):
+	enemy_state = ENEMY_STATES.IDLEWALK
+	if distance < 0:
+		velocity.x = -speed
+	else:
+		velocity.x = speed
+
+
 func idle(_delta):
 	anim.play("idle")
 	idle_timer.start()
@@ -47,7 +57,8 @@ func idle(_delta):
 func _on_idle_timer_timeout():
 	#choose a direction
 	#send to idle_walk
-	pass # Replace with function body.
+	var direction = randi_range(-5, 5)
+	idle_walk_to(direction)
 
 	## Handle jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():

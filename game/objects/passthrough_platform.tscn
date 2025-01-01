@@ -14,6 +14,7 @@ size = Vector2(24, 13.5)
 script = ExtResource("1_le4vf")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
 
 [node name="Platform" type="Sprite2D" parent="StaticBody2D"]
 texture_filter = 3
