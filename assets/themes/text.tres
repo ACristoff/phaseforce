@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dbbvkkfy25ldu"]
+
+[ext_resource type="FontFile" uid="uid://g41dgfdxt875" path="res://assets/fonts/Grow_Stone_Online_Recreation.ttf" id="1_sh3py"]
+
+[resource]
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.356863)
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 1
+Label/fonts/font = ExtResource("1_sh3py")

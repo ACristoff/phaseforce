@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcnjabyfgy3tm"]
+
+[ext_resource type="Script" path="res://game/UI/hud.gd" id="1_g4rpk"]
+[ext_resource type="Texture2D" uid="uid://cc3f4swujlpu2" path="res://assets/ui/ammo_types/223remington.png" id="2_5nkkh"]
+[ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_68nfx"]
+[ext_resource type="Texture2D" uid="uid://d4lx7mqd0g5nh" path="res://assets/ui/checkbox1.png" id="4_fopok"]
+
+[node name="Node2D" type="Control"]
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g4rpk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Ammo_Container" type="MarginContainer" parent="CanvasLayer"]
+texture_filter = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_right = 102.0
+grow_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Ammo_Container"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Ammo_Container/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_5nkkh")
+
+[node name="Label" type="Label" parent="CanvasLayer/Ammo_Container/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_68nfx")
+text = "1/1"
+
+[node name="Objective_Container" type="MarginContainer" parent="CanvasLayer"]
+texture_filter = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -125.0
+offset_bottom = 90.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Objective_Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Objective_Container/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_68nfx")
+text = "Objectives:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Objective_Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_fopok")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_68nfx")
+theme_override_font_sizes/font_size = 8
+text = "Destroy the Generator"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Objective_Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("4_fopok")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_68nfx")
+theme_override_font_sizes/font_size = 8
+text = "Kill  0/10  Snowmen"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Objective_Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("4_fopok")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("2_68nfx")
+theme_override_font_sizes/font_size = 8
+text = "Escape"
