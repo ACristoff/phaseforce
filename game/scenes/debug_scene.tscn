@@ -420,6 +420,7 @@ position = Vector2(27, 35)
 [node name="Death_Barrier" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Barrier"]
+position = Vector2(0, 37)
 shape = SubResource("WorldBoundaryShape2D_24wkg")
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
