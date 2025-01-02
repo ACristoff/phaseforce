@@ -132,6 +132,8 @@ one_shot = true
 wait_time = 20.0
 one_shot = true
 
+[node name="SearchTimer" type="Timer" parent="Timers"]
+
 [node name="Label" type="Label" parent="."]
 visible = false
 offset_left = 20.0
@@ -154,3 +156,4 @@ text = "!"
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="Timers/WalkTimer" to="." method="_on_walk_timer_timeout"]
 [connection signal="timeout" from="Timers/AlertTimer" to="." method="_on_alert_timer_timeout"]
+[connection signal="timeout" from="Timers/SearchTimer" to="." method="_on_search_timer_timeout"]

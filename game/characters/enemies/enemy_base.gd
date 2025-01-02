@@ -76,6 +76,11 @@ func _physics_process(delta):
 		check_for_sight()
 		#do attack here
 		if senses_player || sees_player:
+			last_known_position = player.global_position
+			if last_known_position.x > global_position.x && !facing_right:
+				turn(true)
+			elif last_known_position.x < global_position.x && facing_right:
+				turn(false)
 			if !alert_timer.is_stopped():
 				alert_timer.stop()
 			if is_searching:
@@ -85,7 +90,8 @@ func _physics_process(delta):
 			if !is_searching:
 				is_searching = true
 				move_to_last_known()
-			#print('no longer sees player, searching...')
+		if !check_for_floor() && velocity.x != 0:
+			velocity.x = 0
 	
 	#Add the gravity
 	if not is_on_floor():
@@ -93,7 +99,17 @@ func _physics_process(delta):
 	move_and_slide()
 
 func move_to_last_known():
-	print('moving to last known position')
+	print('moving to last known position at:', last_known_position)
+	if last_known_position.x > global_position.x:
+		print('move right')
+		velocity.x = speed
+		#if !facing_right:
+			#turn(true)
+	else:
+		print("move left")
+		velocity.x = -speed
+		#if facing_right:
+			#turn(false)
 	pass
 
 func check_for_floor():
@@ -145,6 +161,7 @@ func go_to_alert(entity):
 		player = entity
 	if entity is Bullet:
 		player = get_tree().get_first_node_in_group("player")
+	last_known_position = player.global_position
 	idle_timer.stop()
 	walk_timer.stop()
 	player_cast.target_position = to_local(player.global_position)
@@ -255,3 +272,7 @@ func _on_scan_area_body_entered(body):
 func _on_scan_area_body_exited(body):
 	if body is BasePlayer:
 		senses_player = false
+
+
+func _on_search_timer_timeout():
+	pass # Replace with function body.
