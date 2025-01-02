@@ -222,8 +222,6 @@ func attack() -> void:
 	get_parent().add_child(new_shell)
 
 
-
-
 #TODO Split out the attack cursor as its own node?
 func update_cursor(_event):
 	#Get mouse cursor relative to player

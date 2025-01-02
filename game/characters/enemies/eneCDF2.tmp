@@ -80,7 +80,7 @@ shape = SubResource("CapsuleShape2D_vr86c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
-position = Vector2(0, -11)
+position = Vector2(3, -13)
 texture = ExtResource("1_6op3j")
 hframes = 9
 
