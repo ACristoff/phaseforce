@@ -105,6 +105,11 @@ position = Vector2(0, -14)
 target_position = Vector2(15, 0)
 collision_mask = 8
 
+[node name="PlayerCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, -50)
+collision_mask = 128
+collide_with_areas = true
+
 [node name="ScanArea" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 17

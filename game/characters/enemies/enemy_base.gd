@@ -9,6 +9,7 @@ class_name EnemyBase
 @onready var scan_zone = $ScanArea
 @onready var floor_cast = $RayCast2D
 @onready var wall_cast = $WallCast
+@onready var player_cast = $PlayerCast
 @onready var collision = $CollisionShape2D
 @onready var gun = $Gun
 @onready var alert_label: Label = $AlertLabel
@@ -91,7 +92,9 @@ func go_to_alert(entity):
 		player = get_tree().get_first_node_in_group("player")
 	idle_timer.stop()
 	walk_timer.stop()
-	
+	player_cast.target_position = to_local(player.global_position)
+
+
 	var from_to = player.global_position.x - self.global_position.x
 	#if player to the right of enemy
 	if from_to > 0:
@@ -117,6 +120,7 @@ func turn(direction):
 		gun.scale.x = -1
 
 func idle_walk_to(distance):
+	anim.play("move")
 	if distance < 0:
 		turn(false)
 	elif distance > 0:
@@ -176,6 +180,7 @@ func _on_walk_timer_timeout():
 
 func _on_alert_timer_timeout():
 	velocity.x = 0
+	enemy_state = ENEMY_STATES.IDLE
 	idle()
 	pass # Replace with function body.
 
