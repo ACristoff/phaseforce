@@ -78,7 +78,6 @@ normal_sprite = ExtResource("2_t1s0p")
 normal_gun = ExtResource("4_f7qq4")
 powered_up_gun = ExtResource("4_f7qq4")
 powered_up_sprite = ExtResource("3_wi2dk")
-death_quips = Array[AudioStreamMP3]([null])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

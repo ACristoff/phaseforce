@@ -31,23 +31,6 @@ class_name BasePlayer
 	preload("res://assets/sfx/misc/SNOW_STEP_4.mp3")
 ]
 
-@export_group("Normal Mode")
-@export var normal_sprite: Texture2D 
-@export var normal_gun: PackedScene
-@export var normal_fire_rate: float = 1
-@export var normal_gun_spread: Array[int] = [0,0]
-@export var normal_bullet_speed: int
-@export var normal_damage: int
-@export var normal_gun_sound: AudioStreamMP3
-
-@export_group("Powered Up Mode")
-@export var powered_up_gun: PackedScene
-@export var powered_up_sprite: Texture2D
-@export var powered_up_fire_rate: float = 1
-@export var powered_up_gun_spread: Array[int] = [-1, 2]
-@export var powered_up_bullet_speed: int =  500
-@export var powered_up_damage: int
-@export var powered_up_gun_sound: AudioStreamMP3
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
@@ -78,6 +61,25 @@ var knockback = Vector2.ZERO
 var face_right: bool = true
 var attack_direction
 var current_platform_stack: Array = []
+
+@export_category("Guns")
+@export_group("Normal Mode")
+@export var normal_sprite: Texture2D 
+@export var normal_gun: PackedScene
+@export var normal_fire_rate: float = 1
+@export var normal_gun_spread: Array[int] = [0,0]
+@export var normal_bullet_speed: int
+@export var normal_damage: int
+@export var normal_gun_sound: AudioStreamMP3
+
+@export_group("Powered Up Mode")
+@export var powered_up_gun: PackedScene
+@export var powered_up_sprite: Texture2D
+@export var powered_up_fire_rate: float = 1
+@export var powered_up_gun_spread: Array[int] = [-1, 2]
+@export var powered_up_bullet_speed: int =  500
+@export var powered_up_damage: int
+@export var powered_up_gun_sound: AudioStreamMP3
 
 signal took_damage
 signal player_death
