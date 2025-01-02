@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ee1cf2oj14kt"]
+[gd_scene load_steps=8 format=3 uid="uid://bo8235t87pkb1"]
 
 [ext_resource type="Script" path="res://game/data/title_control.gd" id="1_epqi3"]
 [ext_resource type="Texture2D" uid="uid://betqi4sbw8ywd" path="res://assets/ui/title/Title.png" id="2_j6iul"]

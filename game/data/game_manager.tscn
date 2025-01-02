@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbdfutg8t6gj3"]
 
 [ext_resource type="Script" path="res://game/data/game_manager.gd" id="1_831tx"]
-[ext_resource type="PackedScene" uid="uid://ee1cf2oj14kt" path="res://game/data/title.tscn" id="1_yo12b"]
+[ext_resource type="PackedScene" uid="uid://bo8235t87pkb1" path="res://game/data/title.tscn" id="1_yo12b"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_831tx")
