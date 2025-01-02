@@ -19,6 +19,7 @@ var enemy_state: ENEMY_STATES = ENEMY_STATES.IDLE
 var alert: bool = false
 var health: int = 100
 var facing_right: bool = true
+var player: BasePlayer
 
 signal snowman_death
 
@@ -79,9 +80,11 @@ func attack():
 	
 	pass
 
-func go_to_alert():
+func go_to_alert(entity):
 	print("alerted!")
 	alert_label.visible = true
+	if entity is BasePlayer:
+		player = entity
 
 func turn(direction):
 	facing_right = direction
@@ -165,11 +168,9 @@ func _on_scan_area_area_entered(area):
 	if area is Bullet:
 		#print('noticed bullet')
 		if enemy_state == ENEMY_STATES.IDLE || enemy_state == ENEMY_STATES.IDLEWALK:
-			print('go to alert')
-			go_to_alert()
+			go_to_alert(area)
 
 func _on_scan_area_body_entered(body):
 	if body is BasePlayer:
 		if enemy_state == ENEMY_STATES.IDLE || enemy_state == ENEMY_STATES.IDLEWALK:
-			print("noticed player")
-			go_to_alert()
+			go_to_alert(body)
