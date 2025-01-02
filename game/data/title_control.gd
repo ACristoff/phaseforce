@@ -4,7 +4,6 @@ extends Control
 @onready var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
 
 func _ready():
-	pass
 	AudioManager.play_music(music)
 
 func _physics_process(delta):
