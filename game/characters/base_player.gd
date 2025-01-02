@@ -265,7 +265,6 @@ func update_cursor(_event):
 	#Get mouse cursor relative to player
 	#Smoothly rotate the aiming cursor towards mouse
 	#Update attack_direction var
-	
 	#TODO create a case for controller input, right stick angle
 	cursor.look_at(get_global_mouse_position())
 	attack_direction = int(cursor.rotation_degrees) % 360
