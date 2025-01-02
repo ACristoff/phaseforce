@@ -31,17 +31,24 @@ class_name BasePlayer
 	preload("res://assets/sfx/misc/SNOW_STEP_4.mp3")
 ]
 
-
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
 @onready var shell = preload("res://game/projectiles/spent_shell.tscn")
 
 @export_group("Quips")
-@export var death_quips: Array[AudioStreamMP3] = []
-@export var damaged_quips: Array[AudioStreamMP3] = []
-@export var kill_quips: Array[AudioStreamMP3] = []
-@export var power_up_quips: Array[AudioStreamMP3] = []
-@export var victory_quips: Array[AudioStreamMP3] = []
+@export var death_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
+@export var damaged_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
+@export var kill_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
+@export var power_up_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
+@export var victory_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
+
+var quip_types = {
+	"death": death_quips,
+	"damaged": damaged_quips,
+	"kill": kill_quips,
+	"power_up": power_up_quips,
+	"victory": victory_quips 
+}
 
 @export_group("Base Stats")
 @export var JUMP_VELOCITY = -280.0
@@ -85,6 +92,13 @@ var current_platform_stack: Array = []
 
 signal took_damage
 signal player_death
+
+func quip(type):
+	print('REEEE!')
+	var quip_array = quip_types[type] 
+	var random_quip = randi_range(0, quip_array.size() - 1)
+	var quip = damaged_quips[random_quip]
+	AudioManager.play_quip(quip)
 
 func _ready() -> void:
 	var game_man: game_manager = get_node("/root/GameManager")
@@ -130,7 +144,6 @@ func power_up():
 	bullet_damage = powered_up_damage
 	powered_up = true
 
-
 func power_down():
 	sprite.texture = normal_sprite
 	load_gun(normal_gun, true)
@@ -140,7 +153,6 @@ func power_down():
 	bullet_speed = normal_bullet_speed
 	bullet_damage = normal_damage
 	powered_up = false
-
 
 func jump(force):
 	#AudioManager.play_sfx()

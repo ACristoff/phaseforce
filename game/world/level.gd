@@ -7,6 +7,7 @@ extends Node2D
 @onready var hud = $HUD
 
 var character: PackedScene
+var player: BasePlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +16,7 @@ func _ready():
 	add_child(spawn_char)
 	spawn_char.took_damage.connect(_on_player_damage.bind())
 	spawn_char.player_death.connect(_on_player_death.bind())
+	player = spawn_char
 	AudioManager.stop_music(false)
 
 func _on_player_death():
@@ -23,13 +25,12 @@ func _on_player_death():
 
 func _on_player_kill():
 	if roll_for_quip():
-		print('kill quip')
-		#player.kill_quip()
+		player.quip("kill")
 
 func _on_player_damage():
 	hud.take_damage()
 	if roll_for_quip():
-		print('damaged quip')
+		player.quip("damaged")
 
 func _on_death_barrier_body_entered(body):
 	if body is BasePlayer:
