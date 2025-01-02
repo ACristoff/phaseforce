@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://unpbeajsqo0"]
+[gd_scene load_steps=5 format=3 uid="uid://dpei7pskp8gef"]
 
+[ext_resource type="Script" path="res://game/objects/record_player.gd" id="1_dnvxs"]
 [ext_resource type="Texture2D" uid="uid://ccq4vwg4jjqb5" path="res://assets/environment/placeables/interactables/recordplayer.png" id="1_netxg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0ouj"]
@@ -10,6 +11,8 @@ radius = 94.0053
 
 [node name="Record_Player" type="StaticBody2D"]
 texture_filter = 3
+script = ExtResource("1_dnvxs")
+music = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_netxg")
@@ -19,6 +22,9 @@ position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_r0ouj")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_a5yhm")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

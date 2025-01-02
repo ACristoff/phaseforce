@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="7_62t8p"]
 [ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="7_ocm63"]
 [ext_resource type="Texture2D" uid="uid://cxtvffj8juoax" path="res://assets/environment/placeables/decorations/militaryvehicle.png" id="8_oo6ab"]
-[ext_resource type="PackedScene" path="res://game/objects/record_player.tscn" id="11_he11x"]
+[ext_resource type="PackedScene" uid="uid://dpei7pskp8gef" path="res://game/objects/record_player.tscn" id="11_he11x"]
 [ext_resource type="PackedScene" uid="uid://b4ir8rl8balvy" path="res://game/objects/climbable_ladder.tscn" id="11_tbj4l"]
 [ext_resource type="PackedScene" uid="uid://c8jo543xm1x0a" path="res://game/characters/enemies/enemy_base.tscn" id="12_lij35"]
 [ext_resource type="PackedScene" uid="uid://ddoegd7o3j6lt" path="res://game/objects/generator.tscn" id="14_83vny"]
