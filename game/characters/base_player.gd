@@ -63,6 +63,7 @@ class_name BasePlayer
 var gun_spread = normal_gun_spread
 var fire_rate = normal_fire_rate
 var bullet_speed
+var bullet_damage
 
 var health: int = 3
 
@@ -81,6 +82,7 @@ func _ready() -> void:
 	attack_timer.wait_time = fire_rate
 	gun_sound = normal_gun_sound
 	bullet_speed = normal_bullet_speed
+	bullet_damage = normal_damage
 
 func load_gun(gun, is_new):
 	if is_new:
@@ -108,6 +110,7 @@ func power_up():
 	attack_timer.wait_time = fire_rate
 	gun_sound = powered_up_gun_sound
 	bullet_speed = powered_up_bullet_speed
+	bullet_damage = powered_up_damage
 	powered_up = true
 
 
@@ -118,6 +121,8 @@ func power_down():
 	attack_timer.wait_time = fire_rate
 	gun_sound = normal_gun_sound
 	bullet_speed = normal_bullet_speed
+	bullet_damage = normal_damage
+
 	powered_up = false
 
 
@@ -213,6 +218,7 @@ func attack() -> void:
 	gun_anim.play("kickback")
 	var new_bullet = bullet.instantiate()
 	var new_shell = shell.instantiate()
+	new_bullet.damage = bullet_damage
 	new_bullet.speed = bullet_speed
 	new_bullet.global_position = cursor_spout.global_position
 	new_shell.global_position = shell_spout.global_position
