@@ -5,6 +5,8 @@ class_name game_manager
 @onready var title = $Title
 
 @onready var level_manager = preload("res://game/data/level_manager.tscn")
+@onready var menu 
+
 
 @export var debug_mode = false
 var current_character = "panko"
@@ -18,6 +20,10 @@ func _ready():
 		add_child(start_level_man)
 		start_level_man.load_level(0)
 		get_tree().set_debug_collisions_hint(true)
+
+func _input(event):
+	if event.is_action_pressed("menu"):
+		print("menu")
 
 func _on_title_character_select():
 	var char_select = preload("res://game/UI/menus/character_select.tscn").instantiate()
