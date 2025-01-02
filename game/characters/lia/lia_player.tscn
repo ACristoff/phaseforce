@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://by1xslelif07n"]
+[gd_scene load_steps=8 format=3 uid="uid://by1xslelif07n"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_7os3g"]
 [ext_resource type="Script" path="res://game/characters/lia/lia_player.gd" id="2_cac7u"]
 [ext_resource type="Texture2D" uid="uid://dt7drd5slxlhk" path="res://assets/characters/lia/base_form/LiaSprite.png" id="2_jea0j"]
 [ext_resource type="PackedScene" uid="uid://lk3jry12gf2x" path="res://game/characters/lia/lia_arm.tscn" id="3_bnuxw"]
 [ext_resource type="Texture2D" uid="uid://bmve145j3ghn7" path="res://assets/characters/lia/powerup_form/LiaMom_Sprite.png" id="3_esohs"]
+[ext_resource type="AudioStream" uid="uid://4ljuudbg24rl" path="res://assets/sfx/projectiles/PISTOL.mp3" id="4_7v7ko"]
 [ext_resource type="PackedScene" uid="uid://ojbfv20gljtb" path="res://game/characters/lia/lia_arm_powered_up.tscn" id="4_v31xa"]
 
 [node name="LiaPlayer" instance=ExtResource("1_7os3g")]
@@ -12,6 +13,7 @@ script = ExtResource("2_cac7u")
 normal_sprite = ExtResource("2_jea0j")
 normal_gun = ExtResource("3_bnuxw")
 normal_bullet_speed = 50
+normal_gun_sound = ExtResource("4_7v7ko")
 powered_up_gun = ExtResource("4_v31xa")
 powered_up_sprite = ExtResource("3_esohs")
 
