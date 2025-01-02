@@ -8,6 +8,7 @@ class_name EnemyBase
 @onready var sprite = $Sprite2D
 @onready var scan_zone = $ScanArea
 @onready var floor_cast = $RayCast2D
+@onready var wall_cast = $WallCast
 @onready var collision = $CollisionShape2D
 @onready var gun = $Gun
 
@@ -40,10 +41,17 @@ func _physics_process(delta):
 	if enemy_state == ENEMY_STATES.IDLE && idle_timer.is_stopped():
 		idle()
 	
-	if enemy_state == ENEMY_STATES.IDLEWALK && !check_for_floor() && velocity.x != 0:
-		#print("stop")
-		velocity.x = 0
-		walk_away_from_edge()
+	if enemy_state == ENEMY_STATES.IDLEWALK:
+		if !check_for_floor() && velocity.x != 0:
+			#print("stop")
+			velocity.x = 0
+			walk_away_from_edge()
+		if check_for_wall() && walk_timer.time_left < 1:
+			velocity.x = 0
+			turn(!facing_right)
+		elif check_for_wall():
+			velocity.x = -velocity.x
+			turn(!facing_right)
 	
 	#Add the gravity
 	if not is_on_floor():
@@ -52,7 +60,12 @@ func _physics_process(delta):
 
 func check_for_floor():
 	if floor_cast.is_colliding():
-		#print('floor in this direction')
+		return true
+	else:
+		return false
+
+func check_for_wall():
+	if wall_cast.is_colliding():
 		return true
 	else:
 		return false
@@ -70,11 +83,13 @@ func turn(direction):
 	if direction:
 		sprite.flip_h = false
 		floor_cast.position.x = 10
+		wall_cast.scale.x = 1
 		scan_zone.scale.x = 1
 		gun.scale.x = 1
 	else:
 		sprite.flip_h = true
 		floor_cast.position.x = -10
+		wall_cast.scale.x = -1
 		scan_zone.scale.x = -1
 		gun.scale.x = -1
 
@@ -114,6 +129,19 @@ func walk_away_from_edge():
 		var distance = randi_range(1, 5)
 		turn(false)
 		idle_walk_to(distance)
+
+func idle_then_walk_away():
+	walk_timer.stop()
+	await get_tree().create_timer(1.0).timeout
+	if facing_right:
+		var distance = randi_range(-1, -4)
+		turn(false)
+		idle_walk_to(distance)
+	else:
+		var distance = randi_range(1, 4)
+		turn(false)
+		idle_walk_to(distance)
+	pass
 
 func _on_idle_timer_timeout():
 	if floor_cast.is_colliding():
