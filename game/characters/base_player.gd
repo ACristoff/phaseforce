@@ -53,6 +53,12 @@ class_name BasePlayer
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
 @onready var shell = preload("res://game/projectiles/spent_shell.tscn")
 
+@export_group("Quips")
+@export var death_quips: Array[AudioStreamMP3] = []
+@export var damaged_quips: Array[AudioStreamMP3] = []
+@export var kill_quips: Array[AudioStreamMP3] = []
+@export var power_up_quips: Array[AudioStreamMP3] = []
+@export var victory_quips: Array[AudioStreamMP3] = []
 
 @export_group("Base Stats")
 @export var JUMP_VELOCITY = -280.0
@@ -71,7 +77,9 @@ var powered_up: bool = false
 var knockback = Vector2.ZERO
 var face_right: bool = true
 var attack_direction
-var current_platform_stack: Array = [] 
+var current_platform_stack: Array = []
+
+signal took_damage
 
 func _ready() -> void:
 	var game_man: game_manager = get_node("/root/GameManager")
