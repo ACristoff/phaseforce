@@ -45,7 +45,6 @@ func _physics_process(delta):
 	
 	if enemy_state == ENEMY_STATES.IDLEWALK:
 		if !check_for_floor() && velocity.x != 0:
-			#print("stop")
 			velocity.x = 0
 			walk_away_from_edge()
 		if check_for_wall() && walk_timer.time_left < 1:
@@ -55,6 +54,8 @@ func _physics_process(delta):
 			velocity.x = -velocity.x
 			turn(!facing_right)
 	
+	if enemy_state == ENEMY_STATES.ALERTED:
+		pass
 	#Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -81,10 +82,22 @@ func attack():
 	pass
 
 func go_to_alert(entity):
-	print("alerted!")
 	alert_label.visible = true
+	velocity.x = 0
 	if entity is BasePlayer:
 		player = entity
+		var from_to = player.global_position.x - self.global_position.x
+		#if player to the right of enemy
+		print(from_to)
+		if from_to > 0:
+			if !facing_right:
+				turn(false)
+		else:
+			if facing_right:
+				turn(false)
+	enemy_state == ENEMY_STATES.ALERTED
+	idle_timer.stop()
+	walk_timer.stop()
 
 func turn(direction):
 	facing_right = direction
@@ -166,7 +179,6 @@ func _on_alert_timer_timeout():
 
 func _on_scan_area_area_entered(area):
 	if area is Bullet:
-		#print('noticed bullet')
 		if enemy_state == ENEMY_STATES.IDLE || enemy_state == ENEMY_STATES.IDLEWALK:
 			go_to_alert(area)
 

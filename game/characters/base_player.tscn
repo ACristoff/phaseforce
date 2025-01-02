@@ -134,7 +134,7 @@ collide_with_areas = true
 collision_layer = 64
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformDetector" groups=["player"]]
 shape = SubResource("CircleShape2D_8gosl")
 debug_color = Color(0.0156863, 0.65098, 0, 0.0627451)
 
