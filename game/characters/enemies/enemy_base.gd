@@ -24,6 +24,7 @@ var facing_right: bool = true
 var player: BasePlayer
 var senses_player: bool = false
 var sees_player: bool = false
+var is_searching: bool = false
 var is_attacking: bool = false
 var last_known_position: Vector2
 @export var max_sight_distance: int = 280
@@ -77,14 +78,23 @@ func _physics_process(delta):
 		if senses_player || sees_player:
 			if !alert_timer.is_stopped():
 				alert_timer.stop()
+			if is_searching:
+				is_searching = false
 		if !senses_player && !sees_player && alert_timer.is_stopped():
 			alert_timer.start()
+			if !is_searching:
+				is_searching = true
+				move_to_last_known()
 			#print('no longer sees player, searching...')
 	
 	#Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	move_and_slide()
+
+func move_to_last_known():
+	print('moving to last known position')
+	pass
 
 func check_for_floor():
 	if floor_cast.is_colliding():
@@ -227,6 +237,7 @@ func _on_alert_timer_timeout():
 	#print("must have been the wind...")
 	alert_label.visible = false
 	player_cast.target_position = Vector2(0, -50)
+	is_searching = false
 	enemy_state = ENEMY_STATES.IDLE
 	idle()
 
