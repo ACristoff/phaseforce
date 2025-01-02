@@ -144,6 +144,10 @@ func jump(force):
 	velocity.y = force
 
 func _physics_process(delta: float) -> void:
+	if health == 0:
+		player_death.emit()
+		health = -1
+	
 	##ACTIONS
 	debug_text.text = str(attack_direction)
 	if Input.is_action_pressed("shoot") && attack_timer.is_stopped():

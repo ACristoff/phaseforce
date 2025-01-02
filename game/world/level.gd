@@ -12,6 +12,11 @@ func _ready():
 	spawn_char.global_position = spawn.global_position
 	add_child(spawn_char)
 	spawn_char.took_damage.connect(_on_player_damage.bind())
+	spawn_char.player_death.connect(_on_player_death.bind())
+
+func _on_player_death():
+	print("YOU GRADUATED")
+	pass
 
 func _on_player_damage():
 	hud.take_damage()
