@@ -11,6 +11,7 @@ radius = 94.0053
 
 [node name="Record_Player" type="StaticBody2D"]
 texture_filter = 3
+collision_layer = 8
 script = ExtResource("1_dnvxs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
