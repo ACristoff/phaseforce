@@ -34,17 +34,17 @@ layout_mode = 2
 text = "KOMACHI
 PANKO
 🎋🍭
-LEWDEST
-CHUUBA
-2025"
+LEWD
+CHUUBA"
 
 [node name="ButtonLia" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2
 text = "RINKOU
 ASHELIA
 ⚡️
-YIPEE
-INCEST"
+IN NEED
+OF A
+BIG BRO"
 
 [node name="ButtonTenma" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2

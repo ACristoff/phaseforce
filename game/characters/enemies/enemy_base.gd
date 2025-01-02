@@ -26,7 +26,9 @@ var senses_player: bool = false
 var sees_player: bool = false
 var is_attacking: bool = false
 var last_known_position: Vector2
-@export var max_sight_distance: int = 280 
+@export var max_sight_distance: int = 280
+@export var attack_range: int = 250 
+@export var ideal_attack_range: int = 180
 
 signal snowman_death
 
@@ -77,7 +79,7 @@ func _physics_process(delta):
 				alert_timer.stop()
 		if !senses_player && !sees_player && alert_timer.is_stopped():
 			alert_timer.start()
-			print('no longer sees player, searching...')
+			#print('no longer sees player, searching...')
 	
 	#Add the gravity
 	if not is_on_floor():
@@ -222,7 +224,7 @@ func _on_walk_timer_timeout():
 
 func _on_alert_timer_timeout():
 	velocity.x = 0
-	print("must have been the wind...")
+	#print("must have been the wind...")
 	alert_label.visible = false
 	player_cast.target_position = Vector2(0, -50)
 	enemy_state = ENEMY_STATES.IDLE
