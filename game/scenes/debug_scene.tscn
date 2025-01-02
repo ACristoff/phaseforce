@@ -412,9 +412,6 @@ position = Vector2(1764, -564)
 [node name="ClimbableLadder47" parent="Ladders" instance=ExtResource("11_tbj4l")]
 position = Vector2(1764, -588)
 
-[node name="ClimbableLadder48" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(-221, 106)
-
 [node name="Death_Barrier" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Barrier"]
