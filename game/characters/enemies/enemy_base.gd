@@ -9,6 +9,7 @@ class_name EnemyBase
 @onready var scan_zone = $ScanArea
 @onready var floor_cast = $RayCast2D
 @onready var collision = $CollisionShape2D
+@onready var gun = $Gun
 
 enum ENEMY_STATES {IDLE, IDLEWALK, ALERTED}
 @export var speed: int = 50
@@ -70,10 +71,12 @@ func turn(direction):
 		sprite.flip_h = false
 		floor_cast.position.x = 10
 		scan_zone.scale.x = 1
+		gun.scale.x = 1
 	else:
 		sprite.flip_h = true
 		floor_cast.position.x = -10
 		scan_zone.scale.x = -1
+		gun.scale.x = -1
 
 func idle_walk_to(distance):
 	if distance < 0:
