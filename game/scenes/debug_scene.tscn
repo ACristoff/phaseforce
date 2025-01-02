@@ -36,6 +36,8 @@ script = ExtResource("1_hmkun")
 
 [node name="WorldGenerator" parent="." instance=ExtResource("1_uxllv")]
 
+[node name="HUD" parent="." instance=ExtResource("15_870h4")]
+
 [node name="Node2D" parent="." instance=ExtResource("4_ukrgw")]
 position = Vector2(-36, -36)
 
@@ -410,9 +412,6 @@ position = Vector2(1764, -564)
 [node name="ClimbableLadder47" parent="Ladders" instance=ExtResource("11_tbj4l")]
 position = Vector2(1764, -588)
 
-[node name="ClimbableLadder48" parent="Ladders" instance=ExtResource("11_tbj4l")]
-position = Vector2(-221, 106)
-
 [node name="Death_Barrier" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Barrier"]
@@ -428,7 +427,22 @@ position = Vector2(2641, -391)
 [node name="EnemyBase2" parent="Enemies" instance=ExtResource("12_lij35")]
 position = Vector2(-2614, 426)
 
-[node name="HUD" parent="." instance=ExtResource("15_870h4")]
+[node name="EnemyBase" parent="Enemies" instance=ExtResource("12_lij35")]
+position = Vector2(-2410, 490)
+
+[node name="EnemyBase3" parent="Enemies" instance=ExtResource("12_lij35")]
+
+[node name="EnemyBase4" parent="Enemies" instance=ExtResource("12_lij35")]
+position = Vector2(-2343, 464)
+
+[node name="EnemyBase5" parent="Enemies" instance=ExtResource("12_lij35")]
+position = Vector2(-2149, 458)
+
+[node name="EnemyBase6" parent="Enemies" instance=ExtResource("12_lij35")]
+position = Vector2(-1950, 709)
+
+[node name="EnemyBase7" parent="Enemies" instance=ExtResource("12_lij35")]
+position = Vector2(-1751, 710)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="just_destroyed" from="Generator" to="HUD" method="_on_generator_just_destroyed"]

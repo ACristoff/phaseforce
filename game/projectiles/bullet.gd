@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed = 600
+var damage = 50
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,5 +28,7 @@ func _on_body_entered(body):
 	elif body is Generator:
 		body.emit(self.global_position)
 		queue_free()
-		
+	elif body is EnemyBase:
+		body.take_damage(damage)
+		queue_free()
 	#queue_free()

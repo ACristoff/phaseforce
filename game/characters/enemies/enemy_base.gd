@@ -17,7 +17,7 @@ var alert: bool = false
 var health: int = 100
 var facing_right: bool = true
 
-
+signal snowman_death
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,28 +25,29 @@ func _ready():
 	pass # Replace with function body.
 
 func die():
-	
-	pass
+	snowman_death.emit()
+	queue_free()
+
+func take_damage(damage):
+	health -= damage
 
 func _physics_process(delta):
-	#if health
+	if health <= 0:
+		die()
+		pass
 	
 	if enemy_state == ENEMY_STATES.IDLE && idle_timer.is_stopped():
 		idle()
 	
 	if enemy_state == ENEMY_STATES.IDLEWALK && !check_for_floor() && velocity.x != 0:
-		print("stop")
+		#print("stop")
 		velocity.x = 0
-		#enemy_state = ENEMY_STATES.IDLE
-		#idle()
 		walk_away_from_edge()
 	
 	#Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	move_and_slide()
-	
-	#if 
 
 func check_for_floor():
 	if floor_cast.is_colliding():
@@ -68,17 +69,13 @@ func turn(direction):
 	if direction:
 		sprite.flip_h = false
 		floor_cast.position.x = 10
-		#collision.position.x = 0
 		scan_zone.scale.x = 1
 	else:
 		sprite.flip_h = true
 		floor_cast.position.x = -10
-		#collision.position.x = 6
 		scan_zone.scale.x = -1
 
 func idle_walk_to(distance):
-	print(distance)
-	
 	if distance < 0:
 		turn(false)
 	elif distance > 0:
