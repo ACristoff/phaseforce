@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 class_name EnemyBase
 
-@onready var idle_timer = $Timers/IdleTimer
-@onready var walk_timer = $Timers/WalkTimer
+@onready var idle_timer: Timer = $Timers/IdleTimer
+@onready var walk_timer: Timer = $Timers/WalkTimer
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var scan_zone = $ScanArea
@@ -11,6 +11,7 @@ class_name EnemyBase
 @onready var wall_cast = $WallCast
 @onready var collision = $CollisionShape2D
 @onready var gun = $Gun
+@onready var alert_label: Label = $AlertLabel
 
 enum ENEMY_STATES {IDLE, IDLEWALK, ALERTED}
 @export var speed: int = 50
@@ -77,6 +78,10 @@ func track_player():
 func attack():
 	
 	pass
+
+func go_to_alert():
+	print("alerted!")
+	alert_label.visible = true
 
 func turn(direction):
 	facing_right = direction
@@ -150,3 +155,21 @@ func _on_idle_timer_timeout():
 func _on_walk_timer_timeout():
 	velocity.x = 0
 	idle()
+
+func _on_alert_timer_timeout():
+	velocity.x = 0
+	idle()
+	pass # Replace with function body.
+
+func _on_scan_area_area_entered(area):
+	if area is Bullet:
+		#print('noticed bullet')
+		if enemy_state == ENEMY_STATES.IDLE || enemy_state == ENEMY_STATES.IDLEWALK:
+			print('go to alert')
+			go_to_alert()
+
+func _on_scan_area_body_entered(body):
+	if body is BasePlayer:
+		if enemy_state == ENEMY_STATES.IDLE || enemy_state == ENEMY_STATES.IDLEWALK:
+			print("noticed player")
+			go_to_alert()

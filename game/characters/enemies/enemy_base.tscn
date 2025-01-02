@@ -105,6 +105,14 @@ position = Vector2(0, -14)
 target_position = Vector2(15, 0)
 collision_mask = 8
 
+[node name="ScanArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 17
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ScanArea"]
+position = Vector2(-12, -26)
+polygon = PackedVector2Array(-106, -40, -30, -15, 200, -75, 200, 53, -30, 17, -106, 40)
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="IdleTimer" type="Timer" parent="Timers"]
@@ -114,6 +122,8 @@ one_shot = true
 [node name="WalkTimer" type="Timer" parent="Timers"]
 one_shot = true
 
+[node name="AlertTimer" type="Timer" parent="Timers"]
+
 [node name="Label" type="Label" parent="."]
 visible = false
 offset_left = 20.0
@@ -122,12 +132,16 @@ offset_right = 60.0
 offset_bottom = 27.0
 theme_override_font_sizes/font_size = 10
 
-[node name="ScanArea" type="Area2D" parent="."]
-collision_layer = 64
+[node name="AlertLabel" type="Label" parent="."]
+visible = false
+offset_left = -2.0
+offset_top = -42.0
+offset_right = 3.0
+offset_bottom = -19.0
+text = "!"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ScanArea"]
-position = Vector2(-12, -26)
-polygon = PackedVector2Array(-106, -40, -30, -15, 200, -75, 200, 53, -30, 17, -106, 40)
-
+[connection signal="area_entered" from="ScanArea" to="." method="_on_scan_area_area_entered"]
+[connection signal="body_entered" from="ScanArea" to="." method="_on_scan_area_body_entered"]
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="Timers/WalkTimer" to="." method="_on_walk_timer_timeout"]
+[connection signal="timeout" from="Timers/AlertTimer" to="." method="_on_alert_timer_timeout"]
