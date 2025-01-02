@@ -8,6 +8,8 @@ extends Control
 @export var charge_cannon_ammo = preload("res://assets/ui/ammo_types/power_cell.png")
 @export var shotgun_ammo = preload("res://assets/ui/ammo_types/shotgun_shell.png")
 
+@onready var health_bar = $CanvasLayer/MarginContainer/HealthBar
+
 @onready var obj1 = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer
 @onready var obj2 = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer2
 @onready var obj3 = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3
@@ -24,6 +26,8 @@ var level = 1
 func _ready():
 	pass # Replace with function body.
 
+func take_damage():
+	health_bar.value -= 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

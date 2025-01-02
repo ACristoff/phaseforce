@@ -80,6 +80,7 @@ var attack_direction
 var current_platform_stack: Array = []
 
 signal took_damage
+signal player_death
 
 func _ready() -> void:
 	var game_man: game_manager = get_node("/root/GameManager")
@@ -91,6 +92,10 @@ func _ready() -> void:
 	gun_sound = normal_gun_sound
 	bullet_speed = normal_bullet_speed
 	bullet_damage = normal_damage
+
+func take_damage():
+	took_damage.emit()
+	health -= 1
 
 func load_gun(gun, is_new):
 	if is_new:
@@ -130,7 +135,6 @@ func power_down():
 	gun_sound = normal_gun_sound
 	bullet_speed = normal_bullet_speed
 	bullet_damage = normal_damage
-
 	powered_up = false
 
 
