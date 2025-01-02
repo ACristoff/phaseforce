@@ -4,6 +4,7 @@ class_name EnemyBase
 
 @onready var idle_timer: Timer = $Timers/IdleTimer
 @onready var walk_timer: Timer = $Timers/WalkTimer
+@onready var alert_timer: Timer = $Timers/AlertTimer
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var scan_zone = $ScanArea
@@ -21,7 +22,10 @@ var alert: bool = false
 var health: int = 100
 var facing_right: bool = true
 var player: BasePlayer
-var senses_player = false
+var senses_player: bool = false
+var sees_player: bool = true
+var last_known_position: Vector2
+@export var max_sight_distance: int = 280 
 
 signal snowman_death
 
@@ -57,7 +61,23 @@ func _physics_process(delta):
 			turn(!facing_right)
 	
 	if enemy_state == ENEMY_STATES.ALERTED:
-		pass
+		var from_to = player.global_position - global_position
+		if from_to.x < 0:
+			from_to.x = from_to.x * -1
+		if from_to.y < 0:
+			from_to.y = from_to.y * -1
+		if from_to.x < max_sight_distance && from_to.y < max_sight_distance:
+			var player_pos = to_local(player.global_position)
+			player_cast.target_position = player_pos + Vector2(0, 15)
+			#print("updated position", from_to)
+		check_for_sight()
+		if senses_player || sees_player:
+			#prints('I know where you live bitch', senses_player, sees_player)
+			pass
+		if !senses_player && !sees_player && alert_timer.is_stopped():
+			alert_timer.start()
+			print('no longer sees player, searching...')
+	
 	#Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -73,6 +93,27 @@ func check_for_wall():
 	if wall_cast.is_colliding():
 		return true
 	else:
+		return false
+
+func check_for_sight():
+	if player_cast.is_colliding():
+		var first = player_cast.get_collider()
+		if first is BasePlayer:
+			var from_to = player.global_position - global_position
+			if from_to.x < 0:
+				from_to.x = from_to.x * -1
+			if from_to.y < 0:
+				from_to.y = from_to.y * -1
+			if from_to.x > max_sight_distance || from_to.y > max_sight_distance:
+				sees_player = false
+				return false
+			sees_player = true
+			return true
+		else:
+			sees_player = false
+			return false
+	else:
+		sees_player = false
 		return false
 
 func track_player():
@@ -193,7 +234,6 @@ func _on_scan_area_body_entered(body):
 		senses_player = true
 		if enemy_state == ENEMY_STATES.IDLE || enemy_state == ENEMY_STATES.IDLEWALK:
 			go_to_alert(body)
-
 
 func _on_scan_area_body_exited(body):
 	if body is BasePlayer:
