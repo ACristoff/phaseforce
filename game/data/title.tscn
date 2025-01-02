@@ -129,8 +129,7 @@ repeat_times = 6
 
 [node name="Titleheli" type="Sprite2D" parent="parallax/Front2"]
 texture_filter = 3
-position = Vector2(319, 52)
-scale = Vector2(1.4, 1.4)
+position = Vector2(336, 50)
 texture = ExtResource("6_ojxjh")
 
 [node name="Path2D" type="Path2D" parent="."]
