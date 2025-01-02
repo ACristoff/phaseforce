@@ -107,7 +107,7 @@ collision_mask = 8
 
 [node name="PlayerCast" type="RayCast2D" parent="."]
 target_position = Vector2(0, -50)
-collision_mask = 128
+collision_mask = 136
 collide_with_areas = true
 
 [node name="ScanArea" type="Area2D" parent="."]
@@ -128,6 +128,8 @@ one_shot = true
 one_shot = true
 
 [node name="AlertTimer" type="Timer" parent="Timers"]
+wait_time = 20.0
+one_shot = true
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -147,6 +149,7 @@ text = "!"
 
 [connection signal="area_entered" from="ScanArea" to="." method="_on_scan_area_area_entered"]
 [connection signal="body_entered" from="ScanArea" to="." method="_on_scan_area_body_entered"]
+[connection signal="body_exited" from="ScanArea" to="." method="_on_scan_area_body_exited"]
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="Timers/WalkTimer" to="." method="_on_walk_timer_timeout"]
 [connection signal="timeout" from="Timers/AlertTimer" to="." method="_on_alert_timer_timeout"]

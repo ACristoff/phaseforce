@@ -21,6 +21,7 @@ var alert: bool = false
 var health: int = 100
 var facing_right: bool = true
 var player: BasePlayer
+var senses_player = false
 
 signal snowman_death
 
@@ -93,7 +94,6 @@ func go_to_alert(entity):
 	idle_timer.stop()
 	walk_timer.stop()
 	player_cast.target_position = to_local(player.global_position)
-
 
 	var from_to = player.global_position.x - self.global_position.x
 	#if player to the right of enemy
@@ -182,7 +182,6 @@ func _on_alert_timer_timeout():
 	velocity.x = 0
 	enemy_state = ENEMY_STATES.IDLE
 	idle()
-	pass # Replace with function body.
 
 func _on_scan_area_area_entered(area):
 	if area is Bullet:
@@ -191,5 +190,11 @@ func _on_scan_area_area_entered(area):
 
 func _on_scan_area_body_entered(body):
 	if body is BasePlayer:
+		senses_player = true
 		if enemy_state == ENEMY_STATES.IDLE || enemy_state == ENEMY_STATES.IDLEWALK:
 			go_to_alert(body)
+
+
+func _on_scan_area_body_exited(body):
+	if body is BasePlayer:
+		senses_player = false
