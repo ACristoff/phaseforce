@@ -23,7 +23,8 @@ var health: int = 100
 var facing_right: bool = true
 var player: BasePlayer
 var senses_player: bool = false
-var sees_player: bool = true
+var sees_player: bool = false
+var is_attacking: bool = false
 var last_known_position: Vector2
 @export var max_sight_distance: int = 280 
 
@@ -69,11 +70,11 @@ func _physics_process(delta):
 		if from_to.x < max_sight_distance && from_to.y < max_sight_distance:
 			var player_pos = to_local(player.global_position)
 			player_cast.target_position = player_pos + Vector2(0, 15)
-			#print("updated position", from_to)
 		check_for_sight()
+		#do attack here
 		if senses_player || sees_player:
-			#prints('I know where you live bitch', senses_player, sees_player)
-			pass
+			if !alert_timer.is_stopped():
+				alert_timer.stop()
 		if !senses_player && !sees_player && alert_timer.is_stopped():
 			alert_timer.start()
 			print('no longer sees player, searching...')
@@ -221,6 +222,9 @@ func _on_walk_timer_timeout():
 
 func _on_alert_timer_timeout():
 	velocity.x = 0
+	print("must have been the wind...")
+	alert_label.visible = false
+	player_cast.target_position = Vector2(0, -50)
 	enemy_state = ENEMY_STATES.IDLE
 	idle()
 
