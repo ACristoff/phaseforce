@@ -8,6 +8,9 @@ var destroyed = false
 @onready var debris = $GPUParticles2D
 @onready var PARTICLE = preload("res://game/projectiles/bullet_hit_particle.tscn")
 # Called when the node enters the scene tree for the first time.
+
+signal just_destroyed
+
 func _ready():
 	randomize()
 
@@ -21,6 +24,7 @@ func emit(emit_position):
 
 func destroy():
 	if destroyed == false:
+		emit_signal("just_destroyed")
 		destroyed = true
 		graphic.visible = false
 		debris.emitting = true

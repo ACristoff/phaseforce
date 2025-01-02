@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cjocwybbd0qxm" path="res://assets/ui/healthbottom.png" id="5_f2ved"]
 [ext_resource type="Texture2D" uid="uid://cats31d6vmo5o" path="res://assets/ui/healthtop.png" id="6_7t315"]
 
-[node name="Node2D" type="Control"]
+[node name="HUD" type="Control"]
 texture_filter = 3
 layout_mode = 3
 anchors_preset = 15

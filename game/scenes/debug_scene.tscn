@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=21 format=3 uid="uid://bhvj1gnroht24"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_hmkun"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b4ir8rl8balvy" path="res://game/objects/climbable_ladder.tscn" id="11_tbj4l"]
 [ext_resource type="PackedScene" uid="uid://c8jo543xm1x0a" path="res://game/characters/enemies/enemy_base.tscn" id="12_lij35"]
 [ext_resource type="PackedScene" uid="uid://ddoegd7o3j6lt" path="res://game/objects/generator.tscn" id="14_83vny"]
+[ext_resource type="PackedScene" uid="uid://dcnjabyfgy3tm" path="res://game/UI/hud.tscn" id="15_870h4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtdel"]
 size = Vector2(24, 72)
@@ -412,12 +413,6 @@ position = Vector2(1764, -588)
 [node name="ClimbableLadder48" parent="Ladders" instance=ExtResource("11_tbj4l")]
 position = Vector2(-221, 106)
 
-[node name="EnemyBase" parent="." instance=ExtResource("12_lij35")]
-position = Vector2(-128, 34)
-
-[node name="EnemyBase2" parent="." instance=ExtResource("12_lij35")]
-position = Vector2(27, 35)
-
 [node name="Death_Barrier" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Barrier"]
@@ -427,4 +422,16 @@ shape = SubResource("WorldBoundaryShape2D_24wkg")
 [node name="Generator" parent="." instance=ExtResource("14_83vny")]
 position = Vector2(2641, -391)
 
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(2641, -391)
+
+[node name="EnemyBase" parent="Enemies" instance=ExtResource("12_lij35")]
+position = Vector2(-2769, 425)
+
+[node name="EnemyBase2" parent="Enemies" instance=ExtResource("12_lij35")]
+position = Vector2(-2614, 426)
+
+[node name="HUD" parent="." instance=ExtResource("15_870h4")]
+
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
+[connection signal="just_destroyed" from="Generator" to="HUD" method="_on_generator_just_destroyed"]

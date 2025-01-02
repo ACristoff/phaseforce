@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
-
 @onready var spawn = $SpawnPoint
+
 
 var character: PackedScene
 

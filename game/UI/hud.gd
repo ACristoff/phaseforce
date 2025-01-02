@@ -63,3 +63,7 @@ func completeobj3():
 
 func _on_button_pressed():
 	killed_snowman()
+
+
+func _on_generator_just_destroyed():
+	completeob1()
