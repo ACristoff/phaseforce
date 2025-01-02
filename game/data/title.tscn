@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ee1cf2oj14kt"]
+[gd_scene load_steps=8 format=3 uid="uid://ee1cf2oj14kt"]
 
 [ext_resource type="Script" path="res://game/data/title_control.gd" id="1_epqi3"]
 [ext_resource type="Texture2D" uid="uid://betqi4sbw8ywd" path="res://assets/ui/title/Title.png" id="2_j6iul"]
+[ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="3_qakli"]
+[ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="4_78r31"]
+[ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="5_b84rr"]
+[ext_resource type="Texture2D" uid="uid://dupigsbyqxg1m" path="res://assets/environment/placeables/decorations/titleheli.png" id="6_ojxjh"]
+
+[sub_resource type="Curve2D" id="Curve2D_trggu"]
+_data = {
+"points": PackedVector2Array(-15.9278, -15.25, 15.9278, 15.25, 25, -17, 0, 0, 0, 0, 26, 26, 24.5444, 15.75, -24.5444, -15.75, -19, 25, -18.0167, 9.25, 18.0167, -9.25, -18.8, -20, 0, 0, 0, 0, 25, -17)
+}
+point_count = 5
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -58,5 +68,81 @@ text = "Credits
 layout_mode = 2
 text = "Quit
 "
+
+[node name="parallax" type="Node2D" parent="."]
+position = Vector2(0, 127)
+
+[node name="Sky" type="Parallax2D" parent="parallax"]
+z_index = -10
+texture_filter = 3
+repeat_size = Vector2(320, 360)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="parallax/Sky"]
+modulate = Color(0.76, 0.868, 1, 1)
+position = Vector2(-160, 86)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_qakli")
+
+[node name="Parallax2D3" type="Parallax2D" parent="parallax"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="parallax/Parallax2D3"]
+modulate = Color(0.66868, 0.6424, 0.73, 1)
+position = Vector2(-160, 86)
+scale = Vector2(-1, 1)
+texture = ExtResource("4_78r31")
+
+[node name="Parallax2D2" type="Parallax2D" parent="parallax"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.3, 0.1)
+repeat_size = Vector2(320, 0)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="parallax/Parallax2D2"]
+modulate = Color(0.37, 0.685, 1, 1)
+position = Vector2(-160, 86)
+texture = ExtResource("4_78r31")
+
+[node name="Front" type="Parallax2D" parent="parallax"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.6, 0.3)
+repeat_size = Vector2(320, 0)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="parallax/Front"]
+modulate = Color(0.4761, 0.56879, 0.69, 1)
+position = Vector2(-160, 105)
+texture = ExtResource("5_b84rr")
+
+[node name="Front2" type="Parallax2D" parent="parallax"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.7, 0.5)
+repeat_times = 6
+
+[node name="Titleheli" type="Sprite2D" parent="parallax/Front2"]
+texture_filter = 3
+position = Vector2(319, 52)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("6_ojxjh")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(325, 173)
+scale = Vector2(0.957447, 1)
+curve = SubResource("Curve2D_trggu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(25, -17)
+rotation = 0.763663
+rotates = false
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start" to="." method="_on_start_pressed"]

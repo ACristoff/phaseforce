@@ -1,5 +1,9 @@
 extends Control
 
+@onready var pathfollow = $Path2D/PathFollow2D
+
+func _physics_process(delta):
+	pathfollow.progress += .5
 
 func _on__x_720_pressed():
 	DisplayServer.window_set_size(Vector2i(1280, 720))
