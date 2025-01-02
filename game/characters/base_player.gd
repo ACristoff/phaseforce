@@ -49,18 +49,7 @@ class_name BasePlayer
 @export var coyote_time: float = 0.25
 @onready var coyote_timer: float = coyote_time
 @onready var gun_sound: AudioStreamMP3 = preload("res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3")
-var gun_spread = normal_gun_spread
-var fire_rate = normal_fire_rate
-var bullet_speed
-var bullet_damage
 
-var health: int = 3
-
-var powered_up: bool = false
-var knockback = Vector2.ZERO
-var face_right: bool = true
-var attack_direction
-var current_platform_stack: Array = []
 
 @export_category("Guns")
 @export_group("Normal Mode")
@@ -80,6 +69,19 @@ var current_platform_stack: Array = []
 @export var powered_up_bullet_speed: int =  500
 @export var powered_up_damage: int
 @export var powered_up_gun_sound: AudioStreamMP3
+
+var gun_spread = normal_gun_spread
+var fire_rate = normal_fire_rate
+var bullet_speed
+var bullet_damage
+
+var health: int = 3
+
+var powered_up: bool = false
+var knockback = Vector2.ZERO
+var face_right: bool = true
+var attack_direction
+var current_platform_stack: Array = []
 
 signal took_damage
 signal player_death

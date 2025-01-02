@@ -24,6 +24,12 @@ func play_music(music: AudioStreamMP3, volume = 0.0):
 	volume_db = volume
 	play()
 
+func stop_music(_do_fade):
+	if _do_fade:
+		fade_timer.start()
+	playing = false
+	pass
+
 func play_sfx(new_stream: AudioStreamMP3, volume = 0.0):
 	var fx_player = AudioStreamPlayer.new()
 	fx_player.stream = new_stream
