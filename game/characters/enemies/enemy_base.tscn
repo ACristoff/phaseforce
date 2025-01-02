@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8jo543xm1x0a"]
+[gd_scene load_steps=9 format=3 uid="uid://c8jo543xm1x0a"]
 
 [ext_resource type="Texture2D" uid="uid://p2ig4n01komu" path="res://assets/enemies/gun_snowman/enemysnowman.png" id="1_6op3j"]
 [ext_resource type="Script" path="res://game/characters/enemies/enemy_base.gd" id="1_cjuny"]
@@ -66,10 +66,6 @@ _data = {
 "move": SubResource("Animation_p5clx")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qfxbf"]
-radius = 8.0
-height = 24.0
-
 [node name="EnemyBase" type="CharacterBody2D"]
 collision_mask = 28
 script = ExtResource("1_cjuny")
@@ -85,7 +81,6 @@ texture = ExtResource("1_6op3j")
 hframes = 9
 
 [node name="EnemyPistol" type="Sprite2D" parent="."]
-visible = false
 texture_filter = 3
 position = Vector2(10, -11)
 texture = ExtResource("3_4v5u5")
@@ -97,14 +92,6 @@ libraries = {
 "": SubResource("AnimationLibrary_q3ty1")
 }
 autoplay = "idle"
-
-[node name="HitBox" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, -11)
-shape = SubResource("CapsuleShape2D_qfxbf")
-debug_color = Color(0.988235, 0, 0.309804, 0.133333)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(10, -10)
