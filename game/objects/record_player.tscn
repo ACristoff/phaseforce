@@ -12,7 +12,6 @@ radius = 94.0053
 [node name="Record_Player" type="StaticBody2D"]
 texture_filter = 3
 script = ExtResource("1_dnvxs")
-music = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_netxg")

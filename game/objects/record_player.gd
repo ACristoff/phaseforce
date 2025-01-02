@@ -4,6 +4,6 @@ extends StaticBody2D
 
 
 func _on_area_2d_body_entered(body):
-	print('body entered record player': body)
+	print('body entered record player', body)
 	if body is BasePlayer:
 		AudioManager.play_music(music)
