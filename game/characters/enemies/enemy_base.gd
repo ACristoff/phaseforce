@@ -86,18 +86,19 @@ func go_to_alert(entity):
 	velocity.x = 0
 	if entity is BasePlayer:
 		player = entity
-		var from_to = player.global_position.x - self.global_position.x
-		#if player to the right of enemy
-		print(from_to)
-		if from_to > 0:
-			if !facing_right:
-				turn(false)
-		else:
-			if facing_right:
-				turn(false)
-	enemy_state == ENEMY_STATES.ALERTED
+	if entity is Bullet:
+		player = get_tree().get_first_node_in_group("player")
 	idle_timer.stop()
 	walk_timer.stop()
+	enemy_state == ENEMY_STATES.ALERTED
+	var from_to = player.global_position.x - self.global_position.x
+	#if player to the right of enemy
+	if from_to > 0:
+		if !facing_right:
+			turn(false)
+	else:
+		if facing_right:
+			turn(false)
 
 func turn(direction):
 	facing_right = direction
