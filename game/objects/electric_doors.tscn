@@ -1,11 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cceoyo46y67qx"]
+[gd_scene load_steps=8 format=3 uid="uid://cceoyo46y67qx"]
 
 [ext_resource type="Texture2D" uid="uid://dvk6tnf21cspc" path="res://assets/environment/placeables/interactables/electric-powered_door.png" id="1_64tr7"]
+[ext_resource type="Script" path="res://game/objects/electric_doors.gd" id="1_h5grl"]
+[ext_resource type="Texture2D" uid="uid://dd2p1d8vxng5y" path="res://assets/environment/placeables/decorations/light_casing.png" id="3_jgjhp"]
+[ext_resource type="Texture2D" uid="uid://bdty1tv3li0cs" path="res://assets/environment/placeables/decorations/light_bulb.png" id="4_5tiwa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_672f3"]
 size = Vector2(24, 72)
 
+[sub_resource type="Gradient" id="Gradient_1g8xo"]
+offsets = PackedFloat32Array(0, 0.659864)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_73kep"]
+gradient = SubResource("Gradient_1g8xo")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Electric_Doors" type="AnimatableBody2D"]
+script = ExtResource("1_h5grl")
 
 [node name="Electric-poweredDoor" type="Sprite2D" parent="."]
 texture_filter = 3
@@ -13,3 +26,16 @@ texture = ExtResource("1_64tr7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_672f3")
+
+[node name="LightCasing" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(-3, 2)
+texture = ExtResource("3_jgjhp")
+
+[node name="LightBulb" type="Sprite2D" parent="LightCasing"]
+texture_filter = 3
+texture = ExtResource("4_5tiwa")
+
+[node name="PointLight2D" type="PointLight2D" parent="LightCasing/LightBulb"]
+position = Vector2(1, -1)
+texture = SubResource("GradientTexture2D_73kep")
