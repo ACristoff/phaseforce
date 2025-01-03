@@ -36,7 +36,7 @@ script = ExtResource("1_hmkun")
 
 [node name="HUD" parent="." instance=ExtResource("15_870h4")]
 
-[node name="Node2D" parent="." instance=ExtResource("4_ukrgw")]
+[node name="WorldTiles" parent="." instance=ExtResource("4_ukrgw")]
 position = Vector2(-36, -36)
 
 [node name="Objects" type="Node2D" parent="."]
