@@ -1,0 +1,219 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxeuiy1o6121"]
+
+[ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="1_um8c4"]
+[ext_resource type="Script" path="res://game/UI/menus/settings.gd" id="1_wh0q2"]
+[ext_resource type="FontFile" uid="uid://g41dgfdxt875" path="res://assets/fonts/Grow_Stone_Online_Recreation.ttf" id="2_3x86f"]
+
+[sub_resource type="Theme" id="Theme_2r6b3"]
+OptionButton/fonts/font = ExtResource("2_3x86f")
+
+[node name="Control" type="Control"]
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wh0q2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(0.6, 0.6)
+transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
+
+[node name="Settings" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Settings"]
+layout_mode = 2
+theme_override_constants/margin_top = 45
+
+[node name="Button" type="Button" parent="CanvasLayer/Settings/MarginContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "X"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Settings"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Sound" type="Label" parent="CanvasLayer/Settings/MarginContainer"]
+texture_filter = 3
+layout_mode = 2
+theme = ExtResource("1_um8c4")
+theme_override_font_sizes/font_size = 16
+text = "Sound"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundSettings" type="VBoxContainer" parent="CanvasLayer/Settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="SFX" type="MarginContainer" parent="CanvasLayer/Settings/SoundSettings"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/SoundSettings/SFX"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/Settings/SoundSettings/SFX/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+theme = ExtResource("1_um8c4")
+text = "Sound Effects"
+
+[node name="Sound" type="CheckButton" parent="CanvasLayer/Settings/SoundSettings/SFX/HBoxContainer"]
+layout_mode = 2
+button_pressed = true
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Settings/SoundSettings/SFX/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 10.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Music" type="MarginContainer" parent="CanvasLayer/Settings/SoundSettings"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/SoundSettings/Music"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/Settings/SoundSettings/Music/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+theme = ExtResource("1_um8c4")
+text = "Music                     "
+
+[node name="Sound" type="CheckButton" parent="CanvasLayer/Settings/SoundSettings/Music/HBoxContainer"]
+layout_mode = 2
+button_pressed = true
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Settings/SoundSettings/Music/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 10.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Voices" type="MarginContainer" parent="CanvasLayer/Settings/SoundSettings"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/SoundSettings/Voices"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/Settings/SoundSettings/Voices/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+theme = ExtResource("1_um8c4")
+text = "Voices                   "
+
+[node name="Sound" type="CheckButton" parent="CanvasLayer/Settings/SoundSettings/Voices/HBoxContainer"]
+layout_mode = 2
+button_pressed = true
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Settings/SoundSettings/Voices/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 10.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="GraphicsLabel" type="Label" parent="CanvasLayer/Settings"]
+texture_filter = 3
+layout_mode = 2
+theme = ExtResource("1_um8c4")
+text = "Graphics"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Graphics" type="VBoxContainer" parent="CanvasLayer/Settings"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Settings/Graphics"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/Graphics/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="Resolution2" type="Label" parent="CanvasLayer/Settings/Graphics/MarginContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+theme = ExtResource("1_um8c4")
+text = "Resolution"
+
+[node name="Resolution" type="OptionButton" parent="CanvasLayer/Settings/Graphics/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource("Theme_2r6b3")
+alignment = 1
+icon_alignment = 1
+selected = 2
+item_count = 5
+popup/item_0/text = "640x360"
+popup/item_1/text = "1280x720"
+popup/item_1/id = 1
+popup/item_2/text = "1920x1080"
+popup/item_2/id = 2
+popup/item_3/text = "2560x1360"
+popup/item_3/id = 3
+popup/item_4/text = "2944x1920"
+popup/item_4/id = 4
+
+[node name="Menu" type="VBoxContainer" parent="CanvasLayer/Settings"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Menu" type="Label" parent="CanvasLayer/Settings/Menu"]
+texture_filter = 3
+layout_mode = 2
+theme = ExtResource("1_um8c4")
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/Menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/Settings/Menu/HBoxContainer"]
+texture_filter = 3
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3x86f")
+text = "Main Menu"
+
+[node name="LevelSelect" type="Button" parent="CanvasLayer/Settings/Menu/HBoxContainer"]
+texture_filter = 3
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3x86f")
+text = "Level Select"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Settings/Menu/HBoxContainer"]
+texture_filter = 3
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3x86f")
+text = "Quit to 
+Desktop"
+
+[connection signal="pressed" from="CanvasLayer/Settings/MarginContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="item_selected" from="CanvasLayer/Settings/Graphics/MarginContainer/HBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
