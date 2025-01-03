@@ -23,7 +23,8 @@ func spawn_enemy():
 	get_parent().add_child(new_enemy)
 	new_enemy.global_position = spawn_marker.global_position
 	prints(new_enemy.global_position, spawn_marker.global_position)
-
+	enemy_spawned.emit(new_enemy)
+	queue_free()
 
 func _on_area_2d_body_entered(body):
 	if body is BasePlayer:
