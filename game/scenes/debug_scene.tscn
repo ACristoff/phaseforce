@@ -411,6 +411,7 @@ position = Vector2(691, 317)
 
 [node name="Electric_Doors" parent="Doors" instance=ExtResource("15_suq3s")]
 position = Vector2(658, 48)
+interactable = true
 
 [node name="Electric_Doors2" parent="Doors" instance=ExtResource("15_suq3s")]
 position = Vector2(1021, -144)
