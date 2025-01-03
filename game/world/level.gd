@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Level
+
 @export var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
 @export var quip_chance: int = 30
 
@@ -62,8 +64,8 @@ func generate_level_complete_data():
 	return all
 
 func _on_extract():
-	level_completed.emit(generate_level_complete_data())
 	print(generate_level_complete_data())
+	level_completed.emit(generate_level_complete_data())
 
 func _on_player_death():
 	print("YOU GRADUATED")
