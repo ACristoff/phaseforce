@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://esqwdf2tdfok"]
 
-[ext_resource type="Texture2D" uid="uid://c7k05x2vgjmqi" path="res://assets/objects/helicopter.png" id="1_ak5o3"]
 [ext_resource type="Script" path="res://game/world/extract_zone.gd" id="1_rkcl3"]
+[ext_resource type="PackedScene" path="res://game/objects/phasecopter.tscn" id="2_3xd57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij7c5"]
 size = Vector2(199, 20)
@@ -9,19 +9,14 @@ size = Vector2(199, 20)
 [node name="ExtractZone" type="Node2D"]
 script = ExtResource("1_rkcl3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="Helicopter" type="Sprite2D" parent="."]
-position = Vector2(4, 160)
-scale = Vector2(0.34188, 0.34188)
-texture = ExtResource("1_ak5o3")
+[node name="Node2D" parent="." instance=ExtResource("2_3xd57")]
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(181, 91)
 collision_layer = 64
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 270)
 shape = SubResource("RectangleShape2D_ij7c5")
 debug_color = Color(0.203624, 0.63522, 0.246699, 0.42)
 

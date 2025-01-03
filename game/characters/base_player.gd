@@ -84,6 +84,7 @@ var fire_rate = normal_fire_rate
 var bullet_speed
 var bullet_damage
 
+
 var health: int = 3
 
 var powered_up: bool = false
@@ -92,6 +93,7 @@ var face_right: bool = true
 var attack_direction
 var current_platform_stack: Array = []
 var current_door: Door
+var is_active: bool = false
 
 signal took_damage
 signal player_death
