@@ -81,20 +81,6 @@ layout_mode = 2
 theme = ExtResource("2_68nfx")
 theme_override_font_sizes/font_size = 8
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Objective_Container/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-texture = ExtResource("4_fopok")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-theme = ExtResource("2_68nfx")
-theme_override_font_sizes/font_size = 8
-text = "Escape"
-
 [node name="ExtractObjectiveLabel" parent="CanvasLayer/Objective_Container/VBoxContainer" instance=ExtResource("6_eybuc")]
 visible = false
 layout_mode = 2
