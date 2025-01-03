@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpewbgbsovbuf"]
+[gd_scene load_steps=8 format=3 uid="uid://bpewbgbsovbuf"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_kkwol"]
 [ext_resource type="Script" path="res://game/characters/Panko/panko_player.gd" id="2_j36ei"]
 [ext_resource type="PackedScene" uid="uid://bsjvx8ltei6fu" path="res://game/characters/Panko/panko_arm_powered_up.tscn" id="3_5mmsr"]
 [ext_resource type="AudioStream" uid="uid://pu4fec8qea4k" path="res://assets/sfx/projectiles/INFANTRY_RIFLE.mp3" id="3_pcgrl"]
+[ext_resource type="AudioStream" uid="uid://tohm88r4k206" path="res://assets/sfx/quips/panko/QUIP_DAMAGED.mp3" id="3_yppyx"]
+[ext_resource type="AudioStream" uid="uid://buecie7an3nvv" path="res://assets/sfx/quips/panko/QUIP_KILL.mp3" id="4_3g0aw"]
 [ext_resource type="AudioStream" uid="uid://bmpvyd1yoesbh" path="res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3" id="5_fj0uu"]
 
 [node name="PankoPlayer" instance=ExtResource("1_kkwol")]
 script = ExtResource("2_j36ei")
+damaged_quips = Array[AudioStreamMP3]([ExtResource("3_yppyx")])
+kill_quips = Array[AudioStreamMP3]([ExtResource("4_3g0aw")])
 normal_bullet_speed = 1000
 normal_damage = 100
 normal_gun_sound = ExtResource("3_pcgrl")

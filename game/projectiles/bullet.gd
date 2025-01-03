@@ -2,12 +2,13 @@ extends Area2D
 
 class_name Bullet
 
-@export var speed = 600
+@export var speed = 500
 var damage = 50
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += transform.x * speed * delta
+	#if self.
 	pass
 
 func _on_area_entered(_area):

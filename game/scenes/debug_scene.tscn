@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=19 format=3 uid="uid://bhvj1gnroht24"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_hmkun"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="4_ukrgw"]
-[ext_resource type="Texture2D" uid="uid://dvk6tnf21cspc" path="res://assets/environment/placeables/interactables/electric-powered_door.png" id="5_gtqwe"]
 [ext_resource type="PackedScene" uid="uid://bytrjfsir7c6d" path="res://game/objects/power_up.tscn" id="6_gnwae"]
 [ext_resource type="PackedScene" uid="uid://bm5mdiuoh8qbi" path="res://game/objects/passthrough_platform.tscn" id="6_vs33k"]
 [ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="7_2d2y8"]
@@ -15,9 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://c8jo543xm1x0a" path="res://game/characters/enemies/enemy_base.tscn" id="12_lij35"]
 [ext_resource type="PackedScene" uid="uid://ddoegd7o3j6lt" path="res://game/objects/generator.tscn" id="14_83vny"]
 [ext_resource type="PackedScene" uid="uid://dcnjabyfgy3tm" path="res://game/UI/hud.tscn" id="15_870h4"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtdel"]
-size = Vector2(24, 72)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bh078"]
 polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -616, -16, -627, 1)
@@ -40,34 +36,6 @@ script = ExtResource("1_hmkun")
 
 [node name="Node2D" parent="." instance=ExtResource("4_ukrgw")]
 position = Vector2(-36, -36)
-
-[node name="ElectricDoors" type="Node2D" parent="."]
-position = Vector2(648, 48)
-
-[node name="Edoorstart1" type="Marker2D" parent="ElectricDoors"]
-
-[node name="Edoorstart2" type="Marker2D" parent="ElectricDoors"]
-position = Vector2(0, -72)
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="ElectricDoors"]
-
-[node name="ElectricDoor" type="Sprite2D" parent="ElectricDoors/AnimatableBody2D"]
-texture_filter = 3
-texture = ExtResource("5_gtqwe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ElectricDoors/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_gtdel")
-
-[node name="AnimatableBody2D2" type="AnimatableBody2D" parent="ElectricDoors"]
-position = Vector2(384, -192)
-scale = Vector2(-1, 1)
-
-[node name="ElectricDoor" type="Sprite2D" parent="ElectricDoors/AnimatableBody2D2"]
-texture_filter = 3
-texture = ExtResource("5_gtqwe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ElectricDoors/AnimatableBody2D2"]
-shape = SubResource("RectangleShape2D_gtdel")
 
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2(-36, -36)
@@ -421,31 +389,22 @@ shape = SubResource("WorldBoundaryShape2D_24wkg")
 [node name="Generator" parent="." instance=ExtResource("14_83vny")]
 position = Vector2(2641, -391)
 
-[node name="Enemies" type="Node2D" parent="."]
-position = Vector2(2641, -391)
+[node name="Enemies" type="Node" parent="."]
 
 [node name="EnemyBase2" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-2614, 426)
+position = Vector2(223, 101)
 
 [node name="EnemyBase" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-2410, 490)
+position = Vector2(82, 72)
 
 [node name="EnemyBase3" parent="Enemies" instance=ExtResource("12_lij35")]
+position = Vector2(304, 71)
 
 [node name="EnemyBase4" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-2343, 464)
+position = Vector2(467, 78)
 
 [node name="EnemyBase5" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-2149, 458)
-
-[node name="EnemyBase6" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-1950, 709)
-
-[node name="EnemyBase7" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-1751, 710)
-
-[node name="EnemyBase8" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-3171, 467)
+position = Vector2(691, 317)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="just_destroyed" from="Generator" to="HUD" method="_on_generator_just_destroyed"]
