@@ -40,8 +40,13 @@ func render_objectives():
 	if primary_obj is Generator:
 		#print("Destroy the Generator")
 		hud.primary_obj_label.text = "Destroy the Generator"
+		primary_obj.just_destroyed.connect(_on_primary_obj_completed.bind())
 	for obj in secondary_objs:
 		print(obj)
+
+func _on_primary_obj_completed():
+	hud.complete_primary()
+	pass
 
 func _on_player_death():
 	print("YOU GRADUATED")

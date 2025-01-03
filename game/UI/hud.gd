@@ -53,14 +53,15 @@ func killed_snowman():
 	killed_snowmen += 1
 	if killed_snowmen == amount_to_kill:
 			completeobj2()
-	
-func completeob1():
-	#obj1.pivot_offset = obj1.size/2
-	#var tween = create_tween()
-	#tween.tween_property(obj1, "scale", Vector2(1.2, 1), .15)
-	#tween.tween_property(obj1, "scale", Vector2(1, 1), .15)
-	#obj1.modulate = Color.GREEN_YELLOW
-	pass
+
+func complete_primary():
+	primary_obj.pivot_offset = primary_obj.size/2
+	var tween = create_tween()
+	tween.tween_property(primary_obj, "scale", Vector2(1.2, 1), .15)
+	tween.tween_property(primary_obj, "scale", Vector2(1, 1), .15)
+	primary_obj.modulate = Color.GREEN_YELLOW
+
+
 func completeobj2():
 	obj2.pivot_offset = obj2.size/2
 	var tween = create_tween()
@@ -79,5 +80,5 @@ func _on_button_pressed():
 	killed_snowman()
 
 
-func _on_generator_just_destroyed():
-	completeob1()
+#func _on_generator_just_destroyed():
+	#completeob1()
