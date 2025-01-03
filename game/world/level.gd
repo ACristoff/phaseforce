@@ -27,6 +27,7 @@ func _ready():
 	spawn_char.global_position = spawn.global_position
 	add_child(spawn_char)
 	spawn_char.took_damage.connect(_on_player_damage.bind())
+	spawn_char.gained_health.connect(_on_gained_health.bind())
 	spawn_char.player_death.connect(_on_player_death.bind())
 	player = spawn_char
 	var enemies = get_tree().get_nodes_in_group("enemies")
@@ -75,6 +76,12 @@ func _on_player_kill():
 	if roll_for_quip():
 		player.quip(player.kill_quips)
 
+func _on_gained_health():
+	hud.gain_health()
+	if roll_for_quip():
+		##TODO Quip here?
+		player.quip(player.damaged_quips)
+	
 func _on_player_damage():
 	hud.take_damage()
 	if roll_for_quip():

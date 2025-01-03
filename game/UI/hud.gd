@@ -39,6 +39,9 @@ func _ready():
 func take_damage():
 	health_bar.value -= 1
 
+func gain_health():
+	health_bar.value += 1
+
 func update_primary():
 	pass
 
