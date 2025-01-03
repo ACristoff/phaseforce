@@ -25,12 +25,12 @@ func _on_player_death():
 
 func _on_player_kill():
 	if roll_for_quip():
-		player.quip("kill")
+		player.quip(player.kill_quips)
 
 func _on_player_damage():
 	hud.take_damage()
 	if roll_for_quip():
-		player.quip("damaged")
+		player.quip(player.damaged_quips)
 
 func _on_death_barrier_body_entered(body):
 	if body is BasePlayer:

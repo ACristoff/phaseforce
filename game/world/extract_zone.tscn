@@ -12,7 +12,7 @@ script = ExtResource("1_rkcl3")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Helicopter" type="Sprite2D" parent="."]
-position = Vector2(3, 137)
+position = Vector2(4, 160)
 scale = Vector2(0.34188, 0.34188)
 texture = ExtResource("1_ak5o3")
 

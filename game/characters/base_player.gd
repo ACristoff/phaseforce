@@ -42,13 +42,13 @@ class_name BasePlayer
 @export var power_up_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
 @export var victory_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
 
-var quip_types = {
-	"death": death_quips,
-	"damaged": damaged_quips,
-	"kill": kill_quips,
-	"power_up": power_up_quips,
-	"victory": victory_quips 
-}
+#var quip_types = {
+	#"death": death_quips,
+	#"damaged": damaged_quips,
+	#"kill": kill_quips,
+	#"power_up": power_up_quips,
+	#"victory": victory_quips 
+#}
 
 @export_group("Base Stats")
 @export var JUMP_VELOCITY = -280.0
@@ -93,11 +93,12 @@ var current_platform_stack: Array = []
 signal took_damage
 signal player_death
 
-func quip(type):
-	print('REEEE!')
-	var quip_array = quip_types[type] 
+func quip(quip_array):
+	
+	#var quip_array = quip_types[type]
 	var random_quip = randi_range(0, quip_array.size() - 1)
-	var quip = damaged_quips[random_quip]
+	var quip = quip_array[random_quip]
+	#print('do quip!', type, quip_array, quip_types["power_up"])
 	AudioManager.play_quip(quip)
 
 func _ready() -> void:
@@ -143,6 +144,7 @@ func power_up():
 	bullet_speed = powered_up_bullet_speed
 	bullet_damage = powered_up_damage
 	powered_up = true
+	quip(power_up_quips)
 
 func power_down():
 	sprite.texture = normal_sprite
