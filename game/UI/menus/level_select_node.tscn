@@ -1,0 +1,181 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdegiu2yand6e"]
+
+[ext_resource type="Texture2D" uid="uid://bnc5pmu7mweij" path="res://assets/ui/anvil_base.png" id="1_h7fys"]
+[ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_1bduh"]
+[ext_resource type="Texture2D" uid="uid://byhijdba8t6q0" path="res://assets/ui/play_button.png" id="2_bv7fs"]
+[ext_resource type="Texture2D" uid="uid://c4pwg7cja4b2q" path="res://assets/ui/level_stars1.png" id="4_c3d61"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="Level1" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_right = 81.0
+offset_bottom = 317.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer3" type="MarginContainer" parent="Level1"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="TextureRect2" type="TextureRect" parent="Level1/MarginContainer3"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_h7fys")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Level1/MarginContainer3"]
+texture_filter = 3
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_bv7fs")
+expand_mode = 1
+
+[node name="PlayLevelButton" type="Button" parent="Level1/MarginContainer3/TextureRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelName" type="MarginContainer" parent="Level1"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="Level" type="Label" parent="Level1/LevelName"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_1bduh")
+theme_override_font_sizes/font_size = 8
+text = "Level 1. Anvil Base"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecretsFound" type="MarginContainer" parent="Level1"]
+layout_mode = 2
+
+[node name="SecretsFound" type="Label" parent="Level1/SecretsFound"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_1bduh")
+theme_override_font_sizes/font_size = 8
+text = "Secrets found 0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestTime" type="MarginContainer" parent="Level1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BestTime" type="Label" parent="Level1/BestTime"]
+texture_filter = 3
+layout_mode = 2
+theme = ExtResource("2_1bduh")
+theme_override_font_sizes/font_size = 8
+text = "Best Time: 0.00.00"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -35
+
+[node name="Star1" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="TextureRect" parent="MarginContainer/HBoxContainer/Star1"]
+texture_filter = 3
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_c3d61")
+
+[node name="Star2" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="TextureRect" parent="MarginContainer/HBoxContainer/Star2"]
+texture_filter = 3
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_c3d61")
+
+[node name="Star3" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="TextureRect" parent="MarginContainer/HBoxContainer/Star3"]
+texture_filter = 3
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_c3d61")
