@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cceoyo46y67qx"]
+
+[ext_resource type="Texture2D" uid="uid://dvk6tnf21cspc" path="res://assets/environment/placeables/interactables/electric-powered_door.png" id="1_64tr7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_672f3"]
+size = Vector2(24, 72)
+
+[node name="Electric_Doors" type="AnimatableBody2D"]
+
+[node name="Electric-poweredDoor" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_64tr7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_672f3")
