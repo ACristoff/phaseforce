@@ -94,12 +94,10 @@ signal took_damage
 signal player_death
 
 func quip(quip_array):
-	
-	#var quip_array = quip_types[type]
 	var random_quip = randi_range(0, quip_array.size() - 1)
 	var quip = quip_array[random_quip]
-	#print('do quip!', type, quip_array, quip_types["power_up"])
 	AudioManager.play_quip(quip)
+
 
 func _ready() -> void:
 	var game_man: game_manager = get_node("/root/GameManager")

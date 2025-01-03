@@ -35,7 +35,7 @@ var last_known_position: Vector2
 @export var attack_range: int = 280 
 @export var ideal_attack_range: int = 180
 
-signal snowman_death
+signal enemy_death
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,7 +43,7 @@ func _ready():
 	pass # Replace with function body.
 
 func die():
-	snowman_death.emit()
+	enemy_death.emit()
 	queue_free()
 
 func take_damage(damage):

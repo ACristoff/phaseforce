@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
-@export var quip_chance: int = 20
+@export var quip_chance: int = 30
 
 @onready var spawn = $SpawnPoint
 @onready var hud = $HUD
@@ -17,6 +17,10 @@ func _ready():
 	spawn_char.took_damage.connect(_on_player_damage.bind())
 	spawn_char.player_death.connect(_on_player_death.bind())
 	player = spawn_char
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies:
+		var new_enemy: EnemyBase = enemy
+		new_enemy.enemy_death.connect(_on_player_kill.bind())
 	AudioManager.stop_music(false)
 
 func _on_player_death():
