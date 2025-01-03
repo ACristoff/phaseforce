@@ -32,14 +32,14 @@ var is_searching: bool = false
 var is_attacking: bool = false
 var last_known_position: Vector2
 @export var max_sight_distance: int = 280
-@export var attack_range: int = 250 
+@export var attack_range: int = 280 
 @export var ideal_attack_range: int = 180
 
 signal snowman_death
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	prints(global_position, position)
+	#prints(global_position, position)
 	pass # Replace with function body.
 
 func die():
@@ -127,14 +127,14 @@ func check_attack_distance():
 	return false
 
 func attack():
-	print('shoot')
+	#print('shoot')
 	var new_enemy_bullet = bullet.instantiate()
 	new_enemy_bullet.global_position = to_global(gun_barrel.position)
 	var adjusted_angle = gun_sprite.rotation_degrees
 	if !facing_right:
 		adjusted_angle = -adjusted_angle + 180
 	new_enemy_bullet.rotation_degrees = adjusted_angle
-	print(adjusted_angle)
+	#print(adjusted_angle)
 	get_parent().add_child(new_enemy_bullet)
 
 #func attack() -> void:

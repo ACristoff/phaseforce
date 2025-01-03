@@ -432,8 +432,11 @@ position = Vector2(82, 72)
 [node name="EnemyBase3" parent="Enemies" instance=ExtResource("12_lij35")]
 position = Vector2(304, 71)
 
-[node name="EnemyBase" parent="Enemies/EnemyBase3" instance=ExtResource("12_lij35")]
-position = Vector2(163, 7)
+[node name="EnemyBase4" parent="Enemies" instance=ExtResource("12_lij35")]
+position = Vector2(467, 78)
+
+[node name="EnemyBase5" parent="Enemies" instance=ExtResource("12_lij35")]
+position = Vector2(691, 317)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="just_destroyed" from="Generator" to="HUD" method="_on_generator_just_destroyed"]
