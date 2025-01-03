@@ -55,9 +55,7 @@ func pause_menu():
 func _process(delta):
 	if Input.is_action_just_pressed("menu"):
 		pause_menu()
-	
 	if !extract_timer.is_stopped():
-		#print("ETA", extract_timer.time_left)
 		hud.timer_label.text = str("TIME TO EXTRACT: ", int(extract_timer.time_left))
 	pass
 

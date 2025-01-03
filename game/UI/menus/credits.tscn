@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dxbdslvf2xwxi"]
+[gd_scene format=3 uid="uid://b5qvdndc4elku"]
 
 [node name="Credits" type="Node2D"]
 
@@ -20,8 +20,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Credits:
+DiGifigurati - Programming
+Caleb - Sprites & Tech Art 
+Jere - Sprites
+Adam - Music & Sound
 
-cabub albex abam and bere"
+A Beret Parade fangame"
 horizontal_alignment = 1
 vertical_alignment = 1
 
