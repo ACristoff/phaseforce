@@ -178,7 +178,7 @@ func _physics_process(delta: float) -> void:
 		#AudioManager.play_sfx(tommy_last)
 		pass
 	if Input.is_action_just_pressed("interact") && current_door:
-		if current_door.closed && current_door.interactable:
+		if current_door.closed:
 			current_door.open()
 	
 	##PLAYER MOVEMENT##
@@ -295,11 +295,6 @@ func _on_platform_detector_area_exited(area):
 func _on_door_detector_body_entered(body):
 	print(body)
 	current_door = body.get_parent()
-	if body is Door:
-		current_door = body
 
 func _on_door_detector_body_exited(body):
-	print(body)
 	current_door = null
-	if body is Door:
-		current_door = null
