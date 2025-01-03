@@ -69,6 +69,7 @@ _data = {
 [node name="EnemyBase" type="CharacterBody2D" groups=["enemies"]]
 collision_mask = 28
 script = ExtResource("1_cjuny")
+max_sight_distance = 270
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)

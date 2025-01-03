@@ -14,9 +14,12 @@ func switch_songs():
 	fade_timer.start()
 
 func play_music(music: AudioStreamMP3, volume = 0.0):
+	playing = true
 	if current_music:
+		#print('replacing song')
 		new_music = music
 		new_volume = volume
+		#print(current_music, new_music)
 		switch_songs()
 		return
 	current_music = music
@@ -65,6 +68,7 @@ func play_sfx_wav(new_stream: AudioStreamWAV, volume = 0.0):
 
 
 func _on_fade_timer_timeout():
+	#print('play the new song')
 	stream = new_music
 	volume_db = new_volume
 	play()

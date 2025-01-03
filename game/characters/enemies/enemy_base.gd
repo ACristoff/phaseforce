@@ -85,6 +85,7 @@ func _physics_process(delta):
 				alert_timer.stop()
 			if is_searching:
 				is_searching = false
+				velocity.x = 0
 		if !senses_player && !sees_player && alert_timer.is_stopped():
 			alert_timer.start()
 			if !is_searching:
@@ -99,14 +100,14 @@ func _physics_process(delta):
 	move_and_slide()
 
 func move_to_last_known():
-	print('moving to last known position at:', last_known_position)
+	#print('moving to last known position at:', last_known_position)
 	if last_known_position.x > global_position.x:
-		print('move right')
+		#print('move right')
 		velocity.x = speed
 		#if !facing_right:
 			#turn(true)
 	else:
-		print("move left")
+		#print("move left")
 		velocity.x = -speed
 		#if facing_right:
 			#turn(false)
