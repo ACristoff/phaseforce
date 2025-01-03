@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://cffap0mrfw4pq"]
+
+[ext_resource type="Script" path="res://game/UI/menus/game_over.gd" id="1_ucpwh"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_ucpwh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 55
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 115
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "Retry"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "Quit to Main Menu"

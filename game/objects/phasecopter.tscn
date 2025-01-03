@@ -1,13 +1,143 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvbodpjkkyrsn"]
+[gd_scene load_steps=12 format=3 uid="uid://dvbodpjkkyrsn"]
 
 [ext_resource type="Texture2D" uid="uid://bwgry6ieoocaa" path="res://assets/objects/phasecopter.png" id="1_uwejt"]
+[ext_resource type="Shader" path="res://assets/shaders/power_up.gdshader" id="2_xa1d4"]
+[ext_resource type="Texture2D" uid="uid://cobocxw2mxarj" path="res://assets/particles/blade.png" id="3_7r35v"]
+[ext_resource type="Texture2D" uid="uid://cp5f3lgldkns8" path="res://assets/objects/copterdoor.png" id="4_usaej"]
+
+[sub_resource type="Animation" id="Animation_algix"]
+resource_name = "flying"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhaseCopter:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_yyfst"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhaseCopter:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_phgax"]
+_data = {
+"RESET": SubResource("Animation_yyfst"),
+"flying": SubResource("Animation_algix")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ceuqd"]
+shader = ExtResource("2_xa1d4")
+shader_parameter/BLOOM_THRESHOLD = 0.7
+shader_parameter/BLOOM_INTENSITY = 3.0
+shader_parameter/BLUR_ITERATIONS = 11
+shader_parameter/BLUR_SIZE = 0.03
+shader_parameter/BLUR_SUBDIVISIONS = 20
+
+[sub_resource type="Animation" id="Animation_j54uu"]
+resource_name = "blade_spin"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Axel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_pxu7u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Axel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ger1"]
+_data = {
+"RESET": SubResource("Animation_pxu7u"),
+"blade_spin": SubResource("Animation_j54uu")
+}
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Phasecopter" type="Sprite2D" parent="."]
+[node name="PhaseCopter" type="Sprite2D" parent="."]
 texture_filter = 3
 position = Vector2(148, 48)
 texture = ExtResource("1_uwejt")
 hframes = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="mainbladespin" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_phgax")
+}
+autoplay = "flying"
+speed_scale = 4.0
+
+[node name="Axel" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_ceuqd")
+position = Vector2(24, 26)
+
+[node name="Blade" type="Sprite2D" parent="Axel"]
+texture_filter = 3
+use_parent_material = true
+position = Vector2(-2, -14)
+texture = ExtResource("3_7r35v")
+
+[node name="Blade2" type="Sprite2D" parent="Axel"]
+texture_filter = 3
+use_parent_material = true
+position = Vector2(2, 14)
+rotation = 3.14159
+texture = ExtResource("3_7r35v")
+
+[node name="bladespin" type="AnimationPlayer" parent="Axel"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_0ger1")
+}
+autoplay = "blade_spin"
+speed_scale = 3.0
+
+[node name="CopterDoor" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(169, 42)
+texture = ExtResource("4_usaej")
+offset = Vector2(14, 17)
+
+[node name="DoorStart" type="Marker2D" parent="."]
+position = Vector2(147, 42)
+
+[node name="DoorStart2" type="Marker2D" parent="."]
+position = Vector2(169, 42)
