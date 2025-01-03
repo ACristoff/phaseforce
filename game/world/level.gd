@@ -40,6 +40,12 @@ func _ready():
 	render_objectives()
 	AudioManager.stop_music(false)
 
+func _process(delta):
+	if !extract_timer.is_stopped():
+		#print("ETA", extract_timer.time_left)
+		hud.timer_label.text = str("TIME TO EXTRACT: ", int(extract_timer.time_left))
+	pass
+
 func _on_secret_found():
 	secrets_found += 1
 	hud.secret_found()
@@ -54,6 +60,7 @@ func render_objectives():
 func _on_primary_obj_completed():
 	hud.complete_primary()
 	extract_timer.start()
+	hud.timer_container.visible = true
 	extract_zone.activate_extract()
 	#play extract music
 	pass

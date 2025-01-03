@@ -21,6 +21,8 @@ class_name HUD
 @onready var primary_obj = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel
 @onready var primary_obj_label = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel/Label
 @onready var extract_obj = $CanvasLayer/Objective_Container/VBoxContainer/ExtractObjectiveLabel
+@onready var timer_container = $CanvasLayer/TimerContainer
+@onready var timer_label = $CanvasLayer/TimerContainer/HBoxContainer/TimerLabel
 
 var killed_snowmen = 0
 var amount_to_kill = 10
@@ -46,7 +48,6 @@ func update_primary():
 func secret_found():
 	secret_container.visible = true
 	secret_timer.start()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
