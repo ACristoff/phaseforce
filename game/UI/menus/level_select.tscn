@@ -1,0 +1,227 @@
+[gd_scene load_steps=2 format=3 uid="uid://caw3vb0bgqwu3"]
+
+[ext_resource type="Texture2D" uid="uid://bnc5pmu7mweij" path="res://assets/ui/anvil_base.png" id="1_a42xe"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 150
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Level Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 65
+
+[node name="Level1" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level1"]
+texture_filter = 3
+layout_mode = 2
+texture = ExtResource("1_a42xe")
+
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level1"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level1/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -24.5
+offset_right = 22.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1
+\"Anvil Base\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level1/Control/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level2" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level2"]
+texture_filter = 3
+layout_mode = 2
+texture = ExtResource("1_a42xe")
+
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level2"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -24.5
+offset_right = 22.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1
+\"Anvil Base\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level2/Control/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level3" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level3"]
+texture_filter = 3
+layout_mode = 2
+texture = ExtResource("1_a42xe")
+
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level3"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level3/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -24.5
+offset_right = 22.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1
+\"Anvil Base\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level3/Control/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level4" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level4"]
+texture_filter = 3
+layout_mode = 2
+texture = ExtResource("1_a42xe")
+
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level4"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level4/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -24.5
+offset_right = 22.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1
+\"Anvil Base\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level4/Control/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level5" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level5"]
+texture_filter = 3
+layout_mode = 2
+texture = ExtResource("1_a42xe")
+
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level5"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level5/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -24.5
+offset_right = 22.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1
+\"Anvil Base\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer/Level5/Control/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
