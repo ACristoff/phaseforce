@@ -5,7 +5,14 @@ extends Node2D
 
 @onready var spawn = $SpawnPoint
 @onready var hud = $HUD
+@onready var extract_timer = $ExtractTimer
 
+@export var primary_obj: Node2D
+@export var secondary_objs: Array[Node2D]
+@export var secrets: Array[Secret_Area]
+
+
+var secrets_found = 0
 var character: PackedScene
 var player: BasePlayer
 
@@ -21,7 +28,13 @@ func _ready():
 	for enemy in enemies:
 		var new_enemy: EnemyBase = enemy
 		new_enemy.enemy_death.connect(_on_player_kill.bind())
+	for secret in secrets:
+		secret.secret_found.connect(_on_secret_found.bind())
 	AudioManager.stop_music(false)
+
+func _on_secret_found():
+	secrets_found += 1
+
 
 func _on_player_death():
 	print("YOU GRADUATED")

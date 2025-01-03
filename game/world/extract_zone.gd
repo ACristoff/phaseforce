@@ -9,12 +9,15 @@ var is_extract_active: bool = false
 signal player_extracted
 
 func _ready():
-	activate_extract()
+	#activate_extract()
+	pass
 
 func activate_extract():
 	is_extract_active = true
 	copter.visible = true
 
+func fly_away():
+	pass
 
 func _on_area_2d_body_entered(body):
 	if body is BasePlayer && is_extract_active:
