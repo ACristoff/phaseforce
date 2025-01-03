@@ -10,12 +10,15 @@ extends Control
 
 @onready var health_bar = $CanvasLayer/MarginContainer/HealthBar
 
-@onready var obj1 = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer
+#@onready var obj1 = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer
 @onready var obj2 = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer2
 @onready var obj3 = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3
-@onready var obj1label = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer/Label
+#@onready var obj1label = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer/Label
 @onready var obj2label = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer2/Label
 @onready var obj3label = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3/Label
+
+@onready var primary_obj = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel
+@onready var extract_obj = $CanvasLayer/Objective_Container/VBoxContainer/ExtractObjectiveLabel
 
 var killed_snowmen = 0
 var amount_to_kill = 10
@@ -29,10 +32,13 @@ func _ready():
 func take_damage():
 	health_bar.value -= 1
 
+func update_primary():
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if level == 1:
-		obj1label.text = "Destroy the Generator"
+		#obj1label.text = "Destroy the Generator"
 		obj2label.text = "Kill  "+str(killed_snowmen)+"/"+str(amount_to_kill)+"  Snowmen"
 		obj3label.text = "Escape"
 	
@@ -46,11 +52,12 @@ func killed_snowman():
 			completeobj2()
 	
 func completeob1():
-	obj1.pivot_offset = obj1.size/2
-	var tween = create_tween()
-	tween.tween_property(obj1, "scale", Vector2(1.2, 1), .15)
-	tween.tween_property(obj1, "scale", Vector2(1, 1), .15)
-	obj1.modulate = Color.GREEN_YELLOW
+	#obj1.pivot_offset = obj1.size/2
+	#var tween = create_tween()
+	#tween.tween_property(obj1, "scale", Vector2(1.2, 1), .15)
+	#tween.tween_property(obj1, "scale", Vector2(1, 1), .15)
+	#obj1.modulate = Color.GREEN_YELLOW
+	pass
 func completeobj2():
 	obj2.pivot_offset = obj2.size/2
 	var tween = create_tween()

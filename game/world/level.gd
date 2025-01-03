@@ -30,6 +30,7 @@ func _ready():
 		new_enemy.enemy_death.connect(_on_player_kill.bind())
 	for secret in secrets:
 		secret.secret_found.connect(_on_secret_found.bind())
+	render_objectives()
 	AudioManager.stop_music(false)
 
 func _on_secret_found():
