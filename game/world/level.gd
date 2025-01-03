@@ -3,9 +3,10 @@ extends Node2D
 @export var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
 @export var quip_chance: int = 30
 
-@onready var spawn = $SpawnPoint
+@onready var spawn: Marker2D = $SpawnPoint
 @onready var hud: HUD = $HUD
-@onready var extract_timer = $ExtractTimer
+@onready var extract_timer: Timer = $ExtractTimer
+@onready var extract_zone: Extract_Zone = $ExtractZone
 
 @export var primary_obj: Node2D
 @export var secondary_objs: Array[Node2D]
@@ -30,6 +31,7 @@ func _ready():
 		new_enemy.enemy_death.connect(_on_player_kill.bind())
 	for secret in secrets:
 		secret.secret_found.connect(_on_secret_found.bind())
+	extract_zone.player_extracted.connect(_on_extract.bind())
 	render_objectives()
 	AudioManager.stop_music(false)
 
@@ -46,6 +48,13 @@ func render_objectives():
 
 func _on_primary_obj_completed():
 	hud.complete_primary()
+	extract_timer.start()
+	extract_zone.activate_extract()
+	#play extract music
+	pass
+
+func _on_extract():
+	print("You win!")
 	pass
 
 func _on_player_death():
