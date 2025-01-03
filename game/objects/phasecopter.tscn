@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvbodpjkkyrsn"]
+
+[ext_resource type="Texture2D" uid="uid://bwgry6ieoocaa" path="res://assets/objects/phasecopter.png" id="1_uwejt"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Phasecopter" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(148, 48)
+texture = ExtResource("1_uwejt")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
