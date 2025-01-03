@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=20 format=3 uid="uid://bhvj1gnroht24"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_hmkun"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c8jo543xm1x0a" path="res://game/characters/enemies/enemy_base.tscn" id="12_lij35"]
 [ext_resource type="PackedScene" uid="uid://ddoegd7o3j6lt" path="res://game/objects/generator.tscn" id="14_83vny"]
 [ext_resource type="PackedScene" uid="uid://dcnjabyfgy3tm" path="res://game/UI/hud.tscn" id="15_870h4"]
+[ext_resource type="PackedScene" uid="uid://btb5qe7w5b6wg" path="res://game/objects/electric_doors.tscn" id="15_suq3s"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bh078"]
 polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -616, -16, -627, 1)
@@ -405,6 +406,15 @@ position = Vector2(467, 78)
 
 [node name="EnemyBase5" parent="Enemies" instance=ExtResource("12_lij35")]
 position = Vector2(691, 317)
+
+[node name="Doors" type="Node" parent="."]
+
+[node name="Electric_Doors" parent="Doors" instance=ExtResource("15_suq3s")]
+position = Vector2(658, 48)
+interactable = true
+
+[node name="Electric_Doors2" parent="Doors" instance=ExtResource("15_suq3s")]
+position = Vector2(1021, -144)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="just_destroyed" from="Generator" to="HUD" method="_on_generator_just_destroyed"]

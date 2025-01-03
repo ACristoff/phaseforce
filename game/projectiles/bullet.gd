@@ -6,10 +6,13 @@ class_name Bullet
 var damage = 50
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+#func _process(delta):
+	#position += transform.x * speed * delta
+	##if self.
+	#pass
+
+func _physics_process(delta):
 	position += transform.x * speed * delta
-	#if self.
-	pass
 
 func _on_area_entered(_area):
 	#prints('area: ',_area)

@@ -30,6 +30,7 @@ class_name BasePlayer
 	preload("res://assets/sfx/misc/SNOW_STEP_3.mp3"),
 	preload("res://assets/sfx/misc/SNOW_STEP_4.mp3")
 ]
+@onready var player_hurt_sfx: AudioStreamMP3 = preload("res://assets/sfx/misc/PF_PLAYER_HURT.mp3")
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
@@ -112,6 +113,7 @@ func _ready() -> void:
 
 func take_damage():
 	took_damage.emit()
+	AudioManager.play_sfx(player_hurt_sfx)
 	health -= 1
 
 func load_gun(gun, is_new):

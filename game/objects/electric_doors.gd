@@ -1,12 +1,26 @@
 extends AnimatableBody2D
 
-var interactable = true
-@onready var light_bulb = $LightBulb
-@onready var light = $LightBulb/PointLight2D
+
+@onready var light_bulb = $LightCasing/LightBulb
+@onready var light = $LightCasing/LightBulb/PointLight2D
+@onready var closed_marker = $CloseMarker
+@onready var opened_marker = $OpenMarker
+
+@export var interactable: bool = false
+@export var closed: bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if !closed:
+		position = opened_marker.position
 
+func open():
+	print('open sesame')
+	pass
+
+func close():
+	print('close!')
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
