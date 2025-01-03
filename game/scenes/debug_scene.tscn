@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ddoegd7o3j6lt" path="res://game/objects/generator.tscn" id="14_83vny"]
 [ext_resource type="PackedScene" uid="uid://dcnjabyfgy3tm" path="res://game/UI/hud.tscn" id="15_870h4"]
 [ext_resource type="PackedScene" uid="uid://btb5qe7w5b6wg" path="res://game/objects/electric_doors.tscn" id="15_suq3s"]
-[ext_resource type="PackedScene" uid="uid://dvbodpjkkyrsn" path="res://game/objects/phasecopter.tscn" id="16_mce0x"]
+[ext_resource type="PackedScene" uid="uid://esqwdf2tdfok" path="res://game/world/extract_zone.tscn" id="16_33r4y"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bh078"]
 polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -616, -16, -627, 1)
@@ -417,8 +417,8 @@ position = Vector2(658, 48)
 [node name="Electric_Doors2" parent="Doors" instance=ExtResource("15_suq3s")]
 position = Vector2(1021, -144)
 
-[node name="Node2D2" parent="." instance=ExtResource("16_mce0x")]
-position = Vector2(-459, -13)
+[node name="ExtractZone" parent="." instance=ExtResource("16_33r4y")]
+position = Vector2(-467, -18)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="just_destroyed" from="Generator" to="HUD" method="_on_generator_just_destroyed"]
