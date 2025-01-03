@@ -4,7 +4,7 @@ extends Node2D
 @export var quip_chance: int = 30
 
 @onready var spawn = $SpawnPoint
-@onready var hud = $HUD
+@onready var hud: HUD = $HUD
 @onready var extract_timer = $ExtractTimer
 
 @export var primary_obj: Node2D
@@ -38,7 +38,8 @@ func _on_secret_found():
 
 func render_objectives():
 	if primary_obj is Generator:
-		print("Destroy the Generator")
+		#print("Destroy the Generator")
+		hud.primary_obj_label.text = "Destroy the Generator"
 	for obj in secondary_objs:
 		print(obj)
 

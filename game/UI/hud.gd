@@ -1,5 +1,7 @@
 extends Control
 
+class_name HUD
+
 @export_group("Ammo Types")
 @export var smg_ammo = preload("res://assets/ui/ammo_types/45cal.png")
 @export var deagle_ammo = preload("res://assets/ui/ammo_types/50cal.png")
@@ -18,6 +20,7 @@ extends Control
 @onready var obj3label = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3/Label
 
 @onready var primary_obj = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel
+@onready var primary_obj_label = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel/Label
 @onready var extract_obj = $CanvasLayer/Objective_Container/VBoxContainer/ExtractObjectiveLabel
 
 var killed_snowmen = 0
