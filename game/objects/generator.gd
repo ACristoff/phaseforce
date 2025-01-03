@@ -40,3 +40,7 @@ func destroy():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	graphic.offset = Vector2(randi_range(-1, 1) * shake_amount, randi_range(-1, 1) * shake_amount)
+
+
+func _on_gpu_particles_2d_finished():
+	queue_free()

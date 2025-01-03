@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cp0ieln1qw04k"]
 
-[ext_resource type="Material" path="res://game/effects/bullet_hit_particle.tres" id="1_njsi3"]
+[ext_resource type="Material" uid="uid://gk8gf07ngb8y" path="res://game/effects/bullet_hit_particle.tres" id="1_njsi3"]
 [ext_resource type="Script" path="res://game/projectiles/bullet_hit_particle.gd" id="1_pldfa"]
 
 [node name="BulletHitParticle" type="GPUParticles2D"]
@@ -11,3 +11,5 @@ lifetime = 5.0
 one_shot = true
 explosiveness = 1.0
 script = ExtResource("1_pldfa")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

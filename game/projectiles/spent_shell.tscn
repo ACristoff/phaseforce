@@ -33,3 +33,5 @@ texture = ExtResource("1_7dm0s")
 lifetime = 5.0
 one_shot = true
 script = ExtResource("2_l151t")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
