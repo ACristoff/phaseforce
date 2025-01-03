@@ -17,6 +17,7 @@ class_name BasePlayer
 @onready var debug_text: Label = $Label
 @onready var floor_cast: RayCast2D = $RayCast2D
 @onready var platform_area: Area2D = $PlatformDetector
+@onready var door_detector: Area2D = $DoorDetector
 
 @onready var attack_timer: Timer = $Timers/AttackTimer
 @onready var reload_timer: Timer = $Timers/CooldownTimer
@@ -90,6 +91,7 @@ var knockback = Vector2.ZERO
 var face_right: bool = true
 var attack_direction
 var current_platform_stack: Array = []
+var current_door
 
 signal took_damage
 signal player_death
@@ -201,6 +203,7 @@ func _physics_process(delta: float) -> void:
 		anim_player.play("Run")
 		sprite.flip_h = (horizontalDirection == -1)
 		face_right = (horizontalDirection == 1)
+		door_detector.scale.x = horizontalDirection
 		##Footsteps
 		if is_on_floor() && step_timer.is_stopped():
 			step_timer.start()
@@ -222,7 +225,7 @@ func _physics_process(delta: float) -> void:
 	
 	if current_platform_stack.size() > 0:
 		if Input.is_action_pressed("move_down"):
-			for platform in current_platform_stack:
+			for platform in current_platform_stack:	
 				platform.disable_platform()
 		elif Input.is_action_just_released("move_down"):
 			for platform in current_platform_stack:
@@ -285,3 +288,12 @@ func _on_platform_detector_area_entered(area):
 func _on_platform_detector_area_exited(area):
 	area.enable_platform()
 	current_platform_stack.erase(area)
+
+func _on_door_detector_area_entered(area):
+	if area is Door:
+		current_door = area
+		print(current_door)
+
+func _on_door_detector_area_exited(area):
+	if area is Door:
+		current_door = null

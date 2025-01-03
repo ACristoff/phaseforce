@@ -1,5 +1,7 @@
 extends AnimatableBody2D
 
+class_name Door
+
 @onready var sound = preload("res://assets/sfx/misc/SNOW_SHOT.mp3")
 
 @onready var light_bulb = $LightCasing/LightBulb

@@ -159,6 +159,8 @@ offset_right = 3.0
 offset_bottom = -19.0
 text = "!"
 
+[node name="Area2D" type="Area2D" parent="."]
+
 [connection signal="area_entered" from="ScanArea" to="." method="_on_scan_area_area_entered"]
 [connection signal="body_entered" from="ScanArea" to="." method="_on_scan_area_body_entered"]
 [connection signal="body_exited" from="ScanArea" to="." method="_on_scan_area_body_exited"]
