@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpewbgbsovbuf"]
+[gd_scene load_steps=9 format=3 uid="uid://bpewbgbsovbuf"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_kkwol"]
 [ext_resource type="Script" path="res://game/characters/Panko/panko_player.gd" id="2_j36ei"]
@@ -7,6 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://tohm88r4k206" path="res://assets/sfx/quips/panko/QUIP_DAMAGED.mp3" id="3_yppyx"]
 [ext_resource type="AudioStream" uid="uid://buecie7an3nvv" path="res://assets/sfx/quips/panko/QUIP_KILL.mp3" id="4_3g0aw"]
 [ext_resource type="AudioStream" uid="uid://bmpvyd1yoesbh" path="res://assets/sfx/projectiles/TOMMY_GUN_ONESHOT_LAST.mp3" id="5_fj0uu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_na03n"]
+radius = 8.0
+height = 22.0
 
 [node name="PankoPlayer" instance=ExtResource("1_kkwol")]
 script = ExtResource("2_j36ei")
@@ -21,5 +25,5 @@ powered_up_fire_rate = 0.077
 powered_up_damage = 20
 powered_up_gun_sound = ExtResource("5_fj0uu")
 
-[node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2(23, 0)
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_na03n")

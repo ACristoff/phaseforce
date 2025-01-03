@@ -388,7 +388,7 @@ position = Vector2(0, 37)
 shape = SubResource("WorldBoundaryShape2D_24wkg")
 
 [node name="Generator" parent="." instance=ExtResource("14_83vny")]
-position = Vector2(2641, -391)
+position = Vector2(2642, -391)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -411,14 +411,10 @@ position = Vector2(691, 317)
 
 [node name="Electric_Doors" parent="Doors" instance=ExtResource("15_suq3s")]
 position = Vector2(658, 48)
-interactable = true
+closed = false
 
 [node name="Electric_Doors2" parent="Doors" instance=ExtResource("15_suq3s")]
 position = Vector2(1021, -144)
-
-[node name="ElectricDoor" parent="Doors" instance=ExtResource("15_suq3s")]
-position = Vector2(-113, 48)
-closed = false
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="just_destroyed" from="Generator" to="HUD" method="_on_generator_just_destroyed"]

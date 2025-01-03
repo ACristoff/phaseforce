@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://btb5qe7w5b6wg"]
+[gd_scene load_steps=13 format=3 uid="uid://btb5qe7w5b6wg"]
 
 [ext_resource type="Texture2D" uid="uid://dvk6tnf21cspc" path="res://assets/environment/placeables/interactables/electric-powered_door.png" id="1_64tr7"]
 [ext_resource type="Script" path="res://game/objects/electric_doors.gd" id="1_h5grl"]
@@ -20,40 +20,97 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kluta"]
 size = Vector2(20, 72)
 
-[node name="ElectricDoor" type="AnimatableBody2D"]
-collision_layer = 256
-collision_mask = 145
+[sub_resource type="Animation" id="Animation_533je"]
+resource_name = "open"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -70)]
+}
+
+[sub_resource type="Animation" id="Animation_px7nb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b58h6"]
+resource_name = "close"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -70), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5plqu"]
+_data = {
+"RESET": SubResource("Animation_px7nb"),
+"close": SubResource("Animation_b58h6"),
+"open": SubResource("Animation_533je")
+}
+
+[node name="ElectricDoorParent" type="Node2D"]
 script = ExtResource("1_h5grl")
 
-[node name="ElectricPoweredDoor" type="Sprite2D" parent="."]
+[node name="ElectricDoor" type="AnimatableBody2D" parent="."]
+collision_layer = 256
+collision_mask = 145
+
+[node name="ElectricPoweredDoor" type="Sprite2D" parent="ElectricDoor"]
 texture_filter = 3
 texture = ExtResource("1_64tr7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElectricDoor"]
 shape = SubResource("RectangleShape2D_672f3")
 
-[node name="LightCasing" type="Sprite2D" parent="."]
+[node name="LightCasing" type="Sprite2D" parent="ElectricDoor"]
 texture_filter = 3
 position = Vector2(-3, 2)
 texture = ExtResource("3_jgjhp")
 
-[node name="LightBulb" type="Sprite2D" parent="LightCasing"]
+[node name="LightBulb" type="Sprite2D" parent="ElectricDoor/LightCasing"]
 texture_filter = 3
 texture = ExtResource("4_5tiwa")
 
-[node name="PointLight2D" type="PointLight2D" parent="LightCasing/LightBulb"]
+[node name="PointLight2D" type="PointLight2D" parent="ElectricDoor/LightCasing/LightBulb"]
 position = Vector2(1, -1)
 texture = SubResource("GradientTexture2D_73kep")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="ElectricDoor"]
 collision_layer = 64
 collision_mask = 64
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElectricDoor/Area2D"]
 position = Vector2(-22, 0)
 shape = SubResource("RectangleShape2D_kluta")
 
-[node name="CloseMarker" type="Marker2D" parent="."]
-
-[node name="OpenMarker" type="Marker2D" parent="."]
-position = Vector2(0, -20)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ElectricDoor")
+libraries = {
+"": SubResource("AnimationLibrary_5plqu")
+}
