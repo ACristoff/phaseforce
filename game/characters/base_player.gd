@@ -160,6 +160,7 @@ func jump(force):
 	velocity.y = force
 
 func _physics_process(delta: float) -> void:
+	#print(global_position)
 	if health == 0:
 		player_death.emit()
 		health = -1

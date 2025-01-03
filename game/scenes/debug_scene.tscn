@@ -421,31 +421,19 @@ shape = SubResource("WorldBoundaryShape2D_24wkg")
 [node name="Generator" parent="." instance=ExtResource("14_83vny")]
 position = Vector2(2641, -391)
 
-[node name="Enemies" type="Node2D" parent="."]
-position = Vector2(2641, -391)
+[node name="Enemies" type="Node" parent="."]
 
 [node name="EnemyBase2" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-2614, 426)
+position = Vector2(223, 101)
 
 [node name="EnemyBase" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-2410, 490)
+position = Vector2(82, 72)
 
 [node name="EnemyBase3" parent="Enemies" instance=ExtResource("12_lij35")]
+position = Vector2(304, 71)
 
-[node name="EnemyBase4" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-2343, 464)
-
-[node name="EnemyBase5" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-2149, 458)
-
-[node name="EnemyBase6" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-1950, 709)
-
-[node name="EnemyBase7" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-1751, 710)
-
-[node name="EnemyBase8" parent="Enemies" instance=ExtResource("12_lij35")]
-position = Vector2(-3171, 467)
+[node name="EnemyBase" parent="Enemies/EnemyBase3" instance=ExtResource("12_lij35")]
+position = Vector2(163, 7)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="just_destroyed" from="Generator" to="HUD" method="_on_generator_just_destroyed"]

@@ -5,15 +5,19 @@ class_name EnemyBase
 @onready var idle_timer: Timer = $Timers/IdleTimer
 @onready var walk_timer: Timer = $Timers/WalkTimer
 @onready var alert_timer: Timer = $Timers/AlertTimer
-@onready var anim = $AnimationPlayer
-@onready var sprite = $Sprite2D
-@onready var scan_zone = $ScanArea
-@onready var floor_cast = $RayCast2D
-@onready var wall_cast = $WallCast
-@onready var player_cast = $PlayerCast
-@onready var collision = $CollisionShape2D
+@onready var attack_timer: Timer = $Timers/AttackTimer
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var scan_zone: Area2D = $ScanArea
+@onready var floor_cast: RayCast2D = $RayCast2D
+@onready var wall_cast: RayCast2D = $WallCast
+@onready var player_cast: RayCast2D = $PlayerCast
+@onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var gun = $Gun
+@onready var gun_sprite: Sprite2D = $Gun/EnemyPistol
+@onready var gun_barrel: Marker2D = $Gun/Marker2D
 @onready var alert_label: Label = $AlertLabel
+@onready var bullet: PackedScene = preload("res://game/projectiles/enemy_bullet.tscn")
 
 enum ENEMY_STATES {IDLE, IDLEWALK, ALERTED}
 @export var speed: int = 50
@@ -35,7 +39,7 @@ signal snowman_death
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	prints(global_position, position)
 	pass # Replace with function body.
 
 func die():
@@ -86,6 +90,16 @@ func _physics_process(delta):
 			if is_searching:
 				is_searching = false
 				velocity.x = 0
+			if sees_player:
+				gun_sprite.look_at(player.global_position)
+				var attack_viability = check_attack_distance()
+				if !attack_viability && !attack_timer.is_stopped():
+					#print('attack not viable, stop timer')
+					attack_timer.stop()
+				elif attack_viability && attack_timer.is_stopped():
+					#print('attack viable, start attack timer')
+					attack_timer.start()
+				#print(attack_viability, attack_timer.is_stopped())
 		if !senses_player && !sees_player && alert_timer.is_stopped():
 			alert_timer.start()
 			if !is_searching:
@@ -99,18 +113,53 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 	move_and_slide()
 
+func check_attack_distance():
+	var distance = player.global_position - global_position
+	var positiveX = int(distance.x)
+	var positiveY = int(distance.y)
+	if positiveX < 0:
+		positiveX = positiveX * -1
+	if positiveY < 0:
+		positiveY = positiveY * -1
+	
+	if positiveX < attack_range && positiveY < attack_range:
+		return "in range"
+	return false
+
+func attack():
+	print('shoot')
+	var new_enemy_bullet = bullet.instantiate()
+	new_enemy_bullet.global_position = to_global(gun_barrel.position)
+	var adjusted_angle = gun_sprite.rotation_degrees
+	if !facing_right:
+		adjusted_angle = -adjusted_angle + 180
+	new_enemy_bullet.rotation_degrees = adjusted_angle
+	print(adjusted_angle)
+	get_parent().add_child(new_enemy_bullet)
+
+#func attack() -> void:
+	#gun_anim.stop()
+	#gun_anim.play("kickback")
+	#var new_bullet = bullet.instantiate()
+	#var new_shell = shell.instantiate()
+	#new_bullet.damage = bullet_damage
+	#new_bullet.speed = bullet_speed
+	#new_bullet.global_position = cursor_spout.global_position
+	#new_shell.global_position = shell_spout.global_position
+	#var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
+	#new_bullet.rotation_degrees = adjusted_angle
+	#get_parent().add_child(new_bullet)
+	#get_parent().add_child(new_shell)
+
+
 func move_to_last_known():
 	#print('moving to last known position at:', last_known_position)
 	if last_known_position.x > global_position.x:
 		#print('move right')
 		velocity.x = speed
-		#if !facing_right:
-			#turn(true)
 	else:
 		#print("move left")
 		velocity.x = -speed
-		#if facing_right:
-			#turn(false)
 	pass
 
 func check_for_floor():
@@ -146,13 +195,7 @@ func check_for_sight():
 		sees_player = false
 		return false
 
-func track_player():
-	
-	pass
 
-func attack():
-	
-	pass
 
 func go_to_alert(entity):
 	enemy_state = ENEMY_STATES.ALERTED
@@ -184,12 +227,14 @@ func turn(direction):
 		wall_cast.scale.x = 1
 		scan_zone.scale.x = 1
 		gun.scale.x = 1
+		gun_barrel.position.x = 19
 	else:
 		sprite.flip_h = true
 		floor_cast.position.x = -10
 		wall_cast.scale.x = -1
 		scan_zone.scale.x = -1
 		gun.scale.x = -1
+		gun_barrel.position.x = -17
 
 func idle_walk_to(distance):
 	anim.play("move")
@@ -276,4 +321,11 @@ func _on_scan_area_body_exited(body):
 
 
 func _on_search_timer_timeout():
+	pass # Replace with function body.
+
+
+func _on_attack_timer_timeout():
+	#print("ATTACK TIME NYAHH")
+	attack_timer.stop()
+	attack()
 	pass # Replace with function body.
