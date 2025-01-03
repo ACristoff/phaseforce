@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcnjabyfgy3tm"]
+[gd_scene load_steps=9 format=3 uid="uid://dcnjabyfgy3tm"]
 
 [ext_resource type="Script" path="res://game/UI/hud.gd" id="1_g4rpk"]
 [ext_resource type="Texture2D" uid="uid://cc3f4swujlpu2" path="res://assets/ui/ammo_types/223remington.png" id="2_5nkkh"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_68nfx"]
 [ext_resource type="Texture2D" uid="uid://d4lx7mqd0g5nh" path="res://assets/ui/checkbox1.png" id="4_fopok"]
+[ext_resource type="PackedScene" uid="uid://b7tlk72uaaatj" path="res://game/UI/primary_objective_label.tscn" id="4_kj66g"]
 [ext_resource type="Texture2D" uid="uid://cjocwybbd0qxm" path="res://assets/ui/healthbottom.png" id="5_f2ved"]
 [ext_resource type="Texture2D" uid="uid://cats31d6vmo5o" path="res://assets/ui/healthtop.png" id="6_7t315"]
+[ext_resource type="PackedScene" uid="uid://ci8mbyjapxbgq" path="res://game/UI/extract_objective_label.tscn" id="6_eybuc"]
 
 [node name="HUD" type="Control"]
 texture_filter = 3
@@ -63,19 +65,8 @@ text = "Objectives:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Objective_Container/VBoxContainer"]
+[node name="PrimaryObjectiveLabel" parent="CanvasLayer/Objective_Container/VBoxContainer" instance=ExtResource("4_kj66g")]
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("4_fopok")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_68nfx")
-theme_override_font_sizes/font_size = 8
-text = "Destroy the Generator"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Objective_Container/VBoxContainer"]
 layout_mode = 2
@@ -90,19 +81,9 @@ layout_mode = 2
 theme = ExtResource("2_68nfx")
 theme_override_font_sizes/font_size = 8
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Objective_Container/VBoxContainer"]
+[node name="ExtractObjectiveLabel" parent="CanvasLayer/Objective_Container/VBoxContainer" instance=ExtResource("6_eybuc")]
+visible = false
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-texture = ExtResource("4_fopok")
-stretch_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-theme = ExtResource("2_68nfx")
-theme_override_font_sizes/font_size = 8
-text = "Escape"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 texture_filter = 3
@@ -117,3 +98,51 @@ max_value = 3.0
 value = 3.0
 texture_under = ExtResource("5_f2ved")
 texture_progress = ExtResource("6_7t315")
+
+[node name="Secret_container" type="MarginContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Secret_container"]
+layout_mode = 2
+
+[node name="SecretLabel" type="Label" parent="CanvasLayer/Secret_container/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_68nfx")
+theme_override_font_sizes/font_size = 8
+text = "SECRET FOUND"
+
+[node name="TimerContainer" type="MarginContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.5
+offset_right = 34.5
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TimerContainer"]
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer/TimerContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_68nfx")
+theme_override_font_sizes/font_size = 8
+text = "TIME TO EXTRACT:"
+
+[node name="SecretTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="SecretTimer" to="." method="_on_secret_timer_timeout"]

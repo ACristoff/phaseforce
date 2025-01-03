@@ -3,13 +3,17 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	DisplayServer.window_set_size(Vector2i(1920, 1080))
+	#DisplayServer.window_set_size(Vector2i(1920, 1080))
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+#func _input(event):
+	#if event.is_action_pressed("menu"):
+		#get_tree().paused = false
 
 func _on_resolution_item_selected(index):
 	if index == 0:

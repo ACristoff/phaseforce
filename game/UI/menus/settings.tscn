@@ -8,6 +8,7 @@
 OptionButton/fonts/font = ExtResource("2_3x86f")
 
 [node name="Control" type="Control"]
+process_mode = 2
 texture_filter = 3
 layout_mode = 3
 anchors_preset = 15

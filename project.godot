@@ -96,3 +96,4 @@ interact={
 2d_physics/layer_7="detectors"
 2d_physics/layer_8="player"
 2d_physics/layer_9="doors"
+2d_physics/layer_10="enemy_passthrough"

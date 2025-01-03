@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci8mbyjapxbgq"]
+
+[ext_resource type="Texture2D" uid="uid://d4lx7mqd0g5nh" path="res://assets/ui/checkbox1.png" id="1_orrpf"]
+[ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_ve6pa"]
+
+[node name="ExtractObjectiveLabel" type="HBoxContainer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_orrpf")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_ve6pa")
+theme_override_font_sizes/font_size = 8
+text = "GET THE FRICK OUT!!"
