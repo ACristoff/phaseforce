@@ -387,8 +387,9 @@ position = Vector2(1764, -588)
 position = Vector2(0, 37)
 shape = SubResource("WorldBoundaryShape2D_24wkg")
 
-[node name="Generator" parent="." instance=ExtResource("14_83vny")]
+[node name="Generator" parent="." node_paths=PackedStringArray("doors_to_unlock") instance=ExtResource("14_83vny")]
 position = Vector2(2642, -391)
+doors_to_unlock = [NodePath("../Doors/Electric_Doors"), NodePath("../Doors/Electric_Doors2")]
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -411,7 +412,6 @@ position = Vector2(691, 317)
 
 [node name="Electric_Doors" parent="Doors" instance=ExtResource("15_suq3s")]
 position = Vector2(658, 48)
-closed = false
 
 [node name="Electric_Doors2" parent="Doors" instance=ExtResource("15_suq3s")]
 position = Vector2(1021, -144)
