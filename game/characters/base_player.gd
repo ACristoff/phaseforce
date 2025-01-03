@@ -91,7 +91,7 @@ var knockback = Vector2.ZERO
 var face_right: bool = true
 var attack_direction
 var current_platform_stack: Array = []
-var current_door
+var current_door: Door
 
 signal took_damage
 signal player_death
@@ -177,6 +177,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("shoot"):
 		#AudioManager.play_sfx(tommy_last)
 		pass
+	if Input.is_action_just_pressed("interact") && current_door:
+		if current_door.closed && current_door.interactable:
+			current_door.open()
 	
 	##PLAYER MOVEMENT##
 	#Add the gravity.
@@ -289,11 +292,14 @@ func _on_platform_detector_area_exited(area):
 	area.enable_platform()
 	current_platform_stack.erase(area)
 
-func _on_door_detector_area_entered(area):
-	if area is Door:
-		current_door = area
-		print(current_door)
+func _on_door_detector_body_entered(body):
+	print(body)
+	current_door = body.get_parent()
+	if body is Door:
+		current_door = body
 
-func _on_door_detector_area_exited(area):
-	if area is Door:
+func _on_door_detector_body_exited(body):
+	print(body)
+	current_door = null
+	if body is Door:
 		current_door = null

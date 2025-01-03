@@ -72,7 +72,6 @@ _data = {
 radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75dr7"]
-radius = 6.0
 
 [node name="BasePlayer" type="CharacterBody2D" groups=["player"]]
 texture_filter = 3
@@ -145,12 +144,14 @@ shape = SubResource("CircleShape2D_8gosl")
 debug_color = Color(0.0156863, 0.65098, 0, 0.0627451)
 
 [node name="DoorDetector" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 320
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorDetector"]
-position = Vector2(13, 0)
+position = Vector2(17, 1)
 shape = SubResource("CircleShape2D_75dr7")
 
 [connection signal="area_entered" from="PlatformDetector" to="." method="_on_platform_detector_area_entered"]
 [connection signal="area_exited" from="PlatformDetector" to="." method="_on_platform_detector_area_exited"]
-[connection signal="area_entered" from="DoorDetector" to="." method="_on_door_detector_area_entered"]
-[connection signal="area_exited" from="DoorDetector" to="." method="_on_door_detector_area_exited"]
+[connection signal="body_entered" from="DoorDetector" to="." method="_on_door_detector_body_entered"]
+[connection signal="body_exited" from="DoorDetector" to="." method="_on_door_detector_body_exited"]
