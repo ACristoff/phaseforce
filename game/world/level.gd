@@ -35,6 +35,11 @@ func _ready():
 func _on_secret_found():
 	secrets_found += 1
 
+func render_objectives():
+	if primary_obj is Generator:
+		print("Destroy the Generator")
+	for obj in secondary_objs:
+		print(obj)
 
 func _on_player_death():
 	print("YOU GRADUATED")
