@@ -16,15 +16,16 @@ func _physics_process(delta):
 
 func _on_area_entered(_area):
 	#prints('area: ',_area)
-	#if area is BasePlayer:
-		#return
+	if _area is BasePlayer:
+		return
 	queue_free()
 	pass # Replace with function body.
 
 func _on_body_entered(body):
 	#prints('body: ',body)
 	if body is BasePlayer:
-		return
+		#return
+		pass
 	if body is SnowGround:
 		body.emit(self.global_position)
 		queue_free()
