@@ -17,12 +17,12 @@ func _ready():
 	pass
 
 func emit(emit_position):
-	destroy()
 	#print('yipee', emit_position)
 	var particle = PARTICLE.instantiate()
 	particle.global_position = emit_position
 	particle.type = 2
 	get_tree().current_scene.add_child(particle)
+	destroy()
 
 func destroy():
 	if destroyed == false:
