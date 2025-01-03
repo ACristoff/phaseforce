@@ -1,8 +1,8 @@
 extends AnimatableBody2D
 
-var interactable = true
-@onready var light_bulb = $LightBulb
-@onready var light = $LightBulb/PointLight2D
+@export var interactable = true
+@onready var light_bulb = $LightCasing/LightBulb
+@onready var light = $LightCasing/LightBulb/PointLight2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

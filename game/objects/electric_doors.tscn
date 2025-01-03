@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cceoyo46y67qx"]
+[gd_scene load_steps=9 format=3 uid="uid://btb5qe7w5b6wg"]
 
 [ext_resource type="Texture2D" uid="uid://dvk6tnf21cspc" path="res://assets/environment/placeables/interactables/electric-powered_door.png" id="1_64tr7"]
 [ext_resource type="Script" path="res://game/objects/electric_doors.gd" id="1_h5grl"]
@@ -17,10 +17,15 @@ gradient = SubResource("Gradient_1g8xo")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Electric_Doors" type="AnimatableBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kluta"]
+size = Vector2(20, 72)
+
+[node name="ElectricDoor" type="AnimatableBody2D"]
+collision_layer = 256
+collision_mask = 145
 script = ExtResource("1_h5grl")
 
-[node name="Electric-poweredDoor" type="Sprite2D" parent="."]
+[node name="ElectricPoweredDoor" type="Sprite2D" parent="."]
 texture_filter = 3
 texture = ExtResource("1_64tr7")
 
@@ -39,3 +44,11 @@ texture = ExtResource("4_5tiwa")
 [node name="PointLight2D" type="PointLight2D" parent="LightCasing/LightBulb"]
 position = Vector2(1, -1)
 texture = SubResource("GradientTexture2D_73kep")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-22, 0)
+shape = SubResource("RectangleShape2D_kluta")
