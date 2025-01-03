@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btb5qe7w5b6wg"]
+[gd_scene load_steps=12 format=3 uid="uid://btb5qe7w5b6wg"]
 
 [ext_resource type="Texture2D" uid="uid://dvk6tnf21cspc" path="res://assets/environment/placeables/interactables/electric-powered_door.png" id="1_64tr7"]
 [ext_resource type="Script" path="res://game/objects/electric_doors.gd" id="1_h5grl"]
@@ -16,9 +16,6 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_1g8xo")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kluta"]
-size = Vector2(20, 72)
 
 [sub_resource type="Animation" id="Animation_533je"]
 resource_name = "open"
@@ -74,7 +71,7 @@ _data = {
 "open": SubResource("Animation_533je")
 }
 
-[node name="ElectricDoorParent" type="Node2D"]
+[node name="ElectricDoorParent" type="Node2D" groups=["doors"]]
 script = ExtResource("1_h5grl")
 
 [node name="ElectricDoor" type="AnimatableBody2D" parent="."]
@@ -100,14 +97,6 @@ texture = ExtResource("4_5tiwa")
 [node name="PointLight2D" type="PointLight2D" parent="ElectricDoor/LightCasing/LightBulb"]
 position = Vector2(1, -1)
 texture = SubResource("GradientTexture2D_73kep")
-
-[node name="Area2D" type="Area2D" parent="ElectricDoor"]
-collision_layer = 64
-collision_mask = 64
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ElectricDoor/Area2D"]
-position = Vector2(-22, 0)
-shape = SubResource("RectangleShape2D_kluta")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../ElectricDoor")

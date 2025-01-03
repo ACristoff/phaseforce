@@ -16,32 +16,24 @@ class_name Door
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#if !closed:
-		#position = opened_marker.position
-	#AudioManager.play_sfx(sound)
-	#anim.play("close")
-	pass
-
-func open():
-	if interactable && closed:
-		AudioManager.play_sfx(open_sound)
-		anim.play("open")
-	elif !interactable && closed:
-		print("test")
-		AudioManager.play_sfx(deny_sound, -5)
-	pass
-
-func close():
-	#print('close!')
-	AudioManager.play_sfx(close_sound)
-	anim.play("close")
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
 	if interactable == true:
 		light_bulb.modulate = Color.GREEN
 		light.color = Color.GREEN
 	else:
 		light_bulb.modulate = Color.RED
 		light.color = Color.RED
+
+func distant_open():
+	if closed:
+		anim.play("open")
+
+func open():
+	if interactable && closed:
+		AudioManager.play_sfx(open_sound)
+		anim.play("open")
+	elif !interactable && closed:
+		AudioManager.play_sfx(deny_sound, -5)
+
+func close():
+	AudioManager.play_sfx(close_sound)
+	anim.play("close")

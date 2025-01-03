@@ -293,7 +293,6 @@ func _on_platform_detector_area_exited(area):
 	current_platform_stack.erase(area)
 
 func _on_door_detector_body_entered(body):
-	print(body)
 	current_door = body.get_parent()
 
 func _on_door_detector_body_exited(body):

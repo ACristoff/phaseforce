@@ -7,12 +7,14 @@ var destroyed = false
 @onready var graphic = $Sprite2D
 @onready var debris = $GPUParticles2D
 @onready var PARTICLE = preload("res://game/projectiles/bullet_hit_particle.tscn")
-# Called when the node enters the scene tree for the first time.
+
+@export var doors_to_unlock: Array[Door] = []
 
 signal just_destroyed
 
 func _ready():
-	randomize()
+	#randomize()
+	pass
 
 func emit(emit_position):
 	destroy()
@@ -28,6 +30,10 @@ func destroy():
 		destroyed = true
 		graphic.visible = false
 		debris.emitting = true
+		if doors_to_unlock.size() > 0:
+			for door in doors_to_unlock:
+				door.distant_open()
+		queue_free()
 	else:
 		pass
 
