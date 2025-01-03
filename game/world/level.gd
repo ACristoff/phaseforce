@@ -25,21 +25,6 @@ var is_paused = false
 signal level_completed
 signal game_over
 
-#func _input(event):
-	#if event.is_action_pressed("menu") && is_paused == false:
-#
-		#get_tree().paused = true
-		#is_paused = true
-	#if event.is_action_pressed("menu") && is_paused == true:
-		#get_tree().paused = false
-		#is_paused = false
-#
-#funbc 
-#
-#func _input(event):
-	#if event.is_action_pressed("menu"):
-		#get_tree().paused = true
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -63,11 +48,9 @@ func _ready():
 func pause_menu():
 	if is_paused:
 		Engine.time_scale = 1
-		pass
 	else:
 		Engine.time_scale = 0
-		pass
-	pass
+	is_paused = !is_paused
 
 func _process(delta):
 	if Input.is_action_just_pressed("menu"):
