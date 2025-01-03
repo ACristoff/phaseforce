@@ -2,10 +2,10 @@ extends Control
 
 @onready var anim = $AnimationPlayer
 @onready var graphic = $CanvasLayer/ColorRect
-@export var type = 1
+@export var do_fade_in: bool = true
 
 func _ready():
-	if type == 1:
+	if do_fade_in == true:
 		graphic.visible = true
 		fade_in()
 	else:
