@@ -1,9 +1,24 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvbodpjkkyrsn"]
+[gd_scene load_steps=12 format=3 uid="uid://b8a6ifsh8qdpk"]
 
 [ext_resource type="Texture2D" uid="uid://bwgry6ieoocaa" path="res://assets/objects/phasecopter.png" id="1_uwejt"]
 [ext_resource type="Shader" path="res://assets/shaders/power_up.gdshader" id="2_xa1d4"]
 [ext_resource type="Texture2D" uid="uid://cobocxw2mxarj" path="res://assets/particles/blade.png" id="3_7r35v"]
 [ext_resource type="Texture2D" uid="uid://cp5f3lgldkns8" path="res://assets/objects/copterdoor.png" id="4_usaej"]
+
+[sub_resource type="Animation" id="Animation_yyfst"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhaseCopter Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_algix"]
 resource_name = "flying"
@@ -13,7 +28,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PhaseCopter:frame")
+tracks/0/path = NodePath("PhaseCopter Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_yyfst"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PhaseCopter:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_phgax"]
@@ -51,6 +51,21 @@ shader_parameter/BLOOM_INTENSITY = 3.0
 shader_parameter/BLUR_ITERATIONS = 11
 shader_parameter/BLUR_SIZE = 0.03
 shader_parameter/BLUR_SUBDIVISIONS = 20
+
+[sub_resource type="Animation" id="Animation_pxu7u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Axel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_j54uu"]
 resource_name = "blade_spin"
@@ -69,30 +84,15 @@ tracks/0/keys = {
 "values": [0.0, 6.28319]
 }
 
-[sub_resource type="Animation" id="Animation_pxu7u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Axel:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ger1"]
 _data = {
 "RESET": SubResource("Animation_pxu7u"),
 "blade_spin": SubResource("Animation_j54uu")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="PhaseCopter" type="Node2D"]
 
-[node name="PhaseCopter" type="Sprite2D" parent="."]
+[node name="PhaseCopter Sprite" type="Sprite2D" parent="."]
 texture_filter = 3
 position = Vector2(148, 48)
 texture = ExtResource("1_uwejt")

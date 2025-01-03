@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://esqwdf2tdfok"]
 
 [ext_resource type="Script" path="res://game/world/extract_zone.gd" id="1_rkcl3"]
-[ext_resource type="PackedScene" path="res://game/objects/phasecopter.tscn" id="2_3xd57"]
+[ext_resource type="PackedScene" uid="uid://b8a6ifsh8qdpk" path="res://game/objects/phasecopter.tscn" id="2_3xd57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij7c5"]
 size = Vector2(199, 20)
@@ -9,7 +9,8 @@ size = Vector2(199, 20)
 [node name="ExtractZone" type="Node2D"]
 script = ExtResource("1_rkcl3")
 
-[node name="Node2D" parent="." instance=ExtResource("2_3xd57")]
+[node name="PhaseCopter" parent="." instance=ExtResource("2_3xd57")]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(181, 91)
