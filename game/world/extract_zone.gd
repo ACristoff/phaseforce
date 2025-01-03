@@ -8,6 +8,9 @@ var is_extract_active: bool = false
 
 signal player_extracted
 
+func _ready():
+	activate_extract()
+
 func activate_extract():
 	is_extract_active = true
 	copter.visible = true
