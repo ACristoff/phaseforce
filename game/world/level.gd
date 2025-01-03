@@ -3,7 +3,10 @@ extends Node2D
 class_name Level
 
 @export var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
+
 @export var quip_chance: int = 30
+
+@onready var menu = preload("res://game/UI/menus/settings.tscn")
 
 @onready var spawn: Marker2D = $SpawnPoint
 @onready var hud: HUD = $HUD
@@ -17,12 +20,29 @@ class_name Level
 var secrets_found = 0
 var character: PackedScene
 var player: BasePlayer
+var is_paused = false
 
 signal level_completed
 signal game_over
 
+#func _input(event):
+	#if event.is_action_pressed("menu") && is_paused == false:
+#
+		#get_tree().paused = true
+		#is_paused = true
+	#if event.is_action_pressed("menu") && is_paused == true:
+		#get_tree().paused = false
+		#is_paused = false
+#
+#funbc 
+#
+#func _input(event):
+	#if event.is_action_pressed("menu"):
+		#get_tree().paused = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	var spawn_char: BasePlayer = character.instantiate()
 	spawn_char.global_position = spawn.global_position
 	add_child(spawn_char)
@@ -40,7 +60,19 @@ func _ready():
 	render_objectives()
 	AudioManager.stop_music(false)
 
+func pause_menu():
+	if is_paused:
+		Engine.time_scale = 1
+		pass
+	else:
+		Engine.time_scale = 0
+		pass
+	pass
+
 func _process(delta):
+	if Input.is_action_just_pressed("menu"):
+		pause_menu()
+	
 	if !extract_timer.is_stopped():
 		#print("ETA", extract_timer.time_left)
 		hud.timer_label.text = str("TIME TO EXTRACT: ", int(extract_timer.time_left))

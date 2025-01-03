@@ -7,10 +7,12 @@ class_name Level_Manager
 @onready var fail_screen = preload("res://game/UI/menus/game_over.tscn")
 @onready var level_transition_screen = preload("res://game/UI/menus/win_con.tscn")
 
+
 var level_ref: Level
 var current_level = 0
 
 signal to_main
+
 
 var characters = {
 	"panko": load("res://game/characters/Panko/panko_player.tscn"),

@@ -5,17 +5,16 @@ class_name game_manager
 @onready var title = $Title
 
 @onready var level_manager = preload("res://game/data/level_manager.tscn")
-@onready var menu 
 
 
 @export var debug_mode = false
 var current_character = "panko"
 
+var is_paused = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#DisplayServer.window_set_size(Vector2i(1920, 1080))
-	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	if debug_mode:
 		title.queue_free()
 		var start_level_man = level_manager.instantiate()
@@ -23,9 +22,9 @@ func _ready():
 		start_level_man.load_level(0)
 		get_tree().set_debug_collisions_hint(true)
 
-func _input(event):
-	if event.is_action_pressed("menu"):
-		print("menu")
+#func _input(event):
+	#if event.is_action_pressed("menu") && !is_paused:
+		#get_tree().paused = true
 
 func _on_title_character_select():
 	var char_select = preload("res://game/UI/menus/character_select.tscn").instantiate()
