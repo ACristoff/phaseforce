@@ -12,10 +12,11 @@ extends Node2D
 @export var secondary_objs: Array[Node2D]
 @export var secrets: Array[Secret_Area]
 
-
 var secrets_found = 0
 var character: PackedScene
 var player: BasePlayer
+
+signal level_completed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,7 +41,6 @@ func _on_secret_found():
 
 func render_objectives():
 	if primary_obj is Generator:
-		#print("Destroy the Generator")
 		hud.primary_obj_label.text = "Destroy the Generator"
 		primary_obj.just_destroyed.connect(_on_primary_obj_completed.bind())
 	for obj in secondary_objs:
@@ -53,9 +53,17 @@ func _on_primary_obj_completed():
 	#play extract music
 	pass
 
+func generate_level_complete_data():
+	var objectives = str("Objectives completed: ", 2)
+	var secrets = str("Secrets found: ", 0)
+	var enemies = str("Enemies killed: ", 1)
+	
+	var all = {"secrets": secrets}
+	return all
+
 func _on_extract():
-	print("You win!")
-	pass
+	level_completed.emit(generate_level_complete_data())
+	print(generate_level_complete_data())
 
 func _on_player_death():
 	print("YOU GRADUATED")
