@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcyvqrwjcn8dt"]
+[gd_scene load_steps=13 format=3 uid="uid://bcyvqrwjcn8dt"]
 
 [ext_resource type="Script" path="res://game/characters/base_player.gd" id="1_lf5mu"]
 [ext_resource type="AudioStream" uid="uid://pckpxxpgy43a" path="res://assets/sfx/quips/panko/QUIP_POWERUP.mp3" id="2_34bpo"]
@@ -71,6 +71,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gosl"]
 radius = 25.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vc31"]
+size = Vector2(32, 20)
+
 [node name="BasePlayer" type="CharacterBody2D" groups=["player"]]
 texture_filter = 3
 collision_layer = 129
@@ -140,6 +143,14 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformDetector"]
 shape = SubResource("CircleShape2D_8gosl")
 debug_color = Color(0.0156863, 0.65098, 0, 0.0627451)
+
+[node name="DoorDetector" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 320
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorDetector"]
+position = Vector2(24, 0)
+shape = SubResource("RectangleShape2D_2vc31")
 
 [connection signal="area_entered" from="PlatformDetector" to="." method="_on_platform_detector_area_entered"]
 [connection signal="area_exited" from="PlatformDetector" to="." method="_on_platform_detector_area_exited"]

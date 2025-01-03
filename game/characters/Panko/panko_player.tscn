@@ -12,6 +12,7 @@
 script = ExtResource("2_j36ei")
 damaged_quips = Array[AudioStreamMP3]([ExtResource("3_yppyx")])
 kill_quips = Array[AudioStreamMP3]([ExtResource("4_3g0aw")])
+normal_fire_rate = 2.0
 normal_bullet_speed = 1000
 normal_damage = 100
 normal_gun_sound = ExtResource("3_pcgrl")
@@ -19,3 +20,6 @@ powered_up_gun = ExtResource("3_5mmsr")
 powered_up_fire_rate = 0.077
 powered_up_damage = 20
 powered_up_gun_sound = ExtResource("5_fj0uu")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(23, 0)

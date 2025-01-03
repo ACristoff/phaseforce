@@ -416,5 +416,9 @@ interactable = true
 [node name="Electric_Doors2" parent="Doors" instance=ExtResource("15_suq3s")]
 position = Vector2(1021, -144)
 
+[node name="ElectricDoor" parent="Doors" instance=ExtResource("15_suq3s")]
+position = Vector2(-113, 48)
+closed = false
+
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="just_destroyed" from="Generator" to="HUD" method="_on_generator_just_destroyed"]

@@ -1,5 +1,6 @@
 extends AnimatableBody2D
 
+@onready var sound = preload("res://assets/sfx/misc/SNOW_SHOT.mp3")
 
 @onready var light_bulb = $LightCasing/LightBulb
 @onready var light = $LightCasing/LightBulb/PointLight2D
@@ -16,10 +17,12 @@ func _ready():
 
 func open():
 	print('open sesame')
+	AudioManager.play_sfx(sound)
 	pass
 
 func close():
 	print('close!')
+	AudioManager.play_sfx(sound)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

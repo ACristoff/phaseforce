@@ -56,4 +56,4 @@ shape = SubResource("RectangleShape2D_kluta")
 [node name="CloseMarker" type="Marker2D" parent="."]
 
 [node name="OpenMarker" type="Marker2D" parent="."]
-position = Vector2(0, -80)
+position = Vector2(0, -20)

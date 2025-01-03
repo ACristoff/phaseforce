@@ -99,7 +99,6 @@ func quip(quip_array):
 	var quip = quip_array[random_quip]
 	AudioManager.play_quip(quip)
 
-
 func _ready() -> void:
 	var game_man: game_manager = get_node("/root/GameManager")
 	if game_man.debug_mode:
