@@ -19,6 +19,7 @@ var character: PackedScene
 var player: BasePlayer
 
 signal level_completed
+signal game_over
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -68,8 +69,7 @@ func _on_extract():
 	level_completed.emit(generate_level_complete_data())
 
 func _on_player_death():
-	print("YOU GRADUATED")
-	pass
+	game_over.emit()
 
 func _on_player_kill():
 	if roll_for_quip():

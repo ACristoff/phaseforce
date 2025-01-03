@@ -10,6 +10,8 @@ class_name Level_Manager
 var level_ref: Level
 var current_level = 0
 
+signal to_main
+
 var characters = {
 	"panko": load("res://game/characters/Panko/panko_player.tscn"),
 	"lia": load("res://game/characters/lia/lia_player.tscn"),
@@ -24,17 +26,27 @@ func load_level(id):
 	var game_man: game_manager = get_node("/root/GameManager")
 	new_level.character = characters[game_man.current_character]
 	new_level.level_completed.connect(_on_level_complete.bind())
+	new_level.game_over.connect(_on_death.bind())
 	add_child(new_level)
 	level_ref = new_level
-	
-	print(level_ref, level_ref.level_completed.is_connected(_on_level_complete))
+	#print(level_ref, level_ref.level_completed.is_connected(_on_level_complete))
 
 
-##TODO
 func _on_death():
+	print("YOU GRADUATED")
+	var fail = fail_screen.instantiate()
 	level_ref.queue_free()
-	load_level(current_level)
+	fail.retry.connect(_on_restart.bind())
+	fail.quit_to_main.connect(_on_clicked_to_main.bind())
+	add_child(fail)
 
+func _on_clicked_to_main():
+	to_main.emit()
+
+func _on_restart():
+	var fail = get_child(0)
+	fail.queue_free()
+	load_level(current_level)
 
 func _on_level_complete(data):
 	print('do complete level', data)
