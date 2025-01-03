@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bo8235t87pkb1"]
+[gd_scene load_steps=21 format=3 uid="uid://bo8235t87pkb1"]
 
 [ext_resource type="Script" path="res://game/data/title_control.gd" id="1_epqi3"]
 [ext_resource type="Texture2D" uid="uid://betqi4sbw8ywd" path="res://assets/ui/title/Title.png" id="2_j6iul"]
@@ -11,68 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://tv7bip0e2nad" path="res://game/projectiles/spent_shell.tscn" id="6_ih1qs"]
 [ext_resource type="Texture2D" uid="uid://dupigsbyqxg1m" path="res://assets/environment/placeables/decorations/titleheli.png" id="6_ojxjh"]
 [ext_resource type="Texture2D" uid="uid://cx351xvbj2njp" path="res://assets/particles/generator/generator_debris.png" id="7_nlwd2"]
-
-[sub_resource type="Animation" id="Animation_6pn75"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ColorRect:mouse_filter")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-
-[sub_resource type="Animation" id="Animation_3po2m"]
-resource_name = "start"
-length = 2.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ColorRect:mouse_filter")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.7, 1.8, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 0, 2, 2]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_51e4d"]
-_data = {
-"RESET": SubResource("Animation_6pn75"),
-"start": SubResource("Animation_3po2m")
-}
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h5kjd"]
 particles_animation = true
@@ -181,23 +119,6 @@ text = "Credits
 layout_mode = 2
 text = "Quit
 "
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
-z_index = 100
-offset_left = -110.0
-offset_top = -91.0
-offset_right = 777.0
-offset_bottom = 446.0
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_51e4d")
-}
-autoplay = "start"
 
 [node name="Particles" type="Node2D" parent="CanvasLayer"]
 position = Vector2(50, 318)
