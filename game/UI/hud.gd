@@ -11,13 +11,12 @@ class_name HUD
 @export var shotgun_ammo = preload("res://assets/ui/ammo_types/shotgun_shell.png")
 
 @onready var health_bar = $CanvasLayer/MarginContainer/HealthBar
+@onready var secret_timer = $SecretTimer
+@onready var secret_container = $CanvasLayer/Secret_container
 
-#@onready var obj1 = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer
+##TODO
 @onready var obj2 = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer2
-#@onready var obj3 = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3
-#@onready var obj1label = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer/Label
 @onready var obj2label = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer2/Label
-#@onready var obj3label = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer3/Label
 
 @onready var primary_obj = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel
 @onready var primary_obj_label = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel/Label
@@ -26,7 +25,6 @@ class_name HUD
 var killed_snowmen = 0
 var amount_to_kill = 10
 var level = 1
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,6 +42,11 @@ func gain_health():
 
 func update_primary():
 	pass
+
+func secret_found():
+	secret_container.visible = true
+	secret_timer.start()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -93,3 +96,7 @@ func _on_button_pressed():
 
 #func _on_generator_just_destroyed():
 	#completeob1()
+
+
+func _on_secret_timer_timeout():
+	secret_container.visible = false

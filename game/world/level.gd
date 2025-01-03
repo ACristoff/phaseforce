@@ -42,6 +42,7 @@ func _ready():
 
 func _on_secret_found():
 	secrets_found += 1
+	hud.secret_found()
 
 func render_objectives():
 	if primary_obj is Generator:

@@ -98,3 +98,32 @@ max_value = 3.0
 value = 3.0
 texture_under = ExtResource("5_f2ved")
 texture_progress = ExtResource("6_7t315")
+
+[node name="Secret_container" type="MarginContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Secret_container"]
+layout_mode = 2
+
+[node name="SecretLabel" type="Label" parent="CanvasLayer/Secret_container/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_68nfx")
+theme_override_font_sizes/font_size = 8
+text = "SECRET FOUND"
+
+[node name="SecretTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="SecretTimer" to="." method="_on_secret_timer_timeout"]
