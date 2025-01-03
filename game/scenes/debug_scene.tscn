@@ -392,7 +392,7 @@ position = Vector2(0, 37)
 shape = SubResource("WorldBoundaryShape2D_24wkg")
 
 [node name="Generator" parent="." node_paths=PackedStringArray("doors_to_unlock") instance=ExtResource("14_83vny")]
-position = Vector2(-62, 50)
+position = Vector2(2659, -389)
 doors_to_unlock = [NodePath("../Doors/Electric_Doors"), NodePath("../Doors/Electric_Doors2")]
 
 [node name="Enemies" type="Node" parent="."]
