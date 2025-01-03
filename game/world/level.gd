@@ -45,6 +45,10 @@ func _ready():
 	render_objectives()
 	AudioManager.stop_music(false)
 
+func play_level_music():
+	#AudioManager.play_music()
+	pass
+
 func pause_menu():
 	if is_paused:
 		Engine.time_scale = 1
