@@ -84,7 +84,6 @@ var fire_rate = normal_fire_rate
 var bullet_speed
 var bullet_damage
 
-
 var health: int = 3
 
 var powered_up: bool = false
@@ -96,6 +95,7 @@ var current_door: Door
 var is_active: bool = false
 
 signal took_damage
+signal gained_health
 signal player_death
 
 func quip(quip_array):
@@ -113,6 +113,13 @@ func _ready() -> void:
 	gun_sound = normal_gun_sound
 	bullet_speed = normal_bullet_speed
 	bullet_damage = normal_damage
+
+func gain_heart():
+	gained_health.emit()
+	##TODO
+	AudioManager.play_sfx(player_hurt_sfx)
+	health += 1
+
 
 func take_damage():
 	took_damage.emit()

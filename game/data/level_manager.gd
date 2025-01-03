@@ -19,7 +19,6 @@ var characters = {
 	"pippa": load("res://game/characters/Panko/panko_player.tscn")
 }
 
-
 func load_level(id):
 	current_level = id
 	var new_level: Level = levels[id].instantiate()
@@ -29,17 +28,15 @@ func load_level(id):
 	new_level.game_over.connect(_on_death.bind())
 	add_child(new_level)
 	level_ref = new_level
-	#print(level_ref, level_ref.level_completed.is_connected(_on_level_complete))
-
 
 func _on_death():
-	print("YOU GRADUATED")
 	var fail = fail_screen.instantiate()
 	level_ref.queue_free()
 	fail.retry.connect(_on_restart.bind())
 	fail.quit_to_main.connect(_on_clicked_to_main.bind())
 	add_child(fail)
 
+##TODO
 func _on_clicked_to_main():
 	to_main.emit()
 
@@ -52,8 +49,9 @@ func _on_level_complete(data):
 	print('do complete level', data)
 	var transition = level_transition_screen.instantiate()
 	level_ref.queue_free()
+	##TODO ADD SIGNAL CONNECTIONS
+	transition.show_stats('stats')
 	add_child(transition)
-
 
 ##TODO
 func next_level():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bhvj1gnroht24"]
+[gd_scene load_steps=23 format=3 uid="uid://bhvj1gnroht24"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_hmkun"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_uxllv"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://btb5qe7w5b6wg" path="res://game/objects/electric_doors.tscn" id="15_suq3s"]
 [ext_resource type="PackedScene" uid="uid://esqwdf2tdfok" path="res://game/world/extract_zone.tscn" id="16_33r4y"]
 [ext_resource type="PackedScene" uid="uid://0c6hho6rprwl" path="res://game/world/secret_area.tscn" id="17_g7bls"]
+[ext_resource type="PackedScene" uid="uid://clgkki5cfqcx1" path="res://game/objects/heart_pickup.tscn" id="18_1kfdk"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bh078"]
 polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -616, -16, -627, 1)
@@ -429,6 +430,9 @@ one_shot = true
 
 [node name="SecretArea" parent="." instance=ExtResource("17_g7bls")]
 position = Vector2(2692, 260)
+
+[node name="HeartPickup" parent="." instance=ExtResource("18_1kfdk")]
+position = Vector2(529, 165)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 [connection signal="just_destroyed" from="Generator" to="HUD" method="_on_generator_just_destroyed"]
