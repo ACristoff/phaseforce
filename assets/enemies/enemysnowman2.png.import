@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dev8u21bp15p0"
-path="res://.godot/imported/crackedicicle.png-c1c11e3b163eded8f5804f6ccdf6d430.ctex"
+uid="uid://lcsbp6ii6xel"
+path="res://.godot/imported/enemysnowman2.png-e559cccd9cf80fedb44276ac2ed4c129.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/placeables/interactables/crackedicicle.png"
-dest_files=["res://.godot/imported/crackedicicle.png-c1c11e3b163eded8f5804f6ccdf6d430.ctex"]
+source_file="res://assets/enemies/enemysnowman2.png"
+dest_files=["res://.godot/imported/enemysnowman2.png-e559cccd9cf80fedb44276ac2ed4c129.ctex"]
 
 [params]
 
