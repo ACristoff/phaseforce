@@ -62,6 +62,10 @@ func _ready():
 	for spawn in spawners:
 		var new_spawn: EnemySpawner = spawn
 		new_spawn.enemy_spawned.connect(_on_enemy_spawned.bind() )
+	var gifts = get_tree().get_nodes_in_group("gifts")
+	for gift in gifts:
+		var new_gift: Gift = gift
+		new_gift.gift_collected.connect(_on_gift_collected.bind() )
 	extract_zone.player_extracted.connect(_on_extract.bind())
 	render_objectives()
 	AudioManager.stop_music(false)
@@ -102,10 +106,9 @@ func render_objectives():
 	if while_powered_up:
 		hud.optional_objective_label.text = str("Extract while powered up")
 	if collect_x_gifts:
-		pass
+		hud.optional_objective_label.text = str("Collect ", gifts_collected, " / ", gift_quantity, " gifts")
 	if collect_x_keycard:
 		hud.optional_objective_label.text = str("Collect the ", collect_keycard_color, " keycard")
-		pass
 
 func _on_primary_obj_completed():
 	hud.complete_primary()
@@ -140,7 +143,6 @@ func _on_player_death():
 
 func _on_player_kill():
 	if kill_x_snowmen && snowmen_killed != kill_quantity:
-		#kill_quantity += 1
 		snowmen_killed += 1
 		hud.tick_up()
 		hud.optional_objective_label.text = str("Kill ", snowmen_killed, " / ", kill_quantity, " Snowmen")
@@ -167,6 +169,17 @@ func _on_death_barrier_body_entered(body):
 		var player = body as BasePlayer
 		player.global_position = spawn.global_position
 		player.take_damage()
+
+func _on_gift_collected():
+	if collect_x_gifts && gifts_collected != gift_quantity:
+		gifts_collected += 1
+		hud.tick_up()
+		hud.optional_objective_label.text = str("Collect ", gifts_collected, " / ", gift_quantity, " gifts")
+	if collect_x_gifts && gifts_collected == gift_quantity && optional_completed == false: 
+		hud.optional_objective_label.text = str("Collect ", gifts_collected, " / ", gift_quantity, " gifts")
+		hud.complete_optional()
+		optional_completed = true
+	pass
 
 func roll_for_quip():
 	var roll = randi_range(0, 100)
