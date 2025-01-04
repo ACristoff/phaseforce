@@ -25,7 +25,7 @@ enum ENEMY_STATES {IDLE, IDLEWALK, ALERTED}
 @export var speed: int = 50
 var enemy_state: ENEMY_STATES = ENEMY_STATES.IDLE
 var alert: bool = false
-var health: int = 100
+@export var health: int = 100
 var facing_right: bool = true
 var player: BasePlayer
 var senses_player: bool = false

@@ -16,10 +16,8 @@ func switch_songs():
 func play_music(music: AudioStreamMP3, volume = 0.0):
 	playing = true
 	if current_music:
-		#print('replacing song')
 		new_music = music
 		new_volume = volume
-		#print(current_music, new_music)
 		switch_songs()
 		return
 	current_music = music
