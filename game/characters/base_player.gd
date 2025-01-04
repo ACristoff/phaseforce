@@ -69,6 +69,7 @@ class_name BasePlayer
 @export var normal_bullet_speed: int
 @export var normal_damage: int
 @export var normal_gun_sound: AudioStreamMP3
+@export var normal_gun_capacity: int = 5
 
 @export_group("Powered Up Mode")
 @export var powered_up_gun: PackedScene
@@ -78,9 +79,14 @@ class_name BasePlayer
 @export var powered_up_bullet_speed: int =  500
 @export var powered_up_damage: int
 @export var powered_up_gun_sound: AudioStreamMP3
+@export var powered_up_gun_capacity: int = 60
+@export var powered_up_gun_mags: int = 2
 
 var gun_spread = normal_gun_spread
 var fire_rate = normal_fire_rate
+var powered_up_mags
+var gun_magazine_capacity
+var gun_magazine
 var bullet_speed
 var bullet_damage
 
