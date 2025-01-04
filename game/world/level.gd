@@ -127,6 +127,10 @@ func generate_level_complete_data():
 
 func _on_extract():
 	print(generate_level_complete_data())
+	if player.powered_up && while_powered_up:
+		optional_completed = true
+	if player.health == 3 && while_full_health:
+		optional_completed = true
 	level_completed.emit(generate_level_complete_data())
 
 func _on_player_death():
