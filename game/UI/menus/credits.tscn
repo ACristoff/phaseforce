@@ -20,10 +20,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Credits:
-DiGifigurati - Programming
+DiGifigurati - Programming Lead
 Caleb - Sprites & Tech Art 
 Jere - Sprites
-Adam - Music & Sound
+Adam - Music Composition & Sound Design
 
 A Beret Parade fangame"
 horizontal_alignment = 1
