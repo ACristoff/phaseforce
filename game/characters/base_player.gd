@@ -159,6 +159,7 @@ func power_up():
 	gun_sound = powered_up_gun_sound
 	bullet_speed = powered_up_bullet_speed
 	bullet_damage = powered_up_damage
+	gun_spread = powered_up_gun_spread
 	powered_up = true
 	quip(power_up_quips)
 
@@ -170,6 +171,7 @@ func power_down():
 	gun_sound = normal_gun_sound
 	bullet_speed = normal_bullet_speed
 	bullet_damage = normal_damage
+	gun_spread = normal_gun_spread
 	powered_up = false
 
 func jump(force):
