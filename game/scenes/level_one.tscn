@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dqpvddi2llok6"]
+[gd_scene load_steps=24 format=4 uid="uid://dqpvddi2llok6"]
 
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_3skp3"]
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_cakfj"]
@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://clgkki5cfqcx1" path="res://game/objects/heart_pickup.tscn" id="16_p2eg5"]
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="17_ximk6"]
 [ext_resource type="PackedScene" uid="uid://yb2f6m8tsacr" path="res://game/world/enemy_spawner.tscn" id="19_q0e02"]
-[ext_resource type="PackedScene" uid="uid://dmhr87anj7ufo" path="res://game/objects/gift.tscn" id="20_qwc5a"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vb4j5"]
 polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -616, -16, -627, 1)
@@ -593,9 +592,6 @@ position = Vector2(1898, -100)
 
 [node name="EnemySpawner10" parent="Node" instance=ExtResource("19_q0e02")]
 position = Vector2(1740, -76)
-
-[node name="Gift" parent="." instance=ExtResource("20_qwc5a")]
-position = Vector2(-17, 66)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 

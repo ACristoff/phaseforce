@@ -99,6 +99,7 @@ signal took_damage
 signal gained_health
 signal player_death
 signal bullet_shot
+signal reloaded
 signal no_ammo
 
 func quip(quip_array):
@@ -131,9 +132,9 @@ func start_reload():
 	if reload_timer.is_stopped():
 		##TODO ANIMATION
 		reload_timer.start()
+		reloaded.emit()
 
 func reload():
-	print('reloaded!')
 	gun_magazine = gun_magazine_capacity
 	AudioManager.play_sfx(reload_sound)
 	if powered_up:
@@ -172,8 +173,13 @@ func power_up():
 	bullet_speed = powered_up_bullet_speed
 	bullet_damage = powered_up_damage
 	gun_spread = powered_up_gun_spread
+	gun_magazine = powered_up_gun_capacity
+	gun_magazine_capacity = powered_up_gun_capacity
+	##TODO ALLOW FOR MULTIPLE PICKUPS
+	powered_up_mags = powered_up_gun_mags
 	powered_up = true
 	quip(power_up_quips)
+
 
 func power_down():
 	sprite.texture = normal_sprite
@@ -192,7 +198,6 @@ func jump(force):
 	velocity.y = force
 
 func _physics_process(delta: float) -> void:
-	#print(global_position)
 	if health == 0:
 		player_death.emit()
 		health = -1
@@ -300,7 +305,9 @@ func attack() -> void:
 	get_parent().add_child(new_shell)
 	bullet_shot.emit()
 	gun_magazine -= 1
-	print("mag", gun_magazine)
+	#print("mag", gun_magazine)
+	if gun_magazine == 0:
+		no_ammo.emit()
 
 
 #TODO Split out the attack cursor as its own node?
