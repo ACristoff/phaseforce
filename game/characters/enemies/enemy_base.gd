@@ -19,6 +19,7 @@ class_name EnemyBase
 @onready var alert_label: Label = $AlertLabel
 @onready var bullet: PackedScene = preload("res://game/projectiles/enemy_bullet.tscn")
 @onready var shot_sfx = preload("res://assets/sfx/projectiles/SILENCED_PISTOL.mp3")
+@onready var hurt_sfx = preload("res://assets/sfx/characters/PF_ENEMY_HURT.mp3")
 
 enum ENEMY_STATES {IDLE, IDLEWALK, ALERTED}
 @export var speed: int = 50
@@ -48,6 +49,7 @@ func die():
 	queue_free()
 
 func take_damage(damage):
+	AudioManager.play_sfx(hurt_sfx)
 	health -= damage
 
 func _physics_process(delta):
