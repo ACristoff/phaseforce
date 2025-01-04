@@ -6,14 +6,42 @@ var knockback_force = -2
 var charge = 0
 var charge_cap = 21
 var charge_rate = 8
+var current_shot
 
+@onready var charge_shot = preload("res://game/projectiles/charge_shot.tscn")
 @onready var sound_player = $AudioStreamPlayer2D
 @onready var first_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_FIRST.mp3")
 @onready var middle_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_MIDDLE.mp3")
 @onready var last_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_LAST.mp3")
+#func attack() -> void:
+
 
 func attack():
-	super()
+	gun_anim.stop()
+	gun_anim.play("kickback")
+	if powered_up:
+		#var new_shot = charge_shot.instantiate()
+		pass
+	else:
+		var new_bullet = bullet.instantiate()
+		var new_shell = shell.instantiate()
+		new_bullet.damage = bullet_damage
+		new_bullet.speed = bullet_speed
+		new_bullet.global_position = cursor_spout.global_position
+		new_shell.global_position = shell_spout.global_position
+		var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
+		new_bullet.rotation_degrees = adjusted_angle
+		get_parent().add_child(new_bullet)
+		get_parent().add_child(new_shell)
+	bullet_shot.emit()
+	gun_magazine -= 1
+	if powered_up:
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
+	else:
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
+	#print("mag", gun_magazine)
+	if gun_magazine == 0:
+		no_ammo.emit()
 	if !powered_up:
 		var knockback_vector = (cursor_spout.global_position - global_position) * knockback_force
 		if knockback_vector.y < 0:

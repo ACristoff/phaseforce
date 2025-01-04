@@ -20,7 +20,6 @@ func _ready():
 func release_shot():
 	active = true
 	collider.disabled = false
-	pass
 
 func _on_area_entered(_area):
 	if _area is BasePlayer:
