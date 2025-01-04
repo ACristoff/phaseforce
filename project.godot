@@ -33,6 +33,7 @@ player=""
 enemies=""
 doors=""
 enemy_spawners=""
+gifts=""
 
 [input]
 
