@@ -13,9 +13,21 @@ class_name Level
 @onready var extract_timer: Timer = $ExtractTimer
 @onready var extract_zone: Extract_Zone = $ExtractZone
 
+@export_category("Objectives")
 @export var primary_obj: Node2D
-@export var secondary_objs: Array[Node2D]
 @export var secrets: Array[Secret_Area]
+@export_group("Kill X")
+@export var kill_x_snowmen: bool = false
+@export var kill_quantity: int = 10
+@export_group("Win While X")
+@export var while_full_health: bool = false
+@export var while_powered_up: bool = false
+@export_group("Collect X")
+@export var collect_x_gifts: bool = false
+@export var gift_quantity: int = 10
+@export var collect_x_keycard: bool = false
+@export var collect_keycard_color: String = "Red"
+
 
 var secrets_found = 0
 var character: PackedScene
@@ -78,8 +90,8 @@ func render_objectives():
 	if primary_obj is Generator:
 		hud.primary_obj_label.text = "Destroy the Generator"
 		primary_obj.just_destroyed.connect(_on_primary_obj_completed.bind())
-	for obj in secondary_objs:
-		print(obj)
+	#for obj in secondary_objs:
+		#print(obj)
 
 func _on_primary_obj_completed():
 	hud.complete_primary()
