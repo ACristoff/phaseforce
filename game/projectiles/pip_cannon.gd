@@ -34,3 +34,9 @@ func _on_body_entered(body):
 	#elif body is Door:
 		#queue_free()
 	queue_free()
+
+func _explode():
+	pass
+
+func _kill_myself():
+	pass
