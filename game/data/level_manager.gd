@@ -17,7 +17,8 @@ var characters = {
 	"panko": load("res://game/characters/Panko/panko_player.tscn"),
 	"lia": load("res://game/characters/lia/lia_player.tscn"),
 	"tenma": load("res://game/characters/tenma/tenma_player.tscn"),
-	"pippa": load("res://game/characters/Panko/panko_player.tscn")
+	"pippa": load("res://game/characters/pippa/pippa_player.tscn"),
+	"lumi": load("res://game/characters/Panko/panko_player.tscn")
 }
 
 func load_level(id):

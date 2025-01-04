@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2oscudku2h3t"]
+
+[ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_ddrdq"]
+[ext_resource type="Texture2D" uid="uid://wfelj55r43i2" path="res://assets/characters/pippa/base_form/Pippa_Sprite.png" id="2_jnmno"]
+[ext_resource type="Script" path="res://game/characters/pippa/pippa_player.gd" id="2_qvqcs"]
+[ext_resource type="AudioStream" uid="uid://bpj08qc0tei3v" path="res://assets/music/Pippa the Ripper.mp3" id="3_dse0c"]
+
+[node name="PippaPlayer" instance=ExtResource("1_ddrdq")]
+script = ExtResource("2_qvqcs")
+power_up_quips = Array[AudioStreamMP3]([ExtResource("3_dse0c")])
+normal_sprite = null
+normal_gun = null
+powered_up_gun = null
+powered_up_sprite = null
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_jnmno")
