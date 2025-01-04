@@ -100,11 +100,13 @@ hframes = 10
 
 [node name="Timers" type="Node" parent="."]
 
+[node name="ReloadTimer" type="Timer" parent="Timers"]
+wait_time = 1.5
+one_shot = true
+
 [node name="AttackTimer" type="Timer" parent="Timers"]
 wait_time = 0.077
 one_shot = true
-
-[node name="CooldownTimer" type="Timer" parent="Timers"]
 
 [node name="InvulTimer" type="Timer" parent="Timers"]
 
@@ -151,6 +153,7 @@ collision_mask = 320
 position = Vector2(17, 1)
 shape = SubResource("CircleShape2D_75dr7")
 
+[connection signal="timeout" from="Timers/ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="area_entered" from="PlatformDetector" to="." method="_on_platform_detector_area_entered"]
 [connection signal="area_exited" from="PlatformDetector" to="." method="_on_platform_detector_area_exited"]
 [connection signal="body_entered" from="DoorDetector" to="." method="_on_door_detector_body_entered"]
