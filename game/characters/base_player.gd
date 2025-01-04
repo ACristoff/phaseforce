@@ -33,6 +33,7 @@ class_name BasePlayer
 	preload("res://assets/sfx/misc/SNOW_STEP_4.mp3")
 ]
 @onready var player_hurt_sfx: AudioStreamMP3 = preload("res://assets/sfx/misc/PF_PLAYER_HURT.mp3")
+@onready var gain_heart_sound: AudioStreamWAV = preload("res://assets/sfx/projectiles/Magic_Healing_Minor.wav")
 @onready var reload_sound: AudioStreamMP3 = preload("res://assets/sfx/projectiles/RELOAD.mp3")
 @onready var empty_mag_sound: AudioStreamMP3 = preload("res://assets/sfx/UI/AMMO_DEPLETED.mp3")
 @onready var power_up_sound: AudioStreamWAV = preload("res://assets/sfx/characters/PF_POWERUP.wav")
@@ -139,7 +140,7 @@ func add_keycard(_key):
 
 func gain_heart():
 	gained_health.emit()
-	AudioManager.play_sfx(player_hurt_sfx)
+	AudioManager.play_sfx_wav(gain_heart_sound)
 	if health < 3:
 		health += 1
 
