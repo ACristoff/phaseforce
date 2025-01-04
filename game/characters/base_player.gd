@@ -141,6 +141,7 @@ func gain_heart():
 func start_reload():
 	if reload_timer.is_stopped():
 		##TODO ANIMATION
+		gun_anim.play("reload")
 		reload_timer.start()
 		reloaded.emit()
 
