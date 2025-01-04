@@ -6,21 +6,6 @@ var knockback_force = -4
 @onready var brick_projectile = preload("res://game/projectiles/brick.tscn")
 @export var shotgun_pellet_count = 5
 
-#func attack() -> void:
-	#gun_anim.stop()
-	#gun_anim.play("kickback")
-
-	#bullet_shot.emit()
-	#gun_magazine -= 1
-	#if powered_up:
-		#hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
-	#else:
-		#hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
-	##print("mag", gun_magazine)
-	#if gun_magazine == 0:
-		#no_ammo.emit()
-
-
 func attack() -> void:
 	gun_anim.stop()
 	gun_anim.play("kickback")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ojbfv20gljtb"]
+[gd_scene load_steps=7 format=3 uid="uid://ci8gnweryibaa"]
 
 [ext_resource type="Texture2D" uid="uid://dp74hhbbk8upj" path="res://assets/characters/panko/base_form/Panko_Arm.png" id="1_6qjgi"]
 [ext_resource type="Texture2D" uid="uid://d0t2jmho3f6h1" path="res://assets/characters/lia/powerup_form/uncharged_cannon.png" id="2_tuyav"]

@@ -15,7 +15,6 @@ func attack():
 			if knockback_vector.y < 0:
 				velocity.y = knockback_vector.y * 4
 			velocity.y = knockback_vector.y - 30
-			
 		knockback = knockback_vector * 3
 
 func power_up():

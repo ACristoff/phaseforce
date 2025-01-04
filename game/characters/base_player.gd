@@ -61,7 +61,7 @@ class_name BasePlayer
 @export_group("Normal Mode")
 @export var normal_sprite: Texture2D 
 @export var normal_gun: PackedScene
-@export var normal_fire_rate: float = 1
+@export var normal_fire_rate: float
 @export var normal_gun_spread: Array[int] = [0,0]
 @export var normal_bullet_speed: int
 @export var normal_damage: int
@@ -73,7 +73,7 @@ class_name BasePlayer
 @export_group("Powered Up Mode")
 @export var powered_up_gun: PackedScene
 @export var powered_up_sprite: Texture2D
-@export var powered_up_fire_rate: float = 1
+@export var powered_up_fire_rate: float
 @export var powered_up_gun_spread: Array[int] = [-1, 2]
 @export var powered_up_bullet_speed: int =  500
 @export var powered_up_damage: int
@@ -84,7 +84,7 @@ class_name BasePlayer
 @export var powered_up_bullet_hud_sprite: CompressedTexture2D = preload("res://assets/ui/ammo_types/45cal.png")
 
 var gun_spread = normal_gun_spread
-var fire_rate = normal_fire_rate
+var fire_rate: float = normal_fire_rate
 var mags
 var gun_magazine_capacity
 var gun_magazine
@@ -117,6 +117,7 @@ func quip(quip_array):
 	AudioManager.play_quip(quip)
 
 func _ready() -> void:
+	fire_rate = normal_fire_rate
 	hud = get_tree().get_first_node_in_group("hud")
 	var game_man: game_manager = get_node("/root/GameManager")
 	if game_man.debug_mode:
@@ -134,6 +135,7 @@ func _ready() -> void:
 	hud.new_bullet_sprite = normal_bullet_hud_sprite
 	hud.change_bullet_sprite()
 	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
+	
 
 func add_keycard(_key):
 	keycards.append(_key)
