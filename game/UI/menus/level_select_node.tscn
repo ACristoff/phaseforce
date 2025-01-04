@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdegiu2yand6e"]
+[gd_scene load_steps=6 format=3 uid="uid://cdegiu2yand6e"]
 
+[ext_resource type="Script" path="res://game/UI/menus/level_select_node.gd" id="1_bo2xr"]
 [ext_resource type="Texture2D" uid="uid://bnc5pmu7mweij" path="res://assets/ui/anvil_base.png" id="1_h7fys"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_1bduh"]
 [ext_resource type="Texture2D" uid="uid://byhijdba8t6q0" path="res://assets/ui/play_button.png" id="2_bv7fs"]
@@ -11,6 +12,7 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
+script = ExtResource("1_bo2xr")
 
 [node name="Level1" type="VBoxContainer" parent="."]
 layout_mode = 1

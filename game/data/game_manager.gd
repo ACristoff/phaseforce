@@ -37,5 +37,5 @@ func selected_character(new_character, char_screen):
 	char_screen.queue_free()
 	var level_man = level_manager.instantiate()
 	add_child(level_man)
-	level_man.load_level(0)
+	level_man.load_level(1)
 	#level_man.use_character(current_character)
