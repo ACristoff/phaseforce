@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://nupa2mkacopf"]
+[gd_scene load_steps=15 format=3 uid="uid://nupa2mkacopf"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_h75yb"]
 [ext_resource type="Texture2D" uid="uid://dsugoh3hgabw4" path="res://assets/characters/tenma/base_form/Tenma_Sprite.png" id="2_b3wq4"]
@@ -6,11 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://d1ycpfierg33b" path="res://assets/sfx/quips/tenma/clownma maemi final.mp3" id="3_gdqld"]
 [ext_resource type="PackedScene" uid="uid://cbxurny1qkudw" path="res://game/characters/tenma/tenma_arm.tscn" id="3_nke10"]
 [ext_resource type="Texture2D" uid="uid://xsbbu573qjhd" path="res://assets/characters/tenma/powerup_form/Tenmaoffice_Sprite.png" id="3_rauom"]
-[ext_resource type="PackedScene" uid="uid://vm2gu5vb0b6p" path="res://game/characters/tenma/tenma_arm_powered_up.tscn" id="4_arfvs"]
+[ext_resource type="PackedScene" uid="uid://u7b7iyo0ybi6" path="res://game/characters/tenma/tenma_arm_powered_up.tscn" id="4_arfvs"]
 [ext_resource type="AudioStream" uid="uid://b3nffj2y7jv53" path="res://assets/sfx/quips/tenma/tenma_get_pussy.mp3" id="4_jypmq"]
 [ext_resource type="AudioStream" uid="uid://cmr57pnckrioa" path="res://assets/sfx/quips/tenma/Get_filtered.mp3" id="5_5vol1"]
 [ext_resource type="AudioStream" uid="uid://c32yfbwg0ossu" path="res://assets/sfx/projectiles/BRICK_THROW.mp3" id="5_7yb55"]
 [ext_resource type="AudioStream" uid="uid://di72kgaya170e" path="res://assets/sfx/quips/tenma/Not a chi.mp3" id="6_i873u"]
+[ext_resource type="Texture2D" uid="uid://dl1inhumu2hyk" path="res://assets/ui/ammo_types/brick.png" id="10_ivvwf"]
 [ext_resource type="AudioStream" uid="uid://d0q7fy5ym0j6l" path="res://assets/sfx/projectiles/SHOTGUN.mp3" id="12_n1o86"]
 [ext_resource type="Texture2D" uid="uid://dtlw6h7tp6myv" path="res://assets/ui/ammo_types/shotgun_shell.png" id="13_ggxrv"]
 
@@ -28,6 +29,7 @@ normal_damage = 150
 normal_gun_sound = ExtResource("5_7yb55")
 normal_gun_capacity = 1
 normal_gun_reload_time = 0.7
+normal_bullet_hud_sprite = ExtResource("10_ivvwf")
 powered_up_gun = ExtResource("4_arfvs")
 powered_up_sprite = ExtResource("3_rauom")
 powered_up_gun_spread = Array[int]([-10, 10])
