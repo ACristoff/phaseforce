@@ -191,6 +191,8 @@ func power_up():
 	##TODO ALLOW FOR MULTIPLE PICKUPS
 	powered_up_mags = powered_up_gun_mags
 	powered_up = true
+	hud.new_bullet_sprite = powered_up_bullet_hud_sprite
+	hud.change_bullet_sprite()
 	quip(power_up_quips)
 
 
@@ -203,6 +205,8 @@ func power_down():
 	bullet_speed = normal_bullet_speed
 	bullet_damage = normal_damage
 	gun_spread = normal_gun_spread
+	hud.new_bullet_sprite = normal_bullet_hud_sprite
+	hud.change_bullet_sprite()
 	powered_up = false
 
 func jump(force):
@@ -222,10 +226,13 @@ func _physics_process(delta: float) -> void:
 			attack_timer.start()
 			AudioManager.play_sfx(gun_sound)
 			attack()
-		elif reload_timer.is_stopped() && gun_magazine <= 0 && empty_click_timer.is_stopped():
-			AudioManager.play_sfx(empty_mag_sound)
-			empty_click_timer.wait_time = fire_rate
-			empty_click_timer.start()
+		#elif reload_timer.is_stopped() && gun_magazine <= 0 && empty_click_timer.is_stopped():
+			#AudioManager.play_sfx(empty_mag_sound)
+			#empty_click_timer.wait_time = fire_rate
+			#empty_click_timer.start()
+	if Input.is_action_just_pressed("shoot") && gun_magazine <= 0:
+		AudioManager.play_sfx(empty_mag_sound)
+		pass
 	if Input.is_action_just_released("shoot"):
 		#AudioManager.play_sfx(tommy_last)
 		pass
