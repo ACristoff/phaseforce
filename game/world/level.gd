@@ -29,16 +29,19 @@ class_name Level
 @export var collect_keycard_color: String = "Red"
 
 
+var optional_completed: bool = false
 var secrets_found = 0
 var character: PackedScene
 var player: BasePlayer
 var is_paused = false
+var snowmen_killed = 0
 
 signal level_completed
 signal game_over
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	kill_x_snowmen = true
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	var spawn_char: BasePlayer = character.instantiate()
 	spawn_char.global_position = spawn.global_position
@@ -90,8 +93,9 @@ func render_objectives():
 	if primary_obj is Generator:
 		hud.primary_obj_label.text = "Destroy the Generator"
 		primary_obj.just_destroyed.connect(_on_primary_obj_completed.bind())
-	if kill_x_snowmen:
-		pass
+	if kill_x_snowmen == true:
+		#print("do kill")
+		hud.optional_objective_label.text = str("Kill ", snowmen_killed, " / ", kill_quantity, " Snowmen")
 	if while_full_health:
 		pass
 	if while_powered_up:
@@ -129,6 +133,15 @@ func _on_player_death():
 	game_over.emit()
 
 func _on_player_kill():
+	if kill_x_snowmen && snowmen_killed != kill_quantity:
+		#kill_quantity += 1
+		snowmen_killed += 1
+		hud.tick_up()
+		hud.optional_objective_label.text = str("Kill ", snowmen_killed, " / ", kill_quantity, " Snowmen")
+	if kill_x_snowmen && snowmen_killed == kill_quantity && optional_completed == false: 
+		hud.optional_objective_label.text = str("Kill ", snowmen_killed, " / ", kill_quantity, " Snowmen")
+		hud.complete_optional()
+		optional_completed = true
 	if roll_for_quip():
 		player.quip(player.kill_quips)
 

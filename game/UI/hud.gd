@@ -14,10 +14,11 @@ class_name HUD
 @onready var secret_timer = $SecretTimer
 @onready var secret_container = $CanvasLayer/Secret_container
 
-@onready var optional_objective = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer2
-@onready var optional_objective_label = $CanvasLayer/Objective_Container/VBoxContainer/HBoxContainer2/Label
+
 @onready var primary_obj = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel
 @onready var primary_obj_label = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel/Label
+@onready var optional_objective = $CanvasLayer/Objective_Container/VBoxContainer/OptionalObjective
+@onready var optional_objective_label = $CanvasLayer/Objective_Container/VBoxContainer/OptionalObjective/Label
 @onready var extract_obj = $CanvasLayer/Objective_Container/VBoxContainer/ExtractObjectiveLabel
 @onready var timer_container = $CanvasLayer/TimerContainer
 @onready var timer_label = $CanvasLayer/TimerContainer/HBoxContainer/TimerLabel
@@ -28,6 +29,7 @@ class_name HUD
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#if 
 	#if level == 1:
 		#obj1label.text = "Destroy the Generator"
 		#obj2label.text = "Kill  "+str(killed_snowmen)+"/"+str(amount_to_kill)+"  Snowmen"

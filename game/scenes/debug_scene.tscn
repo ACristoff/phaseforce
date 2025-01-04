@@ -35,6 +35,7 @@ distance = -360.0
 [node name="DebugScene" type="Node2D" node_paths=PackedStringArray("primary_obj")]
 script = ExtResource("1_hmkun")
 primary_obj = NodePath("Generator")
+kill_x_snowmen = true
 
 [node name="WorldGenerator" parent="." instance=ExtResource("1_uxllv")]
 
