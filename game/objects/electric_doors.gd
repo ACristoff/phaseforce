@@ -1,8 +1,8 @@
 extends Node2D
 class_name Door
 
-@onready var open_sound = preload("res://assets/sfx/misc/SNOW_SHOT.mp3")
-@onready var close_sound = preload("res://assets/characters/lia/base_form/desert_eagle.png")
+@onready var open_sound = preload("res://assets/sfx/objects/GATE_OPEN.mp3")
+@onready var close_sound = preload("res://assets/sfx/objects/GATE_CLOSE.mp3")
 @onready var deny_sound = preload("res://assets/sfx/objects/GATE_DENY.mp3")
 
 @onready var light_bulb = $ElectricDoor/LightCasing/LightBulb
@@ -32,14 +32,14 @@ func check_for_keycard(_key):
 		light.color = Color.GREEN
 		interactable = true
 	elif keycard != "None":
-		AudioManager.play_sfx(deny_sound, -5)
+		AudioManager.play_sfx(deny_sound, -10)
 
 func open():
 	if interactable && closed:
 		AudioManager.play_sfx(open_sound)
 		anim.play("open")
 	elif !interactable && closed:
-		AudioManager.play_sfx(deny_sound, -5)
+		AudioManager.play_sfx(deny_sound, -10)
 
 func close():
 	AudioManager.play_sfx(close_sound)
