@@ -17,7 +17,7 @@
 
 [node name="TenmaPlayer" instance=ExtResource("1_h75yb")]
 script = ExtResource("2_ybem5")
-shotgun_pellet_count = 12
+shotgun_pellet_count = 10
 death_quips = Array[AudioStreamMP3]([ExtResource("3_gdqld")])
 damaged_quips = Array[AudioStreamMP3]([ExtResource("4_jypmq")])
 kill_quips = Array[AudioStreamMP3]([ExtResource("5_5vol1")])
@@ -37,7 +37,6 @@ powered_up_gun_spread = Array[int]([-10, 10])
 powered_up_damage = 30
 powered_up_gun_sound = ExtResource("12_n1o86")
 powered_up_gun_capacity = 6
-powered_up_gun_mags = 3
 powered_up_bullet_hud_sprite = ExtResource("13_ggxrv")
 
 [node name="Sprite2D" parent="." index="2"]
