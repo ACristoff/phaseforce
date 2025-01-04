@@ -32,6 +32,7 @@ normal_gun_reload_time = 0.7
 normal_bullet_hud_sprite = ExtResource("10_ivvwf")
 powered_up_gun = ExtResource("4_arfvs")
 powered_up_sprite = ExtResource("3_rauom")
+powered_up_fire_rate = 1.0
 powered_up_gun_spread = Array[int]([-10, 10])
 powered_up_damage = 30
 powered_up_gun_sound = ExtResource("12_n1o86")
