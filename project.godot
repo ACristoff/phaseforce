@@ -32,7 +32,6 @@ window/stretch/scale_mode="integer"
 player=""
 enemies=""
 doors=""
-enemy_spawners=""
 gifts=""
 
 [input]

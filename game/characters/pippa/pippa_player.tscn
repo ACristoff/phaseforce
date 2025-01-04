@@ -1,14 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2oscudku2h3t"]
+[gd_scene load_steps=11 format=3 uid="uid://d2oscudku2h3t"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_ddrdq"]
 [ext_resource type="Texture2D" uid="uid://wfelj55r43i2" path="res://assets/characters/pippa/base_form/Pippa_Sprite.png" id="2_jnmno"]
 [ext_resource type="Script" path="res://game/characters/pippa/pippa_player.gd" id="2_qvqcs"]
 [ext_resource type="Texture2D" uid="uid://b1piq1rno34rs" path="res://assets/characters/pippa/powerup_form/Pippa_Sprite2.png" id="3_owpr1"]
+[ext_resource type="PackedScene" uid="uid://b8nykvlgtorjp" path="res://game/characters/pippa/pippa_arm_2.tscn" id="4_an1bv"]
+[ext_resource type="AudioStream" uid="uid://4ljuudbg24rl" path="res://assets/sfx/projectiles/PISTOL.mp3" id="5_i7nky"]
+[ext_resource type="PackedScene" uid="uid://7iroq8vvmu27" path="res://game/characters/pippa/pippa_arm_powered_up.tscn" id="5_juyn3"]
+[ext_resource type="Texture2D" uid="uid://cy0lif385cwo6" path="res://assets/ui/ammo_types/45cal.png" id="6_ml6y5"]
+[ext_resource type="AudioStream" uid="uid://bjb4mo6t7hbgd" path="res://assets/sfx/projectiles/CANNON.mp3" id="9_4feya"]
+[ext_resource type="Texture2D" uid="uid://cj17x1nggnfq2" path="res://assets/ui/ammo_types/artillery_shell.png" id="9_wyty0"]
 
 [node name="PippaPlayer" instance=ExtResource("1_ddrdq")]
 script = ExtResource("2_qvqcs")
 normal_sprite = ExtResource("2_jnmno")
+normal_gun = ExtResource("4_an1bv")
+normal_fire_rate = 0.28
+normal_gun_spread = Array[int]([-1, 1])
+normal_bullet_speed = 600
+normal_damage = 35
+normal_gun_sound = ExtResource("5_i7nky")
+normal_gun_capacity = 18
+normal_gun_reload_time = 0.8
+normal_bullet_hud_sprite = ExtResource("6_ml6y5")
+powered_up_gun = ExtResource("5_juyn3")
 powered_up_sprite = ExtResource("3_owpr1")
+powered_up_fire_rate = 1.0
+powered_up_damage = 200
+powered_up_gun_sound = ExtResource("9_4feya")
+powered_up_gun_capacity = 2
+powered_up_gun_mags = 3
+powered_up_gun_reload_time = 3.0
+powered_up_bullet_hud_sprite = ExtResource("9_wyty0")
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_jnmno")

@@ -4,7 +4,7 @@ class_name Level
 
 @export var music = preload("res://assets/music/PF_ICY_STAGE.mp3")
 
-@export var quip_chance: int = 30
+@export var quip_chance: int = 25
 
 @onready var menu = preload("res://game/UI/menus/settings.tscn")
 
@@ -28,7 +28,6 @@ class_name Level
 @export var collect_x_keycard: bool = false
 @export var collect_keycard_color: String = "Red"
 
-
 var optional_completed: bool = false
 var secrets_found: int = 0
 var character: PackedScene
@@ -41,7 +40,7 @@ var gifts_collected: int = 0
 signal level_completed
 signal game_over
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	kill_x_snowmen = true
 	process_mode = Node.PROCESS_MODE_PAUSABLE
