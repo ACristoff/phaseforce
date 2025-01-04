@@ -31,9 +31,7 @@ func _ready():
 	pass # Replace with function body.
 
 func change_bullet_sprite():
-	print(bullet_sprite)
 	bullet_sprite.texture = new_bullet_sprite
-	pass
 
 func update_bullets(bullets_total):
 	bullet_count.text = bullets_total
