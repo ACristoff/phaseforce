@@ -41,6 +41,10 @@ func _ready():
 		new_enemy.enemy_death.connect(_on_player_kill.bind())
 	for secret in secrets:
 		secret.secret_found.connect(_on_secret_found.bind())
+	var spawners = get_tree().get_nodes_in_group("enemy_spawners")
+	for spawn in spawners:
+		var new_spawn: EnemySpawner = spawn 
+		new_spawn.enemy_spawned.connect(_on_enemy_spawned.bind() )
 	extract_zone.player_extracted.connect(_on_extract.bind())
 	render_objectives()
 	AudioManager.stop_music(false)
@@ -48,6 +52,9 @@ func _ready():
 func play_level_music():
 	#AudioManager.play_music()
 	pass
+
+func _on_enemy_spawned(enemy_ref: EnemyBase):
+	enemy_ref.enemy_death.connect(_on_player_kill.bind())
 
 func pause_menu():
 	if is_paused:
@@ -79,8 +86,12 @@ func _on_primary_obj_completed():
 	extract_timer.start()
 	hud.timer_container.visible = true
 	extract_zone.activate_extract()
-	#play extract music
-	pass
+	var spawners = get_tree().get_nodes_in_group("enemy_spawners")
+	for spawn in spawners:
+		var current_spawner: EnemySpawner = spawn
+		current_spawner.extract_active = true
+		if current_spawner.trigger == current_spawner.TriggerTypes.ON_EXTRACT:
+			current_spawner.spawn_enemy()
 
 func generate_level_complete_data():
 	var objectives = str("Objectives completed: ", 2)

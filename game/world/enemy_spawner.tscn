@@ -1,20 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://yb2f6m8tsacr"]
+[gd_scene load_steps=4 format=3 uid="uid://yb2f6m8tsacr"]
 
 [ext_resource type="Script" path="res://game/world/enemy_spawner.gd" id="1_dc3fb"]
+[ext_resource type="PackedScene" uid="uid://c8jo543xm1x0a" path="res://game/characters/enemies/enemy_base.tscn" id="2_iuh0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usr3l"]
-size = Vector2(112, 64)
+size = Vector2(256, 128)
 
-[node name="EnemySpawner" type="Node2D"]
+[node name="EnemySpawner" type="Node2D" groups=["enemy_spawners"]]
 script = ExtResource("1_dc3fb")
+enemy_to_spawn = ExtResource("2_iuh0g")
 
 [node name="SpawnPos" type="Marker2D" parent="."]
-position = Vector2(0, -22)
+position = Vector2(0, -48)
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -32)
+position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_usr3l")
 debug_color = Color(0.879911, 0.000374457, 0.825835, 0.0392157)
 
