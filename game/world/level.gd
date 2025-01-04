@@ -118,10 +118,10 @@ func _on_primary_obj_completed():
 			current_spawner.spawn_enemy()
 
 func generate_level_complete_data():
-	var objectives = str("Objectives completed: ", 2)
+	var objective = str("Objective completed: :3")
+	var optional_objective = str("Optional objective completed: ", optional_completed )
 	var secrets = str("Secrets found: ", 0)
 	var enemies = str("Enemies killed: ", 1)
-	
 	var all = {"secrets": secrets}
 	return all
 
