@@ -130,7 +130,7 @@ func _ready() -> void:
 	gun_magazine_capacity = normal_gun_capacity
 	hud.new_bullet_sprite = normal_bullet_hud_sprite
 	hud.change_bullet_sprite()
-	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity))
+	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, "x ∞"))
 
 func gain_heart():
 	gained_health.emit()
@@ -150,7 +150,7 @@ func reload():
 	if powered_up:
 		powered_up_mags -= 1
 	else:
-		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity))
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, "x ∞"))
 
 func take_damage():
 	took_damage.emit()
@@ -321,7 +321,10 @@ func attack() -> void:
 	get_parent().add_child(new_shell)
 	bullet_shot.emit()
 	gun_magazine -= 1
-	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity))
+	if powered_up:
+		pass
+	else:
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, "x ∞"))
 	#print("mag", gun_magazine)
 	if gun_magazine == 0:
 		no_ammo.emit()
