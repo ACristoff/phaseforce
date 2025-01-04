@@ -1,13 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bem052dalf283"]
+[gd_scene load_steps=4 format=3 uid="uid://bem052dalf283"]
 
-[ext_resource type="Texture2D" uid="uid://ivx1d067loia" path="res://icon.svg" id="1_06utc"]
+[ext_resource type="Script" path="res://game/objects/keycard.gd" id="1_h0kfx"]
+[ext_resource type="Texture2D" uid="uid://cpph12sef15ms" path="res://assets/particles/keycard3.png" id="2_8xbm8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yosso"]
 
 [node name="Keycard" type="Area2D"]
+script = ExtResource("1_h0kfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yosso")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_06utc")
+texture_filter = 3
+texture = ExtResource("2_8xbm8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
