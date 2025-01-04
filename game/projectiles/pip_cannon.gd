@@ -3,6 +3,10 @@ extends Area2D
 @export var speed = 500
 var damage = 50
 
+@onready var explosion = $Explosion
+@onready var anim = $AnimationPlayer
+@onready var explosion_sound
+
 func _physics_process(delta):
 	position += transform.x * speed * delta
 
