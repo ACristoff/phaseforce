@@ -4,6 +4,22 @@ extends BasePlayer
 var knockback_force = -4
 @onready var TRANSEFFECT = preload("res://game/effects/transformation_sequence.tscn")
 @onready var brick_projectile = preload("res://game/projectiles/brick.tscn")
+@export var shotgun_pellet_count = 5
+
+#func attack() -> void:
+	#gun_anim.stop()
+	#gun_anim.play("kickback")
+
+	#bullet_shot.emit()
+	#gun_magazine -= 1
+	#if powered_up:
+		#hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
+	#else:
+		#hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
+	##print("mag", gun_magazine)
+	#if gun_magazine == 0:
+		#no_ammo.emit()
+
 
 func attack() -> void:
 	gun_anim.stop()
@@ -17,14 +33,23 @@ func attack() -> void:
 		new_brick.rotation_degrees = adjusted_angle
 		get_parent().add_child(new_brick)
 	else:
-		bullet_shot.emit()
-		pass
+		var new_shell = shell.instantiate()
+		new_shell.global_position = shell_spout.global_position
+		get_parent().add_child(new_shell)
+		for pellets in shotgun_pellet_count:
+			var new_bullet = bullet.instantiate()
+			new_bullet.damage = bullet_damage
+			new_bullet.speed = bullet_speed
+			new_bullet.global_position = cursor_spout.global_position
+			var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
+			new_bullet.rotation_degrees = adjusted_angle
+			get_parent().add_child(new_bullet)
+	bullet_shot.emit()
 	gun_magazine -= 1
 	if powered_up:
 		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
 	else:
 		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
-	#print("mag", gun_magazine)
 	if gun_magazine == 0:
 		no_ammo.emit()
 	if powered_up:

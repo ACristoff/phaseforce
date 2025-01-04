@@ -303,7 +303,7 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_just_released("move_down"):
 			for platform in current_platform_stack:
 				platform.enable_platform()
-	if powered_up && gun_magazine == 0 && mags >= 0:
+	if powered_up && gun_magazine == 0 && mags <= 0:
 		power_down()
 	#Idle
 	if velocity == Vector2(0,0) or velocity == Vector2.ZERO:
