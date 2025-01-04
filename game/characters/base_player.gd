@@ -193,6 +193,7 @@ func power_up():
 	powered_up = true
 	hud.new_bullet_sprite = powered_up_bullet_hud_sprite
 	hud.change_bullet_sprite()
+	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", powered_up_mags))
 	quip(power_up_quips)
 
 
@@ -226,22 +227,13 @@ func _physics_process(delta: float) -> void:
 			attack_timer.start()
 			AudioManager.play_sfx(gun_sound)
 			attack()
-		#elif reload_timer.is_stopped() && gun_magazine <= 0 && empty_click_timer.is_stopped():
-			#AudioManager.play_sfx(empty_mag_sound)
-			#empty_click_timer.wait_time = fire_rate
-			#empty_click_timer.start()
 	if Input.is_action_just_pressed("shoot") && gun_magazine <= 0:
 		AudioManager.play_sfx(empty_mag_sound)
-		pass
-	if Input.is_action_just_released("shoot"):
-		#AudioManager.play_sfx(tommy_last)
-		pass
 	if Input.is_action_just_pressed("interact") && current_door:
 		if current_door.closed:
 			current_door.open()
 	if Input.is_action_just_pressed("reload"):
 		start_reload()
-	
 	##PLAYER MOVEMENT##
 	#Add the gravity.
 	if not is_on_floor():
