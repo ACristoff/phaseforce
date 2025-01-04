@@ -1,6 +1,6 @@
 extends Node2D
 
-var shake_amount = .1
+var shake_amount = .2
 @onready var graphic = $Insideheli
 @onready var choppa = preload("res://assets/sfx/objects/CHOPPA_CLOSE.mp3")
 # Called when the node enters the scene tree for the first time.

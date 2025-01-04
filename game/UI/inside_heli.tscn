@@ -11,8 +11,9 @@ script = ExtResource("1_a3a4i")
 
 [node name="Insideheli" type="Sprite2D" parent="."]
 texture_filter = 3
-position = Vector2(374, 175)
-scale = Vector2(1.8, 1.8)
+position = Vector2(362, 186)
+rotation = 0.0174533
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_kpcrg")
 
 [node name="parallax" type="Node2D" parent="."]
