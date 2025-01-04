@@ -25,8 +25,7 @@ func _on_area_entered(_area):
 func _on_body_entered(body):
 	#prints('body: ',body)
 	if body is BasePlayer:
-		#return
-		pass
+		return
 	if body is SnowGround:
 		body.emit(self.global_position)
 		queue_free()

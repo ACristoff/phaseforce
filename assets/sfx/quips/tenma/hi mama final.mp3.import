@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bden33hjj4g82"
+path="res://.godot/imported/hi mama final.mp3-ab95614559ba12c2fc93c9c0f0655f49.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/quips/tenma/hi mama final.mp3"
+dest_files=["res://.godot/imported/hi mama final.mp3-ab95614559ba12c2fc93c9c0f0655f49.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

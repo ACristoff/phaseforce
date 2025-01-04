@@ -15,8 +15,18 @@ func attack():
 			if knockback_vector.y < 0:
 				velocity.y = knockback_vector.y * 4
 			velocity.y = knockback_vector.y - 30
-			
 		knockback = knockback_vector * 3
+	else:
+		start_reload()
+
+func reload():
+	gun_magazine = gun_magazine_capacity
+	if powered_up:
+		AudioManager.play_sfx(reload_sound)
+		mags -= 1
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
+	else:
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
 
 func power_up():
 	super()

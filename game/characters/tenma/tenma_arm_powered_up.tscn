@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://u7b7iyo0ybi6"]
+[gd_scene load_steps=7 format=3 uid="uid://vm2gu5vb0b6p"]
 
 [ext_resource type="Texture2D" uid="uid://dp74hhbbk8upj" path="res://assets/characters/panko/base_form/Panko_Arm.png" id="1_dvwge"]
 [ext_resource type="Texture2D" uid="uid://do8elgmle0flt" path="res://assets/characters/tenma/powerup_form/sawed_off_double_barrel_shotgun.png" id="2_gyeg6"]

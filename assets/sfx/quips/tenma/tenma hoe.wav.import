@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://be7k6wfbc61y7"
+path="res://.godot/imported/tenma hoe.wav-415bd9d976f4e19e7ce8908a52d0e4ab.sample"
+
+[deps]
+
+source_file="res://assets/sfx/quips/tenma/tenma hoe.wav"
+dest_files=["res://.godot/imported/tenma hoe.wav-415bd9d976f4e19e7ce8908a52d0e4ab.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,18 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://nupa2mkacopf"]
+[gd_scene load_steps=12 format=3 uid="uid://nupa2mkacopf"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_h75yb"]
 [ext_resource type="Texture2D" uid="uid://dsugoh3hgabw4" path="res://assets/characters/tenma/base_form/Tenma_Sprite.png" id="2_b3wq4"]
 [ext_resource type="Script" path="res://game/characters/tenma/tenma_player.gd" id="2_ybem5"]
-[ext_resource type="PackedScene" uid="uid://diojbx0luw1nw" path="res://game/characters/tenma/tenma_arm.tscn" id="3_nke10"]
+[ext_resource type="AudioStream" uid="uid://d1ycpfierg33b" path="res://assets/sfx/quips/tenma/clownma maemi final.mp3" id="3_gdqld"]
+[ext_resource type="PackedScene" uid="uid://cbxurny1qkudw" path="res://game/characters/tenma/tenma_arm.tscn" id="3_nke10"]
 [ext_resource type="Texture2D" uid="uid://xsbbu573qjhd" path="res://assets/characters/tenma/powerup_form/Tenmaoffice_Sprite.png" id="3_rauom"]
-[ext_resource type="PackedScene" uid="uid://u7b7iyo0ybi6" path="res://game/characters/tenma/tenma_arm_powered_up.tscn" id="4_arfvs"]
+[ext_resource type="PackedScene" uid="uid://vm2gu5vb0b6p" path="res://game/characters/tenma/tenma_arm_powered_up.tscn" id="4_arfvs"]
+[ext_resource type="AudioStream" uid="uid://b3nffj2y7jv53" path="res://assets/sfx/quips/tenma/tenma_get_pussy.mp3" id="4_jypmq"]
+[ext_resource type="AudioStream" uid="uid://cmr57pnckrioa" path="res://assets/sfx/quips/tenma/Get_filtered.mp3" id="5_5vol1"]
+[ext_resource type="AudioStream" uid="uid://c32yfbwg0ossu" path="res://assets/sfx/projectiles/BRICK_THROW.mp3" id="5_7yb55"]
+[ext_resource type="AudioStream" uid="uid://di72kgaya170e" path="res://assets/sfx/quips/tenma/Not a chi.mp3" id="6_i873u"]
 
-[node name="BasePlayer" instance=ExtResource("1_h75yb")]
+[node name="TenmaPlayer" instance=ExtResource("1_h75yb")]
 script = ExtResource("2_ybem5")
+death_quips = Array[AudioStreamMP3]([ExtResource("3_gdqld")])
+damaged_quips = Array[AudioStreamMP3]([ExtResource("4_jypmq")])
+kill_quips = Array[AudioStreamMP3]([ExtResource("5_5vol1")])
+power_up_quips = Array[AudioStreamMP3]([ExtResource("6_i873u")])
 normal_sprite = ExtResource("2_b3wq4")
 normal_gun = ExtResource("3_nke10")
-normal_bullet_speed = 250
-normal_damage = 5
+normal_fire_rate = 0.0
+normal_bullet_speed = 400
+normal_damage = 120
+normal_gun_sound = ExtResource("5_7yb55")
+normal_gun_capacity = 1
+normal_gun_reload_time = 0.2
 powered_up_gun = ExtResource("4_arfvs")
 powered_up_sprite = ExtResource("3_rauom")
 powered_up_bullet_speed = 750

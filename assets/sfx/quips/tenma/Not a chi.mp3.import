@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://di72kgaya170e"
+path="res://.godot/imported/Not a chi.mp3-c22632d531de7bee5411d3d4c57ce8a3.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/quips/tenma/Not a chi.mp3"
+dest_files=["res://.godot/imported/Not a chi.mp3-c22632d531de7bee5411d3d4c57ce8a3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
