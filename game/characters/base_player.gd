@@ -24,6 +24,7 @@ class_name BasePlayer
 @onready var step_timer: Timer = $Timers/StepTimer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 @onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
+@onready var empty_click_timer: Timer = $Timers/EmptyClickTimer
 
 @onready var steps = [
 	preload("res://assets/sfx/misc/SNOW_STEP_1.mp3"), 
@@ -33,6 +34,7 @@ class_name BasePlayer
 ]
 @onready var player_hurt_sfx: AudioStreamMP3 = preload("res://assets/sfx/misc/PF_PLAYER_HURT.mp3")
 @onready var reload_sound: AudioStreamMP3 = preload("res://assets/sfx/projectiles/RELOAD.mp3")
+@onready var empty_mag_sound: AudioStreamMP3 = preload("res://assets/sfx/UI/AMMO_DEPLETED.mp3")
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
@@ -64,6 +66,7 @@ class_name BasePlayer
 @export var normal_gun_sound: AudioStreamMP3
 @export var normal_gun_capacity: int = 5
 @export var normal_gun_reload_time: float = 1.2
+@export var normal_bullet_hud_sprite: CompressedTexture2D = preload("res://assets/ui/ammo_types/223remington.png")
 
 @export_group("Powered Up Mode")
 @export var powered_up_gun: PackedScene
@@ -76,6 +79,7 @@ class_name BasePlayer
 @export var powered_up_gun_capacity: int = 60
 @export var powered_up_gun_mags: int = 2
 @export var powered_up_gun_reload_time: float = 2
+@export var powered_up_bullet_hud_sprite: CompressedTexture2D = preload("res://assets/ui/ammo_types/45cal.png")
 
 var gun_spread = normal_gun_spread
 var fire_rate = normal_fire_rate
@@ -94,6 +98,7 @@ var attack_direction
 var current_platform_stack: Array = []
 var current_door: Door
 var is_active: bool = false
+var hud: HUD
 
 signal took_damage
 signal gained_health
@@ -101,6 +106,7 @@ signal player_death
 signal bullet_shot
 signal reloaded
 signal no_ammo
+signal powered_up_signal
 
 func quip(quip_array):
 	var random_quip = randi_range(0, quip_array.size() - 1)
@@ -108,6 +114,7 @@ func quip(quip_array):
 	AudioManager.play_quip(quip)
 
 func _ready() -> void:
+	hud = get_tree().get_first_node_in_group("hud")
 	var game_man: game_manager = get_node("/root/GameManager")
 	if game_man.debug_mode:
 		debug_text.visible = true
@@ -121,6 +128,9 @@ func _ready() -> void:
 	reload_timer.wait_time = reload_time
 	gun_magazine = normal_gun_capacity
 	gun_magazine_capacity = normal_gun_capacity
+	hud.new_bullet_sprite = normal_bullet_hud_sprite
+	hud.change_bullet_sprite()
+	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity))
 
 func gain_heart():
 	gained_health.emit()
@@ -139,6 +149,8 @@ func reload():
 	AudioManager.play_sfx(reload_sound)
 	if powered_up:
 		powered_up_mags -= 1
+	else:
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity))
 
 func take_damage():
 	took_damage.emit()
@@ -209,6 +221,10 @@ func _physics_process(delta: float) -> void:
 			attack_timer.start()
 			AudioManager.play_sfx(gun_sound)
 			attack()
+		elif reload_timer.is_stopped() && gun_magazine <= 0 && empty_click_timer.is_stopped():
+			AudioManager.play_sfx(empty_mag_sound)
+			empty_click_timer.wait_time = fire_rate
+			empty_click_timer.start()
 	if Input.is_action_just_released("shoot"):
 		#AudioManager.play_sfx(tommy_last)
 		pass
@@ -305,6 +321,7 @@ func attack() -> void:
 	get_parent().add_child(new_shell)
 	bullet_shot.emit()
 	gun_magazine -= 1
+	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity))
 	#print("mag", gun_magazine)
 	if gun_magazine == 0:
 		no_ammo.emit()

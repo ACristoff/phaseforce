@@ -34,6 +34,7 @@ enemies=""
 doors=""
 enemy_spawners=""
 gifts=""
+hud=""
 
 [input]
 

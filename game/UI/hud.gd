@@ -14,6 +14,8 @@ class_name HUD
 @onready var secret_timer = $SecretTimer
 @onready var secret_container = $CanvasLayer/Secret_container
 
+@onready var bullet_sprite = $CanvasLayer/Ammo_Container/HBoxContainer/AmmoSprite
+@onready var bullet_count = $CanvasLayer/Ammo_Container/HBoxContainer/Label
 
 @onready var primary_obj = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel
 @onready var primary_obj_label = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel/Label
@@ -23,18 +25,22 @@ class_name HUD
 @onready var timer_container = $CanvasLayer/TimerContainer
 @onready var timer_label = $CanvasLayer/TimerContainer/HBoxContainer/TimerLabel
 
-#var killed_snowmen = 0
-#var amount_to_kill = 10
-#var level = 1
+var new_bullet_sprite: CompressedTexture2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	#if 
-	#if level == 1:
-		#obj1label.text = "Destroy the Generator"
-		#obj2label.text = "Kill  "+str(killed_snowmen)+"/"+str(amount_to_kill)+"  Snowmen"
-		#obj3label.text = "Escape"
 	pass # Replace with function body.
+
+func change_bullet_sprite():
+	print(bullet_sprite)
+	bullet_sprite.texture = new_bullet_sprite
+	pass
+
+func update_bullets(bullets_total):
+	bullet_count.text = bullets_total
+	pass
+
+func reload_hud():
+	pass
 
 func take_damage():
 	health_bar.value -= 1
@@ -48,20 +54,12 @@ func update_primary():
 func secret_found():
 	secret_container.visible = true
 	secret_timer.start()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#if p
-	pass
 	
 func tick_up():
 	optional_objective.pivot_offset = optional_objective.size/2
 	var tween = create_tween()
 	tween.tween_property(optional_objective, "scale", Vector2(1.2, 1), .15)
 	tween.tween_property(optional_objective, "scale", Vector2(1, 1), .15)
-	#killed_snowmen += 1
-	#if killed_snowmen == amount_to_kill:
-			#completeobj2()
 
 func complete_primary():
 	primary_obj.pivot_offset = primary_obj.size/2
@@ -73,7 +71,6 @@ func complete_primary():
 
 func go_to_extract():
 	extract_obj.visible = true
-	#pass
 
 func complete_optional():
 	optional_objective.pivot_offset = optional_objective.size/2

@@ -33,7 +33,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="FinalTimer" type="Timer" parent="Timers" index="6"]
-wait_time = 0.2
+wait_time = 0.18
 one_shot = true
 
 [connection signal="timeout" from="Timers/InBetweenTimer" to="." method="_on_in_between_timer_timeout"]
