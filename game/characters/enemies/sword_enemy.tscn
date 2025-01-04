@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqyy2nqr7vd37"]
+[gd_scene load_steps=11 format=3 uid="uid://cqyy2nqr7vd37"]
 
 [ext_resource type="Script" path="res://game/characters/enemies/sword_enemy.gd" id="1_38dka"]
 [ext_resource type="Texture2D" uid="uid://lcsbp6ii6xel" path="res://assets/enemies/enemysnowman2.png" id="2_ihouf"]
@@ -85,6 +85,9 @@ _data = {
 "stab": SubResource("Animation_wh44q")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_desrs"]
+size = Vector2(13, 4)
+
 [node name="SwordEnemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 513
 collision_mask = 796
@@ -164,7 +167,11 @@ one_shot = true
 [node name="SearchTimer" type="Timer" parent="Timers"]
 
 [node name="AttackTimer" type="Timer" parent="Timers"]
-wait_time = 1.7
+wait_time = 0.5
+one_shot = true
+
+[node name="JumpTimer" type="Timer" parent="Timers"]
+wait_time = 0.6
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
@@ -185,6 +192,10 @@ text = "!"
 
 [node name="Area2D" type="Area2D" parent="."]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(13.5, -9)
+shape = SubResource("RectangleShape2D_desrs")
+
 [connection signal="area_entered" from="ScanArea" to="." method="_on_scan_area_area_entered"]
 [connection signal="body_entered" from="ScanArea" to="." method="_on_scan_area_body_entered"]
 [connection signal="body_exited" from="ScanArea" to="." method="_on_scan_area_body_exited"]
@@ -193,3 +204,4 @@ text = "!"
 [connection signal="timeout" from="Timers/AlertTimer" to="." method="_on_alert_timer_timeout"]
 [connection signal="timeout" from="Timers/SearchTimer" to="." method="_on_search_timer_timeout"]
 [connection signal="timeout" from="Timers/AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Timers/JumpTimer" to="." method="_on_jump_timer_timeout"]
