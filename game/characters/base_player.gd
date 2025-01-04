@@ -198,6 +198,7 @@ func power_up():
 	##TODO ALLOW FOR MULTIPLE PICKUPS
 	mags = powered_up_gun_mags
 	powered_up = true
+	reload_timer.wait_time = powered_up_gun_reload_time
 	hud.new_bullet_sprite = powered_up_bullet_hud_sprite
 	hud.change_bullet_sprite()
 	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
@@ -215,6 +216,7 @@ func power_down():
 	bullet_damage = normal_damage
 	gun_spread = normal_gun_spread
 	gun_magazine = normal_gun_capacity
+	reload_timer.wait_time = normal_gun_reload_time
 	gun_magazine_capacity = normal_gun_capacity
 	hud.new_bullet_sprite = normal_bullet_hud_sprite
 	hud.change_bullet_sprite()
@@ -244,7 +246,11 @@ func _physics_process(delta: float) -> void:
 		if current_door.closed:
 			current_door.open()
 	if Input.is_action_just_pressed("reload"):
-		start_reload()
+		if powered_up:
+			if mags > 0:
+				start_reload()
+		else:
+			start_reload()
 	##PLAYER MOVEMENT##
 	#Add the gravity.
 	if not is_on_floor():
@@ -297,7 +303,7 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_just_released("move_down"):
 			for platform in current_platform_stack:
 				platform.enable_platform()
-	if powered_up && gun_magazine == 0 && mags == 0:
+	if powered_up && gun_magazine == 0 && mags >= 0:
 		power_down()
 	#Idle
 	if velocity == Vector2(0,0) or velocity == Vector2.ZERO:

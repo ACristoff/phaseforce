@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://nupa2mkacopf"]
+[gd_scene load_steps=14 format=3 uid="uid://nupa2mkacopf"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_h75yb"]
 [ext_resource type="Texture2D" uid="uid://dsugoh3hgabw4" path="res://assets/characters/tenma/base_form/Tenma_Sprite.png" id="2_b3wq4"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://cmr57pnckrioa" path="res://assets/sfx/quips/tenma/Get_filtered.mp3" id="5_5vol1"]
 [ext_resource type="AudioStream" uid="uid://c32yfbwg0ossu" path="res://assets/sfx/projectiles/BRICK_THROW.mp3" id="5_7yb55"]
 [ext_resource type="AudioStream" uid="uid://di72kgaya170e" path="res://assets/sfx/quips/tenma/Not a chi.mp3" id="6_i873u"]
+[ext_resource type="AudioStream" uid="uid://d0q7fy5ym0j6l" path="res://assets/sfx/projectiles/SHOTGUN.mp3" id="12_n1o86"]
+[ext_resource type="Texture2D" uid="uid://dtlw6h7tp6myv" path="res://assets/ui/ammo_types/shotgun_shell.png" id="13_ggxrv"]
 
 [node name="TenmaPlayer" instance=ExtResource("1_h75yb")]
 script = ExtResource("2_ybem5")
@@ -29,7 +31,11 @@ normal_gun_reload_time = 0.2
 powered_up_gun = ExtResource("4_arfvs")
 powered_up_sprite = ExtResource("3_rauom")
 powered_up_bullet_speed = 750
-powered_up_damage = 5
+powered_up_damage = 30
+powered_up_gun_sound = ExtResource("12_n1o86")
+powered_up_gun_capacity = 6
+powered_up_gun_mags = 3
+powered_up_bullet_hud_sprite = ExtResource("13_ggxrv")
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_b3wq4")
