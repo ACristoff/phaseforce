@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7vx3g1fu5cm0"]
+[gd_scene load_steps=5 format=3 uid="uid://bm72wsq4fc7qk"]
 
-[ext_resource type="Texture2D" uid="uid://ivx1d067loia" path="res://icon.svg" id="1_7gbxx"]
 [ext_resource type="Script" path="res://game/projectiles/pip_cannon.gd" id="1_e61by"]
+[ext_resource type="Texture2D" uid="uid://vdvolw0dncn4" path="res://assets/particles/bullets/artilleryshot.png" id="2_dpc88"]
 [ext_resource type="Texture2D" uid="uid://uhcocieudcrg" path="res://assets/particles/UPDATE PLEASE/MISSILE EXPLOSSION/MISSILE EXPLOSSION ANIMATION.png" id="3_se5dt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_choj5"]
@@ -11,9 +11,10 @@ radius = 7.0
 script = ExtResource("1_e61by")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.07288e-06, 7.7486e-07)
-scale = Vector2(0.1875, 0.09375)
-texture = ExtResource("1_7gbxx")
+texture_filter = 3
+position = Vector2(0.999999, 5.96046e-08)
+scale = Vector2(2.66667, 1.33333)
+texture = ExtResource("2_dpc88")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

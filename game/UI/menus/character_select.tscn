@@ -9,6 +9,21 @@
 [ext_resource type="Texture2D" uid="uid://dsugoh3hgabw4" path="res://assets/characters/tenma/base_form/Tenma_Sprite.png" id="7_bnw45"]
 [ext_resource type="Texture2D" uid="uid://dt7drd5slxlhk" path="res://assets/characters/lia/base_form/LiaSprite.png" id="8_r5ubm"]
 
+[sub_resource type="Animation" id="Animation_fisvo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LumiSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
 [sub_resource type="Animation" id="Animation_qaj0i"]
 resource_name = "lumi"
 length = 0.4
@@ -27,12 +42,18 @@ tracks/0/keys = {
 "values": [6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_fisvo"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38nmk"]
+_data = {
+"RESET": SubResource("Animation_fisvo"),
+"lumi": SubResource("Animation_qaj0i")
+}
+
+[sub_resource type="Animation" id="Animation_o3sj1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LumiSprite:frame")
+tracks/0/path = NodePath("PankoSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,12 +61,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [6]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_38nmk"]
-_data = {
-"RESET": SubResource("Animation_fisvo"),
-"lumi": SubResource("Animation_qaj0i")
 }
 
 [sub_resource type="Animation" id="Animation_suswm"]
@@ -66,12 +81,18 @@ tracks/0/keys = {
 "values": [6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_o3sj1"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cprc7"]
+_data = {
+"RESET": SubResource("Animation_o3sj1"),
+"panko": SubResource("Animation_suswm")
+}
+
+[sub_resource type="Animation" id="Animation_1xjww"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PankoSprite:frame")
+tracks/0/path = NodePath("PippaSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -79,12 +100,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [6]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cprc7"]
-_data = {
-"RESET": SubResource("Animation_o3sj1"),
-"panko": SubResource("Animation_suswm")
 }
 
 [sub_resource type="Animation" id="Animation_2gogn"]
@@ -105,12 +120,18 @@ tracks/0/keys = {
 "values": [6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_1xjww"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_23g13"]
+_data = {
+"RESET": SubResource("Animation_1xjww"),
+"pippa": SubResource("Animation_2gogn")
+}
+
+[sub_resource type="Animation" id="Animation_1n7vr"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PippaSprite:frame")
+tracks/0/path = NodePath("TenmaSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -118,12 +139,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [6]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_23g13"]
-_data = {
-"RESET": SubResource("Animation_1xjww"),
-"pippa": SubResource("Animation_2gogn")
 }
 
 [sub_resource type="Animation" id="Animation_bxeig"]
@@ -144,12 +159,18 @@ tracks/0/keys = {
 "values": [6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_1n7vr"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7pl8o"]
+_data = {
+"RESET": SubResource("Animation_1n7vr"),
+"tenma": SubResource("Animation_bxeig")
+}
+
+[sub_resource type="Animation" id="Animation_d80i6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TenmaSprite:frame")
+tracks/0/path = NodePath("LiaSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -157,12 +178,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [6]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7pl8o"]
-_data = {
-"RESET": SubResource("Animation_1n7vr"),
-"tenma": SubResource("Animation_bxeig")
 }
 
 [sub_resource type="Animation" id="Animation_4455p"]
@@ -181,21 +196,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [6, 7, 8, 9]
-}
-
-[sub_resource type="Animation" id="Animation_d80i6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LiaSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mogk4"]

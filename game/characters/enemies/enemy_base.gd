@@ -18,6 +18,7 @@ class_name EnemyBase
 @onready var gun_barrel: Marker2D = $Gun/Marker2D
 @onready var alert_label: Label = $AlertLabel
 @onready var bullet: PackedScene = preload("res://game/projectiles/enemy_bullet.tscn")
+@onready var shot_sfx = preload("res://assets/sfx/projectiles/SILENCED_PISTOL.mp3")
 
 enum ENEMY_STATES {IDLE, IDLEWALK, ALERTED}
 @export var speed: int = 50
@@ -128,6 +129,7 @@ func check_attack_distance():
 
 func attack():
 	#print('shoot')
+	AudioManager.play_sfx(shot_sfx)
 	var new_enemy_bullet = bullet.instantiate()
 	new_enemy_bullet.global_position = to_global(gun_barrel.position)
 	var adjusted_angle = gun_sprite.rotation_degrees
