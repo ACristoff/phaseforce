@@ -40,6 +40,7 @@ layout_mode = 2
 [node name="AmmoSprite" type="TextureRect" parent="CanvasLayer/Ammo_Container/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_ca1xw")
+stretch_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/Ammo_Container/HBoxContainer"]
 layout_mode = 2
