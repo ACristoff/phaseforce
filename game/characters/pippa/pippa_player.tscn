@@ -15,7 +15,7 @@
 script = ExtResource("2_qvqcs")
 normal_sprite = ExtResource("2_jnmno")
 normal_gun = ExtResource("4_an1bv")
-normal_fire_rate = 0.28
+normal_fire_rate = 0.26
 normal_gun_spread = Array[int]([-1, 1])
 normal_bullet_speed = 600
 normal_damage = 35

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bm72wsq4fc7qk"]
+[gd_scene load_steps=10 format=3 uid="uid://bm72wsq4fc7qk"]
 
 [ext_resource type="Script" path="res://game/projectiles/pip_cannon.gd" id="1_e61by"]
 [ext_resource type="Texture2D" uid="uid://vdvolw0dncn4" path="res://assets/particles/bullets/artilleryshot.png" id="2_dpc88"]
@@ -6,7 +6,47 @@
 [ext_resource type="Texture2D" uid="uid://bpnrnmhfydh5l" path="res://assets/particles/pipsplosion/artilleryexplosion.png" id="4_jephp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_choj5"]
-radius = 7.0
+radius = 2.0
+height = 24.0
+
+[sub_resource type="Animation" id="Animation_j6j05"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Artilleryexplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Artilleryexplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_58blb"]
 resource_name = "explosion"
@@ -66,52 +106,18 @@ tracks/3/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_j6j05"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Artilleryexplosion:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Artilleryexplosion:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Sprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g7oi3"]
 _data = {
 "RESET": SubResource("Animation_j6j05"),
 "explosion": SubResource("Animation_58blb")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ueb0"]
+radius = 11.0
+
 [node name="PipCannon" type="Area2D"]
+collision_layer = 16
+collision_mask = 41
 script = ExtResource("1_e61by")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -122,6 +128,7 @@ scale = Vector2(2.66667, 1.33333)
 texture = ExtResource("2_dpc88")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_choj5")
 debug_color = Color(0.693967, 0.363102, 0.194934, 0.254902)
@@ -136,15 +143,25 @@ speed_scale = 2.0
 [node name="Explosion" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 3
-position = Vector2(4, 4)
+position = Vector2(14, 4)
 texture = ExtResource("3_se5dt")
 hframes = 9
 
 [node name="Artilleryexplosion" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 3
+position = Vector2(10, 0)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("4_jephp")
 hframes = 9
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(10, 0)
+shape = SubResource("CircleShape2D_4ueb0")
+debug_color = Color(0.986437, 0, 0.323603, 0.42)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
