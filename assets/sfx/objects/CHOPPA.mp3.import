@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/CHOPPA.mp3-83bc7ce7f510f62af0cca3c7c5a82bce.m
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
