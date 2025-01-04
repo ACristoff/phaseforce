@@ -90,8 +90,16 @@ func render_objectives():
 	if primary_obj is Generator:
 		hud.primary_obj_label.text = "Destroy the Generator"
 		primary_obj.just_destroyed.connect(_on_primary_obj_completed.bind())
-	#for obj in secondary_objs:
-		#print(obj)
+	if kill_x_snowmen:
+		pass
+	if while_full_health:
+		pass
+	if while_powered_up:
+		pass
+	if collect_x_gifts:
+		pass
+	if collect_x_keycard:
+		pass
 
 func _on_primary_obj_completed():
 	hud.complete_primary()
