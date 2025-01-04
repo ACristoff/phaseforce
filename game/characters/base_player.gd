@@ -35,6 +35,7 @@ class_name BasePlayer
 @onready var player_hurt_sfx: AudioStreamMP3 = preload("res://assets/sfx/misc/PF_PLAYER_HURT.mp3")
 @onready var reload_sound: AudioStreamMP3 = preload("res://assets/sfx/projectiles/RELOAD.mp3")
 @onready var empty_mag_sound: AudioStreamMP3 = preload("res://assets/sfx/UI/AMMO_DEPLETED.mp3")
+@onready var power_up_sound: AudioStreamWAV = preload("res://assets/sfx/characters/PF_POWERUP.wav")
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
@@ -195,6 +196,7 @@ func power_up():
 	hud.new_bullet_sprite = powered_up_bullet_hud_sprite
 	hud.change_bullet_sprite()
 	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
+	AudioManager.play_sfx_wav(power_up_sound)
 	quip(power_up_quips)
 
 
