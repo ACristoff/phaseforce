@@ -5,7 +5,9 @@ var knockback_force = -2
 @onready var TRANSEFFECT = preload("res://game/effects/transformation_sequence.tscn")
 var charge = 0
 var charge_cap = 21
+var charge_rate = 9
 
+@onready var sound_player = $AudioStreamPlayer2D
 @onready var first_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_FIRST.mp3")
 @onready var middle_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_MIDDLE.mp3")
 @onready var last_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_LAST.mp3")
@@ -22,6 +24,17 @@ func attack():
 				velocity.y = knockback_vector.y * 4
 			velocity.y = knockback_vector.y - 30
 		knockback = knockback_vector * 3
+	else:
+		var knockback_vector = (cursor_spout.global_position - global_position) * knockback_force
+		if knockback_vector.y < 0:
+			velocity.y = knockback_vector.y * 4
+		else:
+			knockback_vector.y = knockback_vector.y - 40
+			if knockback_vector.y < 0:
+				velocity.y = knockback_vector.y * 4
+			velocity.y = knockback_vector.y - 30
+		knockback = knockback_vector * 3
+
 
 func _physics_process(delta: float) -> void:
 	if health == 0:
@@ -32,12 +45,21 @@ func _physics_process(delta: float) -> void:
 	if powered_up:
 		if Input.is_action_just_pressed("shoot"):
 			#AudioManager.play_sfx(first_sound)
-			pass
+			sound_player.stream = first_sound
+			sound_player.play()
 		if Input.is_action_pressed("shoot"):
-			
+			if charge <= charge_cap:
+				charge += charge_rate * delta
+				cursor_sprite.value = charge + 9
+			if charge < 15 && sound_player.stream != middle_sound:
+				sound_player.stream = middle_sound
+			#print(gun)
 			pass
 		if Input.is_action_just_released("shoot"):
+			sound_player.stop()
 			AudioManager.play_sfx(last_sound)
+			charge = 0
+			cursor_sprite.value = charge + 9
 			pass
 		pass
 	else:
