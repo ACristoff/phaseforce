@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfk1afnkqscaq"]
+[gd_scene load_steps=6 format=3 uid="uid://dfk1afnkqscaq"]
 
+[ext_resource type="Script" path="res://game/UI/inside_heli.gd" id="1_a3a4i"]
 [ext_resource type="Texture2D" uid="uid://cvrdgovvke0tr" path="res://assets/ui/insideheli.png" id="1_kpcrg"]
 [ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="2_ff4ps"]
 [ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="3_pgrla"]
 [ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="4_jweok"]
 
 [node name="InsideHeli" type="Node2D"]
+script = ExtResource("1_a3a4i")
 
 [node name="Insideheli" type="Sprite2D" parent="."]
 texture_filter = 3
