@@ -5,21 +5,12 @@ class_name Bullet
 @export var speed = 500
 var damage = 50
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#position += transform.x * speed * delta
-	##if self.
-	#pass
-
 func _physics_process(delta):
 	position += transform.x * speed * delta
 
 func _on_area_entered(_area):
-	#prints('area: ',_area)
 	if _area is BasePlayer:
 		return
-	#elif _area is Door:
-	#queue_free()
 	pass # Replace with function body.
 
 func _on_body_entered(body):

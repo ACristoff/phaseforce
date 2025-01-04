@@ -3,9 +3,30 @@ extends BasePlayer
 
 var knockback_force = -4
 @onready var TRANSEFFECT = preload("res://game/effects/transformation_sequence.tscn")
+@onready var brick_projectile = preload("res://game/projectiles/brick.tscn")
 
-func attack():
-	super()
+func attack() -> void:
+	gun_anim.stop()
+	gun_anim.play("kickback")
+	if !powered_up:
+		var new_brick = brick_projectile.instantiate()
+		new_brick.damage = bullet_damage
+		new_brick.speed = bullet_speed
+		new_brick.global_position = cursor_spout.global_position
+		var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
+		new_brick.rotation_degrees = adjusted_angle
+		get_parent().add_child(new_brick)
+	else:
+		bullet_shot.emit()
+		pass
+	gun_magazine -= 1
+	if powered_up:
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
+	else:
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
+	#print("mag", gun_magazine)
+	if gun_magazine == 0:
+		no_ammo.emit()
 	if powered_up:
 		var knockback_vector = (cursor_spout.global_position - global_position) * knockback_force
 		if knockback_vector.y < 0:

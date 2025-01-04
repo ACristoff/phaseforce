@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5bp0mm0trhpj"]
+
+[ext_resource type="Script" path="res://game/projectiles/brick.gd" id="1_veh2f"]
+[ext_resource type="Texture2D" uid="uid://dpa2liye4sdv8" path="res://assets/characters/tenma/base_form/tenma_brick.png" id="2_sylk3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6t5c"]
+size = Vector2(7, 7)
+
+[node name="Brick" type="Area2D"]
+collision_layer = 16
+collision_mask = 297
+script = ExtResource("1_veh2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_g6t5c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(-4, -5)
+texture = ExtResource("2_sylk3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
