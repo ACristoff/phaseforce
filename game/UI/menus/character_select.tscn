@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1oatn1lxrden"]
+[gd_scene load_steps=4 format=3 uid="uid://b1oatn1lxrden"]
 
 [ext_resource type="Script" path="res://game/UI/menus/character_select.gd" id="1_lnse3"]
+[ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_e5q6k"]
+[ext_resource type="PackedScene" uid="uid://dfk1afnkqscaq" path="res://game/UI/inside_heli.tscn" id="3_cuhlq"]
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -13,64 +15,64 @@ script = ExtResource("1_lnse3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -47.0
+offset_right = 164.0
+offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+rotation = 0.0174533
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="ButtonPanko" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="ButtonPanko" type="Button" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "KOMACHI
-PANKO
-🎋🍭
-LEWD
-CHUUBA"
 
-[node name="ButtonLia" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="ButtonLia" type="Button" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "RINKOU
-ASHELIA
-⚡️
-IN NEED
-OF A
-BIG BRO"
 
-[node name="ButtonTenma" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="ButtonTenma" type="Button" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "TENMA
-MAEMI
-🍶🦊
-FOXY
-LADY"
 
-[node name="ButtonPippa" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="ButtonPippa" type="Button" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "PIPKIN
-PIPPA
-🔌🐰
-SCHIZO
-YABBIT"
 
-[node name="Button" type="Button" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="ButtonLumi" type="Button" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "KANEKO
-LUMI
-💫💥
-LEMON
-WOMAN"
 
-[connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonPanko" to="." method="_on_button_panko_pressed"]
-[connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonLia" to="." method="_on_button_lia_pressed"]
-[connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonTenma" to="." method="_on_button_tenma_pressed"]
-[connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ButtonPippa" to="." method="_on_button_pippa_pressed"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_e5q6k")
+theme_override_font_sizes/font_size = 32
+
+[node name="InsideHeli" parent="." instance=ExtResource("3_cuhlq")]
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/ButtonPanko" to="." method="_on_button_panko_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/ButtonLia" to="." method="_on_button_lia_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/ButtonTenma" to="." method="_on_button_tenma_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/ButtonPippa" to="." method="_on_button_pippa_pressed"]
