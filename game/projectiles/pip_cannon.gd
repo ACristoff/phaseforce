@@ -2,11 +2,13 @@ extends Area2D
 
 @export var speed = 500
 var damage = 50
+var explosion_damage = 100
 
 @onready var arty = $Sprite2D
 @onready var explosion = $Explosion
 @onready var anim = $AnimationPlayer
 @onready var explosion_sound
+@onready var explosion_radius = $Area2D
 var active: bool = true
 
 func _ready():
@@ -23,7 +25,7 @@ func _on_area_entered(_area):
 
 func randomize_rotate():
 	var random_angle = randi_range(0,364)
-	rotation_degrees = random_angle
+	arty.rotation_degrees = random_angle
 
 func _on_body_entered(body):
 	#prints('body: ',body)
@@ -59,10 +61,12 @@ func _on_body_entered(body):
 	#queue_free()
 
 func _explode():
-	print('expplode')
-	pass
+	var all_bodies = explosion_radius.get_overlapping_bodies()
+	for body in all_bodies:
+		var new_body: EnemyBase = body
+		new_body.take_damage(explosion_damage)
 
 func _kill_myself():
-	print('die')
+	#print('die')
 	queue_free()
 	pass
