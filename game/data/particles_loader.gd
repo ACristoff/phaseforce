@@ -7,8 +7,3 @@ func _ready():
 	$GPUParticles2D.emitting = true
 	$SpentShell.emitting = true
 	$GPUParticles2D2.emitting = true
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

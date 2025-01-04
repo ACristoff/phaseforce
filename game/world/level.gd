@@ -121,11 +121,11 @@ func _on_primary_obj_completed():
 			current_spawner.spawn_enemy()
 
 func generate_level_complete_data():
-	var objective = str("Objective completed: :3")
-	var optional_objective = str("Optional objective completed: ", optional_completed )
-	var secrets = str("Secrets found: ", 0)
-	var enemies = str("Enemies killed: ", 1)
-	var all = {"secrets": secrets}
+	#var objective = str("Objective completed: :3")
+	#var optional_objective = str("Optional objective completed: ", optional_completed )
+	var secrets_data = str("Secrets found: ", 0)
+	#var enemies = str("Enemies killed: ", 1)
+	var all = {"secrets": secrets_data}
 	return all
 
 func _on_extract():
@@ -164,9 +164,9 @@ func _on_player_damage():
 
 func _on_death_barrier_body_entered(body):
 	if body is BasePlayer:
-		var player = body as BasePlayer
-		player.global_position = spawn.global_position
-		player.take_damage()
+		var new_player = body as BasePlayer
+		new_player.global_position = spawn.global_position
+		new_player.take_damage()
 
 func _on_gift_collected():
 	if collect_x_gifts && gifts_collected != gift_quantity:

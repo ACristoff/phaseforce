@@ -23,7 +23,8 @@ func _ready():
 	#AudioManager.play_music(music)
 func unlock_sway():
 	sway = true
-func _physics_process(delta):
+
+func _physics_process(_delta):
 	pass
 	if sway == true:
 		pathfollow.progress += .5
