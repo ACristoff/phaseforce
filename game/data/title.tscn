@@ -587,7 +587,6 @@ one_shot = true
 explosiveness = 0.89
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -674,8 +673,9 @@ position = Vector2(0, -215)
 curve = SubResource("Curve2D_k6jcc")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="parallax/Front2/Path2D2"]
-position = Vector2(0, -147)
+position = Vector2(0, 215.023)
 rotation = 1.5708
+progress = 362.0
 
 [node name="Titleheli" type="Sprite2D" parent="parallax/Front2/Path2D2/PathFollow2D"]
 texture_filter = 3
@@ -705,8 +705,9 @@ autoplay = "splash"
 curve = SubResource("Curve2D_gcqls")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="copter"]
-position = Vector2(237, 189)
-rotation = -1.28203
+position = Vector2(308, -50)
+rotation = -0.998664
+progress = 254.284
 
 [node name="Minicopter" type="Sprite2D" parent="copter/PathFollow2D"]
 texture_filter = 3
