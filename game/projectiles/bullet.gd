@@ -18,6 +18,7 @@ func _on_area_entered(_area):
 	#prints('area: ',_area)
 	if _area is BasePlayer:
 		return
+	#elif _area is Door:
 	#queue_free()
 	pass # Replace with function body.
 
@@ -38,4 +39,6 @@ func _on_body_entered(body):
 	elif body is EnemyBase:
 		body.take_damage(damage)
 		queue_free()
-	#queue_free()
+	#elif body is Door:
+		#queue_free()
+	queue_free()

@@ -150,6 +150,7 @@ func reload():
 	AudioManager.play_sfx(reload_sound)
 	if powered_up:
 		powered_up_mags -= 1
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", powered_up_mags))
 	else:
 		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
 
@@ -322,7 +323,7 @@ func attack() -> void:
 	bullet_shot.emit()
 	gun_magazine -= 1
 	if powered_up:
-		pass
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", powered_up_mags))
 	else:
 		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
 	#print("mag", gun_magazine)
