@@ -3,22 +3,24 @@
 [ext_resource type="Script" path="res://game/projectiles/charge_shot.gd" id="1_ejp4g"]
 [ext_resource type="Texture2D" uid="uid://dg8bjp1l3jaff" path="res://assets/particles/bullets/charge_shot.png" id="2_yxwa7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6t5c"]
-size = Vector2(7, 7)
+[sub_resource type="CircleShape2D" id="CircleShape2D_txjsg"]
+radius = 6.5192
 
 [node name="ChargeShot" type="Area2D"]
 collision_layer = 16
-collision_mask = 297
+collision_mask = 33
 script = ExtResource("1_ejp4g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_g6t5c")
+shape = SubResource("CircleShape2D_txjsg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 100
 texture_filter = 3
 position = Vector2(-2, -2)
 texture = ExtResource("2_yxwa7")
 hframes = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

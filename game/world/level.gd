@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Level
 
-@export var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
+@export var music = preload("res://assets/music/PF_ICY_STAGE.mp3")
 
 @export var quip_chance: int = 30
 
@@ -69,10 +69,10 @@ func _ready():
 	extract_zone.player_extracted.connect(_on_extract.bind())
 	render_objectives()
 	AudioManager.stop_music(false)
+	play_level_music()
 
 func play_level_music():
-	#AudioManager.play_music()
-	pass
+	AudioManager.play_music(music)
 
 func _on_enemy_spawned(enemy_ref: EnemyBase):
 	enemy_ref.enemy_death.connect(_on_player_kill.bind())
@@ -89,7 +89,6 @@ func _process(delta):
 		pause_menu()
 	if !extract_timer.is_stopped():
 		hud.timer_label.text = str("TIME TO EXTRACT: ", int(extract_timer.time_left))
-	pass
 
 func _on_secret_found():
 	secrets_found += 1

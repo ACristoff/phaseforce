@@ -6,15 +6,13 @@ var knockback_force = -2
 var charge = 0
 var charge_cap = 21
 var charge_rate = 8
-var current_shot
+var current_shot: EnergyBall
 
 @onready var charge_shot = preload("res://game/projectiles/charge_shot.tscn")
 @onready var sound_player = $AudioStreamPlayer2D
 @onready var first_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_FIRST.mp3")
 @onready var middle_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_MIDDLE.mp3")
 @onready var last_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_LAST.mp3")
-#func attack() -> void:
-
 
 func attack():
 	gun_anim.stop()
@@ -39,7 +37,6 @@ func attack():
 		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
 	else:
 		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
-	#print("mag", gun_magazine)
 	if gun_magazine == 0:
 		no_ammo.emit()
 	if !powered_up:
@@ -53,13 +50,15 @@ func attack():
 			velocity.y = knockback_vector.y - 30
 		knockback = knockback_vector * 3
 	else:
-		var knockback_vector = (cursor_spout.global_position - global_position) * knockback_force
+		var adjusted_knockback_force = knockback_force * (charge / 2)
+		prints(knockback_force, charge, adjusted_knockback_force)
+		var knockback_vector = (cursor_spout.global_position - global_position) * adjusted_knockback_force
 		if knockback_vector.y < 0:
-			velocity.y = knockback_vector.y * 4
+			velocity.y = knockback_vector.y
 		else:
 			knockback_vector.y = knockback_vector.y - 40
 			if knockback_vector.y < 0:
-				velocity.y = knockback_vector.y * 4
+				velocity.y = knockback_vector.y
 			velocity.y = knockback_vector.y - 30
 		knockback = knockback_vector * 3
 
@@ -71,27 +70,42 @@ func _physics_process(delta: float) -> void:
 	##ACTIONS
 	debug_text.text = str(attack_direction)
 	if powered_up:
+		if current_shot && charge > 0:
+			current_shot.global_position = cursor_spout.global_position
+			var calculated_frame = int((charge / charge_cap) * 6) 
+			var shot_sprite: Sprite2D = current_shot.sprite
+			shot_sprite.frame = calculated_frame
 		if Input.is_action_just_pressed("shoot"):
-			#AudioManager.play_sfx(first_sound)
-			sound_player.stream = first_sound
-			sound_player.play()
+			AudioManager.play_sfx(first_sound)
+			var new_charge: EnergyBall = charge_shot.instantiate()
+			new_charge.global_position = cursor_spout.global_position
+			current_shot = new_charge
+			get_parent().add_child(new_charge)
 		if Input.is_action_pressed("shoot"):
 			if charge <= charge_cap:
 				charge += charge_rate * delta
 				cursor_sprite.value = charge + 9
 			if charge < 15 && sound_player.stream != middle_sound:
-				#print('over cap')
 				sound_player.stream = middle_sound
-		if Input.is_action_just_released("shoot") && charge > 7:
+		if Input.is_action_just_released("shoot") && charge > 5:
+			#print("")
 			sound_player.stop()
 			var charge_sound_adjust = -20 + charge
 			AudioManager.play_sfx(last_sound, charge_sound_adjust )
+			var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
+			current_shot.rotation_degrees = adjusted_angle
+			current_shot.damage = powered_up_damage * charge
+			#prints(current_shot.damage, powered_up_damage, charge)
+			attack()
 			charge = 0
 			cursor_sprite.value = charge + 9
-			attack()
+			current_shot.release_shot()
+			current_shot = null
 		elif Input.is_action_just_released("shoot"):
 			charge = 0
 			cursor_sprite.value = charge + 9
+			current_shot.queue_free()
+			current_shot = null
 
 	else:
 		if Input.is_action_pressed("shoot") && attack_timer.is_stopped():
