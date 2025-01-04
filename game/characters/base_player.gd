@@ -20,7 +20,7 @@ class_name BasePlayer
 @onready var door_detector: Area2D = $DoorDetector
 
 @onready var attack_timer: Timer = $Timers/AttackTimer
-@onready var reload_timer: Timer = $Timers/CooldownTimer
+@onready var reload_timer: Timer = $Timers/ReloadTimer
 @onready var step_timer: Timer = $Timers/StepTimer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 @onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
@@ -32,6 +32,7 @@ class_name BasePlayer
 	preload("res://assets/sfx/misc/SNOW_STEP_4.mp3")
 ]
 @onready var player_hurt_sfx: AudioStreamMP3 = preload("res://assets/sfx/misc/PF_PLAYER_HURT.mp3")
+@onready var reload_sound: AudioStreamMP3 = preload("res://assets/sfx/projectiles/RELOAD.mp3")
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
@@ -43,14 +44,6 @@ class_name BasePlayer
 @export var kill_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
 @export var power_up_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
 @export var victory_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
-
-#var quip_types = {
-	#"death": death_quips,
-	#"damaged": damaged_quips,
-	#"kill": kill_quips,
-	#"power_up": power_up_quips,
-	#"victory": victory_quips 
-#}
 
 @export_group("Base Stats")
 @export var JUMP_VELOCITY = -280.0
@@ -70,6 +63,7 @@ class_name BasePlayer
 @export var normal_damage: int
 @export var normal_gun_sound: AudioStreamMP3
 @export var normal_gun_capacity: int = 5
+@export var normal_gun_reload_time: float = 1.2
 
 @export_group("Powered Up Mode")
 @export var powered_up_gun: PackedScene
@@ -81,6 +75,7 @@ class_name BasePlayer
 @export var powered_up_gun_sound: AudioStreamMP3
 @export var powered_up_gun_capacity: int = 60
 @export var powered_up_gun_mags: int = 2
+@export var powered_up_gun_reload_time: float = 2
 
 var gun_spread = normal_gun_spread
 var fire_rate = normal_fire_rate
@@ -89,9 +84,9 @@ var gun_magazine_capacity
 var gun_magazine
 var bullet_speed
 var bullet_damage
+var reload_time 
 
 var health: int = 3
-
 var powered_up: bool = false
 var knockback = Vector2.ZERO
 var face_right: bool = true
@@ -103,6 +98,8 @@ var is_active: bool = false
 signal took_damage
 signal gained_health
 signal player_death
+signal bullet_shot
+signal no_ammo
 
 func quip(quip_array):
 	var random_quip = randi_range(0, quip_array.size() - 1)
@@ -119,13 +116,28 @@ func _ready() -> void:
 	gun_sound = normal_gun_sound
 	bullet_speed = normal_bullet_speed
 	bullet_damage = normal_damage
+	reload_time = normal_gun_reload_time
+	reload_timer.wait_time = reload_time
+	gun_magazine = normal_gun_capacity
+	gun_magazine_capacity = normal_gun_capacity
 
 func gain_heart():
 	gained_health.emit()
-	##TODO
 	AudioManager.play_sfx(player_hurt_sfx)
-	health += 1
+	if health < 3:
+		health += 1
 
+func start_reload():
+	if reload_timer.is_stopped():
+		##TODO ANIMATION
+		reload_timer.start()
+
+func reload():
+	print('reloaded!')
+	gun_magazine = gun_magazine_capacity
+	AudioManager.play_sfx(reload_sound)
+	if powered_up:
+		powered_up_mags -= 1
 
 func take_damage():
 	took_damage.emit()
@@ -188,15 +200,18 @@ func _physics_process(delta: float) -> void:
 	##ACTIONS
 	debug_text.text = str(attack_direction)
 	if Input.is_action_pressed("shoot") && attack_timer.is_stopped():
-		attack_timer.start()
-		AudioManager.play_sfx(gun_sound)
-		attack()
+		if reload_timer.is_stopped() && gun_magazine > 0:
+			attack_timer.start()
+			AudioManager.play_sfx(gun_sound)
+			attack()
 	if Input.is_action_just_released("shoot"):
 		#AudioManager.play_sfx(tommy_last)
 		pass
 	if Input.is_action_just_pressed("interact") && current_door:
 		if current_door.closed:
 			current_door.open()
+	if Input.is_action_just_pressed("reload"):
+		start_reload()
 	
 	##PLAYER MOVEMENT##
 	#Add the gravity.
@@ -283,6 +298,9 @@ func attack() -> void:
 	new_bullet.rotation_degrees = adjusted_angle
 	get_parent().add_child(new_bullet)
 	get_parent().add_child(new_shell)
+	bullet_shot.emit()
+	gun_magazine -= 1
+	print("mag", gun_magazine)
 
 
 #TODO Split out the attack cursor as its own node?
@@ -314,3 +332,6 @@ func _on_door_detector_body_entered(body):
 
 func _on_door_detector_body_exited(body):
 	current_door = null
+
+func _on_reload_timer_timeout():
+	reload()

@@ -27,3 +27,14 @@ powered_up_gun_sound = ExtResource("5_fj0uu")
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CapsuleShape2D_na03n")
+
+[node name="InBetweenTimer" type="Timer" parent="Timers" index="5"]
+wait_time = 0.3
+one_shot = true
+
+[node name="FinalTimer" type="Timer" parent="Timers" index="6"]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timers/InBetweenTimer" to="." method="_on_in_between_timer_timeout"]
+[connection signal="timeout" from="Timers/FinalTimer" to="." method="_on_final_timer_timeout"]
