@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8gd6e447k00d"]
+
+[ext_resource type="Script" path="res://game/projectiles/charge_shot.gd" id="1_ejp4g"]
+[ext_resource type="Texture2D" uid="uid://dg8bjp1l3jaff" path="res://assets/particles/bullets/charge_shot.png" id="2_yxwa7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6t5c"]
+size = Vector2(7, 7)
+
+[node name="ChargeShot" type="Area2D"]
+collision_layer = 16
+collision_mask = 297
+script = ExtResource("1_ejp4g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_g6t5c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(-2, -2)
+texture = ExtResource("2_yxwa7")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

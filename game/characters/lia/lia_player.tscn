@@ -28,6 +28,9 @@ normal_gun_reload_time = 0.7
 normal_bullet_hud_sprite = ExtResource("6_a2ryx")
 powered_up_gun = ExtResource("4_v31xa")
 powered_up_sprite = ExtResource("3_esohs")
+powered_up_fire_rate = 0.5
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_jea0j")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="10"]
