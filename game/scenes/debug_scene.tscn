@@ -32,10 +32,9 @@ polygon = PackedVector2Array(-28, -14, 49, -14, 49, 13, 38, 34, 121, 34, 121, 58
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_24wkg"]
 distance = -360.0
 
-[node name="DebugScene" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets")]
+[node name="DebugScene" type="Node2D" node_paths=PackedStringArray("primary_obj")]
 script = ExtResource("1_hmkun")
 primary_obj = NodePath("Generator")
-secrets = [NodePath("SecretArea")]
 
 [node name="WorldGenerator" parent="." instance=ExtResource("1_uxllv")]
 

@@ -43,7 +43,7 @@ func _ready():
 		secret.secret_found.connect(_on_secret_found.bind())
 	var spawners = get_tree().get_nodes_in_group("enemy_spawners")
 	for spawn in spawners:
-		var new_spawn: EnemySpawner = spawn 
+		var new_spawn: EnemySpawner = spawn
 		new_spawn.enemy_spawned.connect(_on_enemy_spawned.bind() )
 	extract_zone.player_extracted.connect(_on_extract.bind())
 	render_objectives()
