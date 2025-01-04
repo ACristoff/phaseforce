@@ -1,24 +1,24 @@
-[gd_scene load_steps=24 format=4 uid="uid://dqpvddi2llok6"]
+[gd_scene load_steps=24 format=4 uid="uid://b0jbio0575gja"]
 
-[ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_3skp3"]
-[ext_resource type="Script" path="res://game/world/level.gd" id="1_cakfj"]
-[ext_resource type="PackedScene" uid="uid://dcnjabyfgy3tm" path="res://game/UI/hud.tscn" id="2_cysiw"]
-[ext_resource type="PackedScene" uid="uid://bm5mdiuoh8qbi" path="res://game/objects/passthrough_platform.tscn" id="3_0veup"]
-[ext_resource type="PackedScene" uid="uid://bytrjfsir7c6d" path="res://game/objects/power_up.tscn" id="4_n7avy"]
-[ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="5_usedy"]
-[ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="6_mt015"]
-[ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="7_738nd"]
-[ext_resource type="Texture2D" uid="uid://cxtvffj8juoax" path="res://assets/environment/placeables/decorations/militaryvehicle.png" id="8_6f211"]
-[ext_resource type="PackedScene" uid="uid://dpei7pskp8gef" path="res://game/objects/record_player.tscn" id="9_05ju8"]
-[ext_resource type="PackedScene" uid="uid://b4ir8rl8balvy" path="res://game/objects/climbable_ladder.tscn" id="10_cwrlg"]
-[ext_resource type="PackedScene" uid="uid://ddoegd7o3j6lt" path="res://game/objects/generator.tscn" id="11_km5f0"]
-[ext_resource type="PackedScene" uid="uid://c8jo543xm1x0a" path="res://game/characters/enemies/enemy_base.tscn" id="12_3l25s"]
-[ext_resource type="PackedScene" uid="uid://btb5qe7w5b6wg" path="res://game/objects/electric_doors.tscn" id="13_o4aqt"]
-[ext_resource type="PackedScene" uid="uid://esqwdf2tdfok" path="res://game/world/extract_zone.tscn" id="14_depa6"]
-[ext_resource type="PackedScene" uid="uid://0c6hho6rprwl" path="res://game/world/secret_area.tscn" id="15_46xme"]
-[ext_resource type="PackedScene" uid="uid://clgkki5cfqcx1" path="res://game/objects/heart_pickup.tscn" id="16_p2eg5"]
-[ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="17_ximk6"]
-[ext_resource type="PackedScene" uid="uid://yb2f6m8tsacr" path="res://game/world/enemy_spawner.tscn" id="19_q0e02"]
+[ext_resource type="Script" path="res://game/world/level.gd" id="1_7v17c"]
+[ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="2_utkbe"]
+[ext_resource type="PackedScene" uid="uid://dcnjabyfgy3tm" path="res://game/UI/hud.tscn" id="3_r4otv"]
+[ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="4_ay3jo"]
+[ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="5_2qcjn"]
+[ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="6_umqns"]
+[ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="7_paxij"]
+[ext_resource type="PackedScene" uid="uid://bm5mdiuoh8qbi" path="res://game/objects/passthrough_platform.tscn" id="8_2ho2h"]
+[ext_resource type="PackedScene" uid="uid://bytrjfsir7c6d" path="res://game/objects/power_up.tscn" id="9_u75j7"]
+[ext_resource type="Texture2D" uid="uid://cxtvffj8juoax" path="res://assets/environment/placeables/decorations/militaryvehicle.png" id="10_56x3o"]
+[ext_resource type="PackedScene" uid="uid://dpei7pskp8gef" path="res://game/objects/record_player.tscn" id="11_3qpep"]
+[ext_resource type="PackedScene" uid="uid://b4ir8rl8balvy" path="res://game/objects/climbable_ladder.tscn" id="12_xrn6m"]
+[ext_resource type="PackedScene" uid="uid://ddoegd7o3j6lt" path="res://game/objects/generator.tscn" id="13_1ytnj"]
+[ext_resource type="PackedScene" uid="uid://c8jo543xm1x0a" path="res://game/characters/enemies/enemy_base.tscn" id="14_2tml5"]
+[ext_resource type="PackedScene" uid="uid://btb5qe7w5b6wg" path="res://game/objects/electric_doors.tscn" id="15_32c0o"]
+[ext_resource type="PackedScene" uid="uid://esqwdf2tdfok" path="res://game/world/extract_zone.tscn" id="16_en1u7"]
+[ext_resource type="PackedScene" uid="uid://0c6hho6rprwl" path="res://game/world/secret_area.tscn" id="17_x05fw"]
+[ext_resource type="PackedScene" uid="uid://clgkki5cfqcx1" path="res://game/objects/heart_pickup.tscn" id="18_efsy4"]
+[ext_resource type="PackedScene" uid="uid://yb2f6m8tsacr" path="res://game/world/enemy_spawner.tscn" id="19_rf3ux"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vb4j5"]
 polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -616, -16, -627, 1)
@@ -33,16 +33,16 @@ polygon = PackedVector2Array(-28, -14, 49, -14, 49, 13, 38, 34, 121, 34, 121, 58
 distance = -360.0
 
 [node name="LevelOne" type="Node2D" node_paths=PackedStringArray("primary_obj")]
-script = ExtResource("1_cakfj")
+script = ExtResource("1_7v17c")
 primary_obj = NodePath("Generator")
 kill_x_snowmen = true
 kill_quantity = 20
 
-[node name="WorldGenerator" parent="." instance=ExtResource("1_3skp3")]
+[node name="WorldGenerator" parent="." instance=ExtResource("2_utkbe")]
 
-[node name="HUD" parent="." instance=ExtResource("2_cysiw")]
+[node name="HUD" parent="." instance=ExtResource("3_r4otv")]
 
-[node name="WorldTiles" parent="." instance=ExtResource("17_ximk6")]
+[node name="WorldTiles" parent="." instance=ExtResource("4_ay3jo")]
 position = Vector2(-36, -36)
 
 [node name="SnowGround" parent="WorldTiles" index="0"]
@@ -70,7 +70,7 @@ repeat_times = 6
 modulate = Color(0.76, 0.868, 1, 1)
 position = Vector2(-160, 86)
 scale = Vector2(-1, 1)
-texture = ExtResource("5_usedy")
+texture = ExtResource("5_2qcjn")
 
 [node name="Parallax2D3" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
@@ -83,7 +83,7 @@ repeat_times = 6
 modulate = Color(0.66868, 0.6424, 0.73, 1)
 position = Vector2(-160, 86)
 scale = Vector2(-1, 1)
-texture = ExtResource("6_mt015")
+texture = ExtResource("6_umqns")
 
 [node name="Parallax2D2" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
@@ -95,7 +95,7 @@ repeat_times = 6
 [node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D2"]
 modulate = Color(0.37, 0.685, 1, 1)
 position = Vector2(-160, 86)
-texture = ExtResource("6_mt015")
+texture = ExtResource("6_umqns")
 
 [node name="Front" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
@@ -107,161 +107,161 @@ repeat_times = 6
 [node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Front"]
 modulate = Color(0.4761, 0.56879, 0.69, 1)
 position = Vector2(-160, 105)
-texture = ExtResource("7_738nd")
+texture = ExtResource("7_paxij")
 
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2(-36, -36)
 
-[node name="PassthroughPlatform" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(588, 123)
 
-[node name="PassthroughPlatform41" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform41" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(876, -93)
 
-[node name="PassthroughPlatform42" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform42" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(852, -93)
 
-[node name="PassthroughPlatform43" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform43" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(828, -93)
 
-[node name="PassthroughPlatform44" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform44" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(804, -93)
 
-[node name="PassthroughPlatform45" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform45" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(972, 3)
 
-[node name="PassthroughPlatform46" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform46" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(996, 3)
 
-[node name="PassthroughPlatform47" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform47" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(1020, 3)
 
-[node name="PassthroughPlatform2" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform2" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(612, 123)
 
-[node name="PassthroughPlatform3" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform3" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(636, 123)
 
-[node name="PassthroughPlatform10" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform10" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2388, -285)
 
-[node name="PassthroughPlatform11" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform11" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2412, -285)
 
-[node name="PassthroughPlatform12" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform12" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2436, -285)
 
-[node name="PassthroughPlatform13" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform13" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2628, -333)
 
-[node name="PassthroughPlatform14" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform14" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2652, -333)
 
-[node name="PassthroughPlatform15" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform15" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2676, -333)
 
-[node name="PassthroughPlatform16" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform16" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2700, -333)
 
-[node name="PassthroughPlatform17" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform17" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2724, -333)
 
-[node name="PassthroughPlatform18" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform18" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2316, -309)
 
-[node name="PassthroughPlatform19" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform19" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2340, -334)
 
-[node name="PassthroughPlatform20" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform20" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2316, -357)
 
-[node name="PassthroughPlatform21" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform21" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2340, -381)
 
-[node name="PassthroughPlatform22" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform22" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2052, -429)
 
-[node name="PassthroughPlatform23" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform23" parent="Objects" instance=ExtResource("8_2ho2h")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(2028, -429)
 
-[node name="PassthroughPlatform24" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform24" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(1956, -429)
 
-[node name="PassthroughPlatform25" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform25" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(1860, -453)
 
-[node name="PassthroughPlatform26" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform26" parent="Objects" instance=ExtResource("8_2ho2h")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(1884, -453)
 
-[node name="PassthroughPlatform27" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform27" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(1740, -429)
 
-[node name="PassthroughPlatform28" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform28" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(1764, -429)
 
-[node name="PassthroughPlatform29" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform29" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(1716, -429)
 
-[node name="PassthroughPlatform30" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform30" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(1692, -429)
 
-[node name="PassthroughPlatform31" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform31" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(1812, -333)
 
-[node name="PassthroughPlatform32" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform32" parent="Objects" instance=ExtResource("8_2ho2h")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(1836, -333)
 
-[node name="PassthroughPlatform33" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform33" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(1908, -333)
 
-[node name="PassthroughPlatform34" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform34" parent="Objects" instance=ExtResource("8_2ho2h")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(1884, -333)
 
-[node name="PassthroughPlatform4" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform4" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(564, 123)
 
-[node name="PassthroughPlatform5" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform5" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(108, 123)
 
-[node name="PassthroughPlatform6" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform6" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(132, 123)
 
-[node name="PassthroughPlatform7" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform7" parent="Objects" instance=ExtResource("8_2ho2h")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(156, 123)
 
-[node name="PassthroughPlatform8" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform8" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(252, 147)
 
-[node name="PassthroughPlatform9" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform9" parent="Objects" instance=ExtResource("8_2ho2h")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(228, 147)
 
-[node name="PassthroughPlatform35" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform35" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(1836, -597)
 
-[node name="PassthroughPlatform36" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform36" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(1764, -597)
 
-[node name="PassthroughPlatform37" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform37" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2100, -597)
 
-[node name="PassthroughPlatform38" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform38" parent="Objects" instance=ExtResource("8_2ho2h")]
 position = Vector2(2556, -549)
 
-[node name="PassthroughPlatform39" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform39" parent="Objects" instance=ExtResource("8_2ho2h")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(1284, -69)
 
-[node name="PassthroughPlatform40" parent="Objects" instance=ExtResource("3_0veup")]
+[node name="PassthroughPlatform40" parent="Objects" instance=ExtResource("8_2ho2h")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(1308, -69)
 
-[node name="PowerUp" parent="Objects" instance=ExtResource("4_n7avy")]
+[node name="PowerUp" parent="Objects" instance=ExtResource("9_u75j7")]
 position = Vector2(2220, -469)
 
 [node name="ParticleColliders" type="Node2D" parent="."]
@@ -283,15 +283,15 @@ texture_filter = 3
 
 [node name="MilitaryVehicle" type="Sprite2D" parent="Decorations"]
 position = Vector2(1721, -144)
-texture = ExtResource("8_6f211")
+texture = ExtResource("10_56x3o")
 
 [node name="MilitaryVehicle2" type="Sprite2D" parent="Decorations"]
 z_index = -10
 position = Vector2(1389, -138)
 rotation = -0.109159
-texture = ExtResource("8_6f211")
+texture = ExtResource("10_56x3o")
 
-[node name="Record_Player" parent="Decorations" instance=ExtResource("9_05ju8")]
+[node name="Record_Player" parent="Decorations" instance=ExtResource("11_3qpep")]
 position = Vector2(2654, 308)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
@@ -300,163 +300,163 @@ position = Vector2(-352, -24)
 [node name="Ladders" type="Node2D" parent="."]
 position = Vector2(-36, -36)
 
-[node name="ClimbableLadder11" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder11" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(996, -12)
 
-[node name="ClimbableLadder59" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder59" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(996, 12)
 
-[node name="ClimbableLadder60" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder60" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(996, 36)
 
-[node name="ClimbableLadder61" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder61" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(996, 60)
 
-[node name="ClimbableLadder62" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder62" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(996, 84)
 
-[node name="ClimbableLadder63" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder63" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(996, 108)
 
-[node name="ClimbableLadder12" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder12" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -108)
 
-[node name="ClimbableLadder13" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder13" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -132)
 
-[node name="ClimbableLadder14" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder14" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -156)
 
-[node name="ClimbableLadder15" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder15" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -180)
 
-[node name="ClimbableLadder16" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder16" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -204)
 
-[node name="ClimbableLadder17" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder17" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -228)
 
-[node name="ClimbableLadder18" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder18" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -252)
 
-[node name="ClimbableLadder19" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder19" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -276)
 
-[node name="ClimbableLadder20" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder20" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -300)
 
-[node name="ClimbableLadder21" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder21" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -324)
 
-[node name="ClimbableLadder22" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder22" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -348)
 
-[node name="ClimbableLadder23" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder23" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2196, -372)
 
-[node name="ClimbableLadder24" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder24" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2412, -180)
 
-[node name="ClimbableLadder25" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder25" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2412, -204)
 
-[node name="ClimbableLadder26" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder26" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2412, -228)
 
-[node name="ClimbableLadder27" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder27" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2412, -252)
 
-[node name="ClimbableLadder28" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder28" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2412, -276)
 
-[node name="ClimbableLadder29" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder29" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2412, -300)
 
-[node name="ClimbableLadder30" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder30" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2412, -324)
 
-[node name="ClimbableLadder31" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder31" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2556, -396)
 
-[node name="ClimbableLadder32" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder32" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2556, -420)
 
-[node name="ClimbableLadder33" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder33" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2556, -444)
 
-[node name="ClimbableLadder55" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder55" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2556, -468)
 
-[node name="ClimbableLadder56" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder56" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2556, -492)
 
-[node name="ClimbableLadder57" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder57" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2556, -516)
 
-[node name="ClimbableLadder58" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder58" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2556, -540)
 
-[node name="ClimbableLadder34" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder34" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2556, -348)
 
-[node name="ClimbableLadder35" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder35" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2556, -372)
 
-[node name="ClimbableLadder36" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder36" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1836, -468)
 
-[node name="ClimbableLadder37" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder37" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1836, -492)
 
-[node name="ClimbableLadder38" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder38" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1836, -516)
 
-[node name="ClimbableLadder39" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder39" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1836, -540)
 
-[node name="ClimbableLadder40" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder40" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1836, -564)
 
-[node name="ClimbableLadder41" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder41" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1836, -588)
 
-[node name="ClimbableLadder42" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder42" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1764, -468)
 
-[node name="ClimbableLadder43" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder43" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1764, -492)
 
-[node name="ClimbableLadder44" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder44" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1764, -516)
 
-[node name="ClimbableLadder45" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder45" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1764, -540)
 
-[node name="ClimbableLadder46" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder46" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1764, -564)
 
-[node name="ClimbableLadder47" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder47" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(1764, -588)
 
-[node name="ClimbableLadder48" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder48" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2100, -444)
 
-[node name="ClimbableLadder49" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder49" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2100, -468)
 
-[node name="ClimbableLadder50" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder50" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2100, -492)
 
-[node name="ClimbableLadder51" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder51" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2100, -516)
 
-[node name="ClimbableLadder52" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder52" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2100, -540)
 
-[node name="ClimbableLadder53" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder53" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2100, -564)
 
-[node name="ClimbableLadder54" parent="Ladders" instance=ExtResource("10_cwrlg")]
+[node name="ClimbableLadder54" parent="Ladders" instance=ExtResource("12_xrn6m")]
 position = Vector2(2100, -588)
 
 [node name="Death_Barrier" type="Area2D" parent="."]
@@ -465,135 +465,135 @@ position = Vector2(2100, -588)
 position = Vector2(0, 37)
 shape = SubResource("WorldBoundaryShape2D_04hub")
 
-[node name="Generator" parent="." node_paths=PackedStringArray("doors_to_unlock") instance=ExtResource("11_km5f0")]
+[node name="Generator" parent="." node_paths=PackedStringArray("doors_to_unlock") instance=ExtResource("13_1ytnj")]
 position = Vector2(2659, -389)
 doors_to_unlock = [NodePath("../Doors/Electric_Doors"), NodePath("../Doors/Electric_Doors2")]
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="EnemyBase2" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase2" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(624, 84)
 
-[node name="EnemyBase4" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase4" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(496, 84)
 
-[node name="EnemyBase5" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase5" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(1634, -107)
 
-[node name="EnemyBase6" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase6" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(1693, -108)
 
-[node name="EnemyBase7" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase7" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(1775, -108)
 
-[node name="EnemyBase8" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase8" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(1169, -108)
 
-[node name="EnemyBase9" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase9" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(2040, -228)
 
-[node name="EnemyBase10" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase10" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(2106, -228)
 
-[node name="EnemyBase11" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase11" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(2545, -372)
 
-[node name="EnemyBase12" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase12" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(2610, -372)
 
-[node name="EnemyBase13" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase13" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(2665, -372)
 
-[node name="EnemyBase14" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase14" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(1749, -396)
 
-[node name="EnemyBase15" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase15" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(1606, -636)
 
-[node name="EnemyBase16" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase16" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(1846, -636)
 
-[node name="EnemyBase17" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase17" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(2214, -348)
 
-[node name="EnemyBase18" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase18" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(2016, -348)
 
-[node name="EnemyBase19" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase19" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(2070, -132)
 
-[node name="EnemyBase20" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase20" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(720, -36)
 
-[node name="EnemyBase21" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase21" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(788, -36)
 
-[node name="EnemyBase22" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase22" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(864, -60)
 
-[node name="EnemyBase23" parent="Enemies" instance=ExtResource("12_3l25s")]
+[node name="EnemyBase23" parent="Enemies" instance=ExtResource("14_2tml5")]
 position = Vector2(900, -36)
 
 [node name="Doors" type="Node" parent="."]
 
-[node name="Electric_Doors" parent="Doors" instance=ExtResource("13_o4aqt")]
+[node name="Electric_Doors" parent="Doors" instance=ExtResource("15_32c0o")]
 position = Vector2(658, 48)
 
-[node name="Electric_Doors2" parent="Doors" instance=ExtResource("13_o4aqt")]
+[node name="Electric_Doors2" parent="Doors" instance=ExtResource("15_32c0o")]
 position = Vector2(1021, -144)
 
-[node name="ExtractZone" parent="." instance=ExtResource("14_depa6")]
+[node name="ExtractZone" parent="." instance=ExtResource("16_en1u7")]
 position = Vector2(-467, -18)
 
 [node name="ExtractTimer" type="Timer" parent="."]
 wait_time = 60.0
 one_shot = true
 
-[node name="SecretArea" parent="." instance=ExtResource("15_46xme")]
+[node name="SecretArea" parent="." instance=ExtResource("17_x05fw")]
 position = Vector2(2692, 260)
 
-[node name="HeartPickup" parent="." instance=ExtResource("16_p2eg5")]
+[node name="HeartPickup" parent="." instance=ExtResource("18_efsy4")]
 position = Vector2(720, -162)
 
-[node name="HeartPickup2" parent="." instance=ExtResource("16_p2eg5")]
+[node name="HeartPickup2" parent="." instance=ExtResource("18_efsy4")]
 position = Vector2(1993, -255)
 
 [node name="Node" type="Node" parent="."]
 
-[node name="EnemySpawner" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner" parent="Node" instance=ExtResource("19_rf3ux")]
 position = Vector2(726, 116)
 trigger = 2
 
-[node name="EnemySpawner2" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner2" parent="Node" instance=ExtResource("19_rf3ux")]
 position = Vector2(838, 116)
 trigger = 2
 
-[node name="EnemySpawner3" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner3" parent="Node" instance=ExtResource("19_rf3ux")]
 position = Vector2(950, 116)
 trigger = 2
 
-[node name="EnemySpawner4" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner4" parent="Node" instance=ExtResource("19_rf3ux")]
 position = Vector2(218, 140)
 
-[node name="EnemySpawner5" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner5" parent="Node" instance=ExtResource("19_rf3ux")]
 position = Vector2(287, 116)
 
-[node name="EnemySpawner6" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner6" parent="Node" instance=ExtResource("19_rf3ux")]
 position = Vector2(372, 116)
 
-[node name="EnemySpawner7" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner7" parent="Node" instance=ExtResource("19_rf3ux")]
 position = Vector2(2588, -556)
 
-[node name="EnemySpawner8" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner8" parent="Node" instance=ExtResource("19_rf3ux")]
 position = Vector2(2419, -580)
 
-[node name="EnemySpawner9" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner9" parent="Node" instance=ExtResource("19_rf3ux")]
 position = Vector2(1898, -100)
 
-[node name="EnemySpawner10" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner10" parent="Node" instance=ExtResource("19_rf3ux")]
 position = Vector2(1740, -76)
 
-[node name="PowerUp" parent="." instance=ExtResource("4_n7avy")]
+[node name="PowerUp" parent="." instance=ExtResource("9_u75j7")]
 position = Vector2(-50, 71)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
