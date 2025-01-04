@@ -37,6 +37,7 @@ powered_up_gun_spread = Array[int]([-10, 10])
 powered_up_damage = 30
 powered_up_gun_sound = ExtResource("12_n1o86")
 powered_up_gun_capacity = 6
+powered_up_gun_mags = 1
 powered_up_bullet_hud_sprite = ExtResource("13_ggxrv")
 
 [node name="Sprite2D" parent="." index="2"]
