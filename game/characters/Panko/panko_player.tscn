@@ -25,6 +25,7 @@ powered_up_fire_rate = 0.077
 powered_up_damage = 20
 powered_up_gun_sound = ExtResource("5_fj0uu")
 powered_up_gun_capacity = 50
+powered_up_gun_mags = 1
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CapsuleShape2D_na03n")

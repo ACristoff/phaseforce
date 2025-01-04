@@ -83,7 +83,7 @@ class_name BasePlayer
 
 var gun_spread = normal_gun_spread
 var fire_rate = normal_fire_rate
-var powered_up_mags
+var mags
 var gun_magazine_capacity
 var gun_magazine
 var bullet_speed
@@ -149,8 +149,8 @@ func reload():
 	gun_magazine = gun_magazine_capacity
 	AudioManager.play_sfx(reload_sound)
 	if powered_up:
-		powered_up_mags -= 1
-		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", powered_up_mags))
+		mags -= 1
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
 	else:
 		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
 
@@ -190,11 +190,11 @@ func power_up():
 	gun_magazine = powered_up_gun_capacity
 	gun_magazine_capacity = powered_up_gun_capacity
 	##TODO ALLOW FOR MULTIPLE PICKUPS
-	powered_up_mags = powered_up_gun_mags
+	mags = powered_up_gun_mags
 	powered_up = true
 	hud.new_bullet_sprite = powered_up_bullet_hud_sprite
 	hud.change_bullet_sprite()
-	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", powered_up_mags))
+	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
 	quip(power_up_quips)
 
 
@@ -207,8 +207,11 @@ func power_down():
 	bullet_speed = normal_bullet_speed
 	bullet_damage = normal_damage
 	gun_spread = normal_gun_spread
+	gun_magazine = normal_gun_capacity
+	gun_magazine_capacity = normal_gun_capacity
 	hud.new_bullet_sprite = normal_bullet_hud_sprite
 	hud.change_bullet_sprite()
+	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
 	powered_up = false
 
 func jump(force):
@@ -287,7 +290,8 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_just_released("move_down"):
 			for platform in current_platform_stack:
 				platform.enable_platform()
-	
+	if powered_up && gun_magazine == 0 && mags == 0:
+		power_down()
 	#Idle
 	if velocity == Vector2(0,0) or velocity == Vector2.ZERO:
 		anim_player.play("Idle")
@@ -323,7 +327,7 @@ func attack() -> void:
 	bullet_shot.emit()
 	gun_magazine -= 1
 	if powered_up:
-		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", powered_up_mags))
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
 	else:
 		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
 	#print("mag", gun_magazine)

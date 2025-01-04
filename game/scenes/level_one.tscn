@@ -593,6 +593,9 @@ position = Vector2(1898, -100)
 [node name="EnemySpawner10" parent="Node" instance=ExtResource("19_q0e02")]
 position = Vector2(1740, -76)
 
+[node name="PowerUp" parent="." instance=ExtResource("4_n7avy")]
+position = Vector2(-9, 55)
+
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 
 [editable path="WorldTiles"]
