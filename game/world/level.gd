@@ -30,11 +30,13 @@ class_name Level
 
 
 var optional_completed: bool = false
-var secrets_found = 0
+var secrets_found: int = 0
 var character: PackedScene
 var player: BasePlayer
-var is_paused = false
-var snowmen_killed = 0
+var is_paused: bool = false
+var snowmen_killed: int = 0
+var keycards_collected: Array[String] = []
+var gifts_collected: int = 0
 
 signal level_completed
 signal game_over
@@ -94,15 +96,15 @@ func render_objectives():
 		hud.primary_obj_label.text = "Destroy the Generator"
 		primary_obj.just_destroyed.connect(_on_primary_obj_completed.bind())
 	if kill_x_snowmen == true:
-		#print("do kill")
 		hud.optional_objective_label.text = str("Kill ", snowmen_killed, " / ", kill_quantity, " Snowmen")
 	if while_full_health:
-		pass
+		hud.optional_objective_label.text = str("Extract while at full health")
 	if while_powered_up:
-		pass
+		hud.optional_objective_label.text = str("Extract while powered up")
 	if collect_x_gifts:
 		pass
 	if collect_x_keycard:
+		hud.optional_objective_label.text = str("Collect the ", collect_keycard_color, " keycard")
 		pass
 
 func _on_primary_obj_completed():
