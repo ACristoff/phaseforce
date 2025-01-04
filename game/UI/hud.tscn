@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dcnjabyfgy3tm"]
 
 [ext_resource type="Script" path="res://game/UI/hud.gd" id="1_g4rpk"]
+[ext_resource type="Texture2D" uid="uid://dtlw6h7tp6myv" path="res://assets/ui/ammo_types/shotgun_shell.png" id="2_6i720"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_68nfx"]
-[ext_resource type="Texture2D" uid="uid://cj17x1nggnfq2" path="res://assets/ui/ammo_types/artillery_shell.png" id="2_ca1xw"]
 [ext_resource type="Texture2D" uid="uid://d4lx7mqd0g5nh" path="res://assets/ui/checkbox1.png" id="4_fopok"]
 [ext_resource type="PackedScene" uid="uid://b7tlk72uaaatj" path="res://game/UI/primary_objective_label.tscn" id="4_kj66g"]
 [ext_resource type="Texture2D" uid="uid://cjocwybbd0qxm" path="res://assets/ui/healthbottom.png" id="5_f2ved"]
@@ -39,7 +39,8 @@ layout_mode = 2
 
 [node name="AmmoSprite" type="TextureRect" parent="CanvasLayer/Ammo_Container/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_ca1xw")
+size_flags_vertical = 4
+texture = ExtResource("2_6i720")
 stretch_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/Ammo_Container/HBoxContainer"]
