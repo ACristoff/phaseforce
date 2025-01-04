@@ -5,7 +5,7 @@ var knockback_force = -2
 @onready var TRANSEFFECT = preload("res://game/effects/transformation_sequence.tscn")
 var charge = 0
 var charge_cap = 21
-var charge_rate = 9
+var charge_rate = 8
 
 @onready var sound_player = $AudioStreamPlayer2D
 @onready var first_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_FIRST.mp3")
@@ -52,16 +52,19 @@ func _physics_process(delta: float) -> void:
 				charge += charge_rate * delta
 				cursor_sprite.value = charge + 9
 			if charge < 15 && sound_player.stream != middle_sound:
+				#print('over cap')
 				sound_player.stream = middle_sound
-			#print(gun)
-			pass
-		if Input.is_action_just_released("shoot"):
+		if Input.is_action_just_released("shoot") && charge > 7:
 			sound_player.stop()
-			AudioManager.play_sfx(last_sound)
+			var charge_sound_adjust = -20 + charge
+			AudioManager.play_sfx(last_sound, charge_sound_adjust )
 			charge = 0
 			cursor_sprite.value = charge + 9
-			pass
-		pass
+			attack()
+		elif Input.is_action_just_released("shoot"):
+			charge = 0
+			cursor_sprite.value = charge + 9
+
 	else:
 		if Input.is_action_pressed("shoot") && attack_timer.is_stopped():
 			if reload_timer.is_stopped() && gun_magazine > 0:
