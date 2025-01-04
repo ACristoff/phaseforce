@@ -36,9 +36,8 @@ distance = -360.0
 [node name="LevelOne" type="Node2D" node_paths=PackedStringArray("primary_obj")]
 script = ExtResource("1_cakfj")
 primary_obj = NodePath("Generator")
+kill_x_snowmen = true
 kill_quantity = 20
-collect_x_gifts = true
-gift_quantity = 1
 
 [node name="WorldGenerator" parent="." instance=ExtResource("1_3skp3")]
 
