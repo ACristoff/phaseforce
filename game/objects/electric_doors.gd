@@ -7,12 +7,11 @@ class_name Door
 
 @onready var light_bulb = $ElectricDoor/LightCasing/LightBulb
 @onready var light = $ElectricDoor/LightCasing/LightBulb/PointLight2D
-#@onready var closed_marker = $CloseMarker
-#@onready var opened_marker = $OpenMarker
 @onready var anim = $AnimationPlayer
 
 @export var interactable: bool = false
 @export var closed: bool = true
+@export var keycard: String = "None"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +25,14 @@ func _ready():
 func distant_open():
 	if closed:
 		anim.play("open")
+
+func check_for_keycard(_key):
+	if _key == keycard && !interactable:
+		light_bulb.modulate = Color.GREEN
+		light.color = Color.GREEN
+		interactable = true
+	elif keycard != "None":
+		AudioManager.play_sfx(deny_sound, -5)
 
 func open():
 	if interactable && closed:

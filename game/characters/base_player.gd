@@ -89,8 +89,9 @@ var gun_magazine_capacity
 var gun_magazine
 var bullet_speed
 var bullet_damage
-var reload_time 
+var reload_time
 
+var keycards = []
 var health: int = 3
 var powered_up: bool = false
 var knockback = Vector2.ZERO
@@ -132,6 +133,9 @@ func _ready() -> void:
 	hud.new_bullet_sprite = normal_bullet_hud_sprite
 	hud.change_bullet_sprite()
 	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
+
+func add_keycard(_key):
+	keycards.append(_key)
 
 func gain_heart():
 	gained_health.emit()
@@ -363,6 +367,9 @@ func _on_platform_detector_area_exited(area):
 
 func _on_door_detector_body_entered(body):
 	current_door = body.get_parent()
+	if keycards.size() > 0:
+		for keycard in keycards:
+			current_door.check_for_keycard(keycard)
 
 func _on_door_detector_body_exited(body):
 	current_door = null
