@@ -10,7 +10,7 @@ class_name Level_Manager
 
 var level_ref: Level
 var current_level = 0
-
+var time
 signal to_main
 
 var characters = {

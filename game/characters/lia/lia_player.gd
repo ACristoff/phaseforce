@@ -1,7 +1,7 @@
 extends BasePlayer
 
 
-var knockback_force = -2
+var knockback_force = -4
 @onready var TRANSEFFECT = preload("res://game/effects/transformation_sequence.tscn")
 var charge = 0
 var charge_cap = 21

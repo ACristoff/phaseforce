@@ -37,6 +37,8 @@ var is_paused: bool = false
 var snowmen_killed: int = 0
 var keycards_collected: Array[String] = []
 var gifts_collected: int = 0
+var time: float = 0
+var level_id = null
 
 signal level_completed
 signal game_over
@@ -88,6 +90,10 @@ func _process(delta):
 		pause_menu()
 	if !extract_timer.is_stopped():
 		hud.timer_label.text = str("TIME TO EXTRACT: ", int(extract_timer.time_left))
+	time += delta
+
+func get_time():
+	return time
 
 func _on_secret_found():
 	secrets_found += 1
@@ -125,7 +131,7 @@ func _on_primary_obj_completed():
 func generate_level_complete_data():
 	var objective = str("Objective completed: :3")
 	var optional_objective = str("Optional objective completed: ", optional_completed )
-	var secrets_data = str("Secrets found: ", secrets_found)
+	var secrets_data = str("Secrets found: ", secrets_found, " / ", secrets.size)
 	var enemies = str("Enemies killed: ", snowmen_killed)
 	var stars = [true, optional_completed, secrets.size() == secrets_found]
 	var all = {
@@ -134,7 +140,8 @@ func generate_level_complete_data():
 		"objective": objective,
 		"secrets_data": secrets_data,
 		"enemies": enemies,
-		"stars": stars
+		"stars": stars,
+		"time": get_time()
 	}
 	return all
 

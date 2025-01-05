@@ -10,6 +10,12 @@ class_name game_manager
 @export var debug_mode = false
 var current_character = "panko"
 
+var levels_data = {
+	"one": null,
+	"two": null,
+	"three": null,
+	"four": null
+}
 #var level_man
 var is_paused = false
 
