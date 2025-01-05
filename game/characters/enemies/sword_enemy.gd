@@ -7,6 +7,13 @@ extends EnemyBase
 @export var jump_force = -280.0
 var is_jumping = false
 
+#is there sprint
+#take out powerup
+#figured out reloading
+#noticed the heart
+#fix the ladder
+
+
 func _physics_process(delta):
 	if health <= 0:
 		die()
