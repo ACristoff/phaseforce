@@ -393,7 +393,7 @@ func _on_door_detector_body_entered(body):
 		for keycard in keycards:
 			current_door.check_for_keycard(keycard)
 
-func _on_door_detector_body_exited(body):
+func _on_door_detector_body_exited(_body):
 	current_door = null
 
 func _on_reload_timer_timeout():
