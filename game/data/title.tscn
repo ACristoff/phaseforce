@@ -475,6 +475,15 @@ text = "Options
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options2/NinePatchRect"]
+layout_mode = 0
+offset_left = -410.0
+offset_top = 79.0
+offset_right = -370.0
+offset_bottom = 102.0
+theme = ExtResource("4_f17u2")
+text = "Ver. 0.1"
+
 [node name="Credits2" type="Control" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
@@ -587,7 +596,6 @@ one_shot = true
 explosiveness = 0.89
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

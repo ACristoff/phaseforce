@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bcyvqrwjcn8dt"]
+[gd_scene load_steps=20 format=3 uid="uid://bcyvqrwjcn8dt"]
 
 [ext_resource type="Script" path="res://game/characters/base_player.gd" id="1_lf5mu"]
 [ext_resource type="AudioStream" uid="uid://pckpxxpgy43a" path="res://assets/sfx/quips/panko/QUIP_POWERUP.mp3" id="2_34bpo"]
 [ext_resource type="Texture2D" uid="uid://4v6wc1fa3ym7" path="res://assets/characters/panko/base_form/Panko_Sprite.png" id="2_t1s0p"]
 [ext_resource type="Texture2D" uid="uid://mtl87x1gxico" path="res://assets/characters/panko/powerup_form/Panko_Sprite2.png" id="3_wi2dk"]
 [ext_resource type="PackedScene" uid="uid://dmaggeemra8ey" path="res://game/characters/Panko/panko_arm.tscn" id="4_f7qq4"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="6_pxb20"]
 [ext_resource type="Texture2D" uid="uid://0ofvyiswdyor" path="res://assets/ui/extractarrow.png" id="6_vhwn8"]
 [ext_resource type="Texture2D" uid="uid://bhcgwh87uyauk" path="res://assets/particles/crosshairs/reloading.png" id="7_pkg5e"]
 
@@ -74,6 +75,75 @@ _data = {
 radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75dr7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxu2y"]
+shader = ExtResource("6_pxb20")
+shader_parameter/outline_color = Color(1, 0.966667, 0, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.05
+
+[sub_resource type="Animation" id="Animation_yvblg"]
+resource_name = "arrow"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExtractArrow:material:shader_parameter/outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.366667, 0, 1), Color(1, 0.916667, 0, 1), Color(1, 0.25, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExtractArrow:material:shader_parameter/width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.05, 0.02, 0.05]
+}
+
+[sub_resource type="Animation" id="Animation_h0wyu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExtractArrow:material:shader_parameter/outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.966667, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExtractArrow:material:shader_parameter/width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.05]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_faky8"]
+_data = {
+"RESET": SubResource("Animation_h0wyu"),
+"arrow": SubResource("Animation_yvblg")
+}
 
 [node name="BasePlayer" type="CharacterBody2D" groups=["player"]]
 texture_filter = 3
@@ -162,10 +232,17 @@ position = Vector2(17, 1)
 shape = SubResource("CircleShape2D_75dr7")
 
 [node name="ExtractArrow" type="Sprite2D" parent="."]
-position = Vector2(0, -37)
+visible = false
+material = SubResource("ShaderMaterial_qxu2y")
+position = Vector2(0, -25)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_vhwn8")
-flip_h = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_faky8")
+}
+autoplay = "arrow"
 
 [node name="MouseCursor" type="Sprite2D" parent="."]
 texture = ExtResource("7_pkg5e")
