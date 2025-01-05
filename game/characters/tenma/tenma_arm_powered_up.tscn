@@ -156,7 +156,7 @@ texture = ExtResource("2_gyeg6")
 offset = Vector2(5, -8)
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="CursorSprite"]
-position = Vector2(16, -5)
+position = Vector2(8, -5)
 gizmo_extents = 5.0
 
 [node name="ShellSpawnPoint" type="Marker2D" parent="CursorSprite"]

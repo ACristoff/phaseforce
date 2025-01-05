@@ -130,14 +130,14 @@ texture = ExtResource("2_ou36t")
 offset = Vector2(5, -8)
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="CursorSprite"]
-position = Vector2(15, -3)
+position = Vector2(7, -3)
 gizmo_extents = 5.0
 
 [node name="ShellSpawnPoint" type="Marker2D" parent="CursorSprite"]
 position = Vector2(5, -4)
 
 [node name="GunExplosion" type="Sprite2D" parent="CursorSprite"]
-position = Vector2(23, -3)
+position = Vector2(21, -3)
 texture = ExtResource("3_qrqaw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CursorSprite"]
