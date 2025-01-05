@@ -193,6 +193,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		update_cursor(event)
 
 func power_up():
+	if health < 3:
+		health += 1
+		gained_health.emit()
 	sprite.texture = powered_up_sprite
 	load_gun(powered_up_gun, true)
 	fire_rate = powered_up_fire_rate

@@ -7,13 +7,7 @@ extends EnemyBase
 @export var jump_force = -280.0
 var is_jumping = false
 
-#is there sprint
-#take out powerup
-#figured out reloading
-#noticed the heart
-#penetrating shotgun shells x1
-#Tenma is hard
-#Desires to learn the brick
+
 
 func _physics_process(delta):
 	if health <= 0:
