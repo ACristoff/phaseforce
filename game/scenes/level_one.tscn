@@ -598,7 +598,7 @@ position = Vector2(1740, -76)
 position = Vector2(-50, 71)
 
 [node name="SwordEnemy" parent="." instance=ExtResource("20_8dh06")]
-position = Vector2(-422, 83)
+position = Vector2(-534, 76)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 

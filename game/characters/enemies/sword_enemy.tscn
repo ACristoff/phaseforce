@@ -93,6 +93,7 @@ collision_layer = 513
 collision_mask = 796
 script = ExtResource("1_38dka")
 speed = 80
+health = 180
 max_sight_distance = 260
 attack_range = 50
 ideal_attack_range = 30
