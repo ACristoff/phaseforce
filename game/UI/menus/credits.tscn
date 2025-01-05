@@ -1,16 +1,60 @@
-[gd_scene format=3 uid="uid://b5qvdndc4elku"]
+[gd_scene load_steps=4 format=3 uid="uid://b5qvdndc4elku"]
 
-[node name="Credits" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://dof1b4wrb8et0" path="res://assets/ui/container2.png" id="1_8nuni"]
+[ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_iufdn"]
+[ext_resource type="Texture2D" uid="uid://drrryt4gklwl4" path="res://assets/ui/title/beretparadelogo.png" id="3_6e5vd"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 120.0
+offset_bottom = 80.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "Back"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Button"]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 31.375)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_8nuni")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Button/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_iufdn")
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -89.0
+offset_top = -31.0
+offset_right = 551.0
+offset_bottom = 329.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -21,21 +65,23 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Credits:
 DiGifigurati - Programming Lead
-Caleb - Sprites & Tech Art 
-Jere - Sprites
+Caleb - Sprites & Tech Art
 Adam - Music Composition & Sound Design
 
 A Beret Parade fangame"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+[node name="Beretparadelogo" type="Sprite2D" parent="CanvasLayer/Control"]
+position = Vector2(312, 302)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_6e5vd")
 
-[node name="Button" type="Button" parent="MarginContainer"]
-custom_minimum_size = Vector2(100, 60)
-layout_mode = 2
-text = "Back"
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+z_index = -10
+offset_left = 98.0
+offset_top = 68.0
+offset_right = 554.0
+offset_bottom = 342.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
