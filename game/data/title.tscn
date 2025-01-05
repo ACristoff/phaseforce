@@ -673,9 +673,8 @@ position = Vector2(0, -215)
 curve = SubResource("Curve2D_k6jcc")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="parallax/Front2/Path2D2"]
-position = Vector2(0, 215.023)
+position = Vector2(0, -147)
 rotation = 1.5708
-progress = 362.0
 
 [node name="Titleheli" type="Sprite2D" parent="parallax/Front2/Path2D2/PathFollow2D"]
 texture_filter = 3
@@ -705,9 +704,8 @@ autoplay = "splash"
 curve = SubResource("Curve2D_gcqls")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="copter"]
-position = Vector2(308, -49.9999)
-rotation = -0.998664
-progress = 254.284
+position = Vector2(237, 189)
+rotation = -1.28203
 
 [node name="Minicopter" type="Sprite2D" parent="copter/PathFollow2D"]
 texture_filter = 3
@@ -730,4 +728,5 @@ libraries = {
 }
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start/NinePatchRect/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits2/NinePatchRect/Credits" to="." method="_on_credits_pressed"]
 [connection signal="animation_finished" from="splash" to="." method="_on_animation_player_animation_finished"]

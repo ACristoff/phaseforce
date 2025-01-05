@@ -43,6 +43,7 @@ class_name BasePlayer
 @onready var shell = preload("res://game/projectiles/spent_shell.tscn")
 
 @export_group("Quips")
+#@export var heal_quips: Array[AudioStreamMP3 || A]
 @export var death_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
 @export var damaged_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
 @export var kill_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]

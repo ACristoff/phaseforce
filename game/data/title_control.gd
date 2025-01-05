@@ -6,6 +6,9 @@ extends Control
 @onready var bpsfx = preload("res://assets/sfx/misc/BERET PARADE Cadence rev 2.mp3")
 var sway = false
 
+signal character_select
+signal credits
+
 @onready var bereparedosfx = [
 	preload("res://assets/sfx/b00/b01.wav"),
 	preload("res://assets/sfx/b00/b02.wav"),
@@ -41,10 +44,11 @@ func _on_start_pressed():
 	character_select.emit()
 	pass # Replace with function body.
 
-signal character_select
-
-
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "splash":
 		cutscene_player.play("cutscene")
 		AudioManager.play_music(music)
+
+func _on_credits_pressed():
+	
+	pass # Replace with function body.
