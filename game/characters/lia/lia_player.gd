@@ -64,6 +64,7 @@ func attack():
 
 
 func _physics_process(delta: float) -> void:
+	mouse_cursor.position = get_local_mouse_position()
 	if health == 0:
 		player_death.emit()
 		health = -1

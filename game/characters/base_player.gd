@@ -26,6 +26,7 @@ class_name BasePlayer
 @onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
 @onready var empty_click_timer: Timer = $Timers/EmptyClickTimer
 @onready var arrow = $ExtractArrow
+@onready var mouse_cursor = $MouseCursor
 
 @onready var steps = [
 	preload("res://assets/sfx/misc/SNOW_STEP_1.mp3"), 
@@ -42,6 +43,9 @@ class_name BasePlayer
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
 @onready var shell = preload("res://game/projectiles/spent_shell.tscn")
+
+@export var mouse_cursor_sprite: CompressedTexture2D = preload("res://assets/particles/crosshairs/crosshair1.png")
+@onready var reload_cursor_sprite: CompressedTexture2D = preload("res://assets/particles/crosshairs/reloading.png")
 
 @export_group("Quips")
 #@export var heal_quips: Array[AudioStreamMP3 || A]
@@ -121,6 +125,8 @@ func quip(quip_array):
 	AudioManager.play_quip(quip)
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	mouse_cursor.texture = mouse_cursor_sprite
 	extract = get_tree().get_first_node_in_group("extract")
 	fire_rate = normal_fire_rate
 	hud = get_tree().get_first_node_in_group("hud")
@@ -155,11 +161,13 @@ func start_reload():
 	if reload_timer.is_stopped():
 		##TODO ANIMATION
 		gun_anim.play("reload")
+		mouse_cursor.texture = reload_cursor_sprite
 		reload_timer.start()
 		reloaded.emit()
 
 func reload():
 	gun_magazine = gun_magazine_capacity
+	mouse_cursor.texture = mouse_cursor_sprite
 	AudioManager.play_sfx(reload_sound)
 	if powered_up:
 		mags -= 1
@@ -252,6 +260,8 @@ func jump(force):
 
 func _physics_process(delta: float) -> void:
 	arrow.look_at(extract.global_position)
+	#if InputEvent.
+	mouse_cursor.position = get_local_mouse_position()
 	if health == 0:
 		player_death.emit()
 		health = -1

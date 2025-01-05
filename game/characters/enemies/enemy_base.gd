@@ -212,6 +212,8 @@ func go_to_alert(entity):
 		player = entity
 	if entity is Bullet:
 		player = get_tree().get_first_node_in_group("player")
+	if entity is Brick:
+		player = get_tree().get_first_node_in_group("player")
 	last_known_position = player.global_position
 	idle_timer.stop()
 	walk_timer.stop()
@@ -314,7 +316,7 @@ func _on_alert_timer_timeout():
 func _on_scan_area_area_entered(area):
 	if area is Brick:
 		if enemy_state == ENEMY_STATES.IDLE || enemy_state == ENEMY_STATES.IDLEWALK:
-			go_to_alert(area)		
+			go_to_alert(area)
 	if area is Bullet:
 		if enemy_state == ENEMY_STATES.IDLE || enemy_state == ENEMY_STATES.IDLEWALK:
 			go_to_alert(area)

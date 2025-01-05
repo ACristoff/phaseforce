@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://nupa2mkacopf"]
+[gd_scene load_steps=16 format=3 uid="uid://nupa2mkacopf"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_h75yb"]
 [ext_resource type="Texture2D" uid="uid://dsugoh3hgabw4" path="res://assets/characters/tenma/base_form/Tenma_Sprite.png" id="2_b3wq4"]
 [ext_resource type="Script" path="res://game/characters/tenma/tenma_player.gd" id="2_ybem5"]
 [ext_resource type="AudioStream" uid="uid://d1ycpfierg33b" path="res://assets/sfx/quips/tenma/clownma maemi final.mp3" id="3_gdqld"]
 [ext_resource type="PackedScene" uid="uid://cbxurny1qkudw" path="res://game/characters/tenma/tenma_arm.tscn" id="3_nke10"]
+[ext_resource type="Texture2D" uid="uid://brnoud7md7bjw" path="res://assets/particles/crosshairs/crosshair3.png" id="3_npnru"]
 [ext_resource type="Texture2D" uid="uid://xsbbu573qjhd" path="res://assets/characters/tenma/powerup_form/Tenmaoffice_Sprite.png" id="3_rauom"]
 [ext_resource type="PackedScene" uid="uid://u7b7iyo0ybi6" path="res://game/characters/tenma/tenma_arm_powered_up.tscn" id="4_arfvs"]
 [ext_resource type="AudioStream" uid="uid://b3nffj2y7jv53" path="res://assets/sfx/quips/tenma/tenma_get_pussy.mp3" id="4_jypmq"]
@@ -18,6 +19,7 @@
 [node name="TenmaPlayer" instance=ExtResource("1_h75yb")]
 script = ExtResource("2_ybem5")
 shotgun_pellet_count = 10
+mouse_cursor_sprite = ExtResource("3_npnru")
 death_quips = Array[AudioStreamMP3]([ExtResource("3_gdqld")])
 damaged_quips = Array[AudioStreamMP3]([ExtResource("4_jypmq")])
 kill_quips = Array[AudioStreamMP3]([ExtResource("5_5vol1")])

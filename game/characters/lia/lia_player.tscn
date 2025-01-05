@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://by1xslelif07n"]
+[gd_scene load_steps=12 format=3 uid="uid://by1xslelif07n"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_7os3g"]
 [ext_resource type="Script" path="res://game/characters/lia/lia_player.gd" id="2_cac7u"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dx03iscxp6oqw" path="res://game/characters/lia/lia_arm.tscn" id="3_bnuxw"]
 [ext_resource type="AudioStream" uid="uid://bden33hjj4g82" path="res://assets/sfx/quips/tenma/hi mama final.mp3" id="3_e6vgh"]
 [ext_resource type="Texture2D" uid="uid://bmve145j3ghn7" path="res://assets/characters/lia/powerup_form/LiaMom_Sprite.png" id="3_esohs"]
+[ext_resource type="Texture2D" uid="uid://cc3rsdpgdar5l" path="res://assets/particles/crosshairs/crosshair4.png" id="3_vty6s"]
 [ext_resource type="AudioStream" uid="uid://4ljuudbg24rl" path="res://assets/sfx/projectiles/PISTOL.mp3" id="4_7v7ko"]
 [ext_resource type="PackedScene" uid="uid://ci8gnweryibaa" path="res://game/characters/lia/lia_arm_powered_up.tscn" id="4_v31xa"]
 [ext_resource type="Texture2D" uid="uid://bb8u6d1jaxfoa" path="res://assets/ui/ammo_types/50cal.png" id="6_a2ryx"]
@@ -13,6 +14,7 @@
 
 [node name="LiaPlayer" instance=ExtResource("1_7os3g")]
 script = ExtResource("2_cac7u")
+mouse_cursor_sprite = ExtResource("3_vty6s")
 death_quips = Array[AudioStreamMP3]([ExtResource("3_e6vgh")])
 damaged_quips = Array[AudioStreamMP3]([ExtResource("3_e6vgh")])
 kill_quips = Array[AudioStreamMP3]([ExtResource("3_e6vgh")])
@@ -41,3 +43,6 @@ powered_up_bullet_hud_sprite = ExtResource("10_b7wik")
 texture = ExtResource("2_jea0j")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="10"]
+
+[node name="ExtractArrow" parent="." index="11"]
+visible = false

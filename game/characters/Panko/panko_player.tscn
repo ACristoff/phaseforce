@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpewbgbsovbuf"]
+[gd_scene load_steps=10 format=3 uid="uid://bpewbgbsovbuf"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_kkwol"]
 [ext_resource type="Script" path="res://game/characters/Panko/panko_player.gd" id="2_j36ei"]
 [ext_resource type="PackedScene" uid="uid://bsjvx8ltei6fu" path="res://game/characters/Panko/panko_arm_powered_up.tscn" id="3_5mmsr"]
+[ext_resource type="Texture2D" uid="uid://ds5wnktnfo8vj" path="res://assets/particles/crosshairs/crosshair5.png" id="3_28lg6"]
 [ext_resource type="AudioStream" uid="uid://pu4fec8qea4k" path="res://assets/sfx/projectiles/INFANTRY_RIFLE.mp3" id="3_pcgrl"]
 [ext_resource type="AudioStream" uid="uid://tohm88r4k206" path="res://assets/sfx/quips/panko/QUIP_DAMAGED.mp3" id="3_yppyx"]
 [ext_resource type="AudioStream" uid="uid://buecie7an3nvv" path="res://assets/sfx/quips/panko/QUIP_KILL.mp3" id="4_3g0aw"]
@@ -14,6 +15,7 @@ height = 22.0
 
 [node name="PankoPlayer" instance=ExtResource("1_kkwol")]
 script = ExtResource("2_j36ei")
+mouse_cursor_sprite = ExtResource("3_28lg6")
 damaged_quips = Array[AudioStreamMP3]([ExtResource("3_yppyx")])
 kill_quips = Array[AudioStreamMP3]([ExtResource("4_3g0aw")])
 normal_fire_rate = 1.8

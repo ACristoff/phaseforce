@@ -53,6 +53,7 @@ func attack() -> void:
 
 func reload():
 	gun_magazine = gun_magazine_capacity
+	mouse_cursor.texture = mouse_cursor_sprite
 	if powered_up:
 		AudioManager.play_sfx(reload_sound)
 		mags -= 1
