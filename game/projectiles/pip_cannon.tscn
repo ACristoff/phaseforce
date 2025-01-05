@@ -113,7 +113,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ueb0"]
-radius = 34.0
+radius = 55.0
 
 [node name="PipCannon" type="Area2D"]
 collision_layer = 16
@@ -151,7 +151,7 @@ hframes = 9
 visible = false
 texture_filter = 3
 position = Vector2(10, 0)
-scale = Vector2(2.5, 2.5)
+scale = Vector2(4, 4)
 texture = ExtResource("4_jephp")
 hframes = 9
 
@@ -159,7 +159,6 @@ hframes = 9
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(14, 0)
 shape = SubResource("CircleShape2D_4ueb0")
 debug_color = Color(0.986437, 0, 0.323603, 0.42)
 
