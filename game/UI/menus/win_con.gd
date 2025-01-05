@@ -34,7 +34,7 @@ func show_stats(data, level_id):
 		_star_two_achieved()
 	if data["stars"][2]:
 		_star_three_achieved()
-	time.text = str(data.time)
+	time.text = str(data.time, " SECONDS")
 	secrets.text = str(data.secrets)
 	kills.text = str(data.kills)
 	var manager: game_manager = get_tree().get_first_node_in_group("game")
