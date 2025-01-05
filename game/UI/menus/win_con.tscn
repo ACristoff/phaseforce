@@ -1,7 +1,209 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmq71pbr45cvb"]
+[gd_scene load_steps=25 format=3 uid="uid://bmq71pbr45cvb"]
 
 [ext_resource type="Script" path="res://game/UI/menus/win_con.gd" id="1_hgakx"]
 [ext_resource type="PackedScene" uid="uid://dfk1afnkqscaq" path="res://game/UI/inside_heli.tscn" id="2_xi0fb"]
+[ext_resource type="Texture2D" uid="uid://bnvrevidhlpo5" path="res://assets/ui/largestar1.png" id="3_aa1te"]
+[ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="3_mlu1o"]
+[ext_resource type="Texture2D" uid="uid://cn0811gmx6ohf" path="res://assets/characters/lumi/base_form/LumiSprite.png" id="5_lr01u"]
+[ext_resource type="Texture2D" uid="uid://4v6wc1fa3ym7" path="res://assets/characters/panko/base_form/Panko_Sprite.png" id="6_knc46"]
+[ext_resource type="Texture2D" uid="uid://wfelj55r43i2" path="res://assets/characters/pippa/base_form/Pippa_Sprite.png" id="7_nfb6q"]
+[ext_resource type="Texture2D" uid="uid://dsugoh3hgabw4" path="res://assets/characters/tenma/base_form/Tenma_Sprite.png" id="8_ivnto"]
+[ext_resource type="Texture2D" uid="uid://dt7drd5slxlhk" path="res://assets/characters/lia/base_form/LiaSprite.png" id="9_plyv6"]
+
+[sub_resource type="Animation" id="Animation_fisvo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LumiSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_qaj0i"]
+resource_name = "lumi"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LumiSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38nmk"]
+_data = {
+"RESET": SubResource("Animation_fisvo"),
+"lumi": SubResource("Animation_qaj0i")
+}
+
+[sub_resource type="Animation" id="Animation_o3sj1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PankoSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_suswm"]
+resource_name = "panko"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PankoSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cprc7"]
+_data = {
+"RESET": SubResource("Animation_o3sj1"),
+"panko": SubResource("Animation_suswm")
+}
+
+[sub_resource type="Animation" id="Animation_1xjww"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PippaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_2gogn"]
+resource_name = "pippa"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PippaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_23g13"]
+_data = {
+"RESET": SubResource("Animation_1xjww"),
+"pippa": SubResource("Animation_2gogn")
+}
+
+[sub_resource type="Animation" id="Animation_1n7vr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TenmaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_bxeig"]
+resource_name = "tenma"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TenmaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7pl8o"]
+_data = {
+"RESET": SubResource("Animation_1n7vr"),
+"tenma": SubResource("Animation_bxeig")
+}
+
+[sub_resource type="Animation" id="Animation_d80i6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LiaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_4455p"]
+resource_name = "lia"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LiaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mogk4"]
+_data = {
+"RESET": SubResource("Animation_d80i6"),
+"lia": SubResource("Animation_4455p")
+}
 
 [node name="WinCon" type="Node2D"]
 script = ExtResource("1_hgakx")
@@ -20,48 +222,156 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Button4" type="Button" parent="CanvasLayer/MarginContainer/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Control"]
+layout_mode = 2
+offset_left = -312.0
+offset_top = 303.0
+offset_right = -35.0
+offset_bottom = 353.0
+
+[node name="Button4" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
 custom_minimum_size = Vector2(80, 50)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -320.0
-offset_right = -230.0
-offset_bottom = 50.0
-grow_horizontal = 2
+layout_mode = 2
 text = "Main Menu"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Control/VBoxContainer"]
-layout_mode = 2
-text = "You Won, Extravag(e) or (a)nt (me dunno)!!!!"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Control/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
 text = "Retry"
 
-[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
 text = "Level Select"
 
-[node name="Button3" type="Button" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer"]
+[node name="Button3" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
 text = "Next Level"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 294.0
+offset_top = 152.0
+offset_right = 468.0
+offset_bottom = 224.0
+scale = Vector2(0.5, 0.5)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+theme_override_constants/separation = -30
+
+[node name="Star" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_aa1te")
+
+[node name="Star2" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_aa1te")
+
+[node name="Star3" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_aa1te")
+
+[node name="Time" type="Label" parent="CanvasLayer/VBoxContainer"]
+modulate = Color(0.12549, 0.0901961, 0.0901961, 1)
+texture_filter = 3
+layout_mode = 2
+theme = ExtResource("3_mlu1o")
+text = "Time: 0.00.00"
+
+[node name="Secrets" type="Label" parent="CanvasLayer/VBoxContainer"]
+modulate = Color(0.12549, 0.0901961, 0.0901961, 1)
+texture_filter = 3
+layout_mode = 2
+theme = ExtResource("3_mlu1o")
+text = "Secrets Found 0/0"
+
+[node name="SnowmenKilled" type="Label" parent="CanvasLayer/VBoxContainer"]
+modulate = Color(0.12549, 0.0901961, 0.0901961, 1)
+texture_filter = 3
+layout_mode = 2
+theme = ExtResource("3_mlu1o")
+text = "Snowmen Killed: 0"
+
 [node name="InsideHeli" parent="." instance=ExtResource("2_xi0fb")]
+
+[node name="LumiSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(232, 229)
+scale = Vector2(3, 3)
+texture = ExtResource("5_lr01u")
+hframes = 10
+frame = 6
+
+[node name="Lumi" type="AnimationPlayer" parent="LumiSprite"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_38nmk")
+}
+autoplay = "lumi"
+speed_scale = 0.8
+
+[node name="PankoSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(235, 231)
+scale = Vector2(3, 3)
+texture = ExtResource("6_knc46")
+hframes = 10
+frame = 6
+
+[node name="Panko" type="AnimationPlayer" parent="PankoSprite"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_cprc7")
+}
+autoplay = "panko"
+speed_scale = 0.4
+
+[node name="PippaSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(229, 230)
+scale = Vector2(3, 3)
+texture = ExtResource("7_nfb6q")
+hframes = 10
+frame = 6
+
+[node name="Pippa" type="AnimationPlayer" parent="PippaSprite"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_23g13")
+}
+autoplay = "pippa"
+speed_scale = 1.1
+
+[node name="TenmaSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(230, 230)
+scale = Vector2(3, 3)
+texture = ExtResource("8_ivnto")
+hframes = 10
+frame = 6
+
+[node name="Tenma" type="AnimationPlayer" parent="TenmaSprite"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_7pl8o")
+}
+autoplay = "tenma"
+speed_scale = 0.9
+
+[node name="LiaSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(230, 231)
+scale = Vector2(3, 3)
+texture = ExtResource("9_plyv6")
+hframes = 10
+frame = 6
+
+[node name="Lia" type="AnimationPlayer" parent="LiaSprite"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_mogk4")
+}
+autoplay = "lia"
+speed_scale = 0.6

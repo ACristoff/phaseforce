@@ -1,9 +1,13 @@
 extends Node2D
 
+@onready var starone = $HBoxContainer/Star
+@onready var startwo = $HBoxContainer/Star2
+@onready var starthree = $HBoxContainer/Star3
+@onready var purplestar = preload("res://assets/ui/largestar2.png")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-func show_stats(stats):
-	pass
+func _star_one_achieved():
+	starone.texture = purplestar
+func _star_two_achieved():
+	startwo.texture = purplestar
+func _star_three_achieved():
+	starthree.texture = purplestar
