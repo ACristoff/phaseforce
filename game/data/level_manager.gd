@@ -52,7 +52,7 @@ func _on_restart():
 	load_level(current_level)
 
 func _on_level_complete(data):
-	print('do complete level', data)
+	#print('do complete level', data)
 	var transition = level_transition_screen.instantiate()
 	level_ref.queue_free()
 	
