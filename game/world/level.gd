@@ -140,7 +140,7 @@ func generate_level_complete_data():
 		"objective": objective,
 		"kills": enemies,
 		"stars": stars,
-		"time": get_time(),
+		"time": int(get_time()),
 		"level": level_id
 	}
 	return all
@@ -150,7 +150,7 @@ func _on_extract():
 		optional_completed = true
 	if player.health == 3 && while_full_health:
 		optional_completed = true
-	print(generate_level_complete_data())
+	#print(generate_level_complete_data())
 	level_completed.emit(generate_level_complete_data())
 
 func _on_player_death():
