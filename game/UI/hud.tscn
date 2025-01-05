@@ -128,7 +128,7 @@ theme_override_font_sizes/font_size = 8
 text = "SECRET FOUND"
 
 [node name="TimerContainer" type="MarginContainer" parent="CanvasLayer"]
-visible = false
+texture_filter = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -136,6 +136,7 @@ offset_left = -34.5
 offset_right = 34.5
 offset_bottom = 40.0
 grow_horizontal = 2
+theme_override_constants/margin_top = 25
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TimerContainer"]
 layout_mode = 2
@@ -143,7 +144,7 @@ layout_mode = 2
 [node name="TimerLabel" type="Label" parent="CanvasLayer/TimerContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_68nfx")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "TIME TO EXTRACT:"
 
 [node name="SecretTimer" type="Timer" parent="."]
