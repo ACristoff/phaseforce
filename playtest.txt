@@ -5,7 +5,8 @@
 #penetrating shotgun shells x1
 #Tenma is hard
 #Desires to learn the brick
-
+William:
+	Switch powerup abilities at will
 Freeposter:
 	chose tenma first, knew pippa and tenma
 	doesn't know to click to shoot

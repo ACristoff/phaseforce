@@ -65,6 +65,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/Objective_Container/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_68nfx")
+theme_override_constants/outline_size = 8
 text = "Objectives:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -138,14 +139,13 @@ offset_bottom = 40.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 25
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TimerContainer"]
-layout_mode = 2
-
-[node name="TimerLabel" type="Label" parent="CanvasLayer/TimerContainer/HBoxContainer"]
+[node name="TimerLabel" type="Label" parent="CanvasLayer/TimerContainer"]
 layout_mode = 2
 theme = ExtResource("2_68nfx")
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 16
 text = "TIME TO EXTRACT:"
+vertical_alignment = 1
 
 [node name="SecretTimer" type="Timer" parent="."]
 wait_time = 2.0

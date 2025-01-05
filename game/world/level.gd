@@ -120,6 +120,7 @@ func _on_primary_obj_completed():
 	extract_timer.start()
 	AudioManager.play_music(extract_music)
 	hud.timer_container.visible = true
+	_tween_extraction_label()
 	extract_zone.activate_extract()
 	var spawners = get_tree().get_nodes_in_group("enemy_spawners")
 	for spawn in spawners:
@@ -127,6 +128,18 @@ func _on_primary_obj_completed():
 		current_spawner.extract_active = true
 		if current_spawner.trigger == current_spawner.TriggerTypes.ON_EXTRACT:
 			current_spawner.spawn_enemy()
+
+func _tween_extraction_label():
+	var tween = create_tween()
+	tween.tween_property(hud.timer_container, "scale", Vector2(1.2,1), .15)
+	tween.tween_property(hud.timer_container, "scale", Vector2(1,1), .15)
+	tween.tween_property(hud.timer_container, "modulate", Color.RED, .2)
+	tween.tween_property(hud.timer_container, "scale", 1.5, 90)
+	
+func _tween_throb_label():
+	var tween = create_tween()
+	tween.tween_property(hud.timer_container, "scale", Vector2(1.2, 1), .15)
+	tween.tween_property(hud.timer_container, "scale", Vector2(1,1), .15)
 
 func generate_level_complete_data():
 	var objective = str("Objective completed: :3")

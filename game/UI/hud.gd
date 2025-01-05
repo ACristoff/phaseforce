@@ -25,8 +25,8 @@ var extract_zone
 @onready var optional_objective = $CanvasLayer/Objective_Container/VBoxContainer/OptionalObjective
 @onready var optional_objective_label = $CanvasLayer/Objective_Container/VBoxContainer/OptionalObjective/Label
 @onready var extract_obj = $CanvasLayer/Objective_Container/VBoxContainer/ExtractObjectiveLabel
-@onready var timer_container = $CanvasLayer/TimerContainer
-@onready var timer_label = $CanvasLayer/TimerContainer/HBoxContainer/TimerLabel
+@onready var timer_container = $CanvasLayer/TimerContainer/TimerLabel
+@onready var timer_label = $CanvasLayer/TimerContainer/TimerLabel
 
 var new_bullet_sprite: CompressedTexture2D
 
