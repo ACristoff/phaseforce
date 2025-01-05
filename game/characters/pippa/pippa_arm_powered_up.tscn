@@ -156,7 +156,7 @@ texture = ExtResource("2_b31fw")
 offset = Vector2(5, -8)
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="CursorSprite"]
-position = Vector2(28, 3)
+position = Vector2(31, 3)
 gizmo_extents = 5.0
 
 [node name="ShellSpawnPoint" type="Marker2D" parent="CursorSprite"]
@@ -170,6 +170,3 @@ texture = SubResource("AnimatedTexture_lqkrg")
 libraries = {
 "": SubResource("AnimationLibrary_7yxk3")
 }
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-39, -22)

@@ -40,6 +40,7 @@ func main_menu():
 	var new_title = title_inst.instantiate()
 	add_child(new_title)
 	new_title.character_select.connect(_on_title_character_select.bind())
+	new_title.credits.connect(_on_title_credits.bind())
 	title = new_title
 
 func selected_character(new_character, char_screen):
@@ -51,5 +52,6 @@ func selected_character(new_character, char_screen):
 	level_man.load_level(1)
 
 func _on_title_credits():
-	var new 
+	var credits_screen = credits.instantiate()
+	add_child(credits_screen) 
 	pass # Replace with function body.

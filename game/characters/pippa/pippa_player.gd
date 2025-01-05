@@ -62,6 +62,10 @@ func power_up():
 	trans.global_position = self.global_position
 
 
+#func jump(force):
+	#AudioManager.play_sfx(jump_sound, 10)
+	#coyote_timer = 0
+	#velocity.y = force
 
 #func attack() -> void:
 	#gun_anim.stop()

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed: int = 350
+@export var speed: int = 340
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

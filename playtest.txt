@@ -19,5 +19,5 @@ Freeposter:
 	- C : give full hearts on pick up power up
 	figured out how to use the charge cannon immediately
 	wants charge cannon to use relative charge for ammo
-	
-	
+	suggest putting character theme on power up
+	shoot enemies while they spawn

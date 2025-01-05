@@ -36,7 +36,7 @@ class_name BasePlayer
 @onready var gain_heart_sound: AudioStreamWAV = preload("res://assets/sfx/projectiles/Magic_Healing_Minor.wav")
 @onready var reload_sound: AudioStreamMP3 = preload("res://assets/sfx/projectiles/RELOAD.mp3")
 @onready var empty_mag_sound: AudioStreamMP3 = preload("res://assets/sfx/UI/AMMO_DEPLETED.mp3")
-@onready var power_up_sound: AudioStreamWAV = preload("res://assets/sfx/characters/PF_POWERUP.wav")
+@onready var power_up_sound: AudioStreamWAV = preload("res://assets/sfx/characters/PF_POWERUP.wav") 
 
 ##TODO Destructurize this
 @onready var bullet = preload("res://game/projectiles/bullet.tscn")
@@ -49,6 +49,7 @@ class_name BasePlayer
 @export var kill_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
 @export var power_up_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
 @export var victory_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
+@export var jump_sound: AudioStreamMP3 = preload("res://assets/sfx/characters/JUMP.mp3")
 
 @export_group("Base Stats")
 @export var JUMP_VELOCITY = -280.0
@@ -239,7 +240,7 @@ func power_down():
 	powered_up = false
 
 func jump(force):
-	#AudioManager.play_sfx()
+	AudioManager.play_sfx(jump_sound, 10)
 	coyote_timer = 0
 	velocity.y = force
 
