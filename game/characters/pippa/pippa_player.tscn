@@ -37,8 +37,7 @@ powered_up_sprite = ExtResource("3_owpr1")
 powered_up_fire_rate = 1.0
 powered_up_damage = 40
 powered_up_gun_sound = ExtResource("9_4feya")
-powered_up_gun_capacity = 2
-powered_up_gun_mags = 3
+powered_up_gun_capacity = 4
 powered_up_gun_reload_time = 3.0
 powered_up_bullet_hud_sprite = ExtResource("9_wyty0")
 

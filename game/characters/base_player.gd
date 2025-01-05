@@ -25,6 +25,7 @@ class_name BasePlayer
 @onready var invul_timer: Timer = $Timers/InvulTimer
 @onready var jump_buffer_timer: Timer = $Timers/JumpBufferTimer
 @onready var empty_click_timer: Timer = $Timers/EmptyClickTimer
+@onready var arrow = $ExtractArrow
 
 @onready var steps = [
 	preload("res://assets/sfx/misc/SNOW_STEP_1.mp3"), 
@@ -104,6 +105,7 @@ var current_platform_stack: Array = []
 var current_door: Door
 var is_active: bool = false
 var hud: HUD
+var extract
 
 signal took_damage
 signal gained_health
@@ -119,6 +121,7 @@ func quip(quip_array):
 	AudioManager.play_quip(quip)
 
 func _ready() -> void:
+	extract = get_tree().get_first_node_in_group("extract")
 	fire_rate = normal_fire_rate
 	hud = get_tree().get_first_node_in_group("hud")
 	var game_man: game_manager = get_node("/root/GameManager")
@@ -245,6 +248,7 @@ func jump(force):
 	velocity.y = force
 
 func _physics_process(delta: float) -> void:
+	arrow.look_at(extract.global_position)
 	if health == 0:
 		player_death.emit()
 		health = -1

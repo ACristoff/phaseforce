@@ -22,3 +22,14 @@ Freeposter:
 	wants charge cannon to use relative charge for ammo
 	suggest putting character theme on power up
 	shoot enemies while they spawn
+
+Dave:
+	Select is not clear
+	what is she flinging - tenma
+	knew to drop down
+	R to reload confused on brick
+	caught the reference
+	clicked off screen
+	didn't notice the powerup
+	using the knockback
+	likes the pipcannon reload

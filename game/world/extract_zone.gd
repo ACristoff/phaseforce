@@ -23,5 +23,3 @@ func _on_area_2d_body_entered(body):
 	if body is BasePlayer && is_extract_active:
 		#print('extracted!')
 		player_extracted.emit()
-		pass
-	pass # Replace with function body.

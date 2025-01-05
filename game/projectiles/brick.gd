@@ -29,15 +29,19 @@ func _physics_process(delta):
 			if body is BasePlayer:
 				return
 			if body is SnowGround:
+				AudioManager.play_sfx(brick_hit)
 				body.emit(self.global_position)
 				queue_free()
 			elif body is MetalGround:
+				AudioManager.play_sfx(brick_hit)
 				body.emit(self.global_position)
 				queue_free()
 			elif body is Generator:
+				AudioManager.play_sfx(brick_hit)
 				body.emit(self.global_position)
 				queue_free()
 			elif body is EnemyBase:
+				AudioManager.play_sfx(brick_hit)
 				print('bullet hits enemy')
 				body.take_damage(damage)
 				queue_free()

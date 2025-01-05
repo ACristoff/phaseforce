@@ -34,7 +34,7 @@ func _physics_process(delta):
 				body.emit(self.global_position)
 				queue_free()
 			elif body is EnemyBase:
-				print('bullet hits enemy')
+				#print('bullet hits enemy')
 				apply_damage(body, false)
 
 func apply_damage(body, shield):
