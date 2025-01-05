@@ -51,7 +51,7 @@ func attack():
 		knockback = knockback_vector * 3
 	else:
 		var adjusted_knockback_force = knockback_force * (charge / 2)
-		prints(knockback_force, charge, adjusted_knockback_force)
+		#prints(knockback_force, charge, adjusted_knockback_force)
 		var knockback_vector = (cursor_spout.global_position - global_position) * adjusted_knockback_force
 		if knockback_vector.y < 0:
 			velocity.y = knockback_vector.y

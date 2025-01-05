@@ -11,7 +11,6 @@ var is_jumping = false
 #take out powerup
 #figured out reloading
 #noticed the heart
-#fix the ladder
 #penetrating shotgun shells x1
 #Tenma is hard
 #Desires to learn the brick
@@ -62,7 +61,7 @@ func _physics_process(delta):
 					jump_timer.start()
 				gun_sprite.look_at(player.global_position)
 				var attack_viability = check_attack_distance()
-				print(attack_viability)
+				#print(attack_viability)
 				if !attack_viability && !attack_timer.is_stopped():
 					attack_timer.stop()
 				elif attack_viability == "in range" && attack_timer.is_stopped():
