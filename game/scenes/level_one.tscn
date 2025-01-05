@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dqpvddi2llok6"]
+[gd_scene load_steps=26 format=4 uid="uid://dqpvddi2llok6"]
 
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_3skp3"]
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_cakfj"]
@@ -20,8 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="17_ximk6"]
 [ext_resource type="PackedScene" uid="uid://yb2f6m8tsacr" path="res://game/world/enemy_spawner.tscn" id="19_q0e02"]
 [ext_resource type="PackedScene" uid="uid://cqyy2nqr7vd37" path="res://game/characters/enemies/sword_enemy.tscn" id="20_8dh06"]
-[ext_resource type="PackedScene" path="res://game/characters/enemies/shield_enemy.tscn" id="21_5b5rh"]
-[ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="22_8pvgb"]
+[ext_resource type="PackedScene" uid="uid://d4miuyj3w3h76" path="res://game/characters/enemies/shield_enemy.tscn" id="21_5b5rh"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vb4j5"]
 polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -616, -16, -627, 1)
@@ -599,57 +598,8 @@ position = Vector2(1898, -100)
 [node name="EnemySpawner10" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(1740, -76)
 
-[node name="Label" type="Label" parent="."]
-texture_filter = 3
-offset_left = -31.0
-offset_top = -10.0
-offset_right = 32.0
-offset_bottom = 33.0
-theme = ExtResource("22_8pvgb")
-theme_override_font_sizes/font_size = 8
-text = "[SPACE]
-to jump!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="."]
-texture_filter = 3
-offset_left = 376.0
-offset_top = 21.0
-offset_right = 439.0
-offset_bottom = 64.0
-theme = ExtResource("22_8pvgb")
-theme_override_font_sizes/font_size = 8
-text = "[S]
-to drop down!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="."]
-texture_filter = 3
-offset_left = 675.0
-offset_top = 27.0
-offset_right = 772.0
-offset_bottom = 70.0
-theme = ExtResource("22_8pvgb")
-theme_override_font_sizes/font_size = 8
-text = "[E]
-to interact with doors!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="."]
-texture_filter = 3
-offset_left = 745.0
-offset_top = 260.0
-offset_right = 842.0
-offset_bottom = 303.0
-theme = ExtResource("22_8pvgb")
-theme_override_font_sizes/font_size = 8
-text = "[R]
-to reload weapon!"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="PowerUp" parent="." instance=ExtResource("4_n7avy")]
+position = Vector2(-50, 71)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 
