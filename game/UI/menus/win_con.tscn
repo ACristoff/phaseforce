@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmq71pbr45cvb"]
+[gd_scene load_steps=3 format=3 uid="uid://bmq71pbr45cvb"]
 
 [ext_resource type="Script" path="res://game/UI/menus/win_con.gd" id="1_hgakx"]
+[ext_resource type="PackedScene" uid="uid://dfk1afnkqscaq" path="res://game/UI/inside_heli.tscn" id="2_xi0fb"]
 
 [node name="WinCon" type="Node2D"]
 script = ExtResource("1_hgakx")
@@ -62,3 +63,5 @@ text = "Level Select"
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
 text = "Next Level"
+
+[node name="InsideHeli" parent="." instance=ExtResource("2_xi0fb")]
