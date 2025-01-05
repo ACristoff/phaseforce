@@ -38,6 +38,7 @@ func show_stats(data, level_id):
 	kills.text = str(data.kills)
 	#TODO data pass
 	game_man.levels_data[str(level_id)] = data
+	print(game_man.levels_data)
 
 func _on_retry_pressed():
 	level_man.load_level(level_man.current_level)

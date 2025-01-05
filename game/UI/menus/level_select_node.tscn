@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://byhijdba8t6q0" path="res://assets/ui/play_button.png" id="2_bv7fs"]
 [ext_resource type="Texture2D" uid="uid://c4pwg7cja4b2q" path="res://assets/ui/level_stars1.png" id="4_c3d61"]
 
-[node name="Control" type="Control"]
+[node name="LevelSelectBlip" type="Control"]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -53,6 +53,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 
