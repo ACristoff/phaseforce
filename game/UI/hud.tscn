@@ -140,6 +140,7 @@ grow_horizontal = 2
 theme_override_constants/margin_top = 25
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer/TimerContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_68nfx")
 theme_override_constants/outline_size = 8

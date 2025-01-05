@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="17_ximk6"]
 [ext_resource type="PackedScene" uid="uid://yb2f6m8tsacr" path="res://game/world/enemy_spawner.tscn" id="19_q0e02"]
 [ext_resource type="PackedScene" uid="uid://cqyy2nqr7vd37" path="res://game/characters/enemies/sword_enemy.tscn" id="20_8dh06"]
-[ext_resource type="PackedScene" path="res://game/characters/enemies/shield_enemy.tscn" id="21_5b5rh"]
+[ext_resource type="PackedScene" uid="uid://d4miuyj3w3h76" path="res://game/characters/enemies/shield_enemy.tscn" id="21_5b5rh"]
 [ext_resource type="Texture2D" uid="uid://cuqqrfbhjw2k0" path="res://assets/enemies/coming_alive_gun_snowman.png" id="22_8gh4t"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="22_8pvgb"]
 
@@ -700,6 +700,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LevelTimer" type="Timer" parent="."]
+
+[node name="PowerUp" parent="." instance=ExtResource("4_n7avy")]
+position = Vector2(-152, 62)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 
