@@ -10,7 +10,8 @@ extends Node2D
 @onready var victory_music = preload("res://assets/music/VICTORY_A.mp3")
 @onready var victory_music_b = preload("res://assets/music/VICTORY_B.mp3")
 
-#var level_
+var game_man
+var level_man
 
 func _star_one_achieved():
 	starone.texture = purplestar
@@ -21,9 +22,7 @@ func _star_three_achieved():
 
 func _ready():
 	AudioManager.play_sfx(victory_music)
-	#_star_one_achieved()
-	#_star_two_achieved()
-	#_star_three_achieved()
+	
 
 
 func show_stats(data, level_id):

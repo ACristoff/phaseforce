@@ -312,6 +312,9 @@ func _on_alert_timer_timeout():
 	idle()
 
 func _on_scan_area_area_entered(area):
+	if area is Brick:
+		if enemy_state == ENEMY_STATES.IDLE || enemy_state == ENEMY_STATES.IDLEWALK:
+			go_to_alert(area)		
 	if area is Bullet:
 		if enemy_state == ENEMY_STATES.IDLE || enemy_state == ENEMY_STATES.IDLEWALK:
 			go_to_alert(area)

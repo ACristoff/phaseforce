@@ -229,22 +229,22 @@ offset_top = 303.0
 offset_right = -35.0
 offset_bottom = 353.0
 
-[node name="Button4" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
+[node name="MainMenu" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
 text = "Main Menu"
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
+[node name="Retry" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
 text = "Retry"
 
-[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
+[node name="LevelSelect" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
 text = "Level Select"
 
-[node name="Button3" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
+[node name="NextLevel" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
 text = "Next Level"
