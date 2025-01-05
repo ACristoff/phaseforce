@@ -148,9 +148,9 @@ theme_override_font_sizes/font_size = 8
 text = "TIME TO EXTRACT:"
 
 [node name="Arrow" type="Sprite2D" parent="CanvasLayer"]
-visible = false
 position = Vector2(307, 110)
 texture = ExtResource("9_pf151")
+flip_h = true
 
 [node name="SecretTimer" type="Timer" parent="."]
 wait_time = 2.0
