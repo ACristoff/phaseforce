@@ -3,6 +3,7 @@ extends Node2D
 class_name Level
 
 @export var music = preload("res://assets/music/PF_ICY_STAGE.mp3")
+@export var extract_music = preload("res://assets/music/PF_EXTRACT!.mp3")
 
 @export var quip_chance: int = 25
 
@@ -111,6 +112,7 @@ func render_objectives():
 func _on_primary_obj_completed():
 	hud.complete_primary()
 	extract_timer.start()
+	AudioManager.play_music(extract_music)
 	hud.timer_container.visible = true
 	extract_zone.activate_extract()
 	var spawners = get_tree().get_nodes_in_group("enemy_spawners")

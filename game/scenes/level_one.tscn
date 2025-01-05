@@ -473,6 +473,12 @@ doors_to_unlock = [NodePath("../Doors/Electric_Doors"), NodePath("../Doors/Elect
 
 [node name="Enemies" type="Node" parent="."]
 
+[node name="SwordEnemy2" parent="Enemies" instance=ExtResource("20_8dh06")]
+position = Vector2(684, 320)
+
+[node name="ShieldEnemy" parent="Enemies" instance=ExtResource("21_5b5rh")]
+position = Vector2(1134, -150)
+
 [node name="EnemyBase2" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(624, 84)
 
@@ -488,14 +494,8 @@ position = Vector2(1693, -108)
 [node name="EnemyBase7" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(1775, -108)
 
-[node name="EnemyBase8" parent="Enemies" instance=ExtResource("12_3l25s")]
-position = Vector2(1169, -108)
-
 [node name="EnemyBase9" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(2040, -228)
-
-[node name="EnemyBase10" parent="Enemies" instance=ExtResource("12_3l25s")]
-position = Vector2(2106, -228)
 
 [node name="EnemyBase11" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(2545, -372)
@@ -533,6 +533,9 @@ position = Vector2(788, -36)
 [node name="EnemyBase22" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(864, -60)
 
+[node name="SwordEnemy" parent="Enemies" instance=ExtResource("20_8dh06")]
+position = Vector2(2073, -228)
+
 [node name="EnemyBase23" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(900, -36)
 
@@ -560,49 +563,43 @@ position = Vector2(720, -162)
 [node name="HeartPickup2" parent="." instance=ExtResource("16_p2eg5")]
 position = Vector2(1993, -255)
 
-[node name="Node" type="Node" parent="."]
+[node name="EnemiesSpawns" type="Node" parent="."]
 
-[node name="EnemySpawner" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(726, 116)
 trigger = 2
 
-[node name="EnemySpawner2" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner2" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(838, 116)
 trigger = 2
 
-[node name="EnemySpawner3" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner3" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(950, 116)
 trigger = 2
 
-[node name="EnemySpawner4" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner4" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(218, 140)
 
-[node name="EnemySpawner5" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner5" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(287, 116)
 
-[node name="EnemySpawner6" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner6" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(372, 116)
 
-[node name="EnemySpawner7" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner7" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(2588, -556)
 
-[node name="EnemySpawner8" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner8" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(2419, -580)
 
-[node name="EnemySpawner9" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner9" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(1898, -100)
 
-[node name="EnemySpawner10" parent="Node" instance=ExtResource("19_q0e02")]
+[node name="EnemySpawner10" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(1740, -76)
 
 [node name="PowerUp" parent="." instance=ExtResource("4_n7avy")]
 position = Vector2(-50, 71)
-
-[node name="SwordEnemy2" parent="." instance=ExtResource("20_8dh06")]
-position = Vector2(684, 320)
-
-[node name="ShieldEnemy" parent="." instance=ExtResource("21_5b5rh")]
-position = Vector2(28, 58)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 

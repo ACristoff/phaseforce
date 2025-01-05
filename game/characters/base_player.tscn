@@ -109,6 +109,8 @@ wait_time = 0.077
 one_shot = true
 
 [node name="InvulTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
 
 [node name="StepTimer" type="Timer" parent="Timers"]
 wait_time = 0.27

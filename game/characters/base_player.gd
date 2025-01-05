@@ -163,9 +163,14 @@ func reload():
 		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
 
 func take_damage():
-	took_damage.emit()
-	AudioManager.play_sfx(player_hurt_sfx)
-	health -= 1
+	if invul_timer.is_stopped():
+		invul_timer.start()
+		took_damage.emit()
+		AudioManager.play_sfx(player_hurt_sfx)
+		health -= 1
+	else:
+		pass
+
 
 func load_gun(gun, is_new):
 	if is_new:
