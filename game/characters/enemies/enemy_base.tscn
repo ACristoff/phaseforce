@@ -67,7 +67,6 @@ _data = {
 }
 
 [node name="EnemyBase" type="CharacterBody2D" groups=["enemies"]]
-collision_layer = 513
 collision_mask = 796
 script = ExtResource("1_cjuny")
 max_sight_distance = 270
@@ -123,7 +122,7 @@ collision_mask = 17
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ScanArea"]
 position = Vector2(-12, -26)
-polygon = PackedVector2Array(-106, -40, -30, -15, 200, -75, 200, 53, -30, 17, -106, 40)
+polygon = PackedVector2Array(-89, -29, 1, -14, 156, -35, 156, 35, 1, 17, -89, 20)
 
 [node name="Timers" type="Node" parent="."]
 
