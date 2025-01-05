@@ -167,6 +167,7 @@ func _on_extract():
 	if player.health == 3 && while_full_health:
 		optional_completed = true
 	#print(generate_level_complete_data())
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	level_completed.emit(generate_level_complete_data())
 
 func _on_player_death():
