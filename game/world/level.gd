@@ -123,19 +123,27 @@ func _on_primary_obj_completed():
 			current_spawner.spawn_enemy()
 
 func generate_level_complete_data():
-	#var objective = str("Objective completed: :3")
-	#var optional_objective = str("Optional objective completed: ", optional_completed )
-	var secrets_data = str("Secrets found: ", 0)
-	#var enemies = str("Enemies killed: ", 1)
-	var all = {"secrets": secrets_data}
+	var objective = str("Objective completed: :3")
+	var optional_objective = str("Optional objective completed: ", optional_completed )
+	var secrets_data = str("Secrets found: ", secrets_found)
+	var enemies = str("Enemies killed: ", snowmen_killed)
+	var stars = [true, optional_completed, secrets.size() == secrets_found]
+	var all = {
+		"secrets": secrets_data,
+		"optional_completed": optional_completed,
+		"objective": objective,
+		"secrets_data": secrets_data,
+		"enemies": enemies,
+		"stars": stars
+	}
 	return all
 
 func _on_extract():
-	print(generate_level_complete_data())
 	if player.powered_up && while_powered_up:
 		optional_completed = true
 	if player.health == 3 && while_full_health:
 		optional_completed = true
+	print(generate_level_complete_data())
 	level_completed.emit(generate_level_complete_data())
 
 func _on_player_death():

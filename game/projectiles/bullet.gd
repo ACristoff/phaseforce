@@ -21,7 +21,7 @@ func _physics_process(delta):
 	if self.has_overlapping_bodies():
 		var all_bodies = self.get_overlapping_bodies()
 		for body in all_bodies:
-			print(body)
+			#print(body)
 			if body is BasePlayer:
 				return
 			if body is SnowGround:

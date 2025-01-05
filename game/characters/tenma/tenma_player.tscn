@@ -28,7 +28,7 @@ normal_bullet_speed = 400
 normal_damage = 150
 normal_gun_sound = ExtResource("5_7yb55")
 normal_gun_capacity = 1
-normal_gun_reload_time = 1.0
+normal_gun_reload_time = 0.7
 normal_bullet_hud_sprite = ExtResource("10_ivvwf")
 powered_up_gun = ExtResource("4_arfvs")
 powered_up_sprite = ExtResource("3_rauom")
@@ -37,7 +37,6 @@ powered_up_gun_spread = Array[int]([-10, 10])
 powered_up_damage = 30
 powered_up_gun_sound = ExtResource("12_n1o86")
 powered_up_gun_capacity = 6
-powered_up_gun_mags = 1
 powered_up_bullet_hud_sprite = ExtResource("13_ggxrv")
 
 [node name="Sprite2D" parent="." index="2"]

@@ -1,7 +1,7 @@
 extends BasePlayer
 
 
-var knockback_force = -2
+var knockback_force = -4.2
 @onready var TRANSEFFECT = preload("res://game/effects/transformation_sequence.tscn")
 @onready var in_between_timer: Timer = $Timers/InBetweenTimer
 @onready var final_timer: Timer = $Timers/FinalTimer

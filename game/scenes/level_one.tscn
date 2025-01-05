@@ -557,6 +557,8 @@ one_shot = true
 
 [node name="SecretArea" parent="." instance=ExtResource("15_46xme")]
 position = Vector2(2692, 260)
+collision_layer = 64
+collision_mask = 128
 
 [node name="HeartPickup" parent="." instance=ExtResource("16_p2eg5")]
 position = Vector2(720, -162)
