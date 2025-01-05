@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcnjabyfgy3tm"]
+[gd_scene load_steps=10 format=3 uid="uid://dcnjabyfgy3tm"]
 
 [ext_resource type="Script" path="res://game/UI/hud.gd" id="1_g4rpk"]
 [ext_resource type="Texture2D" uid="uid://dtlw6h7tp6myv" path="res://assets/ui/ammo_types/shotgun_shell.png" id="2_6i720"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cjocwybbd0qxm" path="res://assets/ui/healthbottom.png" id="5_f2ved"]
 [ext_resource type="Texture2D" uid="uid://cats31d6vmo5o" path="res://assets/ui/healthtop.png" id="6_7t315"]
 [ext_resource type="PackedScene" uid="uid://ci8mbyjapxbgq" path="res://game/UI/extract_objective_label.tscn" id="6_eybuc"]
+[ext_resource type="Texture2D" uid="uid://ivx1d067loia" path="res://icon.svg" id="9_k4gqo"]
 
 [node name="HUD" type="Control" groups=["hud"]]
 texture_filter = 3
@@ -145,6 +146,11 @@ layout_mode = 2
 theme = ExtResource("2_68nfx")
 theme_override_font_sizes/font_size = 8
 text = "TIME TO EXTRACT:"
+
+[node name="Arrow" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(307, 131)
+texture = ExtResource("9_k4gqo")
 
 [node name="SecretTimer" type="Timer" parent="."]
 wait_time = 2.0

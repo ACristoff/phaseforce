@@ -41,7 +41,6 @@ var gifts_collected: int = 0
 signal level_completed
 signal game_over
 
-
 func _ready():
 	kill_x_snowmen = true
 	process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -94,6 +93,7 @@ func _on_secret_found():
 	secrets_found += 1
 	hud.secret_found()
 
+
 func render_objectives():
 	if primary_obj is Generator:
 		hud.primary_obj_label.text = "Destroy the Generator"
@@ -110,7 +110,7 @@ func render_objectives():
 		hud.optional_objective_label.text = str("Collect the ", collect_keycard_color, " keycard")
 
 func _on_primary_obj_completed():
-	hud.complete_primary()
+	hud.complete_primary(extract_zone)
 	extract_timer.start()
 	AudioManager.play_music(extract_music)
 	hud.timer_container.visible = true

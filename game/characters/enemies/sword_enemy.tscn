@@ -96,7 +96,7 @@ speed = 80
 health = 180
 max_sight_distance = 260
 attack_range = 70
-ideal_attack_range = 23
+ideal_attack_range = 22
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)

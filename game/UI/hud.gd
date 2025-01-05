@@ -17,6 +17,9 @@ class_name HUD
 @onready var bullet_sprite = $CanvasLayer/Ammo_Container/HBoxContainer/AmmoSprite
 @onready var bullet_count = $CanvasLayer/Ammo_Container/HBoxContainer/Label
 
+@onready var arrow = $CanvasLayer/Arrow
+var extract_zone 
+
 @onready var primary_obj = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel
 @onready var primary_obj_label = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel/Label
 @onready var optional_objective = $CanvasLayer/Objective_Container/VBoxContainer/OptionalObjective
@@ -29,6 +32,12 @@ var new_bullet_sprite: CompressedTexture2D
 
 func _ready():
 	pass # Replace with function body.
+
+func _process(delta):
+	if arrow.visible == true:
+		arrow.look_at(extract_zone.global_position)
+		pass
+	pass
 
 func change_bullet_sprite():
 	bullet_sprite.texture = new_bullet_sprite
@@ -59,16 +68,18 @@ func tick_up():
 	tween.tween_property(optional_objective, "scale", Vector2(1.2, 1), .15)
 	tween.tween_property(optional_objective, "scale", Vector2(1, 1), .15)
 
-func complete_primary():
+func complete_primary(obj):
 	primary_obj.pivot_offset = primary_obj.size/2
 	var tween = create_tween()
 	tween.tween_property(primary_obj, "scale", Vector2(1.2, 1), .15)
 	tween.tween_property(primary_obj, "scale", Vector2(1, 1), .15)
 	primary_obj.modulate = Color.GREEN_YELLOW
-	go_to_extract()
+	go_to_extract(obj)
 
-func go_to_extract():
+func go_to_extract(obj):
 	extract_obj.visible = true
+	extract_zone = obj
+	arrow.visible = true
 
 func complete_optional():
 	optional_objective.pivot_offset = optional_objective.size/2
