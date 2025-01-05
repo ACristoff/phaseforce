@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://b0jbio0575gja"]
+[gd_scene load_steps=26 format=4 uid="uid://b0jbio0575gja"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_7v17c"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="2_utkbe"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bm5mdiuoh8qbi" path="res://game/objects/passthrough_platform.tscn" id="8_2ho2h"]
 [ext_resource type="PackedScene" uid="uid://bytrjfsir7c6d" path="res://game/objects/power_up.tscn" id="9_u75j7"]
 [ext_resource type="Texture2D" uid="uid://cxtvffj8juoax" path="res://assets/environment/placeables/decorations/militaryvehicle.png" id="10_56x3o"]
+[ext_resource type="PackedScene" uid="uid://dmhr87anj7ufo" path="res://game/objects/gift.tscn" id="10_qjt1v"]
 [ext_resource type="PackedScene" uid="uid://b4ir8rl8balvy" path="res://game/objects/climbable_ladder.tscn" id="12_xrn6m"]
 [ext_resource type="PackedScene" uid="uid://ddoegd7o3j6lt" path="res://game/objects/generator.tscn" id="13_1ytnj"]
 [ext_resource type="PackedScene" uid="uid://c8jo543xm1x0a" path="res://game/characters/enemies/enemy_base.tscn" id="14_2tml5"]
@@ -27,13 +28,12 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_04hub"]
 distance = -360.0
 
-[node name="LevelOne" type="Node2D" node_paths=PackedStringArray("primary_obj")]
+[node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("primary_obj")]
 script = ExtResource("1_7v17c")
 primary_obj = NodePath("Generator")
-kill_x_snowmen = true
 kill_quantity = 20
 collect_x_gifts = true
-gift_quantity = 20
+gift_quantity = 30
 
 [node name="WorldGenerator" parent="." instance=ExtResource("2_utkbe")]
 
@@ -275,6 +275,96 @@ position = Vector2(36, -1077)
 
 [node name="PowerUp" parent="Objects" instance=ExtResource("9_u75j7")]
 position = Vector2(-252, -999)
+
+[node name="Gift" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(408, -912)
+
+[node name="Gift2" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(240, -839)
+
+[node name="Gift3" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(408, -744)
+
+[node name="Gift4" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(504, -744)
+
+[node name="Gift5" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(707, -569)
+
+[node name="Gift6" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-83, -600)
+
+[node name="Gift7" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-576, -483)
+
+[node name="Gift8" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-108, -240)
+
+[node name="Gift9" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(252, -287)
+
+[node name="Gift10" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-804, -840)
+
+[node name="Gift11" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-349, -941)
+
+[node name="Gift12" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-12, -1199)
+
+[node name="Gift13" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(35, -1788)
+
+[node name="Gift14" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(36, -1692)
+
+[node name="Gift15" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(36, -1596)
+
+[node name="Gift16" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-115, -791)
+
+[node name="Gift17" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(588, -472)
+
+[node name="Gift18" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-241, -1295)
+
+[node name="Gift19" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-432, -1200)
+
+[node name="Gift20" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-96, -1224)
+
+[node name="Gift21" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-192, -672)
+
+[node name="Gift22" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(132, -524)
+
+[node name="Gift23" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-72, -2)
+
+[node name="Gift24" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(120, -5)
+
+[node name="Gift25" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(1068, 0)
+
+[node name="Gift26" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(715, -259)
+
+[node name="Gift27" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-696, -928)
+
+[node name="Gift28" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-720, -816)
+
+[node name="Gift29" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-540, -645)
+
+[node name="Gift30" parent="Objects" instance=ExtResource("10_qjt1v")]
+position = Vector2(-339, -510)
 
 [node name="ParticleColliders" type="Node2D" parent="."]
 position = Vector2(52, 100)
@@ -572,7 +662,13 @@ position = Vector2(471, -1782)
 position = Vector2(660, -1434)
 
 [node name="HeartPickup" parent="." instance=ExtResource("18_efsy4")]
-position = Vector2(-1524, 367)
+position = Vector2(171, -1092)
+
+[node name="HeartPickup2" parent="." instance=ExtResource("18_efsy4")]
+position = Vector2(-677, -756)
+
+[node name="HeartPickup3" parent="." instance=ExtResource("18_efsy4")]
+position = Vector2(-71, -628)
 
 [node name="EnemySpawns" type="Node" parent="."]
 
