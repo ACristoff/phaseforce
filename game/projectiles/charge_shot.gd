@@ -47,7 +47,7 @@ func _on_body_entered(body):
 		#queue_free()
 	elif body is Generator:
 		#AudioManager.play_sfx(brick_hit, -10)
-		#body.emit(self.global_position)
+		body.emit(self.global_position)
 		#queue_free()
 		pass
 	elif body is EnemyBase:
