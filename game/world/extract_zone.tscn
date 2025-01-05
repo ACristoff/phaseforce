@@ -6,14 +6,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij7c5"]
 size = Vector2(199, 20)
 
-[node name="ExtractZone" type="Node2D"]
+[node name="ExtractZone" type="Node2D" groups=["extract"]]
 script = ExtResource("1_rkcl3")
 
 [node name="PhaseCopter" parent="." instance=ExtResource("2_3xd57")]
-visible = false
+position = Vector2(-168, -5)
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(181, 91)
+position = Vector2(13, 86)
 collision_layer = 64
 collision_mask = 128
 
@@ -22,5 +22,6 @@ shape = SubResource("RectangleShape2D_ij7c5")
 debug_color = Color(0.203624, 0.63522, 0.246699, 0.42)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-168, -5)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

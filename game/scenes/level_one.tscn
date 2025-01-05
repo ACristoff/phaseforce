@@ -557,7 +557,7 @@ position = Vector2(658, 48)
 position = Vector2(1021, -144)
 
 [node name="ExtractZone" parent="." instance=ExtResource("14_depa6")]
-position = Vector2(-467, -18)
+position = Vector2(-342, -12)
 
 [node name="ExtractTimer" type="Timer" parent="."]
 wait_time = 90.0

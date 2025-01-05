@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcyvqrwjcn8dt"]
+[gd_scene load_steps=14 format=3 uid="uid://bcyvqrwjcn8dt"]
 
 [ext_resource type="Script" path="res://game/characters/base_player.gd" id="1_lf5mu"]
 [ext_resource type="AudioStream" uid="uid://pckpxxpgy43a" path="res://assets/sfx/quips/panko/QUIP_POWERUP.mp3" id="2_34bpo"]
 [ext_resource type="Texture2D" uid="uid://4v6wc1fa3ym7" path="res://assets/characters/panko/base_form/Panko_Sprite.png" id="2_t1s0p"]
 [ext_resource type="Texture2D" uid="uid://mtl87x1gxico" path="res://assets/characters/panko/powerup_form/Panko_Sprite2.png" id="3_wi2dk"]
 [ext_resource type="PackedScene" uid="uid://dmaggeemra8ey" path="res://game/characters/Panko/panko_arm.tscn" id="4_f7qq4"]
+[ext_resource type="Texture2D" uid="uid://0ofvyiswdyor" path="res://assets/ui/extractarrow.png" id="6_vhwn8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m540u"]
 radius = 8.0
@@ -158,6 +159,12 @@ collision_mask = 320
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorDetector"]
 position = Vector2(17, 1)
 shape = SubResource("CircleShape2D_75dr7")
+
+[node name="ExtractArrow" type="Sprite2D" parent="."]
+position = Vector2(-1, -58)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_vhwn8")
+flip_h = true
 
 [connection signal="timeout" from="Timers/ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="area_entered" from="PlatformDetector" to="." method="_on_platform_detector_area_entered"]

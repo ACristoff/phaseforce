@@ -31,4 +31,5 @@ Dave:
 	caught the reference
 	clicked off screen
 	didn't notice the powerup
-	
+	using the knockback
+	likes the pipcannon reload
