@@ -39,8 +39,9 @@ func attack():
 	if gun_magazine == 0:
 		no_ammo.emit()
 	if !powered_up:
-		var knockback_vector = (cursor_spout.global_position - global_position) * knockback_force
-		knockback = knockback_vector * 2
+		#var knockback_vector = (cursor_spout.global_position - global_position) * knockback_force
+		#knockback = knockback_vector * 2
+		pass
 	else:
 		var knockback_vector = (cursor_spout.global_position - global_position) * powered_knockback_force
 		if knockback_vector.y < 0:

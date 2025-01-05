@@ -5,6 +5,7 @@ class_name Bullet
 @export var speed = 500
 var damage = 50
 #@onready var collision = 
+var pierce = 0
 
 func _physics_process(delta):
 	position += transform.x * speed * delta
@@ -35,3 +36,6 @@ func _physics_process(delta):
 				print('bullet hits enemy')
 				body.take_damage(damage)
 				queue_free()
+
+func apply_damage():
+	pass 
