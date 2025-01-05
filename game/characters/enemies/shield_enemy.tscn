@@ -71,7 +71,6 @@ _data = {
 size = Vector2(11, 11.5)
 
 [node name="ShieldEnemy" type="CharacterBody2D" groups=["enemies"]]
-collision_layer = 513
 collision_mask = 796
 script = ExtResource("1_bm32l")
 
