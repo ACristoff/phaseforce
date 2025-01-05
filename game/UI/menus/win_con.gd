@@ -27,7 +27,6 @@ func _ready():
 
 
 func show_stats(data, level_id):
-	#print(data)
 	if data["stars"][0]:
 		_star_one_achieved()
 	if data["stars"][1]:
@@ -37,7 +36,6 @@ func show_stats(data, level_id):
 	time.text = str(data.time, " SECONDS")
 	secrets.text = str(data.secrets)
 	kills.text = str(data.kills)
-	#var manager: game_manager = get_tree().get_first_node_in_group("game")
 	#TODO data pass
 	game_man.levels_data[str(level_id)] = data
 
