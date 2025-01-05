@@ -297,6 +297,7 @@ text = "Snowmen Killed: 0"
 [node name="InsideHeli" parent="." instance=ExtResource("2_xi0fb")]
 
 [node name="LumiSprite" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 3
 position = Vector2(232, 229)
 scale = Vector2(3, 3)
@@ -313,6 +314,7 @@ autoplay = "lumi"
 speed_scale = 0.8
 
 [node name="PankoSprite" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 3
 position = Vector2(235, 231)
 scale = Vector2(3, 3)
@@ -329,6 +331,7 @@ autoplay = "panko"
 speed_scale = 0.4
 
 [node name="PippaSprite" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 3
 position = Vector2(229, 230)
 scale = Vector2(3, 3)
@@ -345,6 +348,7 @@ autoplay = "pippa"
 speed_scale = 1.1
 
 [node name="TenmaSprite" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 3
 position = Vector2(230, 230)
 scale = Vector2(3, 3)
@@ -361,6 +365,7 @@ autoplay = "tenma"
 speed_scale = 0.9
 
 [node name="LiaSprite" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 3
 position = Vector2(230, 231)
 scale = Vector2(3, 3)

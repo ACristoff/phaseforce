@@ -63,8 +63,9 @@ func _on_body_entered(body):
 func _explode():
 	var all_bodies = explosion_radius.get_overlapping_bodies()
 	for body in all_bodies:
-		var new_body: EnemyBase = body
-		new_body.take_damage(explosion_damage)
+		if body is EnemyBase:
+			var new_body: EnemyBase = body
+			new_body.take_damage(explosion_damage)
 
 func _kill_myself():
 	#print('die')

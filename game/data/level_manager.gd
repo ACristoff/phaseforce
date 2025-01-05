@@ -30,6 +30,7 @@ func load_level(id):
 	new_level.game_over.connect(_on_death.bind())
 	add_child(new_level)
 	level_ref = new_level
+	new_level.level_id = current_level
 
 func _on_death():
 	var fail = fail_screen.instantiate()
@@ -54,9 +55,10 @@ func _on_level_complete(data):
 	print('do complete level', data)
 	var transition = level_transition_screen.instantiate()
 	level_ref.queue_free()
-	##TODO ADD SIGNAL CONNECTIONS
-	transition.show_stats('stats')
+	
 	add_child(transition)
+	##TODO ADD SIGNAL CONNECTIONS
+	transition.show_stats(data, current_level)
 
 ##TODO
 func next_level():

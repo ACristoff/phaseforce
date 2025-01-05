@@ -11,12 +11,12 @@ class_name game_manager
 var current_character = "panko"
 
 var levels_data = {
-	"one": null,
-	"two": null,
-	"three": null,
-	"four": null
+	"1": null,
+	"2": null,
+	"3": null,
+	"4": null
 }
-#var level_man
+
 var is_paused = false
 
 # Called when the node enters the scene tree for the first time.
@@ -32,6 +32,10 @@ func _ready():
 #func _input(event):
 	#if event.is_action_pressed("menu") && !is_paused:
 		#get_tree().paused = true
+
+#func set_level_data(data) = {
+	#if data.level == 1
+#}
 
 func _on_title_character_select():
 	var char_select = preload("res://game/UI/menus/character_select.tscn").instantiate()

@@ -9,7 +9,7 @@ class_name Level
 
 @onready var menu = preload("res://game/UI/menus/settings.tscn")
 
-@onready var spawn: Marker2D = $SpawnPoint
+@onready var player_spawn: Marker2D = $SpawnPoint
 @onready var hud: HUD = $HUD
 @onready var extract_timer: Timer = $ExtractTimer
 @onready var extract_zone: Extract_Zone = $ExtractZone
@@ -47,7 +47,7 @@ func _ready():
 	kill_x_snowmen = true
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	var spawn_char: BasePlayer = character.instantiate()
-	spawn_char.global_position = spawn.global_position
+	spawn_char.global_position = player_spawn.global_position
 	add_child(spawn_char)
 	spawn_char.took_damage.connect(_on_player_damage.bind())
 	spawn_char.gained_health.connect(_on_gained_health.bind())
@@ -131,17 +131,17 @@ func _on_primary_obj_completed():
 func generate_level_complete_data():
 	var objective = str("Objective completed: :3")
 	var optional_objective = str("Optional objective completed: ", optional_completed )
-	var secrets_data = str("Secrets found: ", secrets_found, " / ", secrets.size)
+	var secrets_data = str("Secrets found: ", secrets_found, " / ", secrets.size())
 	var enemies = str("Enemies killed: ", snowmen_killed)
 	var stars = [true, optional_completed, secrets.size() == secrets_found]
 	var all = {
 		"secrets": secrets_data,
 		"optional_completed": optional_completed,
 		"objective": objective,
-		"secrets_data": secrets_data,
-		"enemies": enemies,
+		"kills": enemies,
 		"stars": stars,
-		"time": get_time()
+		"time": get_time(),
+		"level": level_id
 	}
 	return all
 
@@ -182,7 +182,7 @@ func _on_player_damage():
 func _on_death_barrier_body_entered(body):
 	if body is BasePlayer:
 		var new_player = body as BasePlayer
-		new_player.global_position = spawn.global_position
+		new_player.global_position = player_spawn.global_position
 		new_player.take_damage()
 
 func _on_gift_collected():

@@ -33,6 +33,7 @@ player=""
 enemies=""
 doors=""
 gifts=""
+game=""
 
 [input]
 
