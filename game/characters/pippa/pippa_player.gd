@@ -21,7 +21,6 @@ func attack():
 		get_parent().add_child(new_bullet)
 		get_parent().add_child(new_shell)
 	else:
-		##TODO pipcannon here
 		var new_rocket = pip_rocket.instantiate()
 		#var new_shell
 		new_rocket.damage = bullet_damage
@@ -52,6 +51,10 @@ func attack():
 				velocity.y = knockback_vector.y * 4
 			velocity.y = knockback_vector.y - 30
 		knockback = knockback_vector * 4
+#
+#func _physics_process(delta):
+	#super(delta)
+	##print()
 
 func power_up():
 	super()
