@@ -28,10 +28,10 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_04hub"]
 distance = -360.0
 
-[node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("primary_obj")]
+[node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets")]
 script = ExtResource("1_7v17c")
 primary_obj = NodePath("Generator")
-kill_quantity = 20
+secrets = [NodePath("SecretArea2"), NodePath("SecretArea")]
 collect_x_gifts = true
 gift_quantity = 30
 
@@ -691,7 +691,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ExtractZone" parent="." instance=ExtResource("16_en1u7")]
-position = Vector2(703, -113)
+position = Vector2(909, -109)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 

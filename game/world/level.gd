@@ -44,7 +44,6 @@ signal level_completed
 signal game_over
 
 func _ready():
-	kill_x_snowmen = true
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	var spawn_char: BasePlayer = character.instantiate()
 	spawn_char.global_position = player_spawn.global_position
@@ -172,6 +171,7 @@ func _on_player_death():
 	game_over.emit()
 
 func _on_player_kill():
+	prints(kill_x_snowmen, snowmen_killed, kill_quantity)
 	if kill_x_snowmen && snowmen_killed != kill_quantity:
 		snowmen_killed += 1
 		hud.tick_up()
