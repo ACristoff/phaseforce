@@ -1,10 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdegiu2yand6e"]
+[gd_scene load_steps=10 format=3 uid="uid://cdegiu2yand6e"]
 
 [ext_resource type="Script" path="res://game/UI/menus/level_select_node.gd" id="1_bo2xr"]
 [ext_resource type="Texture2D" uid="uid://bnc5pmu7mweij" path="res://assets/ui/anvil_base.png" id="1_h7fys"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_1bduh"]
 [ext_resource type="Texture2D" uid="uid://byhijdba8t6q0" path="res://assets/ui/play_button.png" id="2_bv7fs"]
 [ext_resource type="Texture2D" uid="uid://c4pwg7cja4b2q" path="res://assets/ui/level_stars1.png" id="4_c3d61"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="5_6ihd4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jx6np"]
+shader = ExtResource("5_6ihd4")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rql1u"]
+shader = ExtResource("5_6ihd4")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16cgs"]
+shader = ExtResource("5_6ihd4")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.05
 
 [node name="LevelSelectBlip" type="Control"]
 layout_mode = 3
@@ -31,6 +50,7 @@ layout_mode = 2
 theme_override_constants/margin_top = 10
 
 [node name="TextureRect2" type="TextureRect" parent="Level1/MarginContainer3"]
+modulate = Color(0.356, 1, 0.31, 1)
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 4
@@ -125,6 +145,7 @@ size_flags_vertical = 4
 
 [node name="Sprite2D" type="TextureRect" parent="MarginContainer/HBoxContainer/Star1"]
 texture_filter = 3
+material = SubResource("ShaderMaterial_jx6np")
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 1
 anchors_preset = 8
@@ -148,6 +169,7 @@ size_flags_vertical = 4
 
 [node name="Sprite2D" type="TextureRect" parent="MarginContainer/HBoxContainer/Star2"]
 texture_filter = 3
+material = SubResource("ShaderMaterial_rql1u")
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 1
 anchors_preset = 8
@@ -171,6 +193,7 @@ size_flags_vertical = 4
 
 [node name="Sprite2D" type="TextureRect" parent="MarginContainer/HBoxContainer/Star3"]
 texture_filter = 3
+material = SubResource("ShaderMaterial_16cgs")
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 1
 anchors_preset = 8
@@ -185,5 +208,22 @@ offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_c3d61")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = 63.0
+offset_right = 45.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0, 0.19, 0.1235, 1)
 
 [connection signal="pressed" from="Level1/MarginContainer3/TextureRect/PlayLevelButton" to="." method="_on_play_level_button_pressed"]
