@@ -1,10 +1,104 @@
-[gd_scene load_steps=4 format=3 uid="uid://clgkki5cfqcx1"]
+[gd_scene load_steps=9 format=3 uid="uid://clgkki5cfqcx1"]
 
 [ext_resource type="Script" path="res://game/objects/heart_pickup.gd" id="1_i0lw3"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="2_oyygy"]
 [ext_resource type="Texture2D" uid="uid://ocvkt2gt0v5t" path="res://assets/particles/sakanaheartpickup.png" id="2_yutr3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5onxm"]
 radius = 10.0499
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7ykt"]
+shader = ExtResource("2_oyygy")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.05
+
+[sub_resource type="Animation" id="Animation_p3p5f"]
+resource_name = "heart"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:material:shader_parameter/width")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.05, 0.1, 0.05]
+}
+
+[sub_resource type="Animation" id="Animation_x34i4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:material:shader_parameter/width")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.05]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pckib"]
+_data = {
+"RESET": SubResource("Animation_x34i4"),
+"heart": SubResource("Animation_p3p5f")
+}
 
 [node name="HeartPickup" type="Area2D"]
 script = ExtResource("1_i0lw3")
@@ -14,7 +108,15 @@ shape = SubResource("CircleShape2D_5onxm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
+material = SubResource("ShaderMaterial_i7ykt")
 position = Vector2(-1, -1)
 texture = ExtResource("2_yutr3")
+offset = Vector2(0, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pckib")
+}
+autoplay = "heart"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
