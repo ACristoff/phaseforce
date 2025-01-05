@@ -5,11 +5,12 @@ class_name game_manager
 @onready var title = $Title
 
 @onready var level_manager = preload("res://game/data/level_manager.tscn")
-
+@onready var title_inst = preload("res://game/data/title.tscn")
 
 @export var debug_mode = false
 var current_character = "panko"
 
+#var level_man
 var is_paused = false
 
 # Called when the node enters the scene tree for the first time.
@@ -32,10 +33,16 @@ func _on_title_character_select():
 	add_child(char_select)
 	char_select.chosen_character.connect(selected_character.bind(char_select))
 
+func main_menu():
+	var new_title = title_inst.instantiate()
+	add_child(new_title)
+	pass
+
 func selected_character(new_character, char_screen):
 	current_character = new_character
 	char_screen.queue_free()
 	var level_man = level_manager.instantiate()
 	add_child(level_man)
+	level_man.to_main.connect(main_menu.bind() )
 	level_man.load_level(1)
 	#level_man.use_character(current_character)
