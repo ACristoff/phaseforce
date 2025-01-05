@@ -12,7 +12,9 @@ var is_jumping = false
 #figured out reloading
 #noticed the heart
 #fix the ladder
-
+#penetrating shotgun shells x1
+#Tenma is hard
+#Desires to learn the brick
 
 func _physics_process(delta):
 	if health <= 0:

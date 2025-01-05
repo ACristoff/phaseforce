@@ -148,6 +148,7 @@ theme_override_font_sizes/font_size = 8
 text = "TIME TO EXTRACT:"
 
 [node name="Arrow" type="Sprite2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(307, 110)
 texture = ExtResource("9_pf151")
 
