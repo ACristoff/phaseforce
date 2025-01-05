@@ -23,7 +23,7 @@ func _star_three_achieved():
 func _ready():
 	AudioManager.play_sfx(victory_music)
 	game_man = get_tree().get_first_node_in_group("game")
-	level_man = get_tree().get_first_node_in_group("level_man")
+	level_man = get_tree().get_first_node_in_group("level_manager")
 
 
 func show_stats(data, level_id):
