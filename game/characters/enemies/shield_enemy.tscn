@@ -1,0 +1,173 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4miuyj3w3h76"]
+
+[ext_resource type="Script" path="res://game/characters/enemies/enemy_base.gd" id="1_hafgp"]
+[ext_resource type="Texture2D" uid="uid://dx3fvvt0d8y23" path="res://assets/enemies/enemysnowman3.png" id="2_172ms"]
+[ext_resource type="Texture2D" uid="uid://df5p7i2f7xyk6" path="res://assets/enemies/gun_snowman/enemy_pistol.png" id="3_gc1xd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vr86c"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="Animation" id="Animation_f6rax"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_p4bif"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_p5clx"]
+resource_name = "move"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q3ty1"]
+_data = {
+"RESET": SubResource("Animation_f6rax"),
+"idle": SubResource("Animation_p4bif"),
+"move": SubResource("Animation_p5clx")
+}
+
+[node name="EnemyBase" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 513
+collision_mask = 796
+script = ExtResource("1_hafgp")
+max_sight_distance = 270
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CapsuleShape2D_vr86c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(0, -11)
+texture = ExtResource("2_172ms")
+hframes = 9
+
+[node name="Gun" type="Node2D" parent="."]
+visible = false
+
+[node name="EnemyPistol" type="Sprite2D" parent="Gun"]
+texture_filter = 3
+position = Vector2(13, -11)
+texture = ExtResource("3_gc1xd")
+
+[node name="Marker2D" type="Marker2D" parent="Gun"]
+position = Vector2(19, -12)
+gizmo_extents = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_q3ty1")
+}
+autoplay = "idle"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(10, -10)
+target_position = Vector2(0, 20)
+collision_mask = 12
+hit_from_inside = true
+
+[node name="WallCast" type="RayCast2D" parent="."]
+position = Vector2(0, -14)
+target_position = Vector2(15, 0)
+collision_mask = 264
+
+[node name="PlayerCast" type="RayCast2D" parent="."]
+position = Vector2(0, -15)
+target_position = Vector2(0, -50)
+collision_mask = 136
+collide_with_areas = true
+
+[node name="ScanArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 17
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ScanArea"]
+position = Vector2(-12, -26)
+polygon = PackedVector2Array(-106, -40, -30, -15, 200, -75, 200, 53, -30, 17, -106, 40)
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="IdleTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="WalkTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="AlertTimer" type="Timer" parent="Timers"]
+wait_time = 20.0
+one_shot = true
+
+[node name="SearchTimer" type="Timer" parent="Timers"]
+
+[node name="AttackTimer" type="Timer" parent="Timers"]
+wait_time = 1.7
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 20.0
+offset_top = -28.0
+offset_right = 60.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 10
+
+[node name="AlertLabel" type="Label" parent="."]
+visible = false
+offset_left = -2.0
+offset_top = -42.0
+offset_right = 3.0
+offset_bottom = -19.0
+text = "!"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[connection signal="area_entered" from="ScanArea" to="." method="_on_scan_area_area_entered"]
+[connection signal="body_entered" from="ScanArea" to="." method="_on_scan_area_body_entered"]
+[connection signal="body_exited" from="ScanArea" to="." method="_on_scan_area_body_exited"]
+[connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="Timers/WalkTimer" to="." method="_on_walk_timer_timeout"]
+[connection signal="timeout" from="Timers/AlertTimer" to="." method="_on_alert_timer_timeout"]
+[connection signal="timeout" from="Timers/SearchTimer" to="." method="_on_search_timer_timeout"]
+[connection signal="timeout" from="Timers/AttackTimer" to="." method="_on_attack_timer_timeout"]

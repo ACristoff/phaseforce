@@ -59,6 +59,9 @@ func _physics_process(delta):
 					attack_timer.start()
 				if !attack_viability:
 					run_to_player()
+			else:
+				if jump_timer.is_stopped():
+					jump_timer.start()
 		else:
 			if !jump_timer.is_stopped():
 				jump_timer.stop()
