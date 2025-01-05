@@ -1,0 +1,23 @@
+#is there sprint
+#take out powerup
+#figured out reloading
+#noticed the heart
+#penetrating shotgun shells x1
+#Tenma is hard
+#Desires to learn the brick
+
+Freeposter:
+	chose tenma first, knew pippa and tenma
+	doesn't know to click to shoot
+	figured out to shoot after reload screen
+	desire to get into locked door
+	- I feel like we need more hearts
+	doesn't know the heart is there
+	knows to destroy the generator
+	likes the shotgun
+	retry 3
+	- C : give full hearts on pick up power up
+	figured out how to use the charge cannon immediately
+	wants charge cannon to use relative charge for ammo
+	
+	

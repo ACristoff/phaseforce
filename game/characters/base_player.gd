@@ -43,6 +43,7 @@ class_name BasePlayer
 @onready var shell = preload("res://game/projectiles/spent_shell.tscn")
 
 @export_group("Quips")
+#@export var heal_quips: Array[AudioStreamMP3 || A]
 @export var death_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
 @export var damaged_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
 @export var kill_quips: Array[AudioStreamMP3] = [preload("res://assets/music/Pippa the Ripper.mp3")]
@@ -192,6 +193,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		update_cursor(event)
 
 func power_up():
+	if health < 3:
+		if health == 2:
+			gained_health.emit()
+		if health == 1:
+			gained_health.emit()
+			gained_health.emit()
+		health = 3
 	sprite.texture = powered_up_sprite
 	load_gun(powered_up_gun, true)
 	fire_rate = powered_up_fire_rate

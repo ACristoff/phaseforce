@@ -17,7 +17,7 @@ class_name HUD
 @onready var bullet_sprite = $CanvasLayer/Ammo_Container/HBoxContainer/AmmoSprite
 @onready var bullet_count = $CanvasLayer/Ammo_Container/HBoxContainer/Label
 
-@onready var arrow = $CanvasLayer/Arrow
+#@onready var arrow = $CanvasLayer/Arrow
 var extract_zone 
 
 @onready var primary_obj = $CanvasLayer/Objective_Container/VBoxContainer/PrimaryObjectiveLabel
@@ -33,11 +33,11 @@ var new_bullet_sprite: CompressedTexture2D
 func _ready():
 	pass # Replace with function body.
 
-func _process(delta):
-	if arrow.visible == true:
-		arrow.look_at(extract_zone.global_position)
-		pass
-	pass
+#func _process(delta):
+	#if arrow.visible == true:
+		#arrow.look_at(extract_zone.global_position)
+		#pass
+	#pass
 
 func change_bullet_sprite():
 	bullet_sprite.texture = new_bullet_sprite
@@ -79,7 +79,7 @@ func complete_primary(obj):
 func go_to_extract(obj):
 	extract_obj.visible = true
 	extract_zone = obj
-	arrow.visible = true
+	#arrow.visible = true
 
 func complete_optional():
 	optional_objective.pivot_offset = optional_objective.size/2

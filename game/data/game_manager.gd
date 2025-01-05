@@ -6,6 +6,7 @@ class_name game_manager
 
 @onready var level_manager = preload("res://game/data/level_manager.tscn")
 @onready var title_inst = preload("res://game/data/title.tscn")
+@onready var credits = preload("res://game/UI/menus/credits.tscn")
 
 @export var debug_mode = false
 var current_character = "panko"
@@ -29,14 +30,6 @@ func _ready():
 		start_level_man.load_level(0)
 		get_tree().set_debug_collisions_hint(true)
 
-#func _input(event):
-	#if event.is_action_pressed("menu") && !is_paused:
-		#get_tree().paused = true
-
-#func set_level_data(data) = {
-	#if data.level == 1
-#}
-
 func _on_title_character_select():
 	var char_select = preload("res://game/UI/menus/character_select.tscn").instantiate()
 	title.queue_free()
@@ -49,7 +42,6 @@ func main_menu():
 	new_title.character_select.connect(_on_title_character_select.bind())
 	title = new_title
 
-
 func selected_character(new_character, char_screen):
 	current_character = new_character
 	char_screen.queue_free()
@@ -57,4 +49,7 @@ func selected_character(new_character, char_screen):
 	add_child(level_man)
 	level_man.to_main.connect(main_menu.bind() )
 	level_man.load_level(1)
-	#level_man.use_character(current_character)
+
+func _on_title_credits():
+	var new 
+	pass # Replace with function body.
