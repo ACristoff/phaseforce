@@ -35,12 +35,15 @@ func _on_death():
 	var fail = fail_screen.instantiate()
 	level_ref.queue_free()
 	fail.retry.connect(_on_restart.bind())
+	#fail.quit_to_main.connect(_to_main.bind())
 	fail.quit_to_main.connect(_on_clicked_to_main.bind())
 	add_child(fail)
 
 ##TODO
 func _on_clicked_to_main():
 	to_main.emit()
+	var fail = get_child(0)
+	fail.queue_free()
 
 func _on_restart():
 	var fail = get_child(0)

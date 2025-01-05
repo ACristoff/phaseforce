@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="17_ximk6"]
 [ext_resource type="PackedScene" uid="uid://yb2f6m8tsacr" path="res://game/world/enemy_spawner.tscn" id="19_q0e02"]
 [ext_resource type="PackedScene" uid="uid://cqyy2nqr7vd37" path="res://game/characters/enemies/sword_enemy.tscn" id="20_8dh06"]
-[ext_resource type="PackedScene" path="res://game/characters/enemies/shield_enemy.tscn" id="21_5b5rh"]
+[ext_resource type="PackedScene" uid="uid://d4miuyj3w3h76" path="res://game/characters/enemies/shield_enemy.tscn" id="21_5b5rh"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="22_8pvgb"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vb4j5"]
@@ -552,7 +552,7 @@ position = Vector2(1021, -144)
 position = Vector2(-467, -18)
 
 [node name="ExtractTimer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 90.0
 one_shot = true
 
 [node name="SecretArea" parent="." instance=ExtResource("15_46xme")]
@@ -598,9 +598,6 @@ position = Vector2(1898, -100)
 
 [node name="EnemySpawner10" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
 position = Vector2(1740, -76)
-
-[node name="PowerUp" parent="." instance=ExtResource("4_n7avy")]
-position = Vector2(-50, 71)
 
 [node name="Node" type="Node" parent="."]
 

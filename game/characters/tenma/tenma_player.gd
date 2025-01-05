@@ -25,6 +25,7 @@ func attack() -> void:
 			var new_bullet = bullet.instantiate()
 			new_bullet.damage = bullet_damage
 			new_bullet.speed = bullet_speed
+			new_bullet.pierce = 1
 			new_bullet.global_position = cursor_spout.global_position
 			var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
 			new_bullet.rotation_degrees = adjusted_angle

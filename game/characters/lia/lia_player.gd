@@ -51,7 +51,7 @@ func attack():
 		knockback = knockback_vector * 3
 	else:
 		var adjusted_knockback_force = knockback_force * (charge / 2)
-		prints(knockback_force, charge, adjusted_knockback_force)
+		#prints(knockback_force, charge, adjusted_knockback_force)
 		var knockback_vector = (cursor_spout.global_position - global_position) * adjusted_knockback_force
 		if knockback_vector.y < 0:
 			velocity.y = knockback_vector.y
@@ -127,7 +127,7 @@ func _physics_process(delta: float) -> void:
 
 	##PLAYER MOVEMENT##
 	#Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() && !is_ladder():
 		velocity += get_gravity() * delta
 		coyote_timer -= 1 * delta
 	#Jump Buffering
@@ -159,10 +159,16 @@ func _physics_process(delta: float) -> void:
 		knockback = lerp(knockback, Vector2.ZERO, 0.1)
 	if knockback.x < 1 && knockback.x > -1:
 		knockback = Vector2.ZERO
+	
 	if floor_cast.is_colliding():
 		if is_ladder():
 			if Input.is_action_pressed("move_up") or Input.is_action_pressed("jump"):
 				velocity.y = -SPEED
+			elif Input.is_action_pressed("move_down"):
+				velocity.y = SPEED
+				pass
+			else:
+				velocity.y = 0
 	if current_platform_stack.size() > 0:
 		if Input.is_action_pressed("move_down"):
 			for platform in current_platform_stack:	

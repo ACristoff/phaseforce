@@ -7,6 +7,14 @@ extends EnemyBase
 @export var jump_force = -280.0
 var is_jumping = false
 
+#is there sprint
+#take out powerup
+#figured out reloading
+#noticed the heart
+#penetrating shotgun shells x1
+#Tenma is hard
+#Desires to learn the brick
+
 func _physics_process(delta):
 	if health <= 0:
 		die()
@@ -53,7 +61,7 @@ func _physics_process(delta):
 					jump_timer.start()
 				gun_sprite.look_at(player.global_position)
 				var attack_viability = check_attack_distance()
-				print(attack_viability)
+				#print(attack_viability)
 				if !attack_viability && !attack_timer.is_stopped():
 					attack_timer.stop()
 				elif attack_viability == "in range" && attack_timer.is_stopped():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2oscudku2h3t"]
+[gd_scene load_steps=12 format=3 uid="uid://d2oscudku2h3t"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_ddrdq"]
 [ext_resource type="Texture2D" uid="uid://wfelj55r43i2" path="res://assets/characters/pippa/base_form/Pippa_Sprite.png" id="2_jnmno"]
 [ext_resource type="Script" path="res://game/characters/pippa/pippa_player.gd" id="2_qvqcs"]
+[ext_resource type="AudioStream" uid="uid://buecie7an3nvv" path="res://assets/sfx/quips/panko/QUIP_KILL.mp3" id="3_dvtyi"]
 [ext_resource type="Texture2D" uid="uid://b1piq1rno34rs" path="res://assets/characters/pippa/powerup_form/Pippa_Sprite2.png" id="3_owpr1"]
 [ext_resource type="PackedScene" uid="uid://b8nykvlgtorjp" path="res://game/characters/pippa/pippa_arm_2.tscn" id="4_an1bv"]
 [ext_resource type="AudioStream" uid="uid://4ljuudbg24rl" path="res://assets/sfx/projectiles/PISTOL.mp3" id="5_i7nky"]
@@ -13,6 +14,11 @@
 
 [node name="PippaPlayer" instance=ExtResource("1_ddrdq")]
 script = ExtResource("2_qvqcs")
+death_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi")])
+damaged_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi")])
+kill_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi")])
+power_up_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi")])
+victory_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi")])
 normal_sprite = ExtResource("2_jnmno")
 normal_gun = ExtResource("4_an1bv")
 normal_fire_rate = 0.26

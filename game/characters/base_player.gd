@@ -260,7 +260,7 @@ func _physics_process(delta: float) -> void:
 			start_reload()
 	##PLAYER MOVEMENT##
 	#Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() && !is_ladder():
 		velocity += get_gravity() * delta
 		coyote_timer -= 1 * delta
 	
@@ -302,6 +302,11 @@ func _physics_process(delta: float) -> void:
 		if is_ladder():
 			if Input.is_action_pressed("move_up") or Input.is_action_pressed("jump"):
 				velocity.y = -SPEED
+			elif Input.is_action_pressed("move_down"):
+				velocity.y = SPEED
+				pass
+			else:
+				velocity.y = 0
 	
 	if current_platform_stack.size() > 0:
 		if Input.is_action_pressed("move_down"):
@@ -325,10 +330,13 @@ func is_passthrough_platform():
 		return false
 
 func is_ladder():
-	var first_collide = floor_cast.get_collider()
-	if first_collide is ladder:
-		return true
-	else:
+	if floor_cast.is_colliding():
+		var first_collide = floor_cast.get_collider()
+		if first_collide is ladder:
+			return true
+		else:
+			return false
+	else: 
 		return false
 
 func attack() -> void:

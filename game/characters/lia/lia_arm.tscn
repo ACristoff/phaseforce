@@ -76,7 +76,7 @@ texture = ExtResource("2_tcl21")
 offset = Vector2(5, -8)
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="CursorSprite"]
-position = Vector2(15, -3)
+position = Vector2(6, -3)
 gizmo_extents = 5.0
 
 [node name="ShellSpawnPoint" type="Marker2D" parent="CursorSprite"]
