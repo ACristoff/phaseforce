@@ -176,6 +176,9 @@ func take_damage():
 	else:
 		pass
 
+func activate_arrow():
+	arrow.visible = true
+	pass
 
 func load_gun(gun, is_new):
 	if is_new:

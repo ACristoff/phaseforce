@@ -33,3 +33,5 @@ Dave:
 	didn't notice the powerup
 	using the knockback
 	likes the pipcannon reload
+	figured out charging immediately
+	

@@ -123,11 +123,13 @@ func _on_primary_obj_completed():
 	_tween_extraction_label()
 	extract_zone.activate_extract()
 	var spawners = get_tree().get_nodes_in_group("enemy_spawners")
+	player.activate_arrow()
 	for spawn in spawners:
 		var current_spawner: EnemySpawner = spawn
 		current_spawner.extract_active = true
 		if current_spawner.trigger == current_spawner.TriggerTypes.ON_EXTRACT:
 			current_spawner.spawn_enemy()
+	
 
 func _tween_extraction_label():
 	var tween = create_tween()
