@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dqpvddi2llok6"]
+[gd_scene load_steps=28 format=4 uid="uid://dqpvddi2llok6"]
 
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_3skp3"]
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_cakfj"]
@@ -20,7 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="17_ximk6"]
 [ext_resource type="PackedScene" uid="uid://yb2f6m8tsacr" path="res://game/world/enemy_spawner.tscn" id="19_q0e02"]
 [ext_resource type="PackedScene" uid="uid://cqyy2nqr7vd37" path="res://game/characters/enemies/sword_enemy.tscn" id="20_8dh06"]
-[ext_resource type="PackedScene" uid="uid://d4miuyj3w3h76" path="res://game/characters/enemies/shield_enemy.tscn" id="21_5b5rh"]
+[ext_resource type="PackedScene" path="res://game/characters/enemies/shield_enemy.tscn" id="21_5b5rh"]
+[ext_resource type="Texture2D" uid="uid://cuqqrfbhjw2k0" path="res://assets/enemies/coming_alive_gun_snowman.png" id="22_8gh4t"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="22_8pvgb"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vb4j5"]
@@ -35,9 +36,10 @@ polygon = PackedVector2Array(-28, -14, 49, -14, 49, 13, 38, 34, 121, 34, 121, 58
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_04hub"]
 distance = -360.0
 
-[node name="LevelOne2" type="Node2D" node_paths=PackedStringArray("primary_obj")]
+[node name="LevelOne2" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets")]
 script = ExtResource("1_cakfj")
 primary_obj = NodePath("Generator")
+secrets = [NodePath("SecretArea")]
 kill_x_snowmen = true
 kill_quantity = 20
 
@@ -569,37 +571,55 @@ position = Vector2(1993, -255)
 [node name="EnemiesSpawns" type="Node" parent="."]
 
 [node name="EnemySpawner" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
-position = Vector2(726, 116)
+position = Vector2(727, 84)
+enemy_to_spawn = ExtResource("21_5b5rh")
 trigger = 2
+enemy_to_spawn_animation = ExtResource("22_8gh4t")
 
 [node name="EnemySpawner2" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
-position = Vector2(838, 116)
+position = Vector2(838, 84)
+enemy_to_spawn = ExtResource("21_5b5rh")
 trigger = 2
+enemy_to_spawn_animation = ExtResource("22_8gh4t")
 
 [node name="EnemySpawner3" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
-position = Vector2(950, 116)
+position = Vector2(948, 84)
+enemy_to_spawn = ExtResource("21_5b5rh")
 trigger = 2
+enemy_to_spawn_animation = ExtResource("22_8gh4t")
 
 [node name="EnemySpawner4" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
-position = Vector2(218, 140)
+position = Vector2(218, 108)
+trigger = 2
+enemy_to_spawn_animation = ExtResource("22_8gh4t")
 
 [node name="EnemySpawner5" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
-position = Vector2(287, 116)
+position = Vector2(301, 84)
+trigger = 2
+enemy_to_spawn_animation = ExtResource("22_8gh4t")
 
 [node name="EnemySpawner6" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
-position = Vector2(372, 116)
+position = Vector2(372, 84)
+trigger = 2
+enemy_to_spawn_animation = ExtResource("22_8gh4t")
 
 [node name="EnemySpawner7" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
-position = Vector2(2588, -556)
+position = Vector2(2588, -588)
+trigger = 2
+enemy_to_spawn_animation = ExtResource("22_8gh4t")
 
 [node name="EnemySpawner8" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
-position = Vector2(2419, -580)
+position = Vector2(2413, -612)
+trigger = 2
+enemy_to_spawn_animation = ExtResource("22_8gh4t")
 
 [node name="EnemySpawner9" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
-position = Vector2(1898, -100)
+position = Vector2(1909, -132)
+enemy_to_spawn_animation = ExtResource("22_8gh4t")
 
 [node name="EnemySpawner10" parent="EnemiesSpawns" instance=ExtResource("19_q0e02")]
-position = Vector2(1740, -76)
+position = Vector2(1741, -108)
+enemy_to_spawn_animation = ExtResource("22_8gh4t")
 
 [node name="Node" type="Node" parent="."]
 
