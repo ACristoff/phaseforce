@@ -476,7 +476,6 @@ doors_to_unlock = [NodePath("../Doors/Electric_Doors"), NodePath("../Doors/Elect
 
 [node name="SwordEnemy2" parent="Enemies" instance=ExtResource("20_8dh06")]
 position = Vector2(1019, 324)
-jump_force = null
 
 [node name="ShieldEnemy" parent="Enemies" instance=ExtResource("21_5b5rh")]
 position = Vector2(1134, -150)
@@ -537,7 +536,6 @@ position = Vector2(864, -60)
 
 [node name="SwordEnemy" parent="Enemies" instance=ExtResource("20_8dh06")]
 position = Vector2(2073, -228)
-jump_force = null
 
 [node name="EnemyBase23" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(900, -36)

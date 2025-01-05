@@ -46,6 +46,6 @@ func apply_damage(body, shield):
 		body.take_damage(damage)
 	elif shield:
 		body.shield_take_damage(damage)
-	if pierce <= 0:
+	if pierce < 0:
 		queue_free()
 	pass 
