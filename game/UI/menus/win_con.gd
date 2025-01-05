@@ -52,7 +52,7 @@ func _on_main_menu_pressed():
 
 func _on_level_select_pressed():
 	game_man._on_level_select()
-
+	queue_free()
 
 func _on_next_level_pressed():
 	level_man.current_level += 1
