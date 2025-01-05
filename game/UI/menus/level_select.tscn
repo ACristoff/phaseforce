@@ -26,20 +26,29 @@ theme_override_constants/margin_top = -290
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 100
+theme_override_constants/separation = 120
 
 [node name="LevelSelectBlip" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("1_3843p")]
 layout_mode = 2
 level_name = "Level 1. Anvil Base"
+level_id = 1
 
 [node name="LevelSelectBlip2" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("1_3843p")]
 layout_mode = 2
+level_name = "Level 2. Mountain of Gifts"
+level_id = 2
 
 [node name="LevelSelectBlip3" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("1_3843p")]
 layout_mode = 2
+level_name = "Level 3. The Basement"
+level_id = 3
 
 [node name="LevelSelectBlip4" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("1_3843p")]
+visible = false
 layout_mode = 2
+level_id = 4
 
 [node name="LevelSelectBlip5" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("1_3843p")]
+visible = false
 layout_mode = 2
+level_id = 5

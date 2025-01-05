@@ -13,3 +13,4 @@ script = ExtResource("1_831tx")
 
 [connection signal="character_select" from="Title" to="." method="_on_title_character_select"]
 [connection signal="credits" from="Title" to="." method="_on_title_credits"]
+[connection signal="on_start" from="Title" to="." method="_on_title_on_start"]

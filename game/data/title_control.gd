@@ -8,6 +8,7 @@ var sway = false
 
 signal character_select
 signal credits
+signal on_start
 
 @onready var bereparedosfx = [
 	preload("res://assets/sfx/b00/b01.wav"),
@@ -41,7 +42,8 @@ func _play_beretchan_sfx():
 	AudioManager.play_sfx_wav(bereparedosfx[random], 1)
 
 func _on_start_pressed():
-	character_select.emit()
+	#character_select.emit()
+	on_start.emit()
 	pass # Replace with function body.
 
 func _on_animation_player_animation_finished(anim_name):
@@ -51,4 +53,9 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_credits_pressed():
 	credits.emit()
+	pass # Replace with function body.
+
+
+func _on_quit_pressed():
+	get_tree().quit()
 	pass # Replace with function body.
