@@ -80,7 +80,9 @@ func _on_enemy_spawned(enemy_ref: EnemyBase):
 func pause_menu():
 	if is_paused:
 		Engine.time_scale = 1
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Engine.time_scale = 0
 	is_paused = !is_paused
 
@@ -168,6 +170,7 @@ func _on_extract():
 	level_completed.emit(generate_level_complete_data())
 
 func _on_player_death():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	game_over.emit()
 
 func _on_player_kill():
