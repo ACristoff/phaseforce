@@ -1,6 +1,7 @@
 extends EnemyBase
 
 @onready var enemy_blade_sound = preload("res://assets/sfx/characters/PF_ENEMY_HURT.mp3")
+@onready var sword_hit_box = $SwordHitBox
 
 func _physics_process(delta):
 	if health <= 0:
@@ -81,6 +82,7 @@ func turn(direction):
 		gun.scale.x = 1
 		gun_barrel.position.x = 19
 		sprite.position.x = 4
+		sword_hit_box.scale.x = 1
 	else:
 		sprite.position.x = -4
 		sprite.flip_h = true
@@ -89,20 +91,18 @@ func turn(direction):
 		scan_zone.scale.x = -1
 		gun.scale.x = -1
 		gun_barrel.position.x = -17
+		sword_hit_box.scale.x = -1
 
 func attack():
 	#print('shoot')
 	attack_timer.wait_time = 1
 	AudioManager.play_sfx(enemy_blade_sound)
 	anim.play("stab")
-	#var new_enemy_bullet = bullet.instantiate()
-	#new_enemy_bullet.global_position = to_global(gun_barrel.position)
-	#var adjusted_angle = gun_sprite.rotation_degrees
-	#if !facing_right:
-		#adjusted_angle = -adjusted_angle + 180
-	#new_enemy_bullet.rotation_degrees = adjusted_angle
-	#print(adjusted_angle)
-	#get_parent().add_child(new_enemy_bullet)
+	var bodies = sword_hit_box.get_overlapping_bodies()
+	for body in bodies:
+		if body is BasePlayer:
+			var new_body: BasePlayer = body
+			new_body.take_damage()
 
 func run_to_player():
 	if player.global_position.x > global_position.x:
