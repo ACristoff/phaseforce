@@ -124,9 +124,9 @@ func check_attack_distance():
 		positiveX = positiveX * -1
 	if positiveY < 0:
 		positiveY = positiveY * -1
+	prints(positiveX, positiveY)
 	if positiveX < ideal_attack_range && positiveY < ideal_attack_range:
 		return "ideal"
-	
 	if positiveX < attack_range && positiveY < attack_range:
 		return "in range"
 

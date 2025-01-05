@@ -53,11 +53,12 @@ func _physics_process(delta):
 					jump_timer.start()
 				gun_sprite.look_at(player.global_position)
 				var attack_viability = check_attack_distance()
-				#print(attack_viability)
+				print(attack_viability)
 				if !attack_viability && !attack_timer.is_stopped():
 					attack_timer.stop()
 				elif attack_viability == "in range" && attack_timer.is_stopped():
 					#velocity.x = 0
+					run_to_player()
 					attack_timer.start()
 				if attack_viability == "ideal":
 					velocity.x = 0
@@ -136,11 +137,6 @@ func attack():
 			new_body.take_damage()
 
 func run_to_player():
-	#var distance = player.global_position.x - global_position.x
-	#var max_close = 50
-	#if distance < 0:
-		#distance = distance * -1
-	#prints(player.global_position.x, global_position.x, distance, distance < max_close )
 	if player.global_position.x > global_position.x:
 		anim.play("move")
 		velocity.x = speed 
