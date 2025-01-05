@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4miuyj3w3h76"]
+[gd_scene load_steps=10 format=3 uid="uid://d4miuyj3w3h76"]
 
 [ext_resource type="Script" path="res://game/characters/enemies/enemy_base.gd" id="1_hafgp"]
 [ext_resource type="Texture2D" uid="uid://dx3fvvt0d8y23" path="res://assets/enemies/enemysnowman3.png" id="2_172ms"]
@@ -66,10 +66,14 @@ _data = {
 "move": SubResource("Animation_p5clx")
 }
 
-[node name="EnemyBase" type="CharacterBody2D" groups=["enemies"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxle4"]
+size = Vector2(10, 10)
+
+[node name="ShieldEnemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 513
 collision_mask = 796
 script = ExtResource("1_hafgp")
+health = 80
 max_sight_distance = 270
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -78,7 +82,7 @@ shape = SubResource("CapsuleShape2D_vr86c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
-position = Vector2(0, -11)
+position = Vector2(2, -13)
 texture = ExtResource("2_172ms")
 hframes = 9
 
@@ -161,7 +165,14 @@ offset_right = 3.0
 offset_bottom = -19.0
 text = "!"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Shield" type="Node" parent="."]
+
+[node name="ShieldHitBox" type="Area2D" parent="Shield"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield/ShieldHitBox"]
+position = Vector2(3, -5)
+shape = SubResource("RectangleShape2D_bxle4")
+debug_color = Color(0.196078, 0.627451, 0.4, 0.643137)
 
 [connection signal="area_entered" from="ScanArea" to="." method="_on_scan_area_area_entered"]
 [connection signal="body_entered" from="ScanArea" to="." method="_on_scan_area_body_entered"]
