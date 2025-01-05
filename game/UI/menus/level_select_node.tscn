@@ -185,3 +185,5 @@ offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_c3d61")
+
+[connection signal="pressed" from="Level1/MarginContainer3/TextureRect/PlayLevelButton" to="." method="_on_play_level_button_pressed"]

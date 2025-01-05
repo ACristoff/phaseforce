@@ -56,3 +56,4 @@ func _on_level_select_pressed():
 func _on_next_level_pressed():
 	level_man.current_level += 1
 	level_man.load_level(level_man.current_level)
+	queue_free()

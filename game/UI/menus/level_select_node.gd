@@ -27,8 +27,6 @@ func update_labels(data):
 		pass
 	best_time.text = str(data.time)
 	secrets_found.text = data.secrets
-	pass
-
 
 func _star_one_achieved():
 	starone.texture = purplestar
