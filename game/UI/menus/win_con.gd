@@ -42,6 +42,7 @@ func show_stats(data, level_id):
 
 func _on_retry_pressed():
 	level_man.load_level(level_man.current_level)
+	queue_free()
 
 
 func _on_main_menu_pressed():
