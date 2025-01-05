@@ -5,6 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dqpvddi2llok6" path="res://game/scenes/level_one.tscn" id="3_wvc58"]
 [ext_resource type="PackedScene" uid="uid://b0jbio0575gja" path="res://game/scenes/level_two.tscn" id="4_1ay6c"]
 
-[node name="LevelManager" type="Node"]
+[node name="LevelManager" type="Node" groups=["level_manager"]]
 script = ExtResource("1_3dy8h")
 levels = Array[PackedScene]([ExtResource("2_7gwnr"), ExtResource("4_1ay6c"), ExtResource("3_wvc58")])

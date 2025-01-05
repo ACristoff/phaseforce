@@ -9,7 +9,7 @@ class_name Level_Manager
 #@onready var 
 
 var level_ref: Level
-var current_level = 0
+var current_level = 1
 var time
 signal to_main
 

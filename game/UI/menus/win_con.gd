@@ -10,8 +10,8 @@ extends Node2D
 @onready var victory_music = preload("res://assets/music/VICTORY_A.mp3")
 @onready var victory_music_b = preload("res://assets/music/VICTORY_B.mp3")
 
-var game_man
-var level_man
+var game_man: game_manager
+var level_man: Level_Manager
 
 func _star_one_achieved():
 	starone.texture = purplestar
@@ -22,7 +22,8 @@ func _star_three_achieved():
 
 func _ready():
 	AudioManager.play_sfx(victory_music)
-	
+	game_man = get_tree().get_first_node_in_group("game")
+	level_man = get_tree().get_first_node_in_group("level_man")
 
 
 func show_stats(data, level_id):
@@ -36,17 +37,23 @@ func show_stats(data, level_id):
 	time.text = str(data.time, " SECONDS")
 	secrets.text = str(data.secrets)
 	kills.text = str(data.kills)
-	var manager: game_manager = get_tree().get_first_node_in_group("game")
+	#var manager: game_manager = get_tree().get_first_node_in_group("game")
 	#TODO data pass
-	manager.levels_data[str(level_id)] = data
-	#print(manager.levels_data)
-	pass
+	game_man.levels_data[str(level_id)] = data
 
-	#var all = {
-		#"secrets": secrets_data,
-		#"optional_completed": optional_completed,
-		#"objective": objective,
-		#"secrets_data": secrets_data,
-		#"enemies": enemies,
-		#"stars": stars
-	#}
+func _on_retry_pressed():
+	level_man.load_level(level_man.current_level)
+
+
+func _on_main_menu_pressed():
+	game_man.main_menu()
+	queue_free()
+
+
+func _on_level_select_pressed():
+	game_man._on_level_select()
+
+
+func _on_next_level_pressed():
+	level_man.current_level += 1
+	level_man.load_level(level_man.current_level)

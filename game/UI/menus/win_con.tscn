@@ -380,3 +380,8 @@ libraries = {
 }
 autoplay = "lia"
 speed_scale = 0.6
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Control/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Control/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Control/HBoxContainer/LevelSelect" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Control/HBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]

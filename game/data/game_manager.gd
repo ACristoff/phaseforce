@@ -10,6 +10,8 @@ class_name game_manager
 
 @export var debug_mode = false
 var current_character = "panko"
+@onready var level_man: Level_Manager = $LevelManager
+
 
 var levels_data = {
 	"1": null,
@@ -30,6 +32,12 @@ func _ready():
 		start_level_man.load_level(0)
 		get_tree().set_debug_collisions_hint(true)
 
+func _on_level_select():
+	print("level select")
+	pass
+
+#func _on
+
 func _on_title_character_select():
 	var char_select = preload("res://game/UI/menus/character_select.tscn").instantiate()
 	title.queue_free()
@@ -46,10 +54,8 @@ func main_menu():
 func selected_character(new_character, char_screen):
 	current_character = new_character
 	char_screen.queue_free()
-	var level_man = level_manager.instantiate()
-	add_child(level_man)
 	level_man.to_main.connect(main_menu.bind() )
-	level_man.load_level(1)
+	level_man.load_level(level_man.current_level)
 
 func _on_title_credits():
 	var credits_screen = credits.instantiate()
