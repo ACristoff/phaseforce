@@ -35,18 +35,3 @@ func _physics_process(delta):
 				print('bullet hits enemy')
 				body.take_damage(damage)
 				queue_free()
-	
-
-func _on_area_entered(_area):
-	if _area is BasePlayer:
-		return
-	pass # Replace with function body.
-
-
-#
-#func _on_body_entered(body):
-	##prints('body: ',body)
-#
-	##elif body is Door:
-		##queue_free()
-	#queue_free()

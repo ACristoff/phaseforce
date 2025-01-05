@@ -13,43 +13,31 @@ var accelerate = 10
 
 func _physics_process(delta):
 	new_grav += accelerate * delta
-	#position += transform.x * speed * delta
-	#brick_gravity += strength
-	#throw += brick_gravity * delta
-	#var test = Vector2(Vector2(transform.x * speed * delta).x, Vector2(transform.y * throw * delta).y  * speed)
-	#position += test
-	#position += Vector2(Vector2(transform.x * speed * delta).x, Vector2(transform.x * speed * delta).y * new_grav * delta)
 	position += Vector2(Vector2(transform.x * speed * delta).x, Vector2(transform.x * speed * delta).y + new_grav)
-	#position.y += 100 * delta
-	#print(gravity * delta)
-	pass
-
-func _on_area_entered(_area):
-	if _area is BasePlayer:
-		return
-	pass # Replace with function body.
-
-func _on_body_entered(body):
-	#prints('body: ',body)
-	if body is BasePlayer:
-		return
-	if body is SnowGround:
-		AudioManager.play_sfx(brick_hit, -10)
-		body.emit(self.global_position)
-		queue_free()
-	elif body is MetalGround:
-		AudioManager.play_sfx(brick_hit, -10)
-		body.emit(self.global_position)
-		queue_free()
-	elif body is Generator:
-		AudioManager.play_sfx(brick_hit, -10)
-		body.emit(self.global_position)
-		queue_free()
-	elif body is EnemyBase:
-		AudioManager.play_sfx(brick_hit, -10)
-		body.take_damage(damage)
-		queue_free()
-	AudioManager.play_sfx(brick_hit, -10)
-	#elif body is Door:
-		#queue_free()
-	queue_free()
+	if self.has_overlapping_areas():
+		var all_areas = self.get_overlapping_areas()
+		for area in all_areas:
+			if area is Shield:
+				self.monitoring = false
+				var enemy: ShieldEnemy = area.get_parent()
+				enemy.shield_take_damage(damage)
+				queue_free()
+	if self.has_overlapping_bodies():
+		var all_bodies = self.get_overlapping_bodies()
+		for body in all_bodies:
+			print(body)
+			if body is BasePlayer:
+				return
+			if body is SnowGround:
+				body.emit(self.global_position)
+				queue_free()
+			elif body is MetalGround:
+				body.emit(self.global_position)
+				queue_free()
+			elif body is Generator:
+				body.emit(self.global_position)
+				queue_free()
+			elif body is EnemyBase:
+				print('bullet hits enemy')
+				body.take_damage(damage)
+				queue_free()
