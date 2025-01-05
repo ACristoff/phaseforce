@@ -30,4 +30,5 @@ Dave:
 	R to reload confused on brick
 	caught the reference
 	clicked off screen
+	didn't notice the powerup
 	

@@ -36,9 +36,10 @@ polygon = PackedVector2Array(-28, -14, 49, -14, 49, 13, 38, 34, 121, 34, 121, 58
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_04hub"]
 distance = -360.0
 
-[node name="LevelOne2" type="Node2D" node_paths=PackedStringArray("primary_obj")]
+[node name="LevelOne2" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets")]
 script = ExtResource("1_cakfj")
 primary_obj = NodePath("Generator")
+secrets = [NodePath("SecretArea")]
 kill_x_snowmen = true
 kill_quantity = 20
 
@@ -489,82 +490,63 @@ position = Vector2(1134, -150)
 
 [node name="EnemyBase2" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(624, 84)
-collision_layer = 513
 
 [node name="EnemyBase4" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(496, 84)
-collision_layer = 513
 
 [node name="EnemyBase5" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(1634, -107)
-collision_layer = 513
 
 [node name="EnemyBase6" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(1693, -108)
-collision_layer = 513
 
 [node name="EnemyBase7" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(1775, -108)
-collision_layer = 513
 
 [node name="EnemyBase9" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(2040, -228)
-collision_layer = 513
 
 [node name="EnemyBase11" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(2545, -372)
-collision_layer = 513
 
 [node name="EnemyBase12" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(2610, -372)
-collision_layer = 513
 
 [node name="EnemyBase13" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(2665, -372)
-collision_layer = 513
 
 [node name="EnemyBase14" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(1749, -396)
-collision_layer = 513
 
 [node name="EnemyBase15" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(1606, -636)
-collision_layer = 513
 
 [node name="EnemyBase16" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(1846, -636)
-collision_layer = 513
 
 [node name="EnemyBase17" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(2214, -348)
-collision_layer = 513
 
 [node name="EnemyBase18" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(2016, -348)
-collision_layer = 513
 
 [node name="EnemyBase19" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(2070, -132)
-collision_layer = 513
 
 [node name="EnemyBase20" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(720, -36)
-collision_layer = 513
 
 [node name="EnemyBase21" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(788, -36)
-collision_layer = 513
 
 [node name="EnemyBase22" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(864, -60)
-collision_layer = 513
 
 [node name="SwordEnemy" parent="Enemies" instance=ExtResource("20_8dh06")]
 position = Vector2(2073, -228)
 
 [node name="EnemyBase23" parent="Enemies" instance=ExtResource("12_3l25s")]
 position = Vector2(900, -36)
-collision_layer = 513
 
 [node name="Doors" type="Node" parent="."]
 
