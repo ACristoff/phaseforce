@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://b1oatn1lxrden"]
+[gd_scene load_steps=25 format=3 uid="uid://b1oatn1lxrden"]
 
 [ext_resource type="Script" path="res://game/UI/menus/character_select.gd" id="1_lnse3"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_e5q6k"]
 [ext_resource type="PackedScene" uid="uid://dfk1afnkqscaq" path="res://game/UI/inside_heli.tscn" id="3_cuhlq"]
 [ext_resource type="Texture2D" uid="uid://cn0811gmx6ohf" path="res://assets/characters/lumi/base_form/LumiSprite.png" id="4_f7ob1"]
 [ext_resource type="Texture2D" uid="uid://4v6wc1fa3ym7" path="res://assets/characters/panko/base_form/Panko_Sprite.png" id="5_7bfb0"]
+[ext_resource type="Texture2D" uid="uid://ce7s7p6ds518" path="res://assets/particles/shadow_circle.png" id="5_dkkar"]
 [ext_resource type="Texture2D" uid="uid://wfelj55r43i2" path="res://assets/characters/pippa/base_form/Pippa_Sprite.png" id="6_f3237"]
 [ext_resource type="Texture2D" uid="uid://dsugoh3hgabw4" path="res://assets/characters/tenma/base_form/Tenma_Sprite.png" id="7_bnw45"]
 [ext_resource type="Texture2D" uid="uid://dt7drd5slxlhk" path="res://assets/characters/lia/base_form/LiaSprite.png" id="8_r5ubm"]
@@ -276,83 +277,183 @@ theme = ExtResource("2_e5q6k")
 theme_override_font_sizes/font_size = 32
 
 [node name="InsideHeli" parent="." instance=ExtResource("3_cuhlq")]
+z_index = -10
 
 [node name="LumiSprite" type="Sprite2D" parent="."]
 texture_filter = 3
 position = Vector2(405, 237)
-scale = Vector2(3, 3)
+scale = Vector2(2.4, 2.4)
 texture = ExtResource("4_f7ob1")
 hframes = 10
 frame = 6
 
-[node name="PankoSprite" type="Sprite2D" parent="."]
-texture_filter = 3
-position = Vector2(186, 233)
-scale = Vector2(3, 3)
-texture = ExtResource("5_7bfb0")
-hframes = 10
-frame = 6
-
-[node name="PippaSprite" type="Sprite2D" parent="."]
-texture_filter = 3
-position = Vector2(342, 234)
-scale = Vector2(3, 3)
-texture = ExtResource("6_f3237")
-hframes = 10
-frame = 6
-
-[node name="TenmaSprite" type="Sprite2D" parent="."]
-texture_filter = 3
-position = Vector2(294, 234)
-scale = Vector2(3, 3)
-texture = ExtResource("7_bnw45")
-hframes = 10
-frame = 6
-
-[node name="LiaSprite" type="Sprite2D" parent="."]
-texture_filter = 3
-position = Vector2(243, 231)
-scale = Vector2(3, 3)
-texture = ExtResource("8_r5ubm")
-hframes = 10
-frame = 6
-
-[node name="Lumi" type="AnimationPlayer" parent="."]
+[node name="Lumi" type="AnimationPlayer" parent="LumiSprite"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_38nmk")
 }
 autoplay = "lumi"
 speed_scale = 0.8
 
-[node name="Panko" type="AnimationPlayer" parent="."]
+[node name="ShadowCircle" type="Sprite2D" parent="LumiSprite"]
+modulate = Color(1, 1, 1, 0.431373)
+z_index = -1
+position = Vector2(0.416669, 10.8333)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_dkkar")
+
+[node name="PankoSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(186, 233)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("5_7bfb0")
+hframes = 10
+frame = 6
+
+[node name="Panko" type="AnimationPlayer" parent="PankoSprite"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_cprc7")
 }
 autoplay = "panko"
 speed_scale = 0.4
 
-[node name="Pippa" type="AnimationPlayer" parent="."]
+[node name="ShadowCircle2" type="Sprite2D" parent="PankoSprite"]
+modulate = Color(1, 1, 1, 0.431373)
+z_index = -1
+position = Vector2(0.416656, 10.8333)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_dkkar")
+
+[node name="PippaSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(342, 234)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("6_f3237")
+hframes = 10
+frame = 6
+
+[node name="Pippa" type="AnimationPlayer" parent="PippaSprite"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_23g13")
 }
 autoplay = "pippa"
 speed_scale = 1.1
 
-[node name="Tenma" type="AnimationPlayer" parent="."]
+[node name="ShadowCircle3" type="Sprite2D" parent="PippaSprite"]
+modulate = Color(1, 1, 1, 0.431373)
+z_index = -1
+position = Vector2(0.833336, 10.4167)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_dkkar")
+
+[node name="TenmaSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(294, 234)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("7_bnw45")
+hframes = 10
+frame = 6
+
+[node name="Tenma" type="AnimationPlayer" parent="TenmaSprite"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_7pl8o")
 }
 autoplay = "tenma"
 speed_scale = 0.9
 
-[node name="Lia" type="AnimationPlayer" parent="."]
+[node name="ShadowCircle4" type="Sprite2D" parent="TenmaSprite"]
+modulate = Color(1, 1, 1, 0.431373)
+z_index = -1
+position = Vector2(3.8147e-06, 10.8333)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_dkkar")
+
+[node name="LiaSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(243, 231)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("8_r5ubm")
+hframes = 10
+frame = 6
+
+[node name="Lia" type="AnimationPlayer" parent="LiaSprite"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_mogk4")
 }
 autoplay = "lia"
 speed_scale = 0.6
 
+[node name="ShadowCircle5" type="Sprite2D" parent="LiaSprite"]
+modulate = Color(1, 1, 1, 0.431373)
+z_index = -1
+position = Vector2(0.416656, 11.6667)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_dkkar")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 30
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_e5q6k")
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "Choose Your Chuuba"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -40.0
+offset_right = 129.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ChuubasName" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_e5q6k")
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/ButtonPanko" to="." method="_on_button_panko_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/ButtonPanko" to="." method="_on_button_panko_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/ButtonPanko" to="." method="_on_button_panko_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/ButtonLia" to="." method="_on_button_lia_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/ButtonLia" to="." method="_on_button_lia_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/ButtonLia" to="." method="_on_button_lia_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/ButtonTenma" to="." method="_on_button_tenma_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/ButtonTenma" to="." method="_on_button_tenma_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/ButtonTenma" to="." method="_on_button_tenma_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/ButtonPippa" to="." method="_on_button_pippa_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/ButtonPippa" to="." method="_on_button_pippa_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/ButtonPippa" to="." method="_on_button_pippa_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/ButtonLumi" to="." method="_on_button_lumi_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/ButtonLumi" to="." method="_on_button_lumi_mouse_exited"]

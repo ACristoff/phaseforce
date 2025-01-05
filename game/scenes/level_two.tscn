@@ -651,10 +651,10 @@ wait_time = 60.0
 one_shot = true
 
 [node name="SecretArea" parent="." instance=ExtResource("17_x05fw")]
-position = Vector2(471, -1782)
+position = Vector2(-825, -1274)
 
 [node name="SecretArea2" parent="." instance=ExtResource("17_x05fw")]
-position = Vector2(660, -1434)
+position = Vector2(1514, -1570)
 
 [node name="HeartPickup" parent="." instance=ExtResource("18_efsy4")]
 position = Vector2(171, -1092)

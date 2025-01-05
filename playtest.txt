@@ -29,7 +29,7 @@ Dave:
 	knew to drop down
 	R to reload confused on brick
 	caught the reference
-	clicked off screen
+	clicked off screen ALOT
 	didn't notice the powerup
 	using the knockback
 	likes the pipcannon reload
