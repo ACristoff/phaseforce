@@ -23,7 +23,7 @@ signal credits
 
 func _ready():
 	pass
-	#AudioManager.play_music(music)
+
 func unlock_sway():
 	sway = true
 
