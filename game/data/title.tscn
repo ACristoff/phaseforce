@@ -731,4 +731,5 @@ libraries = {
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start/NinePatchRect/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits2/NinePatchRect/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit2/NinePatchRect/Quit" to="." method="_on_quit_pressed"]
 [connection signal="animation_finished" from="splash" to="." method="_on_animation_player_animation_finished"]
