@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dqpvddi2llok6"]
+[gd_scene load_steps=26 format=4 uid="uid://dqpvddi2llok6"]
 
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_3skp3"]
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_cakfj"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="17_ximk6"]
 [ext_resource type="PackedScene" uid="uid://yb2f6m8tsacr" path="res://game/world/enemy_spawner.tscn" id="19_q0e02"]
 [ext_resource type="PackedScene" uid="uid://cqyy2nqr7vd37" path="res://game/characters/enemies/sword_enemy.tscn" id="20_8dh06"]
+[ext_resource type="PackedScene" uid="uid://d4miuyj3w3h76" path="res://game/characters/enemies/shield_enemy.tscn" id="21_5b5rh"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vb4j5"]
 polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -616, -16, -627, 1)
@@ -600,8 +601,8 @@ position = Vector2(-50, 71)
 [node name="SwordEnemy2" parent="." instance=ExtResource("20_8dh06")]
 position = Vector2(684, 320)
 
-[node name="SwordEnemy" parent="." instance=ExtResource("20_8dh06")]
-position = Vector2(-534, 76)
+[node name="ShieldEnemy" parent="." instance=ExtResource("21_5b5rh")]
+position = Vector2(28, 58)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 

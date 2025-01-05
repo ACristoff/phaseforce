@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4miuyj3w3h76"]
+[gd_scene load_steps=11 format=3 uid="uid://d4miuyj3w3h76"]
 
-[ext_resource type="Script" path="res://game/characters/enemies/enemy_base.gd" id="1_hafgp"]
+[ext_resource type="Script" path="res://game/characters/enemies/shield_enemy.gd" id="1_bm32l"]
 [ext_resource type="Texture2D" uid="uid://dx3fvvt0d8y23" path="res://assets/enemies/enemysnowman3.png" id="2_172ms"]
 [ext_resource type="Texture2D" uid="uid://df5p7i2f7xyk6" path="res://assets/enemies/gun_snowman/enemy_pistol.png" id="3_gc1xd"]
+[ext_resource type="Script" path="res://game/characters/enemies/shield_hit_box.gd" id="4_crhkp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vr86c"]
 radius = 6.0
@@ -67,14 +68,12 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxle4"]
-size = Vector2(10, 10)
+size = Vector2(11, 12.5)
 
 [node name="ShieldEnemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 513
 collision_mask = 796
-script = ExtResource("1_hafgp")
-health = 80
-max_sight_distance = 270
+script = ExtResource("1_bm32l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
@@ -165,12 +164,13 @@ offset_right = 3.0
 offset_bottom = -19.0
 text = "!"
 
-[node name="Shield" type="Node" parent="."]
+[node name="ShieldHitBox" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 17
+script = ExtResource("4_crhkp")
 
-[node name="ShieldHitBox" type="Area2D" parent="Shield"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield/ShieldHitBox"]
-position = Vector2(3, -5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldHitBox"]
+position = Vector2(9, -5.75)
 shape = SubResource("RectangleShape2D_bxle4")
 debug_color = Color(0.196078, 0.627451, 0.4, 0.643137)
 

@@ -103,3 +103,4 @@ reload={
 2d_physics/layer_8="player"
 2d_physics/layer_9="doors"
 2d_physics/layer_10="enemy_passthrough"
+2d_physics/layer_11="shields"

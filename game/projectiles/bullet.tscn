@@ -4,15 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://5ao3mguglpww" path="res://assets/particles/bullets/bullet1.png" id="2_sewkw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_th0lw"]
-size = Vector2(8, 4)
+size = Vector2(8, 2)
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 16
-collision_mask = 297
+collision_mask = 1321
 script = ExtResource("1_0p51f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 0)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_th0lw")
 debug_color = Color(0.956227, 0, 0.539048, 0.42)
 
@@ -24,4 +24,3 @@ scale = Vector2(2.0662, 0.877811)
 texture = ExtResource("2_sewkw")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -105,18 +105,19 @@ func turn(direction):
 
 func jump():
 	
-	print("jump!")
+	#print("jump!")
 	velocity.y = jump_force
 	run_to_player()
 	pass
 
 func is_player_y_diff():
-	print('checking player diff on y', player.global_position, global_position)
+	#print('checking player diff on y', player.global_position, global_position)
 	
 	if player.global_position.y < global_position.y - 20:
 		jump()
 	else:
-		print("not high enough")
+		#print("not high enough")
+		pass
 	pass
 
 func attack():
