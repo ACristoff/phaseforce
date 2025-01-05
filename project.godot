@@ -35,6 +35,7 @@ doors=""
 gifts=""
 game=""
 extract=""
+level_manager=""
 
 [input]
 
