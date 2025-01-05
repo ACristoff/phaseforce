@@ -37,6 +37,7 @@ func main_menu():
 	var new_title = title_inst.instantiate()
 	add_child(new_title)
 	new_title.character_select.connect(_on_title_character_select.bind())
+	title = new_title
 
 
 func selected_character(new_character, char_screen):
