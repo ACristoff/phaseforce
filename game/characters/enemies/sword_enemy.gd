@@ -2,6 +2,10 @@ extends EnemyBase
 
 @onready var enemy_blade_sound = preload("res://assets/sfx/characters/PF_ENEMY_HURT.mp3")
 @onready var sword_hit_box = $SwordHitBox
+@onready var jump_timer = $Timers/JumpTimer
+
+@export var jump_force = -280.0
+var is_jumping = false
 
 func _physics_process(delta):
 	if health <= 0:
@@ -45,6 +49,8 @@ func _physics_process(delta):
 				is_searching = false
 				velocity.x = 0
 			if sees_player:
+				if jump_timer.is_stopped():
+					jump_timer.start()
 				gun_sprite.look_at(player.global_position)
 				var attack_viability = check_attack_distance()
 				if !attack_viability && !attack_timer.is_stopped():
@@ -53,18 +59,19 @@ func _physics_process(delta):
 					attack_timer.start()
 				if !attack_viability:
 					run_to_player()
-				#else:
-					
-				#if check
+		else:
+			if !jump_timer.is_stopped():
+				jump_timer.stop()
 		if !senses_player && !sees_player && alert_timer.is_stopped():
 			alert_timer.start()
 			if !is_searching:
 				is_searching = true
 				move_to_last_known()
-		if !check_for_floor() && velocity.x != 0:
+		if !check_for_floor() && velocity.x != 0 && !is_jumping:
 			velocity.x = 0
 	#Add the gravity
 	if not is_on_floor():
+		is_jumping = true
 		velocity += get_gravity() * delta
 	move_and_slide()
 
@@ -93,6 +100,22 @@ func turn(direction):
 		gun_barrel.position.x = -17
 		sword_hit_box.scale.x = -1
 
+func jump():
+	
+	print("jump!")
+	velocity.y = jump_force
+	run_to_player()
+	pass
+
+func is_player_y_diff():
+	print('checking player diff on y', player.global_position, global_position)
+	
+	if player.global_position.y < global_position.y - 20:
+		jump()
+	else:
+		print("not high enough")
+	pass
+
 func attack():
 	#print('shoot')
 	attack_timer.wait_time = 1
@@ -118,8 +141,7 @@ func move_to_last_known():
 		velocity.x = speed
 	else:
 		velocity.x = -speed
-	pass
 
 
 func _on_jump_timer_timeout():
-	pass # Replace with function body.
+	is_player_y_diff()

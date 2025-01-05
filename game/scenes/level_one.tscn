@@ -597,6 +597,9 @@ position = Vector2(1740, -76)
 [node name="PowerUp" parent="." instance=ExtResource("4_n7avy")]
 position = Vector2(-50, 71)
 
+[node name="SwordEnemy2" parent="." instance=ExtResource("20_8dh06")]
+position = Vector2(684, 320)
+
 [node name="SwordEnemy" parent="." instance=ExtResource("20_8dh06")]
 position = Vector2(-534, 76)
 

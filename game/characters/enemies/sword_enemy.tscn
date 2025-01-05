@@ -95,7 +95,7 @@ script = ExtResource("1_38dka")
 speed = 80
 health = 180
 max_sight_distance = 260
-attack_range = 50
+attack_range = 60
 ideal_attack_range = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -172,7 +172,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="JumpTimer" type="Timer" parent="Timers"]
-wait_time = 0.6
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
