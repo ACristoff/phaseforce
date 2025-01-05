@@ -36,7 +36,8 @@ func _on_title_character_select():
 func main_menu():
 	var new_title = title_inst.instantiate()
 	add_child(new_title)
-	pass
+	new_title.character_select.connect(_on_title_character_select.bind())
+
 
 func selected_character(new_character, char_screen):
 	current_character = new_character
