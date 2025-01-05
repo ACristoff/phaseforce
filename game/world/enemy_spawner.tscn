@@ -11,7 +11,7 @@ script = ExtResource("1_dc3fb")
 enemy_to_spawn = ExtResource("2_iuh0g")
 
 [node name="SpawnPos" type="Marker2D" parent="."]
-position = Vector2(0, -48)
+position = Vector2(0, -13)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -20,4 +20,14 @@ position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_usr3l")
 debug_color = Color(0.879911, 0.000374457, 0.825835, 0.0392157)
 
+[node name="FrameTicker" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(0, -13)
+hframes = 5
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="FrameTicker" to="." method="_on_frame_ticker_timeout"]
+[connection signal="frame_changed" from="Sprite2D" to="." method="_on_sprite_2d_frame_changed"]
