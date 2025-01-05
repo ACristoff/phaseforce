@@ -127,7 +127,7 @@ collision_mask = 17
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ScanArea"]
 position = Vector2(-12, -26)
-polygon = PackedVector2Array(-106, -40, -30, -15, 200, -75, 200, 53, -30, 17, -106, 40)
+polygon = PackedVector2Array(-79, -33, -30, -15, 182, -38, 183, 42, -30, 17, -79, 35)
 
 [node name="Timers" type="Node" parent="."]
 
