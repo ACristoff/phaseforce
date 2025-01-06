@@ -5,6 +5,8 @@ class_name EnergyBall
 @export var speed = 500
 var damage = 50
 var active: bool = false
+var shake_amount = 1
+
 
 @onready var collider = $CollisionShape2D
 
@@ -12,6 +14,7 @@ var active: bool = false
 @onready var brick_hit = preload("res://assets/sfx/projectiles/BRICK_HIT.mp3")
 
 func _physics_process(delta):
+	sprite.offset = Vector2(randi_range(-1, 1) * shake_amount, randi_range(-1, 1) * shake_amount)
 	if active:
 		position += Vector2(transform.x * speed * delta)
 
