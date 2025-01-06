@@ -7,7 +7,8 @@ var new_volume: int
 @onready var fade_timer = $FadeTimer
 
 var global_volume = 0 
-var dampener = -20
+var dampener = -25
+
 
 func _process(delta):
 	if new_music && !fade_timer.is_stopped():
