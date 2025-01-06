@@ -24,6 +24,7 @@ func _ready():
 	AudioManager.play_sfx(victory_music)
 	game_man = get_tree().get_first_node_in_group("game")
 	level_man = get_tree().get_first_node_in_group("level_manager")
+	$Timer.start()
 
 
 func show_stats(data, level_id):
@@ -38,23 +39,31 @@ func show_stats(data, level_id):
 	kills.text = str(data.kills)
 	#TODO data pass
 	game_man.levels_data[str(level_id)] = data
-	print(game_man.levels_data)
 
 func _on_retry_pressed():
 	level_man.load_level(level_man.current_level)
+	AudioManager.stop_looped()
 	queue_free()
 
 
 func _on_main_menu_pressed():
 	game_man.main_menu()
+	AudioManager.stop_looped()
 	queue_free()
 
 
 func _on_level_select_pressed():
 	game_man._on_level_select()
+	AudioManager.stop_looped()
 	queue_free()
 
 func _on_next_level_pressed():
 	level_man.current_level += 1
 	level_man.load_level(level_man.current_level)
+	AudioManager.stop_looped()
 	queue_free()
+
+
+func _on_timer_timeout():
+	AudioManager.play_looped(victory_music_b)
+	pass # Replace with function body.

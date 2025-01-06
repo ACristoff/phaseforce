@@ -18,8 +18,10 @@ func unlock_sway():
 
 func _physics_process(_delta):
 	pathfollow.progress += .5
+
 func _play_splash_sfx():
 	AudioManager.play_sfx(bpsfx)
+
 func _play_beretchan_sfx():
 	var random = randi_range(0,8)
 	AudioManager.play_sfx_wav(bereparedosfx[random], 1)
