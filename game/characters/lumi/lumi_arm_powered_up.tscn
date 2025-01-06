@@ -1,0 +1,164 @@
+[gd_scene load_steps=12 format=3 uid="uid://enpcqksh8j7r"]
+
+[ext_resource type="Texture2D" uid="uid://dp74hhbbk8upj" path="res://assets/characters/panko/base_form/Panko_Arm.png" id="1_f2aqy"]
+[ext_resource type="Texture2D" uid="uid://e5tlstouyfdn" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN1.png" id="3_341ik"]
+[ext_resource type="Texture2D" uid="uid://b3ha88h3j7002" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN2.png" id="4_jl43o"]
+[ext_resource type="Texture2D" uid="uid://csp2v6v6h6pw0" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN3.png" id="5_mnrra"]
+[ext_resource type="Texture2D" uid="uid://daje0apneht1o" path="res://assets/characters/lumi/powerup_form/lumisaber.png" id="6_numpe"]
+[ext_resource type="Texture2D" uid="uid://hhor801wvxds" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN4.png" id="6_srj3u"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_lqkrg"]
+frames = 4
+speed_scale = 10.0
+frame_0/texture = ExtResource("3_341ik")
+frame_1/texture = ExtResource("4_jl43o")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("5_mnrra")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("6_srj3u")
+frame_3/duration = 1.0
+
+[sub_resource type="Animation" id="Animation_v4qri"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_r1jxx"]
+resource_name = "kickback"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, -8), Vector2(5, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_dlg01"]
+resource_name = "reload"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1, 1.5, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-2, 1), Vector2(-2, 1), Vector2(-2, 1), Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.6, 1, 1.1, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.445059, -0.445059, 0.511381, 0.511381, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yxk3"]
+_data = {
+"RESET": SubResource("Animation_v4qri"),
+"kickback": SubResource("Animation_r1jxx"),
+"reload": SubResource("Animation_dlg01")
+}
+
+[node name="Arm" type="Sprite2D"]
+texture_filter = 3
+texture = ExtResource("1_f2aqy")
+offset = Vector2(0, -7)
+
+[node name="CursorSprite" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+offset = Vector2(5, -8)
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="CursorSprite"]
+position = Vector2(7, -3)
+gizmo_extents = 5.0
+
+[node name="ShellSpawnPoint" type="Marker2D" parent="CursorSprite"]
+position = Vector2(3, -3)
+
+[node name="GunExplosion" type="Sprite2D" parent="CursorSprite"]
+position = Vector2(29, -3)
+texture = SubResource("AnimatedTexture_lqkrg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CursorSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_7yxk3")
+}
+
+[node name="Sword" type="Sprite2D" parent="CursorSprite"]
+position = Vector2(5, -15)
+rotation = -1.46596
+texture = ExtResource("6_numpe")
