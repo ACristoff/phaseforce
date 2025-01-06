@@ -9,6 +9,7 @@ var sway = false
 signal character_select
 signal credits
 signal on_start
+signal to_settings
 
 @onready var bereparedosfx = [
 	preload("res://assets/sfx/b00/b01.wav"),
@@ -21,6 +22,7 @@ signal on_start
 	preload("res://assets/sfx/b00/b08.wav"),
 	preload("res://assets/sfx/b00/b09.wav"),
 ]
+
 
 func _ready():
 	pass
@@ -58,4 +60,9 @@ func _on_credits_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_options_pressed():
+	to_settings.emit()
 	pass # Replace with function body.

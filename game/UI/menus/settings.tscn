@@ -9,7 +9,6 @@
 OptionButton/fonts/font = ExtResource("2_3x86f")
 
 [node name="Control" type="Control"]
-process_mode = 2
 texture_filter = 3
 layout_mode = 3
 anchors_preset = 0
@@ -383,4 +382,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/NinePatchRect3/Settings/MarginContainer2/NinePatchRect4/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="item_selected" from="CanvasLayer/NinePatchRect3/Settings/Graphics/MarginContainer/HBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]

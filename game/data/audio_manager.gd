@@ -6,6 +6,9 @@ var new_volume: int
 
 @onready var fade_timer = $FadeTimer
 
+var global_volume = 0 
+var dampener = -10
+
 func _process(delta):
 	if new_music && !fade_timer.is_stopped():
 		volume_db = volume_db - (30 * delta)
@@ -13,16 +16,21 @@ func _process(delta):
 func switch_songs():
 	fade_timer.start()
 
+func change_volume():
+	print(global_volume)
+	volume_db = global_volume
+	pass
+
 func play_music(music: AudioStreamMP3, volume = 0.0):
 	playing = true
 	if current_music:
 		new_music = music
-		new_volume = volume
+		new_volume = volume + dampener
 		switch_songs()
 		return
 	current_music = music
 	stream = music
-	volume_db = volume
+	volume_db = volume + dampener
 	stream.loop = true
 	play()
 
@@ -36,7 +44,7 @@ func play_sfx(new_stream: AudioStreamMP3, volume = 0.0):
 	var fx_player = AudioStreamPlayer.new()
 	fx_player.stream = new_stream
 	fx_player.name = "FX_Player"
-	fx_player.volume_db = volume
+	fx_player.volume_db = volume + global_volume + dampener
 	add_child(fx_player)
 	fx_player.play()
 	
@@ -47,7 +55,7 @@ func play_quip(new_stream: AudioStreamMP3, volume = 0.0):
 	var fx_player = AudioStreamPlayer.new()
 	fx_player.stream = new_stream
 	fx_player.name = "FX_Player"
-	fx_player.volume_db = volume
+	fx_player.volume_db = volume + global_volume + dampener
 	add_child(fx_player)
 	fx_player.play()
 	
@@ -58,7 +66,7 @@ func play_sfx_wav(new_stream: AudioStreamWAV, volume = 0.0):
 	var fx_player = AudioStreamPlayer.new()
 	fx_player.stream = new_stream
 	fx_player.name = "FX_Player"
-	fx_player.volume_db = volume
+	fx_player.volume_db = volume + global_volume + dampener
 	add_child(fx_player)
 	fx_player.play()
 	
@@ -69,7 +77,7 @@ func play_sfx_wav(new_stream: AudioStreamWAV, volume = 0.0):
 func _on_fade_timer_timeout():
 	#print('play the new song')
 	stream = new_music
-	volume_db = new_volume
+	volume_db = new_volume + dampener
 	play()
 	current_music = new_music
 	fade_timer.stop()
