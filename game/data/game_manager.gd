@@ -116,11 +116,16 @@ func _on_title_on_start():
 	title.queue_free()
 	pass # Replace with function body.
 
+func on_settings_to_level_select():
+	var select_screen: LevelSelect = level_select.instantiate()
+	select_screen.levels_data = levels_data
+	add_child(select_screen)
+
 
 func _on_title_to_settings():
 	var settings_menu = settings.instantiate()
 	settings_menu.back_to_main.connect(main_menu.bind())
-	settings_menu.level_select.connect(_on_title_on_start.bind())
+	settings_menu.level_select.connect(on_settings_to_level_select.bind())
 	add_child(settings_menu)
 	title.queue_free()
 	pass # Replace with function body.
