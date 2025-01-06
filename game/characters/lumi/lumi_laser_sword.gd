@@ -12,7 +12,7 @@ func _ready():
 
 
 func shoot_laser():
-	var new_laser: Bullet = laser.instantiate()
+	var new_laser = laser.instantiate()
 	new_laser.damage = laser_damage
 	new_laser.global_position = $CursorSprite/BulletSpawnPoint.global_position
 	var adjusted_angle = player.cursor.rotation_degrees
@@ -20,8 +20,8 @@ func shoot_laser():
 	get_parent().get_parent().get_parent().add_child(new_laser)
 
 func _process(delta):
-	prints(player.global_position, laser_spout.global_position)
-	
+	#prints(player.global_position, laser_spout.global_position)
+	pass
 
 	#var new_bullet = bullet.instantiate()
 	#var new_shell = shell.instantiate()
