@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=4 uid="uid://b60cjya8o6jad"]
+[gd_scene load_steps=27 format=4 uid="uid://b60cjya8o6jad"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_a87wf"]
+[ext_resource type="AudioStream" uid="uid://cgope3cx6k1wf" path="res://assets/music/UNDERGROUND_STAGE.mp3" id="2_c7as0"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="2_yaeo8"]
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="3_t50ld"]
 [ext_resource type="Texture2D" uid="uid://bmuk2sf38h4rv" path="res://assets/environment/tilesets/tileset.png" id="4_g3x30"]
@@ -224,6 +225,7 @@ distance = -360.0
 
 [node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets")]
 script = ExtResource("1_a87wf")
+music = ExtResource("2_c7as0")
 primary_obj = NodePath("Generator")
 secrets = [NodePath("SecretArea")]
 while_powered_up = true
