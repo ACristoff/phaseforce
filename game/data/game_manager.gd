@@ -5,7 +5,7 @@ class_name game_manager
 @onready var title = $Title
 
 @onready var level_manager = preload("res://game/data/level_manager.tscn")
-@onready var title_inst = preload("res://game/data/title.tscn")
+@onready var title_inst = preload("res://game/data/title2.tscn")
 @onready var credits = preload("res://game/UI/menus/credits.tscn")
 @onready var level_select = preload("res://game/UI/menus/level_select.tscn")
 @onready var settings = preload("res://game/UI/menus/settings.tscn")
@@ -76,13 +76,11 @@ func _ready():
 		start_level_man.load_level(0)
 		get_tree().set_debug_collisions_hint(true)
 
-
 func _on_title_character_select():
 	var char_select = preload("res://game/UI/menus/character_select.tscn").instantiate()
 	#title.queue_free()
 	add_child(char_select)
 	char_select.chosen_character.connect(selected_character.bind(char_select))
-
 
 func main_menu():
 	var new_title = title_inst.instantiate()
@@ -93,13 +91,11 @@ func main_menu():
 	new_title.to_settings.connect(_on_title_to_settings.bind())
 	title = new_title
 
-
 func selected_character(new_character, char_screen):
 	current_character = new_character
 	char_screen.queue_free()
 	level_man.to_main.connect(main_menu.bind() )
 	level_man.load_level(level_man.current_level)
-
 
 func _on_title_credits():
 	var credits_screen = credits.instantiate()
