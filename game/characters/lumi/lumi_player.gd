@@ -100,6 +100,9 @@ func sword_hit_check():
 			if body is EnemyBase && !hit_stack.has(body):
 				body.take_damage(sword_damage)
 				hit_stack.append(body)
+			elif body is Generator:
+				body.emit(self.global_position)
+				queue_free()
 		##TODO deflect bullets
 
 func _physics_process(delta: float) -> void:
