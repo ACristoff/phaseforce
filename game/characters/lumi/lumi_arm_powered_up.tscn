@@ -162,3 +162,8 @@ libraries = {
 position = Vector2(5, -15)
 rotation = -1.46596
 texture = ExtResource("6_numpe")
+
+[node name="SwordHitBox" type="Area2D" parent="CursorSprite/Sword"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CursorSprite/Sword/SwordHitBox"]
+polygon = PackedVector2Array(22.1931, 0.681334, 19.4189, 2.98429, -10.7303, 3.14012, -11.2535, -1.83243, 19.8902, -2.0929)

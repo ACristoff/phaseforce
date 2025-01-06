@@ -3,7 +3,7 @@ extends BasePlayer
 @onready var moon_jump_sound = preload("res://assets/sfx/characters/MOON_JUMP.mp3")
 
 @export var moon_jump: int = -300
-@export var moon_gravity: int
+@export var moon_gravity: int = 600
 
 
 func jump(force):
