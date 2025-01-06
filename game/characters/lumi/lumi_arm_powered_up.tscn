@@ -242,7 +242,7 @@ _data = {
 "swing": SubResource("Animation_mqdq2")
 }
 
-[node name="Arm2" type="Sprite2D"]
+[node name="Arm" type="Sprite2D"]
 texture_filter = 3
 texture = ExtResource("1_f2aqy")
 offset = Vector2(0, -7)
