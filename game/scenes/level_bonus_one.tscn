@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://8gs1lb4kcf0c"]
+[gd_scene load_steps=26 format=4 uid="uid://8gs1lb4kcf0c"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_a87wf"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="2_yaeo8"]
@@ -223,7 +223,7 @@ distance = -360.0
 [node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets")]
 script = ExtResource("1_a87wf")
 primary_obj = NodePath("Generator")
-secrets = [NodePath(""), NodePath("SecretArea")]
+secrets = [null, NodePath("SecretArea")]
 collect_x_gifts = true
 gift_quantity = 30
 
@@ -234,7 +234,7 @@ z_index = -10
 position = Vector2(-36, -36)
 
 [node name="SnowGround" parent="WorldTiles" index="0"]
-tile_map_data = PackedByteArray()
+tile_map_data = PackedByteArray("AAD9//v/AAABAAAAAAD+//v/AAABAAAAAAD///v/AAABAAAAAAAAAPv/AAABAAAAAAACAPv/AAABAAAAAAADAPv/AAABAAAAAAAEAPv/AAABAAAAAAAHAPv/AAABAAAAAAAIAPv/AAABAAAAAAAJAPv/AAABAAAAAAALAPv/AAABAAAAAAAMAPv/AAABAAAAAAANAPv/AAABAAAAAAAOAPv/AAABAAAAAAAPAPv/AAABAAAAAAAQAPv/AAABAAAAAAARAPv/AAABAAAAAAASAPv/AAABAAAAAAATAPv/AAABAAAAAAAUAPv/AAABAAAAAAAVAPv/AAABAAAAAAABAPv/AAABAAAAAAAFAPv/AAABAAAAAAAGAPv/AAABAAAAAAAKAPv/AAABAAAAAAAWAPv/AAABAAAAAAAXAPv/AAABAAAAAAAYAPv/AAABAAAAAAAZAPv/AAABAAAAAAAaAPv/AAABAAAAAAAcAPv/AAABAAAAAAAdAPv/AAABAAAAAAAeAPv/AAABAAAAAAAfAPv/AAABAAAAAAAgAPv/AAABAAAAAAAhAPv/AAABAAAAAAAiAPv/AAABAAAAAAAjAPv/AAABAAAAAAAkAPv/AAABAAAAAAAlAPv/AAABAAAAAAAmAPv/AAABAAAAAADv//v/AAABAAAAAADl//v/AAABAAAAAADm//v/AAABAAAAAADn//v/AAABAAAAAADo//v/AAABAAAAAADp//v/AAABAAAAAADq//v/AAABAAAAAADr//v/AAABAAAAAADs//v/AAABAAAAAADt//v/AAABAAAAAADu//v/AAABAAAAAADP//v/AAABAAAAAADQ//v/AAABAAAAAADR//v/AAABAAAAAADS//v/AAABAAAAAADT//v/AAABAAAAAADU//v/AAABAAAAAADV//v/AAABAAAAAADW//v/AAABAAAAAADX//v/AAABAAAAAADY//v/AAABAAAAAADZ//v/AAABAAAAAADa//v/AAABAAAAAADb//v/AAABAAAAAADc//v/AAABAAAAAADd//v/AAABAAAAAADe//v/AAABAAAAAADf//v/AAABAAAAAADg//v/AAABAAAAAADh//v/AAABAAAAAADi//v/AAABAAAAAADj//v/AAABAAAAAADk//v/AAABAAAAAAAbAPv/AAABAAAAAADM//v/AAABAAAAAADN//v/AAABAAAAAADO//v/AAABAAAAAADw//v/AAABAAAAAADx//v/AAABAAAAAADy//v/AAABAAAAAADz//v/AAABAAAAAAD0//v/AAABAAAAAAD1//v/AAABAAAAAAD2//v/AAABAAAAAAAnAPv/AAABAAAAAAAoAPv/AAABAAAAAAApAPv/AAABAAAAAAAqAPv/AAABAAAAAAArAPv/AAABAAAAAAAsAPv/AAABAAAAAAA=")
 
 [node name="MetalGround" parent="WorldTiles" index="1"]
 tile_map_data = PackedByteArray()
@@ -349,11 +349,11 @@ position = Vector2(-1416, -683)
 [node name="Doors" type="Node" parent="."]
 
 [node name="Electric_Doors" parent="Doors" instance=ExtResource("18_kmy8t")]
-position = Vector2(-1584, -984)
+position = Vector2(-264, -192)
 keycard = "Red"
 
 [node name="Electric_Doors2" parent="Doors" instance=ExtResource("18_kmy8t")]
-position = Vector2(-1610, -853)
+position = Vector2(-168, -192)
 keycard = "Red"
 
 [node name="ExtractTimer" type="Timer" parent="."]
