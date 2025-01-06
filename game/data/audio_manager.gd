@@ -29,9 +29,10 @@ func play_music(music: AudioStreamMP3, volume = 0.0):
 		switch_songs()
 		return
 	current_music = music
+	current_music.set_loop(true)
 	stream = music
+	#stream
 	volume_db = volume + dampener
-	stream.loop = true
 	play()
 
 func stop_music(_do_fade):
