@@ -31,7 +31,7 @@ powered_up_bullet_speed = 400
 powered_up_damage = 90
 powered_up_gun_capacity = 1
 powered_up_gun_mags = 30
-powered_up_gun_reload_time = 0.8
+powered_up_gun_reload_time = 0.6
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_egiy6")
