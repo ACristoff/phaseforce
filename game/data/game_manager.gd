@@ -88,7 +88,7 @@ func main_menu():
 	var new_title = title_inst.instantiate()
 	add_child(new_title)
 	new_title.character_select.connect(_on_title_character_select.bind())
-	new_title.credits.connect(_on_title_on_start.bind())
+	new_title.credits.connect(_on_title_credits.bind())
 	new_title.on_start.connect(_on_title_on_start.bind())
 	new_title.to_settings.connect(_on_title_to_settings.bind())
 	title = new_title
