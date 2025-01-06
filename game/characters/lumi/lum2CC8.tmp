@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://rdfvq81k6n0n"]
+
+[ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_lt403"]
+[ext_resource type="Texture2D" uid="uid://cn0811gmx6ohf" path="res://assets/characters/lumi/base_form/LumiSprite.png" id="2_egiy6"]
+[ext_resource type="Script" path="res://game/characters/lumi/lumi_player.gd" id="2_jp87q"]
+[ext_resource type="AudioStream" uid="uid://brya35o58vwsy" path="res://assets/sfx/quips/lumi/your favorite tard.mp3" id="3_ueghu"]
+[ext_resource type="Texture2D" uid="uid://b71fkamruj7i3" path="res://assets/characters/lumi/powerup_form/LumiSprite2.png" id="3_uk2km"]
+[ext_resource type="PackedScene" uid="uid://dle84d775l1tp" path="res://game/characters/lumi/lumi_arm.tscn" id="4_ljaq2"]
+[ext_resource type="PackedScene" uid="uid://enpcqksh8j7r" path="res://game/characters/lumi/lumi_arm_powered_up.tscn" id="5_im003"]
+
+[node name="LumiPlayer" instance=ExtResource("1_lt403")]
+script = ExtResource("2_jp87q")
+moon_jump = -300
+moon_gravity = 550
+death_quips = Array[AudioStreamMP3]([ExtResource("3_ueghu")])
+damaged_quips = Array[AudioStreamMP3]([ExtResource("3_ueghu")])
+kill_quips = Array[AudioStreamMP3]([ExtResource("3_ueghu")])
+power_up_quips = Array[AudioStreamMP3]([ExtResource("3_ueghu")])
+victory_quips = Array[AudioStreamMP3]([ExtResource("3_ueghu")])
+normal_sprite = ExtResource("2_egiy6")
+normal_gun = ExtResource("4_ljaq2")
+normal_fire_rate = 0.8
+normal_bullet_speed = 200
+normal_damage = 100
+normal_gun_capacity = 1
+normal_gun_reload_time = 0.8
+powered_up_gun = ExtResource("5_im003")
+powered_up_sprite = ExtResource("3_uk2km")
+powered_up_fire_rate = 1.0
+powered_up_bullet_speed = 400
+powered_up_damage = 90
+powered_up_gun_capacity = 30
+powered_up_gun_mags = 0
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_egiy6")
