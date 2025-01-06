@@ -67,6 +67,7 @@ level_id = 3
 
 [node name="LevelSelectBlip4" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("1_3843p")]
 layout_mode = 2
+level_name = "Bonus Level. Car Plant"
 level_id = 4
 
 [node name="LevelSelectBlip5" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("1_3843p")]
