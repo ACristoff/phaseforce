@@ -38,4 +38,7 @@ Dave:
 Noah:
 	Automatic reload
 	Enemy take damage indicator
+
+
+Faye:
 	
