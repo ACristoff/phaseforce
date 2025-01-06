@@ -119,6 +119,8 @@ func _on_title_on_start():
 
 func _on_title_to_settings():
 	var settings_menu = settings.instantiate()
+	settings_menu.back_to_main.connect(main_menu.bind())
+	settings_menu.level_select.connect(_on_title_on_start.bind())
 	add_child(settings_menu)
 	title.queue_free()
 	pass # Replace with function body.

@@ -1,7 +1,7 @@
 extends Control
 
 signal back_to_main
-signal settings_to_level_select
+signal level_select
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,7 +41,7 @@ func _on_main_menu_pressed():
 	queue_free()
 
 func _on_level_select_pressed():
-	settings_to_level_select.emit()
+	level_select.emit()
 	queue_free()
 	pass # Replace with function body.
 
