@@ -223,7 +223,7 @@ distance = -360.0
 [node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets")]
 script = ExtResource("1_x7vmv")
 primary_obj = NodePath("Generator")
-secrets = [NodePath(""), NodePath("SecretArea")]
+secrets = [null, NodePath("SecretArea")]
 collect_x_gifts = true
 gift_quantity = 30
 
