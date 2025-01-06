@@ -1,6 +1,7 @@
 extends BasePlayer
 
 @onready var moon_jump_sound = preload("res://assets/sfx/characters/MOON_JUMP.mp3")
+@onready var sword_hit_sound = preload("res://assets/sfx/projectiles/BIG_SWORD_HIT.mp3")
 
 @export var moon_jump: int = -200
 @export var moon_gravity: int = 700
@@ -75,6 +76,7 @@ func sword_hit_check():
 				var enemy: ShieldEnemy = area.get_parent()
 				hit_stack.append(enemy)
 				enemy.shield_take_damage(sword_damage)
+				AudioManager.play_sfx(sword_hit_sound)
 	if sword_hit_box.has_overlapping_bodies():
 		var all_bodies = sword_hit_box.get_overlapping_bodies()
 		for body in all_bodies:
@@ -82,6 +84,7 @@ func sword_hit_check():
 				hit_stack.append(body)
 				body.take_damage(sword_damage)
 				all_bodies.erase(body)
+				AudioManager.play_sfx(sword_hit_sound)
 		for body in all_bodies:
 			if body is Generator && !hit_stack.has(body):
 				hit_stack.append(body)
