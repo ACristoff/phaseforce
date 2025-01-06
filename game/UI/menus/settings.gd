@@ -1,19 +1,12 @@
 extends Control
 
+signal back_to_main
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#DisplayServer.window_set_size(Vector2i(1920, 1080))
-	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#pass
-
-#func _input(event):
-	#if event.is_action_pressed("menu"):
-		#get_tree().paused = false
+	#process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	pass
 
 func _on_resolution_item_selected(index):
 	if index == 0:
@@ -31,4 +24,13 @@ func _on_resolution_item_selected(index):
 
 
 func _on_button_pressed():
+	back_to_main.emit()
 	queue_free()
+
+
+func _on_h_slider_value_changed(value):
+	var new_volume = (value - 5) * 2.5
+	AudioManager.global_volume = new_volume
+	AudioManager.change_volume()
+	prints(value, new_volume)
+	pass # Replace with function body.

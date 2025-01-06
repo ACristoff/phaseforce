@@ -8,6 +8,7 @@ class_name game_manager
 @onready var title_inst = preload("res://game/data/title.tscn")
 @onready var credits = preload("res://game/UI/menus/credits.tscn")
 @onready var level_select = preload("res://game/UI/menus/level_select.tscn")
+@onready var settings = preload("res://game/UI/menus/settings.tscn")
 
 @export var debug_mode = false
 var current_character = "panko"
@@ -89,7 +90,7 @@ func main_menu():
 	new_title.character_select.connect(_on_title_character_select.bind())
 	new_title.credits.connect(_on_title_on_start.bind())
 	new_title.on_start.connect(_on_title_on_start.bind())
-	#new_title.credits.connect()
+	new_title.to_settings.connect(_on_title_to_settings.bind())
 	title = new_title
 
 
@@ -112,5 +113,12 @@ func _on_title_on_start():
 	var select_screen: LevelSelect = level_select.instantiate()
 	select_screen.levels_data = levels_data
 	add_child(select_screen)
+	title.queue_free()
+	pass # Replace with function body.
+
+
+func _on_title_to_settings():
+	var settings_menu = settings.instantiate()
+	add_child(settings_menu)
 	title.queue_free()
 	pass # Replace with function body.
