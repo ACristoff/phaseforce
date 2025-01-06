@@ -34,3 +34,8 @@ func _on_h_slider_value_changed(value):
 	AudioManager.change_volume()
 	prints(value, new_volume)
 	pass # Replace with function body.
+
+
+func _on_main_menu_pressed():
+	back_to_main.emit()
+	queue_free()

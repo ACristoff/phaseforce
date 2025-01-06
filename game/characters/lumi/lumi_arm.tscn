@@ -314,8 +314,8 @@ offset = Vector2(30.8233, -1.0186)
 
 [node name="SwordHitBox" type="Area2D" parent="CursorSprite/Sword"]
 position = Vector2(30.8233, -1.0186)
-collision_layer = 64
-collision_mask = 1041
+collision_layer = 80
+collision_mask = 1073
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CursorSprite/Sword/SwordHitBox"]
 polygon = PackedVector2Array(42, 1, 38, 5, -20, 5, -20, -3, 38, -3)

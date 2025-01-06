@@ -242,7 +242,7 @@ _data = {
 "swing": SubResource("Animation_mqdq2")
 }
 
-[node name="Arm" type="Sprite2D"]
+[node name="Arm2" type="Sprite2D"]
 texture_filter = 3
 texture = ExtResource("1_f2aqy")
 offset = Vector2(0, -7)
@@ -276,6 +276,8 @@ offset = Vector2(16.255, -0.86052)
 
 [node name="SwordHitBox" type="Area2D" parent="CursorSprite/Sword"]
 position = Vector2(16.255, -0.86052)
+collision_layer = 80
+collision_mask = 1073
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CursorSprite/Sword/SwordHitBox"]
 polygon = PackedVector2Array(22.1931, 0.681334, 19.4189, 2.98429, -10.7303, 3.14012, -11.2535, -1.83243, 19.8902, -2.0929)
