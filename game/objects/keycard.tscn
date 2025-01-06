@@ -91,5 +91,6 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_rk6xa")
 }
+autoplay = "hover"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
