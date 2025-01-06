@@ -1,0 +1,411 @@
+[gd_scene load_steps=24 format=3 uid="uid://gy7dw6741061"]
+
+[ext_resource type="Script" path="res://game/data/title_2.gd" id="1_4xj6a"]
+[ext_resource type="Texture2D" uid="uid://betqi4sbw8ywd" path="res://assets/ui/title/Title.png" id="2_tdo4q"]
+[ext_resource type="Texture2D" uid="uid://dof1b4wrb8et0" path="res://assets/ui/container2.png" id="3_gmbx7"]
+[ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="4_8eent"]
+[ext_resource type="Script" path="res://game/data/particles_loader.gd" id="5_4sm7h"]
+[ext_resource type="PackedScene" uid="uid://cp0ieln1qw04k" path="res://game/projectiles/bullet_hit_particle.tscn" id="6_fupyf"]
+[ext_resource type="Texture2D" uid="uid://dqlbx42lbfhfl" path="res://assets/particles/sparkles.png" id="7_lkqvc"]
+[ext_resource type="PackedScene" uid="uid://tv7bip0e2nad" path="res://game/projectiles/spent_shell.tscn" id="8_m8hyq"]
+[ext_resource type="Texture2D" uid="uid://cx351xvbj2njp" path="res://assets/particles/generator/generator_debris.png" id="9_dqdd7"]
+[ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="11_58eg5"]
+[ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="12_scgrp"]
+[ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="13_shatb"]
+[ext_resource type="Texture2D" uid="uid://dupigsbyqxg1m" path="res://assets/environment/placeables/decorations/titleheli.png" id="14_ukinx"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h5kjd"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_ehw5r"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.482518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ud7gw"]
+curve = SubResource("Curve_ehw5r")
+
+[sub_resource type="Curve" id="Curve_4n02h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.818182, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t1xdd"]
+curve = SubResource("Curve_4n02h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vuc5f"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 120.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_t1xdd")
+anim_offset_curve = SubResource("CurveTexture_ud7gw")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dxliu"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1fng5"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = 60.0
+angular_velocity_max = 60.0
+gravity = Vector3(0, 98, 0)
+anim_offset_max = 1.0
+
+[sub_resource type="Curve2D" id="Curve2D_k6jcc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -147, 0, 0, 0, 0, 0, 235)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_trggu"]
+_data = {
+"points": PackedVector2Array(-15.9278, -15.25, 15.9278, 15.25, 25, -17, 0, 0, 0, 0, 26, 26, 24.5444, 15.75, -24.5444, -15.75, -19, 25, -18.0167, 9.25, 18.0167, -9.25, -18.8, -20, 0, 0, 0, 0, 25, -17)
+}
+point_count = 5
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_4xj6a")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -261.0
+offset_bottom = 230.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+
+[node name="Butttons_Container" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 25
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Butttons_Container"]
+texture_filter = 3
+custom_minimum_size = Vector2(236, 140)
+layout_mode = 2
+texture = ExtResource("2_tdo4q")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Butttons_Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Start" type="Control" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start"]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 31.375)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gmbx7")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Start" type="Button" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start/NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start/NinePatchRect/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_8eent")
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Options2" type="Control" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options2"]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 31.375)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gmbx7")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Options" type="Button" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options2/NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options2/NinePatchRect/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_8eent")
+text = "Options
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options2/NinePatchRect"]
+layout_mode = 0
+offset_left = -410.0
+offset_top = 79.0
+offset_right = -370.0
+offset_bottom = 102.0
+theme = ExtResource("4_8eent")
+text = "Ver. 0.1"
+
+[node name="Credits2" type="Control" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits2"]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 31.375)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gmbx7")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Credits" type="Button" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits2/NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits
+"
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits2/NinePatchRect/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_8eent")
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Quit2" type="Control" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit2"]
+texture_filter = 3
+custom_minimum_size = Vector2(100, 31.375)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gmbx7")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit2/NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit
+"
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit2/NinePatchRect/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_8eent")
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Particles" type="Node2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(50, 318)
+script = ExtResource("5_4sm7h")
+
+[node name="BulletHitParticle" parent="CanvasLayer/Particles" instance=ExtResource("6_fupyf")]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer/Particles"]
+material = SubResource("CanvasItemMaterial_h5kjd")
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_vuc5f")
+texture = ExtResource("7_lkqvc")
+one_shot = true
+explosiveness = 0.9
+
+[node name="SpentShell" parent="CanvasLayer/Particles" instance=ExtResource("8_m8hyq")]
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="CanvasLayer/Particles"]
+texture_filter = 3
+material = SubResource("CanvasItemMaterial_dxliu")
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_1fng5")
+texture = ExtResource("9_dqdd7")
+one_shot = true
+explosiveness = 0.89
+
+[node name="parallax" type="Node2D" parent="."]
+position = Vector2(0, 127)
+
+[node name="Sky" type="Parallax2D" parent="parallax"]
+z_index = -10
+texture_filter = 3
+repeat_size = Vector2(320, 360)
+repeat_times = 8
+
+[node name="Parallax1" type="Sprite2D" parent="parallax/Sky"]
+modulate = Color(0.76, 0.868, 1, 1)
+position = Vector2(-160, 86)
+scale = Vector2(-1, 1)
+texture = ExtResource("11_58eg5")
+
+[node name="Parallax2D3" type="Parallax2D" parent="parallax"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 8
+
+[node name="Parallax1" type="Sprite2D" parent="parallax/Parallax2D3"]
+modulate = Color(0.66868, 0.6424, 0.73, 1)
+position = Vector2(-160, 86)
+scale = Vector2(-1, 1)
+texture = ExtResource("12_scgrp")
+
+[node name="Parallax2D2" type="Parallax2D" parent="parallax"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.3, 0.1)
+repeat_size = Vector2(320, 0)
+repeat_times = 8
+
+[node name="Parallax1" type="Sprite2D" parent="parallax/Parallax2D2"]
+modulate = Color(0.37, 0.685, 1, 1)
+position = Vector2(-160, 86)
+texture = ExtResource("12_scgrp")
+
+[node name="Front" type="Parallax2D" parent="parallax"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.6, 0.3)
+repeat_size = Vector2(320, 0)
+repeat_times = 8
+
+[node name="Parallax1" type="Sprite2D" parent="parallax/Front"]
+modulate = Color(0.4761, 0.56879, 0.69, 1)
+position = Vector2(-160, 105)
+texture = ExtResource("13_shatb")
+
+[node name="Front2" type="Parallax2D" parent="parallax"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.7, 0.5)
+
+[node name="Path2D2" type="Path2D" parent="parallax/Front2"]
+position = Vector2(0, -215)
+curve = SubResource("Curve2D_k6jcc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="parallax/Front2/Path2D2"]
+position = Vector2(0, 235)
+rotation = 1.5708
+progress = 382.0
+
+[node name="Titleheli" type="Sprite2D" parent="parallax/Front2/Path2D2/PathFollow2D"]
+texture_filter = 3
+position = Vector2(50, -336)
+rotation = -1.5708
+texture = ExtResource("14_ukinx")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(325, 173)
+scale = Vector2(0.957447, 1)
+curve = SubResource("Curve2D_trggu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(25, -17)
+rotation = 0.763663
+rotates = false
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start/NinePatchRect/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits2/NinePatchRect/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit2/NinePatchRect/Quit" to="." method="_on_quit_pressed"]
