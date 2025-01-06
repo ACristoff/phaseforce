@@ -15,11 +15,51 @@ var current_character = "panko"
 
 
 var levels_data = {
-	"1": null,
-	"2": null,
-	"3": null,
-	"4": null,
-	"5": null
+	"1": {
+		"secrets": "Secrets found: 0 / 1", 
+		"optional_completed": true, 
+		"objective": "Objective completed: :3", 
+		"kills": "Enemies killed: 20", 
+		"stars": [false, false, false], 
+		"time": 0,
+		"level": 1
+	},
+	"2": {
+		"secrets": "Secrets found: 0 / 2", 
+		"optional_completed": true, 
+		"objective": "Objective completed: :3", 
+		"kills": "Enemies killed: 20", 
+		"stars": [false, false, false], 
+		"time": 0, 
+		"level": 2
+	},
+	"3": {
+		"secrets": "Secrets found: 0 / 1", 
+		"optional_completed": true, 
+		"objective": "Objective completed: :3", 
+		"kills": "Enemies killed: 20", 
+		"stars": [false, false, false], 
+		"time": 0, 
+		"level": 3
+	},
+	"4": {
+		"secrets": "Secrets found: 0 / 1", 
+		"optional_completed": true, 
+		"objective": "Objective completed: :3", 
+		"kills": "Enemies killed: 20", 
+		"stars": [false, false, false], 
+		"time": 0, 
+		"level": 4
+	},
+	"5": {
+		"secrets": "Secrets found: 0 / 1", 
+		"optional_completed": true, 
+		"objective": "Objective completed: :3", 
+		"kills": "Enemies killed: 20", 
+		"stars": [false, false, false], 
+		"time": 0, 
+		"level": 5
+	},
 }
 
 var is_paused = false
@@ -62,7 +102,9 @@ func selected_character(new_character, char_screen):
 
 func _on_title_credits():
 	var credits_screen = credits.instantiate()
-	add_child(credits_screen) 
+	add_child(credits_screen)
+	credits_screen.back_to_main.connect(main_menu.bind())
+	title.queue_free()
 	pass # Replace with function body.
 
 
