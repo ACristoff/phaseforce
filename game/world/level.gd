@@ -8,13 +8,14 @@ class_name Level
 @export var quip_chance: int = 25
 
 @onready var menu = preload("res://game/UI/menus/settings.tscn")
+@onready var settings = preload("res://game/UI/menus/settings.tscn")
+
 
 @onready var player_spawn: Marker2D = $SpawnPoint
 @onready var hud: HUD = $HUD
 @onready var extract_timer: Timer = $ExtractTimer
 @onready var extract_zone: Extract_Zone = $ExtractZone
 
-@onready var settings = preload("res://game/UI/menus/settings.tscn")
 
 @export_category("Objectives")
 @export var primary_obj: Node2D
@@ -178,12 +179,12 @@ func _on_player_death():
 
 func _on_player_kill():
 	#prints(kill_x_snowmen, snowmen_killed, kill_quantity)
+	snowmen_killed += 1
 	
-	if kill_x_snowmen && snowmen_killed != kill_quantity:
-		snowmen_killed += 1
+	if kill_x_snowmen && snowmen_killed < kill_quantity:
 		hud.tick_up()
 		hud.optional_objective_label.text = str("Kill ", snowmen_killed, " / ", kill_quantity, " Snowmen")
-	if kill_x_snowmen && snowmen_killed == kill_quantity && optional_completed == false: 
+	if kill_x_snowmen && snowmen_killed >= kill_quantity && optional_completed == false: 
 		hud.optional_objective_label.text = str("Kill ", snowmen_killed, " / ", kill_quantity, " Snowmen")
 		hud.complete_optional()
 		optional_completed = true

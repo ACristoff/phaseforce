@@ -10,6 +10,9 @@ func _ready():
 	#process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	pass
 
+func run_on_pause():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
 func _on_resolution_item_selected(index):
 	if index == 0:
 		DisplayServer.window_set_size(Vector2i(640, 360))
