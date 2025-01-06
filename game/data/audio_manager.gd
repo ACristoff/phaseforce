@@ -18,9 +18,8 @@ func switch_songs():
 	fade_timer.start()
 
 func change_volume():
-	#print(global_volume)
 	volume_db = global_volume + dampener
-	#pass
+
 
 func play_music(music: AudioStreamMP3, volume = 0.0):
 	playing = true
