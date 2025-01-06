@@ -11,7 +11,7 @@
 [node name="LumiPlayer" instance=ExtResource("1_lt403")]
 script = ExtResource("2_jp87q")
 moon_jump = -300
-moon_gravity = 500
+moon_gravity = 550
 death_quips = Array[AudioStreamMP3]([ExtResource("3_ueghu")])
 damaged_quips = Array[AudioStreamMP3]([ExtResource("3_ueghu")])
 kill_quips = Array[AudioStreamMP3]([ExtResource("3_ueghu")])
