@@ -657,14 +657,14 @@ vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Node"]
 texture_filter = 3
-offset_left = 688.0
-offset_top = 35.0
-offset_right = 728.0
-offset_bottom = 62.0
+offset_left = 2202.0
+offset_top = -516.0
+offset_right = 2263.0
+offset_bottom = -489.0
 theme = ExtResource("22_8pvgb")
 theme_override_font_sizes/font_size = 8
-text = "E]
-to open doors!"
+text = "Powerups
+also heal you!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
