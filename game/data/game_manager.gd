@@ -27,6 +27,7 @@ var is_paused = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	DisplayServer.window_set_size(Vector2i(1920, 1080))
 	if debug_mode:
 		title.queue_free()
 		var start_level_man = level_manager.instantiate()
@@ -49,7 +50,6 @@ func main_menu():
 	new_title.credits.connect(_on_title_on_start.bind())
 	new_title.on_start.connect(_on_title_on_start.bind())
 	#new_title.credits.connect()
-	
 	title = new_title
 
 

@@ -684,7 +684,7 @@ vertical_alignment = 1
 [node name="LevelTimer" type="Timer" parent="."]
 
 [node name="PowerUp" parent="." instance=ExtResource("4_n7avy")]
-position = Vector2(-81, 70)
+position = Vector2(-120, 71)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 

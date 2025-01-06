@@ -242,3 +242,6 @@ position = Vector2(16.255, -0.86052)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CursorSprite/Sword/SwordHitBox"]
 polygon = PackedVector2Array(22.1931, 0.681334, 19.4189, 2.98429, -10.7303, 3.14012, -11.2535, -1.83243, 19.8902, -2.0929)
+
+[node name="Marker2D" type="Marker2D" parent="CursorSprite/Sword"]
+position = Vector2(16.255, -0.860524)

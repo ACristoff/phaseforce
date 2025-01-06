@@ -87,7 +87,6 @@ func attack() -> void:
 
 
 func sword_hit_check():
-	print('checking!')
 	if sword_hit_box.has_overlapping_areas():
 		var all_areas = sword_hit_box.get_overlapping_areas()
 		for area in all_areas:
@@ -95,14 +94,13 @@ func sword_hit_check():
 				var enemy: ShieldEnemy = area.get_parent()
 				enemy.shield_take_damage(sword_damage)
 				hit_stack.append(enemy)
-		print(hit_stack)
 	if sword_hit_box.has_overlapping_bodies():
 		var all_bodies = sword_hit_box.get_overlapping_bodies()
 		for body in all_bodies:
 			if body is EnemyBase && !hit_stack.has(body):
 				body.take_damage(sword_damage)
 				hit_stack.append(body)
-		print(hit_stack)
+		##TODO deflect bullets
 
 func _physics_process(delta: float) -> void:
 	arrow.look_at(extract.global_position)
@@ -114,7 +112,6 @@ func _physics_process(delta: float) -> void:
 	
 	if is_sword_active:
 		sword_hit_check()
-		pass
 	
 	##ACTIONS
 	debug_text.text = str(attack_direction)
