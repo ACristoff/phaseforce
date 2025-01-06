@@ -7,7 +7,7 @@ var new_volume: int
 @onready var fade_timer = $FadeTimer
 
 var global_volume = 0 
-var dampener = -10
+var dampener = -20
 
 func _process(delta):
 	if new_music && !fade_timer.is_stopped():
@@ -18,7 +18,7 @@ func switch_songs():
 
 func change_volume():
 	#print(global_volume)
-	volume_db = global_volume
+	volume_db = global_volume + dampener
 	#pass
 
 func play_music(music: AudioStreamMP3, volume = 0.0):
