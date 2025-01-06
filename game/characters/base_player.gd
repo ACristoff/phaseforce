@@ -12,7 +12,6 @@ class_name BasePlayer
 @onready var shell_spout: Marker2D
 @onready var blast_graphic: Sprite2D
 @onready var gun_anim: AnimationPlayer
-
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var debug_text: Label = $Label
 @onready var floor_cast: RayCast2D = $RayCast2D

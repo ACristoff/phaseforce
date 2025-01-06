@@ -5,6 +5,10 @@ extends BasePlayer
 @export var moon_jump: int = -300
 @export var moon_gravity: int = 600
 
+var sword
+var projectile
+var sword_hit_box
+
 
 func jump(force):
 	coyote_timer = 0
@@ -15,27 +19,38 @@ func jump(force):
 		AudioManager.play_sfx(jump_sound, 5)
 		velocity.y = force
 
+#func _ready():
+	#super()
+	#print(gun_anim)
+	#pass
 
 func load_gun(gun, is_new):
-	super(gun, is_new)
-	pass
-	#if is_new:
-		#cursor.remove_child(arm)
-		#arm.queue_free()
-	#var new_gun = gun.instantiate()
-	#cursor.add_child(new_gun)
-	#arm = $AttackCursor/Arm
-	#cursor_sprite = $AttackCursor/Arm/CursorSprite
-	#cursor_spout = $AttackCursor/Arm/CursorSprite/BulletSpawnPoint
-	#shell_spout = $AttackCursor/Arm/CursorSprite/ShellSpawnPoint
-	#blast_graphic = $AttackCursor/Arm/CursorSprite/GunExplosion
-	#blast_graphic.visible = false
-	#gun_anim = $AttackCursor/Arm/CursorSprite/AnimationPlayer
+	if is_new:
+		cursor.remove_child(arm)
+		arm.queue_free()
+	var new_gun = gun.instantiate()
+	cursor.add_child(new_gun)
+	arm = $AttackCursor/Arm
+	cursor_sprite = $AttackCursor/Arm/CursorSprite
+	cursor_spout = $AttackCursor/Arm/CursorSprite/BulletSpawnPoint
+	shell_spout = $AttackCursor/Arm/CursorSprite/ShellSpawnPoint
+	blast_graphic = $AttackCursor/Arm/CursorSprite/GunExplosion
+	blast_graphic.visible = false
+	gun_anim = $AttackCursor/Arm/CursorSprite/AnimationPlayer
+	sword = $AttackCursor/Arm/CursorSprite/Sword
+	sword_hit_box = $AttackCursor/Arm/CursorSprite/Sword/SwordHitBox
+	sword_hit_box.visible = false
+	gun_anim.animation_finished.connect(_on_sword_swing_finished.bind() )
 
+func _on_sword_swing_finished(data):
+	print(data)
+	pass
 
 func attack() -> void:
 	gun_anim.stop()
 	gun_anim.play("swing")
+	sword_hit_box.visible = true
+	
 	#var new_bullet = bullet.instantiate()
 	#var new_shell = shell.instantiate()
 	#new_bullet.damage = bullet_damage
