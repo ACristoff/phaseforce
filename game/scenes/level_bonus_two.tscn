@@ -1,0 +1,389 @@
+[gd_scene load_steps=26 format=3 uid="uid://d15o3f48287k0"]
+
+[ext_resource type="Script" path="res://game/world/level.gd" id="1_x7vmv"]
+[ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="2_mkybj"]
+[ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="3_q1ers"]
+[ext_resource type="Texture2D" uid="uid://bmuk2sf38h4rv" path="res://assets/environment/tilesets/tileset.png" id="4_p04sm"]
+[ext_resource type="PackedScene" uid="uid://dcnjabyfgy3tm" path="res://game/UI/hud.tscn" id="5_5ppcp"]
+[ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="6_o1mjw"]
+[ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="7_3iega"]
+[ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="8_gol27"]
+[ext_resource type="PackedScene" uid="uid://bm5mdiuoh8qbi" path="res://game/objects/passthrough_platform.tscn" id="9_4y3ff"]
+[ext_resource type="PackedScene" uid="uid://bytrjfsir7c6d" path="res://game/objects/power_up.tscn" id="10_yjiki"]
+[ext_resource type="Texture2D" uid="uid://cxtvffj8juoax" path="res://assets/environment/placeables/decorations/militaryvehicle.png" id="11_xyq25"]
+[ext_resource type="PackedScene" uid="uid://b4ir8rl8balvy" path="res://game/objects/climbable_ladder.tscn" id="12_vyuas"]
+[ext_resource type="PackedScene" uid="uid://ddoegd7o3j6lt" path="res://game/objects/generator.tscn" id="13_3wrpd"]
+[ext_resource type="PackedScene" uid="uid://c8jo543xm1x0a" path="res://game/characters/enemies/enemy_base.tscn" id="14_iw0g1"]
+[ext_resource type="PackedScene" uid="uid://btb5qe7w5b6wg" path="res://game/objects/electric_doors.tscn" id="15_lruxl"]
+[ext_resource type="PackedScene" uid="uid://0c6hho6rprwl" path="res://game/world/secret_area.tscn" id="16_w5isp"]
+[ext_resource type="PackedScene" uid="uid://clgkki5cfqcx1" path="res://game/objects/heart_pickup.tscn" id="17_evy4g"]
+[ext_resource type="PackedScene" uid="uid://yb2f6m8tsacr" path="res://game/world/enemy_spawner.tscn" id="18_l8qte"]
+[ext_resource type="PackedScene" uid="uid://d4miuyj3w3h76" path="res://game/characters/enemies/shield_enemy.tscn" id="19_3nsgn"]
+[ext_resource type="Texture2D" uid="uid://cuqqrfbhjw2k0" path="res://assets/enemies/coming_alive_gun_snowman.png" id="20_t5aja"]
+[ext_resource type="PackedScene" uid="uid://bem052dalf283" path="res://game/objects/keycard.tscn" id="21_v3nu0"]
+[ext_resource type="PackedScene" uid="uid://esqwdf2tdfok" path="res://game/world/extract_zone.tscn" id="22_jkhey"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhc78"]
+texture = ExtResource("4_p04sm")
+texture_region_size = Vector2i(24, 24)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+14:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cxay7"]
+tile_size = Vector2i(24, 24)
+sources/0 = SubResource("TileSetAtlasSource_dhc78")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_04hub"]
+distance = -360.0
+
+[node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets")]
+script = ExtResource("1_x7vmv")
+primary_obj = NodePath("Generator")
+secrets = [NodePath(""), NodePath("SecretArea")]
+collect_x_gifts = true
+gift_quantity = 30
+
+[node name="WorldGenerator" parent="." instance=ExtResource("2_mkybj")]
+
+[node name="WorldTiles" parent="." instance=ExtResource("3_q1ers")]
+z_index = -10
+position = Vector2(-36, -36)
+
+[node name="SnowGround" parent="WorldTiles" index="0"]
+tile_map_data = PackedByteArray()
+
+[node name="MetalGround" parent="WorldTiles" index="1"]
+tile_map_data = PackedByteArray()
+
+[node name="BackGround" parent="WorldTiles" index="2"]
+tile_map_data = PackedByteArray()
+
+[node name="ForeGround" parent="WorldTiles" index="3"]
+tile_map_data = PackedByteArray()
+
+[node name="TileMapLayer" type="TileMapLayer" parent="WorldTiles"]
+z_index = 100
+tile_set = SubResource("TileSet_cxay7")
+
+[node name="HUD" parent="." instance=ExtResource("5_5ppcp")]
+
+[node name="ParallaxLayers" type="Node2D" parent="."]
+z_index = -20
+position = Vector2(0, 65)
+
+[node name="Sky" type="Parallax2D" parent="ParallaxLayers"]
+z_index = -10
+texture_filter = 3
+repeat_size = Vector2(320, 360)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Sky"]
+modulate = Color(0.76, 0.868, 1, 1)
+position = Vector2(-160, 86)
+scale = Vector2(-1, 1)
+texture = ExtResource("6_o1mjw")
+
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxLayers"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D3"]
+modulate = Color(0.66868, 0.6424, 0.73, 1)
+position = Vector2(-160, 86)
+scale = Vector2(-1, 1)
+texture = ExtResource("7_3iega")
+
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxLayers"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.3, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D2"]
+modulate = Color(0.37, 0.685, 1, 1)
+position = Vector2(-160, 86)
+texture = ExtResource("7_3iega")
+
+[node name="Front" type="Parallax2D" parent="ParallaxLayers"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.6, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Front"]
+modulate = Color(0.4761, 0.56879, 0.69, 1)
+position = Vector2(-160, 105)
+texture = ExtResource("8_gol27")
+
+[node name="Objects" type="Node2D" parent="."]
+position = Vector2(-36, -36)
+
+[node name="PassthroughPlatform40" parent="Objects" instance=ExtResource("9_4y3ff")]
+position = Vector2(-1560, -548)
+
+[node name="PowerUp" parent="Objects" instance=ExtResource("10_yjiki")]
+position = Vector2(-1567, -628)
+
+[node name="ParticleColliders" type="Node2D" parent="."]
+position = Vector2(-1500, -741)
+
+[node name="Decorations" type="Node2D" parent="."]
+texture_filter = 3
+
+[node name="MilitaryVehicle" type="Sprite2D" parent="Decorations"]
+position = Vector2(-1456, -360)
+texture = ExtResource("11_xyq25")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-1482, -631)
+
+[node name="Ladders" type="Node2D" parent="."]
+z_index = -10
+
+[node name="ClimbableLadder115" parent="Ladders" instance=ExtResource("12_vyuas")]
+position = Vector2(-1507, -515)
+
+[node name="Death_Barrier" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Barrier"]
+position = Vector2(0, 37)
+shape = SubResource("WorldBoundaryShape2D_04hub")
+
+[node name="Generator" parent="." instance=ExtResource("13_3wrpd")]
+position = Vector2(-1593, -742)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="EnemyBase23" parent="Enemies" instance=ExtResource("14_iw0g1")]
+position = Vector2(-1416, -683)
+
+[node name="Doors" type="Node" parent="."]
+
+[node name="Electric_Doors" parent="Doors" instance=ExtResource("15_lruxl")]
+position = Vector2(-1584, -984)
+keycard = "Red"
+
+[node name="Electric_Doors2" parent="Doors" instance=ExtResource("15_lruxl")]
+position = Vector2(-1610, -853)
+keycard = "Red"
+
+[node name="ExtractTimer" type="Timer" parent="."]
+wait_time = 90.0
+one_shot = true
+
+[node name="SecretArea" parent="." instance=ExtResource("16_w5isp")]
+position = Vector2(-1487, -862)
+
+[node name="CollisionShape2D" parent="SecretArea" index="0"]
+position = Vector2(2.5, 51)
+
+[node name="HeartPickup3" parent="." instance=ExtResource("17_evy4g")]
+position = Vector2(-1791, -634)
+
+[node name="EnemySpawns" type="Node" parent="."]
+
+[node name="EnemySpawner19" parent="EnemySpawns" instance=ExtResource("18_l8qte")]
+position = Vector2(-1808, -738)
+enemy_to_spawn = ExtResource("19_3nsgn")
+trigger = 2
+enemy_to_spawn_animation = ExtResource("20_t5aja")
+
+[node name="Keycard" parent="." instance=ExtResource("21_v3nu0")]
+position = Vector2(-1688, -638)
+
+[node name="ExtractZone" parent="." instance=ExtResource("22_jkhey")]
+position = Vector2(-1690, -503)
+
+[connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
+
+[editable path="WorldTiles"]
+[editable path="SecretArea"]
