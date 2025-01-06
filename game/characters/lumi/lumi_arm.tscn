@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dle84d775l1tp"]
+[gd_scene load_steps=14 format=3 uid="uid://dle84d775l1tp"]
 
 [ext_resource type="Texture2D" uid="uid://dp74hhbbk8upj" path="res://assets/characters/panko/base_form/Panko_Arm.png" id="1_d8m26"]
 [ext_resource type="Texture2D" uid="uid://mjkqryplsp2l" path="res://assets/particles/UPDATE PLEASE/RIFLE/MUZZLE FLASH1.png" id="3_lgofo"]
 [ext_resource type="Texture2D" uid="uid://c2e8p5huw858x" path="res://assets/particles/UPDATE PLEASE/RIFLE/MUZZLE FLASH2.png" id="4_tbfuh"]
 [ext_resource type="Texture2D" uid="uid://0jr6xfdsma6n" path="res://assets/particles/UPDATE PLEASE/RIFLE/MUZZLE FLASH3.png" id="5_imfd8"]
+[ext_resource type="Texture2D" uid="uid://dmfbrn80xbark" path="res://assets/particles/bullets/liaswing.png" id="6_80ax6"]
 [ext_resource type="Texture2D" uid="uid://tg53wmpwjcq" path="res://assets/particles/UPDATE PLEASE/RIFLE/MUZZLE FLASH4.png" id="6_l6ta6"]
 [ext_resource type="Texture2D" uid="uid://dcb7vbfe5npni" path="res://assets/characters/lumi/base_form/lumisword.png" id="6_vtcgg"]
 
@@ -41,7 +42,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/2/type = "value"
@@ -68,6 +69,66 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sword:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.212482, -5.2393)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sword:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.46596]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Liaswing:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Liaswing:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Liaswing:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, -45)]
+}
 
 [sub_resource type="Animation" id="Animation_u4aqw"]
 resource_name = "TommyKick"
@@ -93,7 +154,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [true, false]
 }
 
@@ -134,15 +195,81 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 1.2),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_orct6"]
+resource_name = "swing"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.212482, -5.2393)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9),
+"transitions": PackedFloat32Array(0.116629, 1, 1),
+"update": 0,
+"values": [-1.46596, 0.267035, -1.46608]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Liaswing:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Liaswing:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Liaswing:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(32, -25), Vector2(40, -30)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u3x4k"]
 _data = {
 "RESET": SubResource("Animation_gc4ut"),
 "kickback": SubResource("Animation_u4aqw"),
-"reload": SubResource("Animation_ha3vu")
+"reload": SubResource("Animation_ha3vu"),
+"swing": SubResource("Animation_orct6")
 }
 
 [node name="Arm" type="Sprite2D"]
@@ -164,19 +291,29 @@ position = Vector2(2, -7)
 
 [node name="GunExplosion" type="Sprite2D" parent="CursorSprite"]
 position = Vector2(35, -7)
+rotation = 0.00229814
 texture = SubResource("AnimatedTexture_ipfas")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CursorSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_u3x4k")
 }
+speed_scale = 2.0
+
+[node name="Liaswing" type="Sprite2D" parent="CursorSprite"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(64, -45)
+rotation = -0.569766
+texture = ExtResource("6_80ax6")
 
 [node name="Sword" type="Sprite2D" parent="CursorSprite"]
-position = Vector2(2, -36)
+position = Vector2(-0.212482, -5.2393)
 rotation = -1.46596
 texture = ExtResource("6_vtcgg")
+offset = Vector2(30.8233, -1.0186)
 
 [node name="SwordHitBox" type="Area2D" parent="CursorSprite/Sword"]
+position = Vector2(30.8233, -1.0186)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CursorSprite/Sword/SwordHitBox"]
 polygon = PackedVector2Array(42, 1, 38, 5, -20, 5, -20, -3, 38, -3)

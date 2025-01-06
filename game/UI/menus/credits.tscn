@@ -79,6 +79,7 @@ texture = ExtResource("3_6e5vd")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
 z_index = -10
+layout_mode = 0
 offset_left = 98.0
 offset_top = 68.0
 offset_right = 554.0
