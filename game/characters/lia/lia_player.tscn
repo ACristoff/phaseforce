@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://by1xslelif07n"]
+[gd_scene load_steps=14 format=3 uid="uid://by1xslelif07n"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_7os3g"]
 [ext_resource type="Script" path="res://game/characters/lia/lia_player.gd" id="2_cac7u"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cc3rsdpgdar5l" path="res://assets/particles/crosshairs/crosshair4.png" id="3_vty6s"]
 [ext_resource type="AudioStream" uid="uid://4ljuudbg24rl" path="res://assets/sfx/projectiles/PISTOL.mp3" id="4_7v7ko"]
 [ext_resource type="PackedScene" uid="uid://ci8gnweryibaa" path="res://game/characters/lia/lia_arm_powered_up.tscn" id="4_v31xa"]
+[ext_resource type="AudioStream" uid="uid://3om33scqvo7a" path="res://assets/sfx/quips/lia/QUIP_LIAS_MOM_HELLO.mp3" id="5_s7nyk"]
+[ext_resource type="AudioStream" uid="uid://bf5o1bd6l5eyb" path="res://assets/sfx/quips/lia/QUIP_YIPEE.mp3" id="6_7kx1u"]
 [ext_resource type="Texture2D" uid="uid://bb8u6d1jaxfoa" path="res://assets/ui/ammo_types/50cal.png" id="6_a2ryx"]
 [ext_resource type="Texture2D" uid="uid://cm47img5h76m0" path="res://assets/ui/ammo_types/power_cell.png" id="10_b7wik"]
 
@@ -18,8 +20,8 @@ mouse_cursor_sprite = ExtResource("3_vty6s")
 death_quips = Array[AudioStreamMP3]([ExtResource("3_e6vgh")])
 damaged_quips = Array[AudioStreamMP3]([ExtResource("3_e6vgh")])
 kill_quips = Array[AudioStreamMP3]([ExtResource("3_e6vgh")])
-power_up_quips = Array[AudioStreamMP3]([ExtResource("3_e6vgh")])
-victory_quips = Array[AudioStreamMP3]([ExtResource("3_e6vgh")])
+power_up_quips = Array[AudioStreamMP3]([ExtResource("3_e6vgh"), ExtResource("5_s7nyk")])
+victory_quips = Array[AudioStreamMP3]([ExtResource("3_e6vgh"), ExtResource("6_7kx1u")])
 normal_sprite = ExtResource("2_jea0j")
 normal_gun = ExtResource("3_bnuxw")
 normal_fire_rate = 0.5

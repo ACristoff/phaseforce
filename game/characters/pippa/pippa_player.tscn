@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d2oscudku2h3t"]
+[gd_scene load_steps=30 format=3 uid="uid://d2oscudku2h3t"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_ddrdq"]
 [ext_resource type="Texture2D" uid="uid://wfelj55r43i2" path="res://assets/characters/pippa/base_form/Pippa_Sprite.png" id="2_jnmno"]
@@ -21,20 +21,23 @@
 [ext_resource type="AudioStream" uid="uid://b5ifdyt8nonif" path="res://assets/sfx/quips/pippa/kill (3).mp3" id="10_idh3s"]
 [ext_resource type="AudioStream" uid="uid://bb7t2faose6qj" path="res://assets/sfx/quips/pippa/kill.mp3" id="11_8bf7h"]
 [ext_resource type="AudioStream" uid="uid://btrk0p7pqjk0v" path="res://assets/sfx/quips/pippa/heal (2).mp3" id="12_6luk5"]
+[ext_resource type="AudioStream" uid="uid://dnoiba7j5ttve" path="res://assets/sfx/quips/pippa/QUIP_PIPAKISTAN.mp3" id="12_g28bm"]
+[ext_resource type="AudioStream" uid="uid://dxejmjajiy5ih" path="res://assets/sfx/quips/pippa/QUIP_PIPAMERICA.mp3" id="13_lpdj0"]
 [ext_resource type="AudioStream" uid="uid://cwp2ubeb8ord0" path="res://assets/sfx/quips/pippa/power (2).mp3" id="13_ujvji"]
 [ext_resource type="AudioStream" uid="uid://caba1xsji66g3" path="res://assets/sfx/quips/pippa/power.mp3" id="14_bk6yt"]
 [ext_resource type="AudioStream" uid="uid://r150kdyjd5yo" path="res://assets/sfx/quips/pippa/power_up (2).mp3" id="15_g3yes"]
 [ext_resource type="AudioStream" uid="uid://d3gqvosfqo3qm" path="res://assets/sfx/quips/pippa/power_up.mp3" id="16_py023"]
 [ext_resource type="AudioStream" uid="uid://cxriy4uwlr6hd" path="res://assets/sfx/quips/pippa/victory.mp3" id="17_jmjwv"]
+[ext_resource type="AudioStream" uid="uid://bwmxbcqo4kf15" path="res://assets/sfx/quips/pippa/QUIP_PIPPA_PI.mp3" id="20_g2wc0"]
 
 [node name="PippaPlayer" instance=ExtResource("1_ddrdq")]
 script = ExtResource("2_qvqcs")
 mouse_cursor_sprite = ExtResource("3_afe70")
 death_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi"), ExtResource("5_kohfs"), ExtResource("6_rfj6h")])
 damaged_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi"), ExtResource("7_02v1t"), ExtResource("8_y3bkf")])
-kill_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi"), ExtResource("9_ny3mx"), ExtResource("10_idh3s"), ExtResource("11_8bf7h")])
+kill_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi"), ExtResource("9_ny3mx"), ExtResource("10_idh3s"), ExtResource("11_8bf7h"), ExtResource("12_g28bm"), ExtResource("13_lpdj0")])
 power_up_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi"), ExtResource("12_6luk5"), ExtResource("13_ujvji"), ExtResource("14_bk6yt"), ExtResource("15_g3yes"), ExtResource("16_py023")])
-victory_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi"), ExtResource("17_jmjwv")])
+victory_quips = Array[AudioStreamMP3]([ExtResource("3_dvtyi"), ExtResource("17_jmjwv"), ExtResource("20_g2wc0")])
 jump_sound = ExtResource("4_kentd")
 JUMP_VELOCITY = -340.0
 normal_sprite = ExtResource("2_jnmno")
