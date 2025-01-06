@@ -23,14 +23,13 @@ normal_fire_rate = 0.8
 normal_bullet_speed = 200
 normal_damage = 100
 normal_gun_capacity = 1
-normal_gun_reload_time = 2.2
 powered_up_gun = ExtResource("5_im003")
 powered_up_sprite = ExtResource("3_uk2km")
 powered_up_fire_rate = 1.0
 powered_up_bullet_speed = 400
 powered_up_damage = 90
 powered_up_gun_capacity = 1
-powered_up_gun_mags = 30
+powered_up_gun_mags = 25
 powered_up_gun_reload_time = 0.6
 
 [node name="Sprite2D" parent="." index="2"]
