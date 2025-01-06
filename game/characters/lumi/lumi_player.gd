@@ -17,7 +17,7 @@ func jump(force):
 
 
 func load_gun(gun, is_new):
-	
+	super(gun, is_new)
 	pass
 	#if is_new:
 		#cursor.remove_child(arm)
