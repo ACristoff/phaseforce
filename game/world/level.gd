@@ -80,13 +80,21 @@ func play_level_music():
 func _on_enemy_spawned(enemy_ref: EnemyBase):
 	enemy_ref.enemy_death.connect(_on_player_kill.bind())
 
+
 func pause_menu():
 	if is_paused:
 		Engine.time_scale = 1
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+		get_tree().paused = false
 	else:
+		var new_settings = settings.instantiate()
+		var game_man = get_tree().get_first_node_in_group("game")
+		game_man.add_child(new_settings)
+		new_settings.back_to_game.connect(pause_menu.bind())
+		new_settings.has_level = self
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Engine.time_scale = 0
+		get_tree().paused = true
 	is_paused = !is_paused
 
 func _process(delta):
