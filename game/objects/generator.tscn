@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/objects/generator.gd" id="1_p2k5v"]
 [ext_resource type="Texture2D" uid="uid://7slt6piexpou" path="res://assets/environment/placeables/interactables/generator.png" id="1_ywk00"]
-[ext_resource type="AudioStream" uid="uid://bw3wg8ravboqa" path="res://assets/sfx/misc/generator-87782.mp3" id="2_q35hg"]
+[ext_resource type="AudioStream" uid="uid://dk8aslhl7il4x" path="res://assets/sfx/objects/GENERATOR_GENERATING.mp3" id="3_ovwh6"]
 [ext_resource type="Texture2D" uid="uid://cx351xvbj2njp" path="res://assets/particles/generator/generator_debris.png" id="4_tr7pn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lok6"]
@@ -38,7 +38,7 @@ texture_filter = 3
 texture = ExtResource("1_ywk00")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_q35hg")
+stream = ExtResource("3_ovwh6")
 autoplay = true
 max_distance = 200.0
 
