@@ -64,25 +64,6 @@ func attack() -> void:
 	gun_anim.play("swing")
 	change_sword_state(true)
 	gun_magazine -= 1
-	
-	#var new_bullet = bullet.instantiate()
-	#var new_shell = shell.instantiate()
-	#new_bullet.damage = bullet_damage
-	#new_bullet.speed = bullet_speed
-	#new_bullet.global_position = cursor_spout.global_position
-	#new_shell.global_position = shell_spout.global_position
-	#var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
-	#new_bullet.rotation_degrees = adjusted_angle
-	#get_parent().add_child(new_bullet)
-	#get_parent().add_child(new_shell)
-	#bullet_shot.emit()
-	#if powered_up:
-		#hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
-	#else:
-		#hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
-	##print("mag", gun_magazine)
-	#if gun_magazine == 0:
-		#no_ammo.emit()
 	pass
 
 
@@ -92,17 +73,21 @@ func sword_hit_check():
 		for area in all_areas:
 			if area is Shield && !hit_stack.has(area):
 				var enemy: ShieldEnemy = area.get_parent()
-				enemy.shield_take_damage(sword_damage)
 				hit_stack.append(enemy)
+				enemy.shield_take_damage(sword_damage)
 	if sword_hit_box.has_overlapping_bodies():
 		var all_bodies = sword_hit_box.get_overlapping_bodies()
 		for body in all_bodies:
 			if body is EnemyBase && !hit_stack.has(body):
-				body.take_damage(sword_damage)
 				hit_stack.append(body)
-			elif body is Generator:
+				body.take_damage(sword_damage)
+				all_bodies.erase(body)
+		for body in all_bodies:
+			if body is Generator && !hit_stack.has(body):
+				hit_stack.append(body)
 				body.emit(self.global_position)
 				queue_free()
+				all_bodies.erase(body)
 		##TODO deflect bullets
 
 func _physics_process(delta: float) -> void:

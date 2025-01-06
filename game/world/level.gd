@@ -175,7 +175,8 @@ func _on_player_death():
 	game_over.emit()
 
 func _on_player_kill():
-	prints(kill_x_snowmen, snowmen_killed, kill_quantity)
+	#prints(kill_x_snowmen, snowmen_killed, kill_quantity)
+	
 	if kill_x_snowmen && snowmen_killed != kill_quantity:
 		snowmen_killed += 1
 		hud.tick_up()

@@ -50,7 +50,6 @@ func _physics_process(delta):
 	if hitbox.has_overlapping_bodies():
 		var all_bodies = hitbox.get_overlapping_bodies()
 		for body in all_bodies:
-			#print(body)
 			if body is BasePlayer:
 				return
 			if body is SnowGround:

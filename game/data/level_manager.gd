@@ -23,6 +23,7 @@ var characters = {
 
 func load_level(id):
 	current_level = id
+	#print(levels)
 	var new_level: Level = levels[id].instantiate()
 	var game_man: game_manager = get_node("/root/GameManager")
 	new_level.character = characters[game_man.current_character]

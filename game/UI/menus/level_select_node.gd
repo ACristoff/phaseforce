@@ -19,7 +19,7 @@ func _ready():
 	pass # Replace with function body.
 
 func update_labels(data):
-	print(data)
+	#print(data)
 	if data.stars[0]:
 		_star_one_achieved()
 		pass

@@ -12,9 +12,9 @@ class_name ShieldEnemy
 
 func shield_take_damage(damage):
 	shield_health -= damage
-	print('shield took ', damage, 'damage')
+	#print('shield took ', damage, 'damage')
 	if shield_health < 0:
-		print('shield broken')
+		#print('shield broken')
 		shield_collision.set_deferred("disabled", true)
 		shield_hitbox.monitoring = false
 		shield_hitbox.visible = false
