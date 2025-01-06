@@ -62,7 +62,7 @@ level_id = 2
 
 [node name="LevelSelectBlip3" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("1_3843p")]
 layout_mode = 2
-level_name = "Level 3. The Basement"
+level_name = "Bonus Level. Stealth Mode"
 level_id = 3
 
 [node name="LevelSelectBlip4" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("1_3843p")]
