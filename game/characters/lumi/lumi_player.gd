@@ -5,10 +5,12 @@ extends BasePlayer
 @export var moon_jump: int = -300
 @export var moon_gravity: int = 600
 
+var sword_damage = 200
 var sword
 var projectile
 var sword_hit_box
-
+var is_sword_active = false
+var hit_stack = []
 
 func jump(force):
 	coyote_timer = 0
@@ -18,11 +20,6 @@ func jump(force):
 	else:
 		AudioManager.play_sfx(jump_sound, 5)
 		velocity.y = force
-
-#func _ready():
-	#super()
-	#print(gun_anim)
-	#pass
 
 func load_gun(gun, is_new):
 	if is_new:
@@ -43,13 +40,30 @@ func load_gun(gun, is_new):
 	gun_anim.animation_finished.connect(_on_sword_swing_finished.bind() )
 
 func _on_sword_swing_finished(data):
-	print(data)
-	pass
+	if data == "swing":
+		start_reload()
+		change_sword_state(false)
+		hit_stack.clear()
+
+func change_sword_state(_state: bool):
+	sword_hit_box.visible = _state
+	is_sword_active = _state
+
+func reload():
+	gun_magazine = gun_magazine_capacity
+	mouse_cursor.texture = mouse_cursor_sprite
+	if powered_up:
+		mags -= 1
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
+	else:
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
+
 
 func attack() -> void:
 	gun_anim.stop()
 	gun_anim.play("swing")
-	sword_hit_box.visible = true
+	change_sword_state(true)
+	gun_magazine -= 1
 	
 	#var new_bullet = bullet.instantiate()
 	#var new_shell = shell.instantiate()
@@ -62,7 +76,6 @@ func attack() -> void:
 	#get_parent().add_child(new_bullet)
 	#get_parent().add_child(new_shell)
 	#bullet_shot.emit()
-	#gun_magazine -= 1
 	#if powered_up:
 		#hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
 	#else:
@@ -72,6 +85,25 @@ func attack() -> void:
 		#no_ammo.emit()
 	pass
 
+
+func sword_hit_check():
+	print('checking!')
+	if sword_hit_box.has_overlapping_areas():
+		var all_areas = sword_hit_box.get_overlapping_areas()
+		for area in all_areas:
+			if area is Shield && !hit_stack.has(area):
+				var enemy: ShieldEnemy = area.get_parent()
+				enemy.shield_take_damage(sword_damage)
+				hit_stack.append(enemy)
+		print(hit_stack)
+	if sword_hit_box.has_overlapping_bodies():
+		var all_bodies = sword_hit_box.get_overlapping_bodies()
+		for body in all_bodies:
+			if body is EnemyBase && !hit_stack.has(body):
+				body.take_damage(sword_damage)
+				hit_stack.append(body)
+		print(hit_stack)
+
 func _physics_process(delta: float) -> void:
 	arrow.look_at(extract.global_position)
 	#if InputEvent.
@@ -79,6 +111,10 @@ func _physics_process(delta: float) -> void:
 	if health == 0:
 		player_death.emit()
 		health = -1
+	
+	if is_sword_active:
+		sword_hit_check()
+		pass
 	
 	##ACTIONS
 	debug_text.text = str(attack_direction)
