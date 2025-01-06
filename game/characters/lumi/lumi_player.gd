@@ -15,9 +15,27 @@ func jump(force):
 		AudioManager.play_sfx(jump_sound, 5)
 		velocity.y = force
 
+
+func load_gun(gun, is_new):
+	
+	pass
+	#if is_new:
+		#cursor.remove_child(arm)
+		#arm.queue_free()
+	#var new_gun = gun.instantiate()
+	#cursor.add_child(new_gun)
+	#arm = $AttackCursor/Arm
+	#cursor_sprite = $AttackCursor/Arm/CursorSprite
+	#cursor_spout = $AttackCursor/Arm/CursorSprite/BulletSpawnPoint
+	#shell_spout = $AttackCursor/Arm/CursorSprite/ShellSpawnPoint
+	#blast_graphic = $AttackCursor/Arm/CursorSprite/GunExplosion
+	#blast_graphic.visible = false
+	#gun_anim = $AttackCursor/Arm/CursorSprite/AnimationPlayer
+
+
 func attack() -> void:
-	#gun_anim.stop()
-	#gun_anim.play("kickback")
+	gun_anim.stop()
+	gun_anim.play("swing")
 	#var new_bullet = bullet.instantiate()
 	#var new_shell = shell.instantiate()
 	#new_bullet.damage = bullet_damage

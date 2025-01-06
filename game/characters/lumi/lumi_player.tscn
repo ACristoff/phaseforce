@@ -26,6 +26,11 @@ normal_gun_capacity = 1
 normal_gun_reload_time = 0.8
 powered_up_gun = ExtResource("5_im003")
 powered_up_sprite = ExtResource("3_uk2km")
+powered_up_fire_rate = 1.0
+powered_up_bullet_speed = 400
+powered_up_damage = 90
+powered_up_gun_capacity = 30
+powered_up_gun_mags = 0
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_egiy6")
