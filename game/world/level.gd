@@ -14,6 +14,8 @@ class_name Level
 @onready var extract_timer: Timer = $ExtractTimer
 @onready var extract_zone: Extract_Zone = $ExtractZone
 
+@onready var settings = preload("res://game/UI/menus/settings.tscn")
+
 @export_category("Objectives")
 @export var primary_obj: Node2D
 @export var secrets: Array[Secret_Area]
