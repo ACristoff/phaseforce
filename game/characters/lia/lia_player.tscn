@@ -43,6 +43,3 @@ powered_up_bullet_hud_sprite = ExtResource("10_b7wik")
 texture = ExtResource("2_jea0j")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="10"]
-
-[node name="ExtractArrow" parent="." index="11"]
-visible = false

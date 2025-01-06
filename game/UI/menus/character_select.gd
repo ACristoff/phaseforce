@@ -16,6 +16,8 @@ func _on_button_tenma_pressed():
 func _on_button_pippa_pressed():
 	chosen_character.emit("pippa")
 
+func _on_button_lumi_pressed():
+	chosen_character.emit("lumi")
 
 func _on_button_panko_mouse_entered():
 	name_label.text = "Komachi Panko"
