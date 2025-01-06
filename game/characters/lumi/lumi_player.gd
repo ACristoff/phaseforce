@@ -2,8 +2,8 @@ extends BasePlayer
 
 @onready var moon_jump_sound = preload("res://assets/sfx/characters/MOON_JUMP.mp3")
 
-@export var moon_jump: int = -300
-@export var moon_gravity: int = 600
+@export var moon_jump: int = -200
+@export var moon_gravity: int = 700
 
 var sword_damage = 200
 var sword
@@ -86,7 +86,6 @@ func sword_hit_check():
 			if body is Generator && !hit_stack.has(body):
 				hit_stack.append(body)
 				body.emit(self.global_position)
-				queue_free()
 				all_bodies.erase(body)
 		##TODO deflect bullets
 
