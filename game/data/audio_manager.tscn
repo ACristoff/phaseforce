@@ -6,8 +6,9 @@
 script = ExtResource("1_pcnf7")
 
 [node name="MusicManager" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="FadeTimer" type="Timer" parent="MusicManager"]
 one_shot = true
 
-[connection signal="timeout" from="MusicManager/FadeTimer" to="MusicManager" method="_on_fade_timer_timeout"]
+[connection signal="timeout" from="MusicManager/FadeTimer" to="." method="_on_fade_timer_timeout"]

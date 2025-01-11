@@ -74,3 +74,15 @@ func _on_level_select_pressed():
 func _on_quit_pressed():
 	get_tree().quit()
 	pass # Replace with function body.
+
+
+func _on_music_slider_value_changed(value):
+	pass # Replace with function body.
+
+
+func _on_voice_slider_value_changed(value):
+	pass # Replace with function body.
+
+
+func _on_sfx_slider_value_changed(value):
+	pass # Replace with function body.
