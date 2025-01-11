@@ -6,22 +6,35 @@ signal back_to_game
 
 var has_level
 
+@export var sample_sfx: AudioStreamMP3
+@export var sample_voice: AudioStreamMP3
 
-var music_bus_name = "Music"
-var voice_bus_name = "Voice"
-var sfx_bus_name = "SFX"
-var music_bus
-var voice_bus
-var sfx_bus
+@onready var master_volume_slider = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/Master/HBoxContainer/MasterSlider
+@onready var music_volume_slider  = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/Music/HBoxContainer/MusicSlider
+@onready var voice_volume_slider  = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/Voices/HBoxContainer/VoiceSlider
+@onready var sfx_volume_slider    = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX2/HBoxContainer/SFXSlider
+
+var music_bus_name: String  = "Music"
+var voice_bus_name: String  = "Voice"
+var sfx_bus_name: String    = "SFX"
+var master_bus_name: String = "Master"
+var master_bus: int
+var music_bus: int
+var voice_bus: int
+var sfx_bus: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	music_bus = AudioServer.get_bus_index(music_bus_name)
-	voice_bus = AudioServer.get_bus_index(voice_bus_name)
-	sfx_bus   = AudioServer.get_bus_index(sfx_bus_name)
+	master_bus = AudioServer.get_bus_index(master_bus_name)
+	music_bus  = AudioServer.get_bus_index(music_bus_name)
+	voice_bus  = AudioServer.get_bus_index(voice_bus_name)
+	sfx_bus    = AudioServer.get_bus_index(sfx_bus_name)
+	master_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(master_bus))
+	music_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(music_bus))
+	voice_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(voice_bus))
+	sfx_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus))
 	#DisplayServer.window_set_size(Vector2i(1920, 1080))
-	#process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-	print(music_bus, voice_bus, sfx_bus)
+	#process_mode = Node.PROCESS_MODE_WHEN_PAUSED\
 	pass
 
 func run_on_pause():
@@ -49,12 +62,7 @@ func _on_button_pressed():
 	get_tree().paused = false
 	queue_free()
 
-func _on_h_slider_value_changed(value):
-	var new_volume = (value - 5) * 2.5
-	AudioManager.global_volume = new_volume
-	AudioManager.change_volume()
-	prints(value, new_volume)
-	pass # Replace with function body.
+
 
 func _on_main_menu_pressed():
 	if has_level:
@@ -89,12 +97,19 @@ func _on_quit_pressed():
 
 
 func _on_music_slider_value_changed(value):
-	pass # Replace with function body.
-
+	AudioServer.set_bus_volume_db(music_bus, linear_to_db(value))
 
 func _on_voice_slider_value_changed(value):
-	pass # Replace with function body.
-
+	AudioServer.set_bus_volume_db(voice_bus, linear_to_db(value))
 
 func _on_sfx_slider_value_changed(value):
-	pass # Replace with function body.
+	AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(value))
+
+func _on_master_slider_value_changed(value):
+	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
+
+func _on_voice_slider_drag_ended(value_changed):
+	AudioManager.play_quip(sample_voice)
+
+func _on_sfx_slider_drag_ended(value_changed):
+	AudioManager.play_sfx(sample_sfx)

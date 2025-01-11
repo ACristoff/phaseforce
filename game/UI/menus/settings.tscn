@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bu3132qvl7k1v"]
+[gd_scene load_steps=8 format=3 uid="uid://bu3132qvl7k1v"]
 
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="1_um8c4"]
 [ext_resource type="Script" path="res://game/UI/menus/settings.gd" id="1_wh0q2"]
 [ext_resource type="FontFile" uid="uid://g41dgfdxt875" path="res://assets/fonts/Grow_Stone_Online_Recreation.ttf" id="2_3x86f"]
+[ext_resource type="AudioStream" uid="uid://d0q7fy5ym0j6l" path="res://assets/sfx/projectiles/SHOTGUN.mp3" id="2_h8l7y"]
 [ext_resource type="Texture2D" uid="uid://dof1b4wrb8et0" path="res://assets/ui/container2.png" id="2_n1w1y"]
+[ext_resource type="AudioStream" uid="uid://bf5o1bd6l5eyb" path="res://assets/sfx/quips/lia/QUIP_YIPEE.mp3" id="2_wndxg"]
 
 [sub_resource type="Theme" id="Theme_2r6b3"]
 OptionButton/fonts/font = ExtResource("2_3x86f")
@@ -13,6 +15,8 @@ texture_filter = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_wh0q2")
+sample_sfx = ExtResource("2_h8l7y")
+sample_voice = ExtResource("2_wndxg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -96,10 +100,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = -30
 
 [node name="Sound" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/MarginContainer3"]
+visible = false
 texture_filter = 3
 layout_mode = 2
 theme = ExtResource("1_um8c4")
@@ -134,9 +140,8 @@ button_pressed = true
 [node name="MasterSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Master/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-max_value = 10.0
-value = 5.0
-tick_count = 10
+max_value = 1.0
+step = 0.05
 ticks_on_borders = true
 
 [node name="Music" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings"]
@@ -160,9 +165,8 @@ button_pressed = true
 [node name="MusicSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Music/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-max_value = 10.0
-value = 5.0
-tick_count = 10
+max_value = 1.0
+step = 0.05
 ticks_on_borders = true
 
 [node name="Voices" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings"]
@@ -186,9 +190,8 @@ button_pressed = true
 [node name="VoiceSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Voices/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-max_value = 10.0
-value = 5.0
-tick_count = 10
+max_value = 1.0
+step = 0.05
 ticks_on_borders = true
 
 [node name="SFX2" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings"]
@@ -213,9 +216,8 @@ button_pressed = true
 [node name="SFXSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX2/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-max_value = 10.0
-value = 5.0
-tick_count = 10
+max_value = 1.0
+step = 0.05
 ticks_on_borders = true
 
 [node name="GraphicsLabel" type="Label" parent="CanvasLayer/NinePatchRect3/Settings"]
@@ -409,9 +411,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/NinePatchRect3/Settings/MarginContainer2/NinePatchRect4/Button" to="." method="_on_button_pressed"]
-[connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Master/HBoxContainer/MasterSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Master/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Music/HBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Voices/HBoxContainer/VoiceSlider" to="." method="_on_voice_slider_drag_ended"]
 [connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Voices/HBoxContainer/VoiceSlider" to="." method="_on_voice_slider_value_changed"]
+[connection signal="drag_ended" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX2/HBoxContainer/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX2/HBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="item_selected" from="CanvasLayer/NinePatchRect3/Settings/Graphics/MarginContainer/HBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
 [connection signal="pressed" from="CanvasLayer/NinePatchRect3/Settings/Menu/HBoxContainer/NinePatchRect/MainMenu" to="." method="_on_main_menu_pressed"]
