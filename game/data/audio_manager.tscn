@@ -11,4 +11,6 @@ bus = &"Music"
 [node name="FadeTimer" type="Timer" parent="MusicManager"]
 one_shot = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="timeout" from="MusicManager/FadeTimer" to="." method="_on_fade_timer_timeout"]

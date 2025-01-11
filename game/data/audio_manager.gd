@@ -38,37 +38,56 @@ func play_sfx(new_stream: AudioStreamMP3, volume = 0.0, looped = false):
 	fx_player.volume_db = volume
 	add_child(fx_player)
 	fx_player.play()
+	if looped == false:
+		fx_player.finished.connect(on_sound_finished.bind(fx_player))
 	
-	await fx_player.finished
-	fx_player.queue_free()
-	pass
+	return fx_player
 
-func play_sfx_wav(new_stream: AudioStreamWAV, volume = 0.0):
-	var fx_player = AudioStreamPlayer.new()
+func create_2d_sfx(new_stream: AudioStreamWAV, volume = 0.0, looped = false):
+	var fx_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+	new_stream.set_loop(looped)
+	fx_player.stream = new_stream
+	fx_player.name = "FX_Player_2D"
+	fx_player.bus = "SFX"
+	fx_player.volume_db = volume
+	#add_child(fx_player)
+	fx_player.play()
+	if looped == false:
+		fx_player.finished.connect(on_sound_finished.bind(fx_player))
+	
+	return fx_player
+
+func play_sfx_wav(new_stream: AudioStreamWAV, volume = 0.0, looped = false):
+	var fx_player: AudioStreamPlayer = AudioStreamPlayer.new()
+	#new_stream.set_loop(looped)
 	fx_player.stream = new_stream
 	fx_player.name = "FX_Player"
 	fx_player.bus = "SFX"
 	fx_player.volume_db = volume
 	add_child(fx_player)
 	fx_player.play()
+	if looped == false:
+		fx_player.finished.connect(on_sound_finished.bind(fx_player))
 	
-	await fx_player.finished
-	fx_player.queue_free()
+	return fx_player
 
 func play_quip(new_stream: AudioStreamMP3, volume = 0.0):
-	var fx_player = AudioStreamPlayer.new()
+	var fx_player: AudioStreamPlayer = AudioStreamPlayer.new()
 	fx_player.stream = new_stream
 	fx_player.name = "FX_Player"
 	fx_player.volume_db = volume
 	fx_player.bus = "Voice"
 	add_child(fx_player)
 	fx_player.play()
+	fx_player.finished.connect(on_sound_finished.bind(fx_player ))
 	
-	await fx_player.finished
-	fx_player.queue_free()
+	return fx_player
 
 func _on_fade_timer_timeout():
 	music_manager.stream = new_music
 	music_manager.volume_db = new_volume
 	music_manager.play()
 	current_music = new_music
+
+func on_sound_finished(sound_player):
+	sound_player.queue_free()

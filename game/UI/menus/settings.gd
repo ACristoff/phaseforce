@@ -6,10 +6,22 @@ signal back_to_game
 
 var has_level
 
+
+var music_bus_name = "Music"
+var voice_bus_name = "Voice"
+var sfx_bus_name = "SFX"
+var music_bus
+var voice_bus
+var sfx_bus
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	music_bus = AudioServer.get_bus_index(music_bus_name)
+	voice_bus = AudioServer.get_bus_index(voice_bus_name)
+	sfx_bus   = AudioServer.get_bus_index(sfx_bus_name)
 	#DisplayServer.window_set_size(Vector2i(1920, 1080))
 	#process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	print(music_bus, voice_bus, sfx_bus)
 	pass
 
 func run_on_pause():
