@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://bmq71pbr45cvb"]
+[gd_scene load_steps=27 format=3 uid="uid://bmq71pbr45cvb"]
 
 [ext_resource type="Script" path="res://game/UI/menus/win_con.gd" id="1_hgakx"]
-[ext_resource type="Texture2D" uid="uid://dof1b4wrb8et0" path="res://assets/ui/container2.png" id="2_v282w"]
 [ext_resource type="PackedScene" uid="uid://dfk1afnkqscaq" path="res://game/UI/inside_heli.tscn" id="2_xi0fb"]
 [ext_resource type="Texture2D" uid="uid://bnvrevidhlpo5" path="res://assets/ui/largestar1.png" id="3_aa1te"]
+[ext_resource type="Texture2D" uid="uid://3kdpcaclr6ld" path="res://assets/ui/button_graphic.png" id="3_krc60"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="3_mlu1o"]
+[ext_resource type="Texture2D" uid="uid://bhrjbrcjvjim6" path="res://assets/ui/button_hover_graphic.png" id="4_0ivmy"]
 [ext_resource type="Texture2D" uid="uid://cn0811gmx6ohf" path="res://assets/characters/lumi/base_form/LumiSprite.png" id="5_lr01u"]
 [ext_resource type="Texture2D" uid="uid://4v6wc1fa3ym7" path="res://assets/characters/panko/base_form/Panko_Sprite.png" id="6_knc46"]
 [ext_resource type="Texture2D" uid="uid://wfelj55r43i2" path="res://assets/characters/pippa/base_form/Pippa_Sprite.png" id="7_nfb6q"]
@@ -220,75 +221,21 @@ grow_vertical = 2
 
 [node name="Control" type="Control" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
 
-[node name="MainMenu" type="Button" parent="CanvasLayer/MarginContainer/Control"]
-custom_minimum_size = Vector2(80, 50)
-layout_mode = 2
-offset_left = -309.0
-offset_top = 8.0
-offset_right = -213.0
-offset_bottom = 58.0
-text = "Main Menu"
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Control/MainMenu"]
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Control"]
 texture_filter = 3
-custom_minimum_size = Vector2(100, 31.375)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_v282w")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Control/MainMenu"]
-texture_filter = 3
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_mlu1o")
-text = "Main Menu"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Control"]
 layout_mode = 0
-offset_left = 97.0
-offset_top = 259.0
-offset_right = 292.0
-offset_bottom = 309.0
-theme_override_constants/separation = 25
+offset_left = 457.0
+offset_top = 247.0
+offset_right = 557.0
+offset_bottom = 329.0
+theme_override_constants/separation = 10
 
-[node name="Retry" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
-custom_minimum_size = Vector2(80, 50)
+[node name="Retry" type="TextureButton" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 2
-text = "Retry"
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Control/HBoxContainer/Retry"]
-texture_filter = 3
-custom_minimum_size = Vector2(100, 31.375)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_v282w")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture_normal = ExtResource("3_krc60")
+texture_hover = ExtResource("4_0ivmy")
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Control/HBoxContainer/Retry"]
 texture_filter = 3
@@ -301,27 +248,13 @@ grow_vertical = 2
 theme = ExtResource("3_mlu1o")
 text = "Retry"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="NextLevel" type="Button" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
-custom_minimum_size = Vector2(80, 50)
+[node name="NextLevel" type="TextureButton" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 2
-text = "Next Level"
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Control/HBoxContainer/NextLevel"]
-texture_filter = 3
-custom_minimum_size = Vector2(100, 31.375)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_v282w")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture_normal = ExtResource("3_krc60")
+texture_hover = ExtResource("4_0ivmy")
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Control/HBoxContainer/NextLevel"]
 texture_filter = 3
@@ -334,7 +267,38 @@ offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mlu1o")
-text = "Next Level"
+theme_override_font_sizes/font_size = 8
+text = "Level Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/Control"]
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 50.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="MainMenu" type="TextureButton" parent="CanvasLayer/MarginContainer/Control/MarginContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+texture_normal = ExtResource("3_krc60")
+texture_hover = ExtResource("4_0ivmy")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Control/MarginContainer/MainMenu"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mlu1o")
+text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -483,7 +447,7 @@ color = Color(0.576471, 0.772549, 0.945098, 1)
 wait_time = 4.8
 one_shot = true
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/Control/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Control/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Control/HBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Control/MarginContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
