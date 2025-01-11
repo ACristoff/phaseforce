@@ -12,6 +12,7 @@ class_name BasePlayer
 @onready var shell_spout: Marker2D
 @onready var blast_graphic: Sprite2D
 @onready var gun_anim: AnimationPlayer
+@onready var no_ammo_anim: AnimationPlayer = $NoAmmo/NoAmmoAnim
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var debug_text: Label = $Label
 @onready var floor_cast: RayCast2D = $RayCast2D
@@ -274,6 +275,9 @@ func _physics_process(delta: float) -> void:
 			attack()
 	if Input.is_action_just_pressed("shoot") && gun_magazine <= 0:
 		AudioManager.play_sfx(empty_mag_sound)
+		print("out of ammo")
+		no_ammo_anim.play("no_ammo")
+		
 	if Input.is_action_just_pressed("interact") && current_door:
 		if current_door.closed:
 			current_door.open()

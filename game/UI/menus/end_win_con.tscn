@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://6sdmxvc3ge28"]
+[gd_scene load_steps=7 format=3 uid="uid://6sdmxvc3ge28"]
 
 [ext_resource type="Texture2D" uid="uid://d4mdnjp0k0vxg" path="res://assets/ui/end_screen.png" id="1_gre1u"]
+[ext_resource type="Script" path="res://game/UI/menus/end_win_con.gd" id="1_rl6i4"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_6bnmi"]
 
 [sub_resource type="Animation" id="Animation_tggbu"]
@@ -54,6 +55,23 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8, 6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_explosion_sfx"
+}, {
+"args": [],
+"method": &"_explosion_sfx"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_mhyg8"]
@@ -114,6 +132,7 @@ _data = {
 }
 
 [node name="EndWinCon" type="Node2D"]
+script = ExtResource("1_rl6i4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
