@@ -3,7 +3,8 @@ extends Control
 @onready var pathfollow = $Path2D/PathFollow2D
 @onready var cutscene_player = $cutscene
 @onready var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
-@onready var bpsfx = preload("res://assets/sfx/misc/BERET PARADE Cadence rev 2.mp3")
+@onready var select_anim = $CanvasLayer/SelectedButtonGraphic/AnimationPlayer
+@onready var select_graphic = $CanvasLayer/SelectedButtonGraphic
 var sway = false
 
 signal character_select
@@ -23,7 +24,6 @@ signal to_settings
 	preload("res://assets/sfx/b00/b09.wav"),
 ]
 
-
 func _ready():
 	pass
 
@@ -37,14 +37,11 @@ func _physics_process(_delta):
 	else:
 		pass
 
-func _play_splash_sfx():
-	AudioManager.play_sfx(bpsfx)
-func _play_beretchan_sfx():
-	var random = randi_range(0,8)
-	AudioManager.play_sfx_wav(bereparedosfx[random], 1)
-
 func _on_start_pressed():
 	#character_select.emit()
+	select_anim.play("selected")
+	select_graphic.global_position = $CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start2.global_position
+	await get_tree().create_timer(.8).timeout
 	on_start.emit()
 	pass # Replace with function body.
 
@@ -54,15 +51,22 @@ func _on_animation_player_animation_finished(anim_name):
 		AudioManager.play_music(music)
 
 func _on_credits_pressed():
+	select_anim.play("selected")
+	select_graphic.global_position = $CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits.global_position
+	await get_tree().create_timer(.8).timeout
 	credits.emit()
 	pass # Replace with function body.
 
-
 func _on_quit_pressed():
+	select_anim.play("selected")
+	select_graphic.global_position = $CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit.global_position
+	await get_tree().create_timer(.8).timeout
 	get_tree().quit()
 	pass # Replace with function body.
 
-
 func _on_options_pressed():
+	select_anim.play("selected")
+	select_graphic.global_position = $CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options.global_position
+	await get_tree().create_timer(.8).timeout
 	to_settings.emit()
 	pass # Replace with function body.

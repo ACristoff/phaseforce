@@ -1,20 +1,83 @@
-[gd_scene load_steps=36 format=3 uid="uid://bo8235t87pkb1"]
+[gd_scene load_steps=37 format=3 uid="uid://bo8235t87pkb1"]
 
 [ext_resource type="Script" path="res://game/data/title_control.gd" id="1_epqi3"]
 [ext_resource type="Texture2D" uid="uid://betqi4sbw8ywd" path="res://assets/ui/title/Title.png" id="2_j6iul"]
-[ext_resource type="Texture2D" uid="uid://dof1b4wrb8et0" path="res://assets/ui/container2.png" id="3_1ltbq"]
 [ext_resource type="Script" path="res://game/data/particles_loader.gd" id="3_4mkg1"]
 [ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="3_qakli"]
 [ext_resource type="PackedScene" uid="uid://cp0ieln1qw04k" path="res://game/projectiles/bullet_hit_particle.tscn" id="3_txfbg"]
+[ext_resource type="Texture2D" uid="uid://3kdpcaclr6ld" path="res://assets/ui/button_graphic.png" id="3_xngi0"]
 [ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="4_78r31"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="4_f17u2"]
+[ext_resource type="Texture2D" uid="uid://bhrjbrcjvjim6" path="res://assets/ui/button_hover_graphic.png" id="4_kga3x"]
+[ext_resource type="Texture2D" uid="uid://bj8cu4530pgfa" path="res://assets/ui/selected_button_graphic.png" id="4_pj233"]
 [ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="5_b84rr"]
 [ext_resource type="Texture2D" uid="uid://dqlbx42lbfhfl" path="res://assets/particles/sparkles.png" id="5_xfjmr"]
 [ext_resource type="PackedScene" uid="uid://tv7bip0e2nad" path="res://game/projectiles/spent_shell.tscn" id="6_ih1qs"]
 [ext_resource type="Texture2D" uid="uid://dupigsbyqxg1m" path="res://assets/environment/placeables/decorations/titleheli.png" id="6_ojxjh"]
 [ext_resource type="Texture2D" uid="uid://cx351xvbj2njp" path="res://assets/particles/generator/generator_debris.png" id="7_nlwd2"]
-[ext_resource type="Texture2D" uid="uid://drrryt4gklwl4" path="res://assets/ui/title/beretparadelogo.png" id="8_0jkmb"]
 [ext_resource type="Texture2D" uid="uid://dgdc5tbwblym5" path="res://assets/particles/minicopter.png" id="13_kfgj3"]
+
+[sub_resource type="Animation" id="Animation_coq4g"]
+resource_name = "selected"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../SelectedButtonGraphic:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../SelectedButtonGraphic:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_24t5q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../SelectedButtonGraphic:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../SelectedButtonGraphic:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_acoku"]
+_data = {
+"RESET": SubResource("Animation_24t5q"),
+"selected": SubResource("Animation_coq4g")
+}
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h5kjd"]
 particles_animation = true
@@ -73,133 +136,6 @@ _data = {
 "points": PackedVector2Array(-15.9278, -15.25, 15.9278, 15.25, 25, -17, 0, 0, 0, 0, 26, 26, 24.5444, 15.75, -24.5444, -15.75, -19, 25, -18.0167, 9.25, 18.0167, -9.25, -18.8, -20, 0, 0, 0, 0, 25, -17)
 }
 point_count = 5
-
-[sub_resource type="Animation" id="Animation_t4qem"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect/Beretparadelogo:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/ColorRect:mouse_filter")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/ColorRect/Beretparadelogo:mouse_filter")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_bd6ix"]
-resource_name = "splash"
-length = 4.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect/Beretparadelogo:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.0500002, 0, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.0500002, 0, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3, 3.8, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/ColorRect:mouse_filter")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 2]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/ColorRect/Beretparadelogo:mouse_filter")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 2]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.3, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"_play_splash_sfx"
-}, {
-"args": [],
-"method": &"_play_beretchan_sfx"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_byc40"]
-_data = {
-"RESET": SubResource("Animation_t4qem"),
-"splash": SubResource("Animation_bd6ix")
-}
 
 [sub_resource type="Curve2D" id="Curve2D_gcqls"]
 _data = {
@@ -374,7 +310,7 @@ theme_override_constants/margin_right = 25
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 25
+theme_override_constants/separation = 10
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Butttons_Container"]
 texture_filter = 3
@@ -390,36 +326,14 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 1
 alignment = 1
 
-[node name="Start" type="Control" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start"]
+[node name="Start2" type="TextureButton" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
 texture_filter = 3
-custom_minimum_size = Vector2(100, 31.375)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_1ltbq")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+layout_mode = 2
+texture_normal = ExtResource("3_xngi0")
+texture_hover = ExtResource("4_kga3x")
 
-[node name="Start" type="Button" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start/NinePatchRect"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Start"
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start/NinePatchRect/Start"]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -431,38 +345,14 @@ text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Options2" type="Control" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options2"]
+[node name="Options" type="TextureButton" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
 texture_filter = 3
-custom_minimum_size = Vector2(100, 31.375)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_1ltbq")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+layout_mode = 2
+texture_normal = ExtResource("3_xngi0")
+texture_hover = ExtResource("4_kga3x")
 
-[node name="Options" type="Button" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options2/NinePatchRect"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Options"
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options2/NinePatchRect/Options"]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -475,46 +365,14 @@ text = "Options
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options2/NinePatchRect"]
-layout_mode = 0
-offset_left = -410.0
-offset_top = 79.0
-offset_right = -370.0
-offset_bottom = 102.0
-theme = ExtResource("4_f17u2")
-text = "Ver. 0.1"
-
-[node name="Credits2" type="Control" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits2"]
+[node name="Credits" type="TextureButton" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
 texture_filter = 3
-custom_minimum_size = Vector2(100, 31.375)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_1ltbq")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+layout_mode = 2
+texture_normal = ExtResource("3_xngi0")
+texture_hover = ExtResource("4_kga3x")
 
-[node name="Credits" type="Button" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits2/NinePatchRect"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Credits
-"
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits2/NinePatchRect/Credits"]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -526,37 +384,14 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Quit2" type="Control" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit2"]
+[node name="Quit" type="TextureButton" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
 texture_filter = 3
-custom_minimum_size = Vector2(100, 31.375)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_1ltbq")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+layout_mode = 2
+texture_normal = ExtResource("3_xngi0")
+texture_hover = ExtResource("4_kga3x")
 
-[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit2/NinePatchRect"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Quit
-"
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit2/NinePatchRect/Quit"]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -567,6 +402,21 @@ theme = ExtResource("4_f17u2")
 text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="SelectedButtonGraphic" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+texture_filter = 3
+position = Vector2(447, 175)
+texture = ExtResource("4_pj233")
+offset = Vector2(50, 18)
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/SelectedButtonGraphic"]
+root_node = NodePath("../../MarginContainer/Butttons_Container/VBoxContainer/Start2")
+libraries = {
+"": SubResource("AnimationLibrary_acoku")
+}
+speed_scale = 3.0
 
 [node name="Particles" type="Node2D" parent="CanvasLayer"]
 position = Vector2(50, 318)
@@ -594,30 +444,6 @@ process_material = SubResource("ParticleProcessMaterial_1fng5")
 texture = ExtResource("7_nlwd2")
 one_shot = true
 explosiveness = 0.89
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Beretparadelogo" type="TextureRect" parent="CanvasLayer/ColorRect"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -640.0
-offset_top = -360.0
-offset_right = 640.0
-offset_bottom = 360.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.25, 0.25)
-pivot_offset = Vector2(960, 540)
-texture = ExtResource("8_0jkmb")
 
 [node name="parallax" type="Node2D" parent="."]
 position = Vector2(0, 127)
@@ -703,12 +529,6 @@ rotates = false
 
 [node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
 
-[node name="splash" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_byc40")
-}
-autoplay = "splash"
-
 [node name="copter" type="Path2D" parent="."]
 curve = SubResource("Curve2D_gcqls")
 
@@ -736,8 +556,7 @@ libraries = {
 "": SubResource("AnimationLibrary_86clq")
 }
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start/NinePatchRect/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options2/NinePatchRect/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits2/NinePatchRect/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit2/NinePatchRect/Quit" to="." method="_on_quit_pressed"]
-[connection signal="animation_finished" from="splash" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start2" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

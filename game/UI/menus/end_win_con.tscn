@@ -6,7 +6,7 @@
 
 [sub_resource type="Animation" id="Animation_tggbu"]
 resource_name = "cutscene"
-length = 8.0
+length = 6.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -73,6 +73,18 @@ tracks/4/keys = {
 "method": &"_explosion_sfx"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/MainMenu:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5.6, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_mhyg8"]
 length = 0.001
@@ -124,6 +136,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/MainMenu:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ntkp"]
 _data = {
@@ -150,6 +174,7 @@ libraries = {
 autoplay = "cutscene"
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -175,3 +200,19 @@ theme_override_font_sizes/font_size = 16
 text = "Thank  You  For  Playing!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MainMenu" type="Button" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 50)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -172.0
+offset_right = -16.0
+offset_bottom = -122.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Main Menu"
