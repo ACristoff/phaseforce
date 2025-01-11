@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" path="res://game/data/audio_manager.gd" id="1_pcnf7"]
 
-[node name="AudioManager" type="AudioStreamPlayer"]
+[node name="AudioManager" type="Node"]
 script = ExtResource("1_pcnf7")
 
-[node name="FadeTimer" type="Timer" parent="."]
+[node name="MusicManager" type="AudioStreamPlayer" parent="."]
+
+[node name="FadeTimer" type="Timer" parent="MusicManager"]
 one_shot = true
 
-[connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]
+[connection signal="timeout" from="MusicManager/FadeTimer" to="MusicManager" method="_on_fade_timer_timeout"]
