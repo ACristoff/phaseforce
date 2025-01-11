@@ -1,101 +1,93 @@
-extends AudioStreamPlayer
+extends Node
 
 var current_music: AudioStreamMP3
 var new_music: AudioStreamMP3
 var new_volume: int
 
-@onready var fade_timer = $FadeTimer
+@onready var fade_timer: Timer = $MusicManager/FadeTimer
+@onready var music_manager: AudioStreamPlayer = $MusicManager
 
-var global_volume = 0 
-var dampener = -25
-var has_looped
+#var has_looped_sfx
 
 func _process(delta):
 	if new_music && !fade_timer.is_stopped():
-		volume_db = volume_db - (30 * delta)
+		music_manager.volume_db = music_manager.volume_db - (30 * delta)
 
 func switch_songs():
 	fade_timer.start()
 
-func change_volume():
-	volume_db = global_volume + dampener
-
-func play_looped(new_stream: AudioStreamMP3, volume = 0.0):
-	var fx_player = AudioStreamPlayer.new()
-	var looped_stream = new_stream
-	looped_stream.set_loop(true)
-	fx_player.stream = new_stream
-	#fx_player.stream
-	fx_player.name = "FX_Player"
-	fx_player.volume_db = volume + global_volume + dampener
-	add_child(fx_player)
-	fx_player.play()
-	has_looped = fx_player
-
-func stop_looped():
-	if has_looped:
-		has_looped.queue_free()
-
-func play_music(music: AudioStreamMP3, volume = 0.0):
-	prints(music, global_volume, volume_db)
-	#change_volume()
-	playing = true
+func play_music(music: AudioStreamMP3, volume = 0.0, looped = true):
+	music_manager.playing = true
 	if current_music:
 		new_music = music
-		new_volume = volume + dampener
+		new_volume = volume
 		switch_songs()
 		return
 	current_music = music
-	current_music.set_loop(true)
-	stream = music
-	#stream
-	volume_db = volume + dampener
-	play()
+	current_music.set_loop(looped)
+	music_manager.stream = music
+	music_manager.volume_db = volume
+	music_manager.play()
 
-#func stop_music(_do_fade):
-	#if _do_fade:
-		#fade_timer.start()
-	#playing = false
-	#pass
-
-func play_sfx(new_stream: AudioStreamMP3, volume = 0.0):
-	var fx_player = AudioStreamPlayer.new()
+func play_sfx(new_stream: AudioStreamMP3, volume = 0.0, looped = false):
+	var fx_player: AudioStreamPlayer = AudioStreamPlayer.new()
+	new_stream.set_loop(looped)
 	fx_player.stream = new_stream
 	fx_player.name = "FX_Player"
-	fx_player.volume_db = volume + global_volume + dampener
+	fx_player.bus = "SFX"
+	fx_player.volume_db = volume
 	add_child(fx_player)
 	fx_player.play()
+	if looped == false:
+		fx_player.finished.connect(on_sound_finished.bind(fx_player))
 	
-	await fx_player.finished
-	fx_player.queue_free()
+	return fx_player
+
+func create_2d_sfx(new_stream: AudioStreamWAV, volume = 0.0, looped = false):
+	var fx_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+	new_stream.set_loop(looped)
+	fx_player.stream = new_stream
+	fx_player.name = "FX_Player_2D"
+	fx_player.bus = "SFX"
+	fx_player.volume_db = volume
+	#add_child(fx_player)
+	fx_player.play()
+	if looped == false:
+		fx_player.finished.connect(on_sound_finished.bind(fx_player))
+	
+	return fx_player
+
+func play_sfx_wav(new_stream: AudioStreamWAV, volume = 0.0, looped = false):
+	var fx_player: AudioStreamPlayer = AudioStreamPlayer.new()
+	#new_stream.set_loop(looped)
+	fx_player.stream = new_stream
+	fx_player.name = "FX_Player"
+	fx_player.bus = "SFX"
+	fx_player.volume_db = volume
+	add_child(fx_player)
+	fx_player.play()
+	if looped == false:
+		fx_player.finished.connect(on_sound_finished.bind(fx_player))
+	
+	return fx_player
 
 func play_quip(new_stream: AudioStreamMP3, volume = 0.0):
-	var fx_player = AudioStreamPlayer.new()
+	var fx_player: AudioStreamPlayer = AudioStreamPlayer.new()
 	fx_player.stream = new_stream
 	fx_player.name = "FX_Player"
-	fx_player.volume_db = volume + global_volume + dampener
+	fx_player.volume_db = volume
+	fx_player.bus = "Voice"
 	add_child(fx_player)
 	fx_player.play()
+	fx_player.finished.connect(on_sound_finished.bind(fx_player ))
 	
-	await fx_player.finished
-	fx_player.queue_free()
-
-func play_sfx_wav(new_stream: AudioStreamWAV, volume = 0.0):
-	var fx_player = AudioStreamPlayer.new()
-	fx_player.stream = new_stream
-	fx_player.name = "FX_Player"
-	fx_player.volume_db = volume + global_volume + dampener
-	add_child(fx_player)
-	fx_player.play()
-	
-	await fx_player.finished
-	fx_player.queue_free()
-
+	return fx_player
 
 func _on_fade_timer_timeout():
-	#print('play the new song')
-	stream = new_music
-	volume_db = new_volume
-	play()
+	music_manager.stream = new_music
+	music_manager.volume_db = new_volume
+	music_manager.play()
 	current_music = new_music
-	fade_timer.stop()
+
+func on_sound_finished(sound_player):
+	sound_player.queue_free()
