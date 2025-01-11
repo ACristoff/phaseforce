@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bcyvqrwjcn8dt"]
+[gd_scene load_steps=26 format=3 uid="uid://bcyvqrwjcn8dt"]
 
 [ext_resource type="Script" path="res://game/characters/base_player.gd" id="1_lf5mu"]
 [ext_resource type="AudioStream" uid="uid://pckpxxpgy43a" path="res://assets/sfx/quips/panko/QUIP_POWERUP.mp3" id="2_34bpo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="6_pxb20"]
 [ext_resource type="Texture2D" uid="uid://0ofvyiswdyor" path="res://assets/ui/extractarrow.png" id="6_vhwn8"]
 [ext_resource type="Texture2D" uid="uid://bhcgwh87uyauk" path="res://assets/particles/crosshairs/reloading.png" id="7_pkg5e"]
+[ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="9_jjtm1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m540u"]
 radius = 8.0
@@ -198,6 +199,97 @@ _data = {
 "arrow": SubResource("Animation_yvblg")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v16xh"]
+shader = ExtResource("6_pxb20")
+shader_parameter/outline_color = Color(0.33, 0, 0.165, 1)
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.002
+
+[sub_resource type="Animation" id="Animation_lketd"]
+resource_name = "no_ammo"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NoAmmo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, -26), Vector2(-15, -26), Vector2(-25, -26), Vector2(-20, -26), Vector2(-20, -26), Vector2(-20, -38)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NoAmmo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NoAmmo:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_0wk3m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NoAmmo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-20, -26)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NoAmmo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NoAmmo:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xytbs"]
+_data = {
+"RESET": SubResource("Animation_0wk3m"),
+"no_ammo": SubResource("Animation_lketd")
+}
+
 [node name="BasePlayer" type="CharacterBody2D" groups=["player"]]
 texture_filter = 3
 collision_layer = 129
@@ -299,6 +391,31 @@ autoplay = "arrow"
 
 [node name="MouseCursor" type="Sprite2D" parent="."]
 texture = ExtResource("7_pkg5e")
+
+[node name="NoAmmo" type="Label" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_v16xh")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -26.0
+offset_right = 20.0
+offset_bottom = -3.0
+grow_horizontal = 2
+theme = ExtResource("9_jjtm1")
+theme_override_colors/font_color = Color(0.83, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(1, 0.86, 0.4, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 8
+text = "No Ammo!"
+
+[node name="NoAmmoAnim" type="AnimationPlayer" parent="NoAmmo"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_xytbs")
+}
 
 [connection signal="timeout" from="Timers/ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="area_entered" from="PlatformDetector" to="." method="_on_platform_detector_area_entered"]
