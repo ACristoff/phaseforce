@@ -61,8 +61,6 @@ func _process(delta):
 		back_to_game.emit()
 		get_tree().paused = false
 		queue_free()
-		pass
-	pass
 
 func _on_button_pressed():
 	Engine.time_scale = 1

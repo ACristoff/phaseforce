@@ -96,6 +96,7 @@ func selected_character(new_character, char_screen):
 	char_screen.queue_free()
 	level_man.to_main.connect(main_menu.bind() )
 	level_man.load_level(level_man.current_level)
+	AudioManager.stop_looped()
 
 func _on_title_credits():
 	var credits_screen = credits.instantiate()

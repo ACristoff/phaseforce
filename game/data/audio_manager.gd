@@ -7,7 +7,7 @@ var new_volume: int
 @onready var fade_timer: Timer = $MusicManager/FadeTimer
 @onready var music_manager: AudioStreamPlayer = $MusicManager
 
-#var has_looped_sfx
+var has_looped_sfx
 
 func _process(delta):
 	if new_music && !fade_timer.is_stopped():
@@ -28,6 +28,7 @@ func play_music(music: AudioStreamMP3, volume = 0.0, looped = true):
 	music_manager.stream = music
 	music_manager.volume_db = volume
 	music_manager.play()
+	return music_manager
 
 func play_sfx(new_stream: AudioStreamMP3, volume = 0.0, looped = false):
 	var fx_player: AudioStreamPlayer = AudioStreamPlayer.new()
@@ -40,7 +41,8 @@ func play_sfx(new_stream: AudioStreamMP3, volume = 0.0, looped = false):
 	fx_player.play()
 	if looped == false:
 		fx_player.finished.connect(on_sound_finished.bind(fx_player))
-	
+	else:
+		has_looped_sfx = fx_player
 	return fx_player
 
 func create_2d_sfx(new_stream: AudioStreamWAV, volume = 0.0, looped = false):
@@ -54,7 +56,8 @@ func create_2d_sfx(new_stream: AudioStreamWAV, volume = 0.0, looped = false):
 	fx_player.play()
 	if looped == false:
 		fx_player.finished.connect(on_sound_finished.bind(fx_player))
-	
+	else:
+		has_looped_sfx = fx_player
 	return fx_player
 
 func play_sfx_wav(new_stream: AudioStreamWAV, volume = 0.0, looped = false):
@@ -68,7 +71,8 @@ func play_sfx_wav(new_stream: AudioStreamWAV, volume = 0.0, looped = false):
 	fx_player.play()
 	if looped == false:
 		fx_player.finished.connect(on_sound_finished.bind(fx_player))
-	
+	else:
+		has_looped_sfx = fx_player
 	return fx_player
 
 func play_quip(new_stream: AudioStreamMP3, volume = 0.0):
@@ -91,3 +95,7 @@ func _on_fade_timer_timeout():
 
 func on_sound_finished(sound_player):
 	sound_player.queue_free()
+
+func stop_looped():
+	if has_looped_sfx:
+		has_looped_sfx.queue_free()

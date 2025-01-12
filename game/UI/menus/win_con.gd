@@ -6,6 +6,7 @@ extends Node2D
 @onready var time = $CanvasLayer/VBoxContainer/Time
 @onready var secrets = $CanvasLayer/VBoxContainer/Secrets
 @onready var kills = $CanvasLayer/VBoxContainer/SnowmenKilled
+@onready var heli = $InsideHeli
 @onready var purplestar = preload("res://assets/ui/largestar2.png")
 @onready var victory_music = preload("res://assets/music/VICTORY_A.mp3")
 @onready var victory_music_b = preload("res://assets/music/VICTORY_B.mp3")
@@ -21,11 +22,16 @@ func _star_three_achieved():
 	starthree.texture = purplestar
 
 func _ready():
-	AudioManager.play_sfx(victory_music)
+	#AudioManager.play_sfx(victory_music)
+	var new_song: AudioStreamPlayer = AudioManager.play_music(victory_music, 0, false)
+	new_song.finished.connect(track_b.bind())
 	game_man = get_tree().get_first_node_in_group("game")
 	level_man = get_tree().get_first_node_in_group("level_manager")
-	$Timer.start()
+	#$Timer.start()
 
+func track_b():
+	AudioManager.play_music(victory_music_b)
+	pass
 
 func show_stats(data, level_id):
 	if data["stars"][0]:
@@ -62,8 +68,3 @@ func _on_next_level_pressed():
 	level_man.load_level(level_man.current_level)
 	AudioManager.stop_looped()
 	queue_free()
-
-
-func _on_timer_timeout():
-	AudioManager.play_looped(victory_music_b)
-	pass # Replace with function body.

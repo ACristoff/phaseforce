@@ -68,6 +68,9 @@ func _physics_process(delta: float) -> void:
 	if health == 0:
 		player_death.emit()
 		health = -1
+	
+	if extract != null:
+		arrow.look_at(extract.global_position)
 	##ACTIONS
 	debug_text.text = str(attack_direction)
 	if powered_up:
