@@ -47,3 +47,11 @@ func _process(_delta):
 func _on_play_level_button_pressed():
 	level_selected.emit(level_id)
 	pass # Replace with function body.
+
+
+func _on_play_level_button_mouse_entered():
+	print("mouse over level")
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "position:y", -10, .1)
+	tween.tween_property(self, "position:y", 0, .1)

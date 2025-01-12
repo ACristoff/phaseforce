@@ -20,7 +20,7 @@ sample_voice = ExtResource("2_wndxg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="NinePatchRect3" type="NinePatchRect" parent="CanvasLayer"]
+[node name="NinePatchRect3" type="ColorRect" parent="CanvasLayer"]
 texture_filter = 3
 custom_minimum_size = Vector2(120, 66.86)
 anchors_preset = 15
@@ -28,29 +28,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_n1w1y")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+mouse_filter = 2
+color = Color(0.0705882, 0.32549, 0.392157, 1)
 
 [node name="Settings" type="VBoxContainer" parent="CanvasLayer/NinePatchRect3"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -184.0
+offset_right = 184.0
+offset_bottom = 360.0
 grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings"]
+[node name="BACK" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings"]
 layout_mode = 2
-theme_override_constants/margin_left = -550
-theme_override_constants/margin_top = 30
+size_flags_horizontal = 0
 
-[node name="NinePatchRect4" type="NinePatchRect" parent="CanvasLayer/NinePatchRect3/Settings/MarginContainer2"]
+[node name="NinePatchRect4" type="NinePatchRect" parent="CanvasLayer/NinePatchRect3/Settings/BACK"]
 texture_filter = 3
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
@@ -62,7 +60,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Button" type="Button" parent="CanvasLayer/NinePatchRect3/Settings/MarginContainer2/NinePatchRect4"]
+[node name="Button" type="Button" parent="CanvasLayer/NinePatchRect3/Settings/BACK/NinePatchRect4"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
@@ -74,7 +72,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 text = "X"
 
-[node name="Label" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/MarginContainer2/NinePatchRect4"]
+[node name="Label" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/BACK/NinePatchRect4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,11 +84,13 @@ text = "Back"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings"]
+[node name="SoundSettings" type="VBoxContainer" parent="CanvasLayer/NinePatchRect3/Settings"]
 layout_mode = 2
-theme_override_constants/margin_top = -95
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 10
 
-[node name="Sound" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/MarginContainer"]
+[node name="SETTING" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings"]
 texture_filter = 3
 layout_mode = 2
 theme = ExtResource("1_um8c4")
@@ -99,135 +99,75 @@ text = "SETTING"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings"]
-visible = false
+[node name="SLIDERS" type="HBoxContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings"]
 layout_mode = 2
-theme_override_constants/margin_top = -30
 
-[node name="Sound" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/MarginContainer3"]
-visible = false
-texture_filter = 3
+[node name="Title" type="VBoxContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS"]
 layout_mode = 2
-theme = ExtResource("1_um8c4")
-theme_override_font_sizes/font_size = 16
-text = "Sound"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SoundSettings" type="VBoxContainer" parent="CanvasLayer/NinePatchRect3/Settings"]
-layout_mode = 2
-size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="Master" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Master"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Label" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Master/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Title"]
 texture_filter = 3
 layout_mode = 2
 theme = ExtResource("1_um8c4")
 text = "Master Volume"
 
-[node name="Sound" type="CheckButton" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Master/HBoxContainer"]
-layout_mode = 2
-button_pressed = true
-
-[node name="MasterSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Master/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-max_value = 1.0
-step = 0.05
-ticks_on_borders = true
-
-[node name="Music" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Music"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Label" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Music/HBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Title"]
 texture_filter = 3
 layout_mode = 2
 theme = ExtResource("1_um8c4")
-text = "Music                     "
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Sound" type="CheckButton" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Music/HBoxContainer"]
-layout_mode = 2
-button_pressed = true
-
-[node name="MusicSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Music/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-max_value = 1.0
-step = 0.05
-ticks_on_borders = true
-
-[node name="Voices" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Voices"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Label" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Voices/HBoxContainer"]
+[node name="Label3" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Title"]
 texture_filter = 3
 layout_mode = 2
 theme = ExtResource("1_um8c4")
-text = "Voices                   "
+text = "Voices"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Sound" type="CheckButton" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Voices/HBoxContainer"]
-layout_mode = 2
-button_pressed = true
-
-[node name="VoiceSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Voices/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-max_value = 1.0
-step = 0.05
-ticks_on_borders = true
-
-[node name="SFX2" type="MarginContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX2"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Label" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX2/HBoxContainer"]
+[node name="Label4" type="Label" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Title"]
 texture_filter = 3
 layout_mode = 2
 theme = ExtResource("1_um8c4")
 text = "SFX
 "
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Sound" type="CheckButton" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX2/HBoxContainer"]
+[node name="Slider" type="VBoxContainer" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS"]
 layout_mode = 2
-button_pressed = true
+theme_override_constants/separation = 20
 
-[node name="SFXSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX2/HBoxContainer"]
+[node name="MasterSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 ticks_on_borders = true
 
-[node name="GraphicsLabel" type="Label" parent="CanvasLayer/NinePatchRect3/Settings"]
-visible = false
-texture_filter = 3
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme = ExtResource("1_um8c4")
-text = "Graphics"
-horizontal_alignment = 1
-vertical_alignment = 1
+max_value = 1.0
+step = 0.05
+ticks_on_borders = true
+
+[node name="VoiceSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+ticks_on_borders = true
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+ticks_on_borders = true
 
 [node name="Graphics" type="VBoxContainer" parent="CanvasLayer/NinePatchRect3/Settings"]
 visible = false
@@ -282,7 +222,6 @@ vertical_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/NinePatchRect3/Settings/Menu"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 35
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/NinePatchRect3/Settings/Menu/HBoxContainer"]
 texture_filter = 3
@@ -410,13 +349,13 @@ Desktop
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/NinePatchRect3/Settings/MarginContainer2/NinePatchRect4/Button" to="." method="_on_button_pressed"]
-[connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Master/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
-[connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Music/HBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="drag_ended" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Voices/HBoxContainer/VoiceSlider" to="." method="_on_voice_slider_drag_ended"]
-[connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/Voices/HBoxContainer/VoiceSlider" to="." method="_on_voice_slider_value_changed"]
-[connection signal="drag_ended" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX2/HBoxContainer/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
-[connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX2/HBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/NinePatchRect3/Settings/BACK/NinePatchRect4/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider/VoiceSlider" to="." method="_on_voice_slider_drag_ended"]
+[connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider/VoiceSlider" to="." method="_on_voice_slider_value_changed"]
+[connection signal="drag_ended" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="value_changed" from="CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="item_selected" from="CanvasLayer/NinePatchRect3/Settings/Graphics/MarginContainer/HBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
 [connection signal="pressed" from="CanvasLayer/NinePatchRect3/Settings/Menu/HBoxContainer/NinePatchRect/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/NinePatchRect3/Settings/Menu/HBoxContainer/NinePatchRect2/LevelSelect" to="." method="_on_level_select_pressed"]

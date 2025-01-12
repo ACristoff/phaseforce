@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bmq71pbr45cvb"]
+[gd_scene load_steps=35 format=3 uid="uid://bmq71pbr45cvb"]
 
 [ext_resource type="Script" path="res://game/UI/menus/win_con.gd" id="1_hgakx"]
 [ext_resource type="PackedScene" uid="uid://dfk1afnkqscaq" path="res://game/UI/inside_heli.tscn" id="2_xi0fb"]
@@ -6,11 +6,96 @@
 [ext_resource type="Texture2D" uid="uid://3kdpcaclr6ld" path="res://assets/ui/button_graphic.png" id="3_krc60"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="3_mlu1o"]
 [ext_resource type="Texture2D" uid="uid://bhrjbrcjvjim6" path="res://assets/ui/button_hover_graphic.png" id="4_0ivmy"]
+[ext_resource type="Shader" path="res://assets/shaders/gray.gdshader" id="5_dlcmh"]
 [ext_resource type="Texture2D" uid="uid://cn0811gmx6ohf" path="res://assets/characters/lumi/base_form/LumiSprite.png" id="5_lr01u"]
+[ext_resource type="Texture2D" uid="uid://bj8cu4530pgfa" path="res://assets/ui/selected_button_graphic.png" id="6_380dr"]
 [ext_resource type="Texture2D" uid="uid://4v6wc1fa3ym7" path="res://assets/characters/panko/base_form/Panko_Sprite.png" id="6_knc46"]
 [ext_resource type="Texture2D" uid="uid://wfelj55r43i2" path="res://assets/characters/pippa/base_form/Pippa_Sprite.png" id="7_nfb6q"]
 [ext_resource type="Texture2D" uid="uid://dsugoh3hgabw4" path="res://assets/characters/tenma/base_form/Tenma_Sprite.png" id="8_ivnto"]
 [ext_resource type="Texture2D" uid="uid://dt7drd5slxlhk" path="res://assets/characters/lia/base_form/LiaSprite.png" id="9_plyv6"]
+
+[sub_resource type="Gradient" id="Gradient_keseh"]
+offsets = PackedFloat32Array(0, 0.498667, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0.533333, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gcc71"]
+gradient = SubResource("Gradient_keseh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_38rub"]
+shader = ExtResource("5_dlcmh")
+shader_parameter/spread = 0.1
+shader_parameter/cutoff = 0.5
+shader_parameter/size = 0.2
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 3.0
+shader_parameter/ray2_density = 6.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/core_intensity = 0.3
+shader_parameter/hdr = false
+shader_parameter/seed = 2.0
+shader_parameter/gradient = SubResource("GradientTexture2D_gcc71")
+
+[sub_resource type="Animation" id="Animation_u8o5n"]
+resource_name = "selected"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_redx6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rnww6"]
+_data = {
+"RESET": SubResource("Animation_redx6"),
+"selected": SubResource("Animation_u8o5n")
+}
 
 [sub_resource type="Animation" id="Animation_fisvo"]
 length = 0.001
@@ -207,7 +292,9 @@ _data = {
 "lia": SubResource("Animation_4455p")
 }
 
-[node name="WinCon" type="Node2D"]
+[node name="WinCon" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_hgakx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -262,12 +349,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 2.0
+offset_left = 21.0
+offset_right = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_mlu1o")
-theme_override_font_sizes/font_size = 8
 text = "Level Select"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -301,6 +387,18 @@ theme = ExtResource("3_mlu1o")
 text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_38rub")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 325.0
+offset_top = -115.0
+offset_right = 47.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 offset_left = 383.0
@@ -346,6 +444,20 @@ texture_filter = 3
 layout_mode = 2
 theme = ExtResource("3_mlu1o")
 text = "Snowmen Killed: 0"
+
+[node name="SelectedButtonGraphic" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+texture_filter = 3
+position = Vector2(250, -159)
+texture = ExtResource("6_380dr")
+offset = Vector2(50, 18)
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/SelectedButtonGraphic"]
+libraries = {
+"": SubResource("AnimationLibrary_rnww6")
+}
+speed_scale = 3.0
 
 [node name="InsideHeli" parent="." instance=ExtResource("2_xi0fb")]
 position = Vector2(-287, 0)

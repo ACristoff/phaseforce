@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var starone = $CanvasLayer/VBoxContainer/HBoxContainer/Star
 @onready var startwo = $CanvasLayer/VBoxContainer/HBoxContainer/Star2
@@ -7,6 +7,8 @@ extends Node2D
 @onready var secrets = $CanvasLayer/VBoxContainer/Secrets
 @onready var kills = $CanvasLayer/VBoxContainer/SnowmenKilled
 @onready var heli = $InsideHeli
+@onready var select_anim = $CanvasLayer/SelectedButtonGraphic/AnimationPlayer
+@onready var select_graphic = $CanvasLayer/SelectedButtonGraphic
 @onready var purplestar = preload("res://assets/ui/largestar2.png")
 @onready var victory_music = preload("res://assets/music/VICTORY_A.mp3")
 @onready var victory_music_b = preload("res://assets/music/VICTORY_B.mp3")
@@ -47,24 +49,35 @@ func show_stats(data, level_id):
 	game_man.levels_data[str(level_id)] = data
 
 func _on_retry_pressed():
+	select_anim.play("selected")
+	select_graphic.global_position = $CanvasLayer/MarginContainer/Control/HBoxContainer/Retry.global_position
+	await get_tree().create_timer(.8).timeout
 	level_man.load_level(level_man.current_level)
 	AudioManager.stop_looped()
 	queue_free()
 
 
 func _on_main_menu_pressed():
+	select_anim.play("selected")
+	select_graphic.global_position = $CanvasLayer/MarginContainer/Control/MarginContainer/MainMenu.global_position
+	await get_tree().create_timer(.8).timeout
 	game_man.main_menu()
 	AudioManager.stop_looped()
 	queue_free()
 
 
-func _on_level_select_pressed():
-	game_man._on_level_select()
-	AudioManager.stop_looped()
-	queue_free()
+#func _on_level_select_pressed():
+	#select_anim.play("selected")
+	#select_graphic.global_position = $CanvasLayer/MarginContainer/Control/HBoxContainer/Retry.global_position
+	#await get_tree().create_timer(.8).timeout
+	#game_man._on_level_select()
+	#AudioManager.stop_looped()
+	#queue_free()
 
 func _on_next_level_pressed():
-	level_man.current_level += 1
-	level_man.load_level(level_man.current_level)
+	select_anim.play("selected")
+	select_graphic.global_position = $CanvasLayer/MarginContainer/Control/HBoxContainer/NextLevel.global_position
+	await get_tree().create_timer(.8).timeout
+	game_man._on_level_select()
 	AudioManager.stop_looped()
 	queue_free()

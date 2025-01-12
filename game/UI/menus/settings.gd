@@ -9,10 +9,10 @@ var has_level
 @export var sample_sfx: AudioStreamMP3
 @export var sample_voice: AudioStreamMP3
 
-@onready var master_volume_slider = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/Master/HBoxContainer/MasterSlider
-@onready var music_volume_slider  = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/Music/HBoxContainer/MusicSlider
-@onready var voice_volume_slider  = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/Voices/HBoxContainer/VoiceSlider
-@onready var sfx_volume_slider    = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/SFX2/HBoxContainer/SFXSlider
+@onready var master_volume_slider = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider/MasterSlider
+@onready var music_volume_slider  = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider/MusicSlider
+@onready var voice_volume_slider  = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider/VoiceSlider
+@onready var sfx_volume_slider    = $CanvasLayer/NinePatchRect3/Settings/SoundSettings/SLIDERS/Slider/SFXSlider
 
 var music_bus_name: String  = "Music"
 var voice_bus_name: String  = "Voice"
