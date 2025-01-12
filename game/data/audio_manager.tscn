@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://game/data/audio_manager.gd" id="1_pcnf7"]
 
 [node name="AudioManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_pcnf7")
 
 [node name="MusicManager" type="AudioStreamPlayer" parent="."]

@@ -55,6 +55,15 @@ func _on_resolution_item_selected(index):
 		DisplayServer.window_set_size(Vector2i(2944, 1920))
 
 
+func _process(delta):
+	if Input.is_action_just_pressed("menu") && has_level:
+		Engine.time_scale = 1
+		back_to_game.emit()
+		get_tree().paused = false
+		queue_free()
+		pass
+	pass
+
 func _on_button_pressed():
 	Engine.time_scale = 1
 	back_to_main.emit()
