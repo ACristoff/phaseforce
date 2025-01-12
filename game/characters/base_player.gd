@@ -146,7 +146,11 @@ func _ready() -> void:
 	hud.new_bullet_sprite = normal_bullet_hud_sprite
 	hud.change_bullet_sprite()
 	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
-	
+
+func load_hud():
+	hud.new_bullet_sprite = normal_bullet_hud_sprite
+	hud.change_bullet_sprite()
+	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
 
 func add_keycard(_key):
 	keycards.append(_key)
@@ -259,7 +263,10 @@ func jump(force):
 	velocity.y = force
 
 func _physics_process(delta: float) -> void:
-	arrow.look_at(extract.global_position)
+	if is_active == false:
+		return
+	if extract != null:
+		arrow.look_at(extract.global_position)
 	#if InputEvent.
 	mouse_cursor.position = get_local_mouse_position()
 	if health == 0:

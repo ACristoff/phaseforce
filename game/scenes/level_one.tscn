@@ -36,7 +36,7 @@ polygon = PackedVector2Array(-28, -14, 49, -14, 49, 13, 38, 34, 121, 34, 121, 58
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_04hub"]
 distance = -360.0
 
-[node name="LevelOne2" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets")]
+[node name="LevelOne2" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets") groups=["level"]]
 script = ExtResource("1_cakfj")
 primary_obj = NodePath("Generator")
 secrets = [NodePath("SecretArea")]

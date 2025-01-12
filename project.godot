@@ -38,6 +38,8 @@ gifts=""
 game=""
 extract=""
 level_manager=""
+level=""
+hud=""
 
 [input]
 

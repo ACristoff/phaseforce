@@ -72,11 +72,13 @@ func _ready():
 		new_gift.gift_collected.connect(_on_gift_collected.bind() )
 	extract_zone.player_extracted.connect(_on_extract.bind())
 	render_objectives()
-	#
 	play_level_music()
+	player.hud = hud
+	player.is_active = true
+	player.load_hud()
+	player.extract = extract_zone
 
 func play_level_music():
-	print("level tries to play level music")
 	AudioManager.play_music(music)
 
 func _on_enemy_spawned(enemy_ref: EnemyBase):
