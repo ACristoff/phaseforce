@@ -24,7 +24,7 @@ func _star_three_achieved():
 func _ready():
 	#AudioManager.play_sfx(victory_music)
 	var new_song: AudioStreamPlayer = AudioManager.play_music(victory_music, 0, false)
-	new_song.finished.connect(track_b.bind())
+	AudioManager.music_manager.finished.connect(track_b.bind())
 	game_man = get_tree().get_first_node_in_group("game")
 	level_man = get_tree().get_first_node_in_group("level_manager")
 	#$Timer.start()

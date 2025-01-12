@@ -14,4 +14,5 @@ one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
+[connection signal="finished" from="MusicManager" to="." method="_on_music_manager_finished"]
 [connection signal="timeout" from="MusicManager/FadeTimer" to="." method="_on_fade_timer_timeout"]

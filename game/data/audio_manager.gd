@@ -8,6 +8,7 @@ var new_volume: int
 @onready var music_manager: AudioStreamPlayer = $MusicManager
 
 var has_looped_sfx
+var loop_music = true
 
 func _process(delta):
 	if new_music && !fade_timer.is_stopped():
@@ -17,18 +18,19 @@ func switch_songs():
 	fade_timer.start()
 
 func play_music(music: AudioStreamMP3, volume = 0.0, looped = true):
-	music_manager.playing = true
+	#music_manager.playing = true
 	if current_music:
 		new_music = music
 		new_volume = volume
 		switch_songs()
 		return
+	loop_music = looped
 	current_music = music
 	current_music.set_loop(looped)
 	music_manager.stream = music
 	music_manager.volume_db = volume
 	music_manager.play()
-	return music_manager
+	#return music_manager
 
 func play_sfx(new_stream: AudioStreamMP3, volume = 0.0, looped = false):
 	var fx_player: AudioStreamPlayer = AudioStreamPlayer.new()
@@ -99,3 +101,10 @@ func on_sound_finished(sound_player):
 func stop_looped():
 	if has_looped_sfx:
 		has_looped_sfx.queue_free()
+
+
+func _on_music_manager_finished():
+	if loop_music == false:
+		current_music = null
+		music_manager.stop()
+	pass # Replace with function body.
