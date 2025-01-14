@@ -232,7 +232,7 @@ tracks/0/path = NodePath("../copter/PathFollow2D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -244,7 +244,7 @@ tracks/1/path = NodePath("../parallax/Front2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -256,7 +256,7 @@ tracks/2/path = NodePath("../parallax/Front2/Path2D2/PathFollow2D:progress_ratio
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 5, 6.1, 7),
+"times": PackedFloat32Array(0, 3, 4.1, 5),
 "transitions": PackedFloat32Array(1, 0.241484, 0.406126, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.0, 0.947644]
@@ -268,7 +268,7 @@ tracks/3/path = NodePath("..")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(6.1),
+"times": PackedFloat32Array(4.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -508,9 +508,8 @@ position = Vector2(0, -215)
 curve = SubResource("Curve2D_k6jcc")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="parallax/Front2/Path2D2"]
-position = Vector2(0, 215.023)
+position = Vector2(0, -147)
 rotation = 1.5708
-progress = 362.0
 
 [node name="Titleheli" type="Sprite2D" parent="parallax/Front2/Path2D2/PathFollow2D"]
 texture_filter = 3
@@ -534,9 +533,8 @@ rotates = false
 curve = SubResource("Curve2D_gcqls")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="copter"]
-position = Vector2(308, -49.9999)
-rotation = -0.998664
-progress = 254.284
+position = Vector2(237, 189)
+rotation = -1.28203
 
 [node name="Minicopter" type="Sprite2D" parent="copter/PathFollow2D"]
 texture_filter = 3

@@ -1,6 +1,7 @@
 extends Control
 
 @onready var pathfollow = $Path2D/PathFollow2D
+@onready var chopper_pfollow = $parallax/Front2/Path2D2/PathFollow2D
 @onready var cutscene_player = $cutscene
 @onready var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
 @onready var select_anim = $CanvasLayer/SelectedButtonGraphic/AnimationPlayer
@@ -45,10 +46,13 @@ func _on_start_pressed():
 	on_start.emit()
 	pass # Replace with function body.
 
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "splash":
-		cutscene_player.play("cutscene")
-		AudioManager.play_music(music)
+func _post_splash_cutscene():
+	cutscene_player.play("cutscene")
+	AudioManager.play_music(music)
+	
+func title_without_splash():
+	chopper_pfollow.progress_ratio = .95
+	sway = true
 
 func _on_credits_pressed():
 	select_anim.play("selected")
