@@ -159,7 +159,6 @@ position = Vector2(228, 147)
 position = Vector2(829, 312)
 
 [node name="ParallaxLayers" type="Node2D" parent="."]
-position = Vector2(0, 65)
 
 [node name="Sky" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
@@ -169,7 +168,6 @@ repeat_times = 6
 
 [node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Sky"]
 modulate = Color(0.76, 0.868, 1, 1)
-position = Vector2(-160, 86)
 scale = Vector2(-1, 1)
 texture = ExtResource("7_ocm63")
 
@@ -182,7 +180,6 @@ repeat_times = 6
 
 [node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D3"]
 modulate = Color(0.66868, 0.6424, 0.73, 1)
-position = Vector2(-160, 86)
 scale = Vector2(-1, 1)
 texture = ExtResource("7_2d2y8")
 
@@ -195,7 +192,6 @@ repeat_times = 6
 
 [node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D2"]
 modulate = Color(0.37, 0.685, 1, 1)
-position = Vector2(-160, 86)
 texture = ExtResource("7_2d2y8")
 
 [node name="Front" type="Parallax2D" parent="ParallaxLayers"]
@@ -207,7 +203,6 @@ repeat_times = 6
 
 [node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Front"]
 modulate = Color(0.4761, 0.56879, 0.69, 1)
-position = Vector2(-160, 105)
 texture = ExtResource("7_62t8p")
 
 [node name="ParticleColliders" type="Node2D" parent="."]
