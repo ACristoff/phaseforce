@@ -33,6 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_k3oig")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
@@ -43,6 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_is6rd")
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
@@ -53,6 +55,7 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 30
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer2"]
@@ -102,7 +105,7 @@ level_name = "Bonus Level. Car Plant"
 level_id = 4
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-z_index = 12
+z_index = 23
 material = SubResource("ShaderMaterial_o8fc4")
 anchors_preset = 15
 anchor_right = 1.0
