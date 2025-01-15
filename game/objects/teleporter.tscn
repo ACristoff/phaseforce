@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmjicfsc6faaw"]
+[gd_scene load_steps=7 format=3 uid="uid://cmjicfsc6faaw"]
 
+[ext_resource type="Script" path="res://game/objects/teleporter.gd" id="1_hluor"]
 [ext_resource type="Texture2D" uid="uid://bpyi1e208y23g" path="res://assets/objects/teleporter.png" id="1_ykpyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aw03x"]
-size = Vector2(20, 18)
+size = Vector2(12, 13)
 
 [sub_resource type="Animation" id="Animation_io1xn"]
 length = 0.001
@@ -45,11 +46,10 @@ _data = {
 }
 
 [node name="Teleporter" type="Area2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+script = ExtResource("1_hluor")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_aw03x")
 
 [node name="Teleporter" type="Sprite2D" parent="."]
@@ -62,3 +62,5 @@ libraries = {
 "": SubResource("AnimationLibrary_bh2uq")
 }
 autoplay = "teleporter"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
