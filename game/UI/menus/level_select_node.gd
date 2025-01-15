@@ -58,8 +58,11 @@ func _on_play_level_button_mouse_entered():
 		tween.set_trans(Tween.TRANS_SINE)
 		tween.tween_property(self, "position:y", -10, .1)
 		tween.tween_property(self, "position:y", 0, .1)
+	else:
+		pass
 
 
 func _on_play_level_button_mouse_exited() -> void:
-	print("mouse_exit")
-	bobbed = false
+	if not Rect2(Vector2(), size).has_point(get_local_mouse_position()):
+		print("mouse_exit")
+		bobbed = false

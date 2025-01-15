@@ -42,6 +42,19 @@ anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_bo2xr")
 
+[node name="PlayLevelButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -12.0
+offset_right = 47.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Level1" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -49,7 +62,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -81.0
 offset_right = 81.0
-offset_bottom = 317.0
+offset_bottom = 113.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -79,20 +92,6 @@ size_flags_vertical = 4
 mouse_filter = 2
 texture = ExtResource("2_bv7fs")
 expand_mode = 1
-
-[node name="PlayLevelButton" type="Button" parent="Level1/MarginContainer3/TextureRect"]
-self_modulate = Color(1, 1, 1, 0)
-z_index = 100
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -31.0
-offset_top = -32.0
-offset_right = 30.0
-offset_bottom = 69.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="LevelName" type="MarginContainer" parent="Level1"]
 layout_mode = 2
@@ -252,6 +251,6 @@ energy = 8.82
 texture = SubResource("GradientTexture2D_3mct0")
 texture_scale = 2.3
 
-[connection signal="mouse_entered" from="Level1/MarginContainer3/TextureRect/PlayLevelButton" to="." method="_on_play_level_button_mouse_entered"]
-[connection signal="mouse_exited" from="Level1/MarginContainer3/TextureRect/PlayLevelButton" to="." method="_on_play_level_button_mouse_exited"]
-[connection signal="pressed" from="Level1/MarginContainer3/TextureRect/PlayLevelButton" to="." method="_on_play_level_button_pressed"]
+[connection signal="mouse_entered" from="PlayLevelButton" to="." method="_on_play_level_button_mouse_entered"]
+[connection signal="mouse_exited" from="PlayLevelButton" to="." method="_on_play_level_button_mouse_exited"]
+[connection signal="pressed" from="PlayLevelButton" to="." method="_on_play_level_button_pressed"]
