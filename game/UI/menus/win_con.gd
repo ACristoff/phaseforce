@@ -78,6 +78,6 @@ func _on_next_level_pressed():
 	select_anim.play("selected")
 	select_graphic.global_position = $CanvasLayer/MarginContainer/Control/HBoxContainer/NextLevel.global_position
 	await get_tree().create_timer(.8).timeout
-	game_man._on_level_select()
+	game_man.on_settings_to_level_select()
 	AudioManager.stop_looped()
 	queue_free()
