@@ -51,6 +51,15 @@ func attack() -> void:
 	else:
 		start_reload()
 
+func start_reload():
+	if reload_timer.is_stopped():
+		##TODO ANIMATION
+		#no_ammo_anim.play("no_ammo")
+		gun_anim.play("reload")
+		mouse_cursor.texture = reload_cursor_sprite
+		reload_timer.start()
+		reloaded.emit()
+
 func reload():
 	gun_magazine = gun_magazine_capacity
 	mouse_cursor.texture = mouse_cursor_sprite

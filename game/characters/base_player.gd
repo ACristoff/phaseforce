@@ -164,6 +164,7 @@ func gain_heart():
 func start_reload():
 	if reload_timer.is_stopped():
 		##TODO ANIMATION
+		no_ammo_anim.play("no_ammo")
 		gun_anim.play("reload")
 		mouse_cursor.texture = reload_cursor_sprite
 		reload_timer.start()
@@ -282,8 +283,9 @@ func _physics_process(delta: float) -> void:
 			attack()
 	if Input.is_action_just_pressed("shoot") && gun_magazine <= 0:
 		AudioManager.play_sfx(empty_mag_sound)
-		print("out of ammo")
-		no_ammo_anim.play("no_ammo")
+		#print("out of ammo")
+		#no_ammo_anim.play("no_ammo")
+		start_reload()
 		
 	if Input.is_action_just_pressed("interact") && current_door:
 		if current_door.closed:
