@@ -119,6 +119,7 @@ func _physics_process(delta: float) -> void:
 				attack()
 		if Input.is_action_just_pressed("shoot") && gun_magazine <= 0:
 			AudioManager.play_sfx(empty_mag_sound)
+			start_reload(true)
 		if Input.is_action_just_pressed("reload"):
 			if powered_up:
 				if mags > 0:
