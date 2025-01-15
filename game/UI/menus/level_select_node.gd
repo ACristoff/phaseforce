@@ -10,6 +10,7 @@ extends Control
 
 @export var level_name = "test"
 @export var level_id: int
+var bobbed = false
 
 signal level_selected
 
@@ -50,8 +51,18 @@ func _on_play_level_button_pressed():
 
 
 func _on_play_level_button_mouse_entered():
-	print("mouse over level")
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self, "position:y", -10, .1)
-	tween.tween_property(self, "position:y", 0, .1)
+	if bobbed == false:
+		bobbed = true
+		print("mouse over level")
+		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.tween_property(self, "position:y", -10, .1)
+		tween.tween_property(self, "position:y", 0, .1)
+	else:
+		pass
+
+
+func _on_play_level_button_mouse_exited() -> void:
+	if not Rect2(Vector2(), size).has_point(get_local_mouse_position()):
+		print("mouse_exit")
+		bobbed = false

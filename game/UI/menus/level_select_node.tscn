@@ -42,6 +42,19 @@ anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_bo2xr")
 
+[node name="PlayLevelButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -12.0
+offset_right = 47.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Level1" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -49,7 +62,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -81.0
 offset_right = 81.0
-offset_bottom = 317.0
+offset_bottom = 113.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -80,21 +93,9 @@ mouse_filter = 2
 texture = ExtResource("2_bv7fs")
 expand_mode = 1
 
-[node name="PlayLevelButton" type="Button" parent="Level1/MarginContainer3/TextureRect"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="LevelName" type="MarginContainer" parent="Level1"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 5
 
 [node name="Level" type="Label" parent="Level1/LevelName"]
@@ -109,6 +110,7 @@ vertical_alignment = 1
 
 [node name="SecretsFound" type="MarginContainer" parent="Level1"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="SecretsFound" type="Label" parent="Level1/SecretsFound"]
 texture_filter = 3
@@ -124,6 +126,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="BestTime" type="Label" parent="Level1/BestTime"]
 texture_filter = 3
@@ -145,6 +148,7 @@ offset_right = 30.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -240,12 +244,13 @@ mouse_filter = 2
 color = Color(0, 0.19, 0.1235, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-z_index = 11
+z_index = 100
 position = Vector2(0, 89)
 color = Color(0.0935, 0.33, 0, 1)
 energy = 8.82
 texture = SubResource("GradientTexture2D_3mct0")
 texture_scale = 2.3
 
-[connection signal="mouse_entered" from="Level1/MarginContainer3/TextureRect/PlayLevelButton" to="." method="_on_play_level_button_mouse_entered"]
-[connection signal="pressed" from="Level1/MarginContainer3/TextureRect/PlayLevelButton" to="." method="_on_play_level_button_pressed"]
+[connection signal="mouse_entered" from="PlayLevelButton" to="." method="_on_play_level_button_mouse_entered"]
+[connection signal="mouse_exited" from="PlayLevelButton" to="." method="_on_play_level_button_mouse_exited"]
+[connection signal="pressed" from="PlayLevelButton" to="." method="_on_play_level_button_pressed"]

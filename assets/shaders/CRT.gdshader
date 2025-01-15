@@ -8,8 +8,8 @@ vec2 uv_curve(vec2 uv)
 	uv = (uv - 0.5) * 2.3;
 
 	//You can modify the numbers and try different values
-	uv.x *= 1.0 + pow(abs(uv.y) / 3.0, 2.7);
-	uv.y *= 1.0 + pow(abs(uv.x) / 3.0, 2.7);
+	uv.x *= 1.0 + pow(abs(uv.y) / 2.4, 2.7);
+	uv.y *= 1.0 + pow(abs(uv.x) / 2.2, 2.7);
 
 	//The scale part (you can delete it when you want)
 	uv /= 1.2;
@@ -24,8 +24,8 @@ void fragment()
 
 	//You can modify the *3.0, *-3.0 for a bigger or smaller
 	float r = texture(SCREEN_TEXTURE, uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*0.0), 0.0).r;
-	float g = texture(SCREEN_TEXTURE, uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*1.1), 0.0).g;
-	float b = texture(SCREEN_TEXTURE, uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*-1.1), 0.0).b;
+	float g = texture(SCREEN_TEXTURE, uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*1.9), 0.0).g;
+	float b = texture(SCREEN_TEXTURE, uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*-1.9), 0.0).b;
 
 
 	//If you dont want scanlines you can just delete this part
