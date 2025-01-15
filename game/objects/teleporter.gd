@@ -8,5 +8,4 @@ func _on_body_entered(body):
 		teleport_player(body)
 
 func teleport_player(player: BasePlayer):
-	
-	pass
+	player.global_position = teleport_position.global_position

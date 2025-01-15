@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dqpvddi2llok6"]
+[gd_scene load_steps=30 format=4 uid="uid://dqpvddi2llok6"]
 
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="1_3skp3"]
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_cakfj"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://d4miuyj3w3h76" path="res://game/characters/enemies/shield_enemy.tscn" id="21_5b5rh"]
 [ext_resource type="Texture2D" uid="uid://cuqqrfbhjw2k0" path="res://assets/enemies/coming_alive_gun_snowman.png" id="22_8gh4t"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="22_8pvgb"]
+[ext_resource type="PackedScene" uid="uid://cmjicfsc6faaw" path="res://game/objects/teleporter.tscn" id="25_6xf7g"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vb4j5"]
 polygon = PackedVector2Array(8, 1, 8, -9, 70, -9, 79, -7, 80, -14, 71, -16, 8, -16, -616, -16, -627, 1)
@@ -566,7 +567,7 @@ wait_time = 90.0
 one_shot = true
 
 [node name="SecretArea" parent="." instance=ExtResource("15_46xme")]
-position = Vector2(2692, 260)
+position = Vector2(2693, 260)
 collision_layer = 64
 collision_mask = 128
 
@@ -684,6 +685,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LevelTimer" type="Timer" parent="."]
+
+[node name="Teleporters" type="Node" parent="."]
+
+[node name="Teleporter" parent="Teleporters" node_paths=PackedStringArray("teleport_position") instance=ExtResource("25_6xf7g")]
+position = Vector2(2592, 312)
+teleport_position = NodePath("../TeleportSpawn")
+
+[node name="TeleportSpawn" type="Marker2D" parent="Teleporters"]
+position = Vector2(2828, -180)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 
