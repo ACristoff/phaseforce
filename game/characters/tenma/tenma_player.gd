@@ -51,7 +51,7 @@ func attack() -> void:
 	else:
 		start_reload()
 
-func start_reload():
+func start_reload(mag_empty: bool = false):
 	if reload_timer.is_stopped():
 		##TODO ANIMATION
 		#no_ammo_anim.play("no_ammo")

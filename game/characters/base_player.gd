@@ -161,10 +161,11 @@ func gain_heart():
 	if health < 3:
 		health += 1
 
-func start_reload():
+func start_reload(mag_empty: bool = false):
 	if reload_timer.is_stopped():
+		if mag_empty:
+			no_ammo_anim.play("no_ammo")
 		##TODO ANIMATION
-		no_ammo_anim.play("no_ammo")
 		gun_anim.play("reload")
 		mouse_cursor.texture = reload_cursor_sprite
 		reload_timer.start()
@@ -285,7 +286,7 @@ func _physics_process(delta: float) -> void:
 		AudioManager.play_sfx(empty_mag_sound)
 		#print("out of ammo")
 		#no_ammo_anim.play("no_ammo")
-		start_reload()
+		start_reload(true)
 		
 	if Input.is_action_just_pressed("interact") && current_door:
 		if current_door.closed:
@@ -293,9 +294,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reload"):
 		if powered_up:
 			if mags > 0:
-				start_reload()
+				start_reload(false)
 		else:
-			start_reload()
+			start_reload(false)
 	##PLAYER MOVEMENT##
 	#Add the gravity.
 	if not is_on_floor() && !is_ladder():
