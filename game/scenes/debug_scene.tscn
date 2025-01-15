@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="4_ukrgw"]
 [ext_resource type="PackedScene" uid="uid://bytrjfsir7c6d" path="res://game/objects/power_up.tscn" id="6_gnwae"]
 [ext_resource type="PackedScene" uid="uid://bm5mdiuoh8qbi" path="res://game/objects/passthrough_platform.tscn" id="6_vs33k"]
-[ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="7_2d2y8"]
 [ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="7_62t8p"]
 [ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="7_ocm63"]
 [ext_resource type="Texture2D" uid="uid://cxtvffj8juoax" path="res://assets/environment/placeables/decorations/militaryvehicle.png" id="8_oo6ab"]
+[ext_resource type="Texture2D" uid="uid://berymaptqwybm" path="res://assets/environment/tilesets/parallax_large_mountain.png" id="8_pjd52"]
 [ext_resource type="PackedScene" uid="uid://dpei7pskp8gef" path="res://game/objects/record_player.tscn" id="11_he11x"]
 [ext_resource type="PackedScene" uid="uid://b4ir8rl8balvy" path="res://game/objects/climbable_ladder.tscn" id="11_tbj4l"]
 [ext_resource type="PackedScene" uid="uid://c8jo543xm1x0a" path="res://game/characters/enemies/enemy_base.tscn" id="12_lij35"]
@@ -163,47 +163,39 @@ position = Vector2(829, 312)
 [node name="Sky" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
 texture_filter = 3
-repeat_size = Vector2(320, 360)
 repeat_times = 6
 
 [node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Sky"]
 modulate = Color(0.76, 0.868, 1, 1)
-scale = Vector2(-1, 1)
 texture = ExtResource("7_ocm63")
-
-[node name="Parallax2D3" type="Parallax2D" parent="ParallaxLayers"]
-z_index = -10
-texture_filter = 3
-scroll_scale = Vector2(0.1, 0)
-repeat_size = Vector2(320, 0)
-repeat_times = 6
-
-[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D3"]
-modulate = Color(0.66868, 0.6424, 0.73, 1)
-scale = Vector2(-1, 1)
-texture = ExtResource("7_2d2y8")
+region_rect = Rect2(0, 0, 640, 340)
 
 [node name="Parallax2D2" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
 texture_filter = 3
 scroll_scale = Vector2(0.3, 0)
-repeat_size = Vector2(320, 0)
+repeat_size = Vector2(640, 0)
 repeat_times = 6
 
-[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D2"]
-modulate = Color(0.37, 0.685, 1, 1)
-texture = ExtResource("7_2d2y8")
+[node name="LargeMountain" type="Sprite2D" parent="ParallaxLayers/Parallax2D2"]
+position = Vector2(1, 209)
+texture = ExtResource("8_pjd52")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 360)
 
 [node name="Front" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
 texture_filter = 3
-scroll_scale = Vector2(0.6, 0)
+scroll_scale = Vector2(0.6, 0.3)
 repeat_size = Vector2(320, 0)
 repeat_times = 6
 
 [node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Front"]
+visible = false
 modulate = Color(0.4761, 0.56879, 0.69, 1)
 texture = ExtResource("7_62t8p")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 360)
 
 [node name="ParticleColliders" type="Node2D" parent="."]
 position = Vector2(52, 100)
