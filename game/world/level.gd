@@ -217,8 +217,9 @@ func _on_player_damage():
 func _on_death_barrier_body_entered(body):
 	if body is BasePlayer:
 		var new_player = body as BasePlayer
-		new_player.global_position = player_spawn.global_position
-		_on_player_death()
+		new_player.die()
+		#new_player.global_position = player_spawn.global_position
+		#_on_player_death()
 
 func _on_gift_collected():
 	if collect_x_gifts && gifts_collected != gift_quantity:
