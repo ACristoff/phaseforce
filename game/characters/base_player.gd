@@ -153,9 +153,10 @@ func load_hud():
 	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
 
 func die():
-	player_death.emit()
 	is_active = false
 	anim_player.play("death")
+	await get_tree().create_timer(1).timeout
+	player_death.emit()
 
 func add_keycard(_key):
 	keycards.append(_key)
