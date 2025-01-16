@@ -563,7 +563,7 @@ position = Vector2(1021, -144)
 position = Vector2(-342, -8)
 
 [node name="ExtractTimer" type="Timer" parent="."]
-wait_time = 90.0
+wait_time = 88.0
 one_shot = true
 
 [node name="SecretArea" parent="." instance=ExtResource("15_46xme")]

@@ -77,6 +77,11 @@ func _ready():
 	player.is_active = true
 	player.load_hud()
 	player.extract = extract_zone
+	extract_timer.timeout.connect(on_extract_timed_out.bind())
+
+func on_extract_timed_out():
+	player.die()
+	pass
 
 func play_level_music():
 	AudioManager.play_music(music)
