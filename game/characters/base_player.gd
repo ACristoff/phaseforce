@@ -12,6 +12,7 @@ class_name BasePlayer
 @onready var shell_spout: Marker2D
 @onready var blast_graphic: Sprite2D
 @onready var gun_anim: AnimationPlayer
+@onready var muzzle_flash: AnimationPlayer
 @onready var no_ammo_anim: AnimationPlayer = $NoAmmo/NoAmmoAnim
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var debug_text: Label = $Label
@@ -213,6 +214,7 @@ func load_gun(gun, is_new):
 	blast_graphic = $AttackCursor/Arm/CursorSprite/GunExplosion
 	blast_graphic.visible = false
 	gun_anim = $AttackCursor/Arm/CursorSprite/AnimationPlayer
+	muzzle_flash = $AttackCursor/Arm/CursorSprite/MuzzleFlash
 
 func _unhandled_input(event: InputEvent) -> void:
 	#TODO Add case for controller related input
@@ -389,6 +391,8 @@ func is_ladder():
 func attack() -> void:
 	gun_anim.stop()
 	gun_anim.play("kickback")
+	#muzzle_flash.stop()
+	muzzle_flash.play("muzzlef")
 	var new_bullet = bullet.instantiate()
 	var new_shell = shell.instantiate()
 	new_bullet.damage = bullet_damage

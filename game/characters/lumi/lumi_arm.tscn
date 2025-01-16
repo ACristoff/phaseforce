@@ -258,6 +258,7 @@ _data = {
 }
 
 [node name="Arm" type="Sprite2D"]
+z_index = 1
 texture_filter = 3
 texture = ExtResource("1_pbcei")
 offset = Vector2(0, -7)
