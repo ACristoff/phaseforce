@@ -1,6 +1,6 @@
 extends Control
 @onready var pathfollow = $Path2D/PathFollow2D
-@onready var cutscene_player = $cutscene
+#@onready var cutscene_player = $cutscene
 @onready var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
 @onready var bpsfx = preload("res://assets/sfx/misc/BERET PARADE Cadence rev 2.mp3")
 var sway = false

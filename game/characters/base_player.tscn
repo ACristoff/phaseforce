@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bcyvqrwjcn8dt"]
+[gd_scene load_steps=28 format=3 uid="uid://bcyvqrwjcn8dt"]
 
 [ext_resource type="Script" path="res://game/characters/base_player.gd" id="1_lf5mu"]
 [ext_resource type="AudioStream" uid="uid://pckpxxpgy43a" path="res://assets/sfx/quips/panko/QUIP_POWERUP.mp3" id="2_34bpo"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://0ofvyiswdyor" path="res://assets/ui/extractarrow.png" id="6_vhwn8"]
 [ext_resource type="Texture2D" uid="uid://bhcgwh87uyauk" path="res://assets/particles/crosshairs/reloading.png" id="7_pkg5e"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="9_jjtm1"]
+[ext_resource type="Texture2D" uid="uid://c3js7xpdqgh6j" path="res://assets/particles/portaleffect.png" id="10_qnf27"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m540u"]
 radius = 8.0
@@ -70,6 +71,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Portaleffect:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_st7uv"]
 resource_name = "Run"
@@ -117,12 +142,66 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 300)]
 }
 
+[sub_resource type="Animation" id="Animation_5wh00"]
+resource_name = "teleport"
+length = 1.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Portaleffect:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1), Vector2(1e-05, 1), Vector2(1, 1), Vector2(1e-05, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.005, 1e-05), Vector2(0.005, 1e-05), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -4.73333, 0.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lrav"]
 _data = {
 "Idle": SubResource("Animation_7my8u"),
 "RESET": SubResource("Animation_8mmnu"),
 "Run": SubResource("Animation_st7uv"),
-"death": SubResource("Animation_i2xy5")
+"death": SubResource("Animation_i2xy5"),
+"teleport": SubResource("Animation_5wh00")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gosl"]
@@ -416,6 +495,13 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_xytbs")
 }
+
+[node name="TeleportPortal" type="Sprite2D" parent="."]
+
+[node name="Portaleffect" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(1e-05, 1)
+texture = ExtResource("10_qnf27")
 
 [connection signal="timeout" from="Timers/ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="area_entered" from="PlatformDetector" to="." method="_on_platform_detector_area_entered"]

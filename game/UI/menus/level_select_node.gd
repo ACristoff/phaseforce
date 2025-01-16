@@ -53,7 +53,6 @@ func _on_play_level_button_pressed():
 func _on_play_level_button_mouse_entered():
 	if bobbed == false:
 		bobbed = true
-		print("mouse over level")
 		var tween = create_tween()
 		tween.set_trans(Tween.TRANS_SINE)
 		tween.tween_property(self, "position:y", -10, .1)
@@ -64,5 +63,4 @@ func _on_play_level_button_mouse_entered():
 
 func _on_play_level_button_mouse_exited() -> void:
 	if not Rect2(Vector2(), size).has_point(get_local_mouse_position()):
-		print("mouse_exit")
 		bobbed = false
