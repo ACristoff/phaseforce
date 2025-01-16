@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ci8mbyjapxbgq" path="res://game/UI/extract_objective_label.tscn" id="6_eybuc"]
 
 [sub_resource type="SystemFont" id="SystemFont_awlav"]
+subpixel_positioning = 0
 
 [node name="HUD" type="Control" groups=["hud"]]
 texture_filter = 3
