@@ -27,5 +27,5 @@ func _on_button_2_pressed():
 	select_anim.play("selected")
 	select_graphic.global_position = $CanvasLayer/Control/MarginContainer/VBoxContainer3/VBoxContainer2/Button2.global_position
 	await get_tree().create_timer(.8).timeout
+	queue_free()
 	quit_to_main.emit()
-	pass # Replace with function body.
