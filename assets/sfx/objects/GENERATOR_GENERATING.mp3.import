@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/GENERATOR_GENERATING.mp3-5718ff9d9cd61ae1eeac
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
