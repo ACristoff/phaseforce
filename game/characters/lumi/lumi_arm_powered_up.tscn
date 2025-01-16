@@ -1,24 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://enpcqksh8j7r"]
+[gd_scene load_steps=10 format=3 uid="uid://enpcqksh8j7r"]
 
-[ext_resource type="Texture2D" uid="uid://dp74hhbbk8upj" path="res://assets/characters/panko/base_form/Panko_Arm.png" id="1_f2aqy"]
+[ext_resource type="Texture2D" uid="uid://cvscgs43ux521" path="res://assets/characters/lia/base_form/Lia_Arm.png" id="1_ck5s3"]
 [ext_resource type="Script" path="res://game/characters/lumi/lumi_laser_sword.gd" id="2_t47s2"]
-[ext_resource type="Texture2D" uid="uid://e5tlstouyfdn" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN1.png" id="3_341ik"]
-[ext_resource type="Texture2D" uid="uid://b3ha88h3j7002" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN2.png" id="4_jl43o"]
-[ext_resource type="Texture2D" uid="uid://csp2v6v6h6pw0" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN3.png" id="5_mnrra"]
 [ext_resource type="Texture2D" uid="uid://daje0apneht1o" path="res://assets/characters/lumi/powerup_form/lumisaber.png" id="6_numpe"]
-[ext_resource type="Texture2D" uid="uid://hhor801wvxds" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN4.png" id="6_srj3u"]
 [ext_resource type="Texture2D" uid="uid://cj6pu8talm5dk" path="res://assets/particles/bullets/lumisaberreload.png" id="8_k0ym6"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_lqkrg"]
-frames = 4
-speed_scale = 10.0
-frame_0/texture = ExtResource("3_341ik")
-frame_1/texture = ExtResource("4_jl43o")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("5_mnrra")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("6_srj3u")
-frame_3/duration = 1.0
 
 [sub_resource type="Animation" id="Animation_v4qri"]
 length = 0.001
@@ -243,12 +228,14 @@ _data = {
 }
 
 [node name="Arm" type="Sprite2D"]
+z_index = 1
 texture_filter = 3
-texture = ExtResource("1_f2aqy")
+texture = ExtResource("1_ck5s3")
 offset = Vector2(0, -7)
 script = ExtResource("2_t47s2")
 
 [node name="CursorSprite" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(1, 1)
 offset = Vector2(5, -8)
 
@@ -261,7 +248,6 @@ position = Vector2(3, -3)
 
 [node name="GunExplosion" type="Sprite2D" parent="CursorSprite"]
 position = Vector2(29, -3)
-texture = SubResource("AnimatedTexture_lqkrg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CursorSprite"]
 libraries = {

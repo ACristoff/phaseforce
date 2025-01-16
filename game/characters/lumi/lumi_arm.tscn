@@ -1,23 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dle84d775l1tp"]
+[gd_scene load_steps=9 format=3 uid="uid://dle84d775l1tp"]
 
-[ext_resource type="Texture2D" uid="uid://dp74hhbbk8upj" path="res://assets/characters/panko/base_form/Panko_Arm.png" id="1_d8m26"]
-[ext_resource type="Texture2D" uid="uid://mjkqryplsp2l" path="res://assets/particles/UPDATE PLEASE/RIFLE/MUZZLE FLASH1.png" id="3_lgofo"]
-[ext_resource type="Texture2D" uid="uid://c2e8p5huw858x" path="res://assets/particles/UPDATE PLEASE/RIFLE/MUZZLE FLASH2.png" id="4_tbfuh"]
-[ext_resource type="Texture2D" uid="uid://0jr6xfdsma6n" path="res://assets/particles/UPDATE PLEASE/RIFLE/MUZZLE FLASH3.png" id="5_imfd8"]
+[ext_resource type="Texture2D" uid="uid://cvscgs43ux521" path="res://assets/characters/lia/base_form/Lia_Arm.png" id="1_pbcei"]
 [ext_resource type="Texture2D" uid="uid://dmfbrn80xbark" path="res://assets/particles/bullets/liaswing.png" id="6_80ax6"]
-[ext_resource type="Texture2D" uid="uid://tg53wmpwjcq" path="res://assets/particles/UPDATE PLEASE/RIFLE/MUZZLE FLASH4.png" id="6_l6ta6"]
 [ext_resource type="Texture2D" uid="uid://dcb7vbfe5npni" path="res://assets/characters/lumi/base_form/lumisword.png" id="6_vtcgg"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_ipfas"]
-frames = 4
-speed_scale = 40.0
-frame_0/texture = ExtResource("3_lgofo")
-frame_1/texture = ExtResource("4_tbfuh")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("5_imfd8")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("6_l6ta6")
-frame_3/duration = 1.0
 
 [sub_resource type="Animation" id="Animation_gc4ut"]
 length = 0.001
@@ -274,10 +259,11 @@ _data = {
 
 [node name="Arm" type="Sprite2D"]
 texture_filter = 3
-texture = ExtResource("1_d8m26")
+texture = ExtResource("1_pbcei")
 offset = Vector2(0, -7)
 
 [node name="CursorSprite" type="Sprite2D" parent="."]
+z_index = -1
 texture_filter = 3
 position = Vector2(4, 5)
 offset = Vector2(5, -8)
@@ -292,7 +278,6 @@ position = Vector2(2, -7)
 [node name="GunExplosion" type="Sprite2D" parent="CursorSprite"]
 position = Vector2(35, -7)
 rotation = 0.00229814
-texture = SubResource("AnimatedTexture_ipfas")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CursorSprite"]
 libraries = {
