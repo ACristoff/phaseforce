@@ -152,6 +152,11 @@ func load_hud():
 	hud.change_bullet_sprite()
 	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
 
+func die():
+	player_death.emit()
+	is_active = false
+	anim_player.play("death")
+
 func add_keycard(_key):
 	keycards.append(_key)
 
@@ -266,13 +271,14 @@ func jump(force):
 
 func _physics_process(delta: float) -> void:
 	if is_active == false:
+		#print('I AM MENTALLY DISABLED')
 		return
 	if extract != null:
 		arrow.look_at(extract.global_position)
 	#if InputEvent.
 	mouse_cursor.position = get_local_mouse_position()
 	if health == 0:
-		player_death.emit()
+		die()
 		health = -1
 	
 	##ACTIONS
@@ -358,7 +364,8 @@ func _physics_process(delta: float) -> void:
 		power_down()
 	#Idle
 	if velocity == Vector2(0,0) or velocity == Vector2.ZERO:
-		anim_player.play("Idle")
+		if is_active:
+			anim_player.play("Idle")
 	move_and_slide()
 
 func is_passthrough_platform():
