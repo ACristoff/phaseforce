@@ -190,7 +190,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dolkk"]
 _data = {
 "RESET": SubResource("Animation_rnquf"),
-"pipsplode": SubResource("Animation_x5fk1")
+"muzzlef": SubResource("Animation_x5fk1")
 }
 
 [node name="Arm" type="Sprite2D"]

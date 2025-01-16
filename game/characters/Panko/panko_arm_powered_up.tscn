@@ -1,22 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsjvx8ltei6fu"]
+[gd_scene load_steps=11 format=3 uid="uid://bsjvx8ltei6fu"]
 
 [ext_resource type="Texture2D" uid="uid://dp74hhbbk8upj" path="res://assets/characters/panko/base_form/Panko_Arm.png" id="1_gm4g8"]
 [ext_resource type="Texture2D" uid="uid://bcqdg48xuiv6j" path="res://assets/characters/panko/powerup_form/tommy_gun.png" id="2_imxxh"]
-[ext_resource type="Texture2D" uid="uid://e5tlstouyfdn" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN1.png" id="3_d0q0m"]
-[ext_resource type="Texture2D" uid="uid://b3ha88h3j7002" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN2.png" id="4_jrcxb"]
-[ext_resource type="Texture2D" uid="uid://csp2v6v6h6pw0" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN3.png" id="5_yip2t"]
-[ext_resource type="Texture2D" uid="uid://hhor801wvxds" path="res://assets/particles/UPDATE PLEASE/TOMMY GUN/TOMMY GUN4.png" id="6_typv6"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_lqkrg"]
-frames = 4
-speed_scale = 10.0
-frame_0/texture = ExtResource("3_d0q0m")
-frame_1/texture = ExtResource("4_jrcxb")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("5_yip2t")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("6_typv6")
-frame_3/duration = 1.0
+[ext_resource type="Texture2D" uid="uid://djeu8elfuqupn" path="res://assets/characters/panko/powerup_form/tommy_gun_muzzle_flash.png" id="3_5td1m"]
 
 [sub_resource type="Animation" id="Animation_v4qri"]
 length = 0.001
@@ -133,6 +119,68 @@ _data = {
 "reload": SubResource("Animation_dlg01")
 }
 
+[sub_resource type="Animation" id="Animation_bkobk"]
+resource_name = "muzzlef"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CursorSprite/GunExplosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CursorSprite/GunExplosion:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 3]
+}
+
+[sub_resource type="Animation" id="Animation_n7ite"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CursorSprite/GunExplosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CursorSprite/GunExplosion:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fxey"]
+_data = {
+"RESET": SubResource("Animation_n7ite"),
+"muzzlef": SubResource("Animation_bkobk")
+}
+
 [node name="Arm" type="Sprite2D"]
 texture_filter = 3
 texture = ExtResource("1_gm4g8")
@@ -151,10 +199,18 @@ gizmo_extents = 5.0
 position = Vector2(3, -3)
 
 [node name="GunExplosion" type="Sprite2D" parent="CursorSprite"]
-position = Vector2(29, -3)
-texture = SubResource("AnimatedTexture_lqkrg")
+position = Vector2(25, -4)
+texture = ExtResource("3_5td1m")
+hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CursorSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_7yxk3")
 }
+
+[node name="MuzzleFlash" type="AnimationPlayer" parent="CursorSprite"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2fxey")
+}
+speed_scale = 5.0

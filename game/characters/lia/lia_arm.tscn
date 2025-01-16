@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dx03iscxp6oqw"]
+[gd_scene load_steps=11 format=3 uid="uid://dx03iscxp6oqw"]
 
-[ext_resource type="Texture2D" uid="uid://cvscgs43ux521" path="res://assets/characters/lia/base_form/Lia_Arm.png" id="1_6c72w"]
+[ext_resource type="Texture2D" uid="uid://dp74hhbbk8upj" path="res://assets/characters/panko/base_form/Panko_Arm.png" id="1_dd05j"]
 [ext_resource type="Texture2D" uid="uid://cry7y2mokkckw" path="res://assets/characters/lia/base_form/desert_eagle.png" id="2_tcl21"]
-[ext_resource type="Texture2D" uid="uid://b6lap5f70hqu" path="res://assets/particles/gun_explosion.png" id="3_8t1uk"]
+[ext_resource type="Texture2D" uid="uid://cas3bhr7ryem2" path="res://assets/characters/panko/base_form/garand_muzzle_flash.png" id="3_vagrb"]
 
 [sub_resource type="Animation" id="Animation_v4qri"]
 length = 0.001
@@ -21,22 +21,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GunExplosion:visible")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -61,14 +49,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GunExplosion:visible")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [-0.354302, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_pyvxa"]
@@ -95,10 +83,72 @@ _data = {
 "reload": SubResource("Animation_pyvxa")
 }
 
+[sub_resource type="Animation" id="Animation_yqcth"]
+resource_name = "muzzlef"
+length = 0.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CursorSprite/GunExplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CursorSprite/GunExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_eqqbu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CursorSprite/GunExplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CursorSprite/GunExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_meueu"]
+_data = {
+"RESET": SubResource("Animation_eqqbu"),
+"muzzlef": SubResource("Animation_yqcth")
+}
+
 [node name="Arm" type="Sprite2D"]
 z_index = 10
 texture_filter = 3
-texture = ExtResource("1_6c72w")
+texture = ExtResource("1_dd05j")
 offset = Vector2(0, -7)
 
 [node name="CursorSprite" type="Sprite2D" parent="."]
@@ -115,10 +165,19 @@ gizmo_extents = 5.0
 position = Vector2(5, -4)
 
 [node name="GunExplosion" type="Sprite2D" parent="CursorSprite"]
-position = Vector2(23, -3)
-texture = ExtResource("3_8t1uk")
+visible = false
+position = Vector2(35, -3)
+texture = ExtResource("3_vagrb")
+hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CursorSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_7yxk3")
 }
+
+[node name="MuzzleFlash" type="AnimationPlayer" parent="CursorSprite"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_meueu")
+}
+speed_scale = 5.0
