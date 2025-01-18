@@ -1,17 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7tlk72uaaatj"]
+[gd_scene load_steps=5 format=3 uid="uid://b7tlk72uaaatj"]
 
 [ext_resource type="Texture2D" uid="uid://d4lx7mqd0g5nh" path="res://assets/ui/checkbox1.png" id="1_2ow1v"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="1_x2c25"]
 [ext_resource type="Theme" uid="uid://dbbvkkfy25ldu" path="res://assets/themes/text.tres" id="2_1s1t7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0rlg"]
+shader = ExtResource("1_x2c25")
+shader_parameter/outline_color = null
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.08
 
 [node name="PrimaryObjectiveLabel" type="HBoxContainer"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 3
+material = SubResource("ShaderMaterial_i0rlg")
 layout_mode = 2
 texture = ExtResource("1_2ow1v")
 stretch_mode = 2
 
 [node name="Label" type="Label" parent="."]
+texture_filter = 3
 layout_mode = 2
 theme = ExtResource("2_1s1t7")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 8
 text = "???"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcnjabyfgy3tm"]
+[gd_scene load_steps=12 format=3 uid="uid://dcnjabyfgy3tm"]
 
 [ext_resource type="Script" path="res://game/UI/hud.gd" id="1_g4rpk"]
 [ext_resource type="Texture2D" uid="uid://dtlw6h7tp6myv" path="res://assets/ui/ammo_types/shotgun_shell.png" id="2_6i720"]
@@ -6,11 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://d4lx7mqd0g5nh" path="res://assets/ui/checkbox1.png" id="4_fopok"]
 [ext_resource type="PackedScene" uid="uid://b7tlk72uaaatj" path="res://game/UI/primary_objective_label.tscn" id="4_kj66g"]
 [ext_resource type="Texture2D" uid="uid://cjocwybbd0qxm" path="res://assets/ui/healthbottom.png" id="5_f2ved"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="5_kc3jn"]
 [ext_resource type="Texture2D" uid="uid://cats31d6vmo5o" path="res://assets/ui/healthtop.png" id="6_7t315"]
 [ext_resource type="PackedScene" uid="uid://ci8mbyjapxbgq" path="res://game/UI/extract_objective_label.tscn" id="6_eybuc"]
 
 [sub_resource type="SystemFont" id="SystemFont_awlav"]
 subpixel_positioning = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_boq0s"]
+shader = ExtResource("5_kc3jn")
+shader_parameter/outline_color = null
+shader_parameter/progress = 1.0
+shader_parameter/width = 0.08
 
 [node name="HUD" type="Control" groups=["hud"]]
 texture_filter = 3
@@ -49,6 +56,8 @@ stretch_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/Ammo_Container/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_68nfx")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
 theme_override_fonts/font = SubResource("SystemFont_awlav")
 theme_override_font_sizes/font_size = 27
 text = "1/1"
@@ -77,11 +86,13 @@ vertical_alignment = 1
 
 [node name="PrimaryObjectiveLabel" parent="CanvasLayer/Objective_Container/VBoxContainer" instance=ExtResource("4_kj66g")]
 layout_mode = 2
+theme = ExtResource("2_68nfx")
 
 [node name="OptionalObjective" type="HBoxContainer" parent="CanvasLayer/Objective_Container/VBoxContainer"]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Objective_Container/VBoxContainer/OptionalObjective"]
+material = SubResource("ShaderMaterial_boq0s")
 layout_mode = 2
 texture = ExtResource("4_fopok")
 stretch_mode = 2
@@ -89,6 +100,8 @@ stretch_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/Objective_Container/VBoxContainer/OptionalObjective"]
 layout_mode = 2
 theme = ExtResource("2_68nfx")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 8
 text = "test"
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=4 uid="uid://b0jbio0575gja"]
+[gd_scene load_steps=31 format=4 uid="uid://b0jbio0575gja"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_7v17c"]
 [ext_resource type="PackedScene" uid="uid://c01yh5vpl1rp5" path="res://game/world/world_generator.tscn" id="2_utkbe"]
 [ext_resource type="PackedScene" uid="uid://dcnjabyfgy3tm" path="res://game/UI/hud.tscn" id="3_r4otv"]
 [ext_resource type="Texture2D" uid="uid://bmuk2sf38h4rv" path="res://assets/environment/tilesets/tileset.png" id="4_7ij60"]
 [ext_resource type="PackedScene" uid="uid://bm0r8wyfxkasj" path="res://game/scenes/tileset.tscn" id="4_ay3jo"]
+[ext_resource type="Texture2D" uid="uid://berymaptqwybm" path="res://assets/environment/tilesets/parallax_large_mountain.png" id="4_dgys2"]
 [ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="5_2qcjn"]
 [ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="6_umqns"]
 [ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="7_paxij"]
@@ -231,6 +232,60 @@ secrets = [NodePath("SecretArea2"), NodePath("SecretArea")]
 collect_x_gifts = true
 gift_quantity = 30
 
+[node name="ParallaxLayers" type="Node2D" parent="."]
+z_index = -1
+position = Vector2(0, 29)
+
+[node name="Sky" type="Parallax2D" parent="ParallaxLayers"]
+z_index = -10
+texture_filter = 3
+repeat_size = Vector2(320, 360)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Sky"]
+modulate = Color(0.76, 0.868, 1, 1)
+position = Vector2(-160, 86)
+scale = Vector2(-1, 1)
+texture = ExtResource("5_2qcjn")
+
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxLayers"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D3"]
+modulate = Color(0, 0.584, 0.73, 1)
+self_modulate = Color(1, 1, 1, 0.262745)
+position = Vector2(-160, 91)
+scale = Vector2(-1, 1)
+texture = ExtResource("6_umqns")
+
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxLayers"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.3, 0.1)
+scroll_offset = Vector2(-630, -6)
+repeat_size = Vector2(640, 0)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D2"]
+position = Vector2(-160, 243)
+texture = ExtResource("4_dgys2")
+
+[node name="Front" type="Parallax2D" parent="ParallaxLayers"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.6, 0.3)
+repeat_size = Vector2(320, 0)
+repeat_times = 6
+
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Front"]
+modulate = Color(0.4761, 0.56879, 0.69, 1)
+position = Vector2(-159, 133)
+texture = ExtResource("7_paxij")
+
 [node name="WorldGenerator" parent="." instance=ExtResource("2_utkbe")]
 
 [node name="WorldTiles" parent="." instance=ExtResource("4_ay3jo")]
@@ -255,59 +310,6 @@ tile_map_data = PackedByteArray("AAD2/wAAAAABAAEAAAD2////AAABAAEAAAD2//7/AAABAAE
 tile_set = SubResource("TileSet_cxay7")
 
 [node name="HUD" parent="." instance=ExtResource("3_r4otv")]
-
-[node name="ParallaxLayers" type="Node2D" parent="."]
-z_index = -20
-position = Vector2(0, 65)
-
-[node name="Sky" type="Parallax2D" parent="ParallaxLayers"]
-z_index = -10
-texture_filter = 3
-repeat_size = Vector2(320, 360)
-repeat_times = 6
-
-[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Sky"]
-modulate = Color(0.76, 0.868, 1, 1)
-position = Vector2(-160, 86)
-scale = Vector2(-1, 1)
-texture = ExtResource("5_2qcjn")
-
-[node name="Parallax2D3" type="Parallax2D" parent="ParallaxLayers"]
-z_index = -10
-texture_filter = 3
-scroll_scale = Vector2(0.1, 0)
-repeat_size = Vector2(320, 0)
-repeat_times = 6
-
-[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D3"]
-modulate = Color(0.66868, 0.6424, 0.73, 1)
-position = Vector2(-160, 86)
-scale = Vector2(-1, 1)
-texture = ExtResource("6_umqns")
-
-[node name="Parallax2D2" type="Parallax2D" parent="ParallaxLayers"]
-z_index = -10
-texture_filter = 3
-scroll_scale = Vector2(0.3, 0)
-repeat_size = Vector2(320, 0)
-repeat_times = 6
-
-[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D2"]
-modulate = Color(0.37, 0.685, 1, 1)
-position = Vector2(-160, 86)
-texture = ExtResource("6_umqns")
-
-[node name="Front" type="Parallax2D" parent="ParallaxLayers"]
-z_index = -10
-texture_filter = 3
-scroll_scale = Vector2(0.6, 0)
-repeat_size = Vector2(320, 0)
-repeat_times = 6
-
-[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Front"]
-modulate = Color(0.4761, 0.56879, 0.69, 1)
-position = Vector2(-160, 105)
-texture = ExtResource("7_paxij")
 
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2(-36, -36)
