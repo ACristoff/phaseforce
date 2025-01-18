@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfk1afnkqscaq"]
+[gd_scene load_steps=7 format=3 uid="uid://dfk1afnkqscaq"]
 
 [ext_resource type="Script" path="res://game/UI/inside_heli.gd" id="1_a3a4i"]
 [ext_resource type="Texture2D" uid="uid://cvrdgovvke0tr" path="res://assets/ui/insideheli.png" id="1_kpcrg"]
 [ext_resource type="Texture2D" uid="uid://bcdg12y4n8qlc" path="res://assets/environment/tilesets/skybox.png" id="2_ff4ps"]
 [ext_resource type="Texture2D" uid="uid://cn6qxarshej8s" path="res://assets/environment/tilesets/parallax2.png" id="3_pgrla"]
 [ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="4_jweok"]
+[ext_resource type="Texture2D" uid="uid://berymaptqwybm" path="res://assets/environment/tilesets/parallax_large_mountain.png" id="5_u1tlv"]
 
 [node name="InsideHeli" type="Node2D"]
 script = ExtResource("1_a3a4i")
@@ -16,60 +17,58 @@ rotation = 0.0174533
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_kpcrg")
 
-[node name="parallax" type="Node2D" parent="."]
-position = Vector2(0, 127)
+[node name="ParallaxLayers" type="Node2D" parent="."]
+position = Vector2(0, 209)
 
-[node name="Sky" type="Parallax2D" parent="parallax"]
+[node name="Sky" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
 texture_filter = 3
 repeat_size = Vector2(320, 360)
-repeat_times = 12
+repeat_times = 6
 
-[node name="Parallax1" type="Sprite2D" parent="parallax/Sky"]
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Sky"]
 modulate = Color(0.76, 0.868, 1, 1)
 position = Vector2(-160, 86)
 scale = Vector2(-1, 1)
 texture = ExtResource("2_ff4ps")
 
-[node name="Parallax2D3" type="Parallax2D" parent="parallax"]
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
 texture_filter = 3
 scroll_scale = Vector2(0.1, 0)
-scroll_offset = Vector2(0, 118)
 repeat_size = Vector2(320, 0)
-autoscroll = Vector2(-4, 0)
-repeat_times = 12
+autoscroll = Vector2(-5, 0)
+repeat_times = 6
 
-[node name="Parallax1" type="Sprite2D" parent="parallax/Parallax2D3"]
-modulate = Color(0.66868, 0.6424, 0.73, 1)
-position = Vector2(-160, 86)
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D3"]
+modulate = Color(0, 0.584, 0.73, 1)
+self_modulate = Color(1, 1, 1, 0.262745)
+position = Vector2(-160, 91)
 scale = Vector2(-1, 1)
 texture = ExtResource("3_pgrla")
 
-[node name="Parallax2D2" type="Parallax2D" parent="parallax"]
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
 texture_filter = 3
 scroll_scale = Vector2(0.3, 0.1)
-scroll_offset = Vector2(0, 118)
-repeat_size = Vector2(320, 0)
-autoscroll = Vector2(-12, 0)
-repeat_times = 12
+scroll_offset = Vector2(-630, -6)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-10, 0)
+repeat_times = 6
 
-[node name="Parallax1" type="Sprite2D" parent="parallax/Parallax2D2"]
-modulate = Color(0.37, 0.685, 1, 1)
-position = Vector2(-160, 86)
-texture = ExtResource("3_pgrla")
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D2"]
+position = Vector2(-160, 243)
+texture = ExtResource("5_u1tlv")
 
-[node name="Front" type="Parallax2D" parent="parallax"]
+[node name="Front" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
 texture_filter = 3
 scroll_scale = Vector2(0.6, 0.3)
-scroll_offset = Vector2(0, 118)
 repeat_size = Vector2(320, 0)
 autoscroll = Vector2(-20, 0)
-repeat_times = 11
+repeat_times = 6
 
-[node name="Parallax1" type="Sprite2D" parent="parallax/Front"]
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Front"]
 modulate = Color(0.4761, 0.56879, 0.69, 1)
-position = Vector2(-160, 105)
+position = Vector2(-159, 133)
 texture = ExtResource("4_jweok")

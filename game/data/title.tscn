@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bo8235t87pkb1"]
+[gd_scene load_steps=36 format=3 uid="uid://bo8235t87pkb1"]
 
 [ext_resource type="Script" path="res://game/data/title_control.gd" id="1_epqi3"]
 [ext_resource type="Texture2D" uid="uid://betqi4sbw8ywd" path="res://assets/ui/title/Title.png" id="2_j6iul"]
@@ -13,9 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://dbxu4makr5je5" path="res://assets/environment/tilesets/parallax1.png" id="5_b84rr"]
 [ext_resource type="Texture2D" uid="uid://dqlbx42lbfhfl" path="res://assets/particles/sparkles.png" id="5_xfjmr"]
 [ext_resource type="PackedScene" uid="uid://tv7bip0e2nad" path="res://game/projectiles/spent_shell.tscn" id="6_ih1qs"]
-[ext_resource type="Texture2D" uid="uid://dupigsbyqxg1m" path="res://assets/environment/placeables/decorations/titleheli.png" id="6_ojxjh"]
 [ext_resource type="Texture2D" uid="uid://cx351xvbj2njp" path="res://assets/particles/generator/generator_debris.png" id="7_nlwd2"]
 [ext_resource type="Texture2D" uid="uid://dgdc5tbwblym5" path="res://assets/particles/minicopter.png" id="13_kfgj3"]
+[ext_resource type="Texture2D" uid="uid://berymaptqwybm" path="res://assets/environment/tilesets/parallax_large_mountain.png" id="14_xan07"]
 
 [sub_resource type="Animation" id="Animation_24t5q"]
 length = 0.001
@@ -125,12 +125,6 @@ angular_velocity_max = 60.0
 gravity = Vector3(0, 98, 0)
 anim_offset_max = 1.0
 
-[sub_resource type="Curve2D" id="Curve2D_k6jcc"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -147, 0, 0, 0, 0, 0, 235)
-}
-point_count = 2
-
 [sub_resource type="Curve2D" id="Curve2D_trggu"]
 _data = {
 "points": PackedVector2Array(-15.9278, -15.25, 15.9278, 15.25, 25, -17, 0, 0, 0, 0, 26, 26, 24.5444, 15.75, -24.5444, -15.75, -19, 25, -18.0167, 9.25, 18.0167, -9.25, -18.8, -20, 0, 0, 0, 0, 25, -17)
@@ -196,30 +190,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../parallax/Front2:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../parallax/Front2/Path2D2/PathFollow2D:progress_ratio")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_ew8tp"]
 resource_name = "cutscene"
@@ -237,37 +207,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../parallax/Front2:visible")
+tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../parallax/Front2/Path2D2/PathFollow2D:progress_ratio")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 3, 4.1, 5),
-"transitions": PackedFloat32Array(1, 0.241484, 0.406126, 1),
-"update": 0,
-"values": [0.0, 0.0, 1.0, 0.947644]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("..")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(4.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -445,77 +391,58 @@ texture = ExtResource("7_nlwd2")
 one_shot = true
 explosiveness = 0.89
 
-[node name="parallax" type="Node2D" parent="."]
-position = Vector2(0, 127)
+[node name="ParallaxLayers" type="Node2D" parent="."]
+position = Vector2(0, 65)
 
-[node name="Sky" type="Parallax2D" parent="parallax"]
+[node name="Sky" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
 texture_filter = 3
 repeat_size = Vector2(320, 360)
-repeat_times = 8
+repeat_times = 6
 
-[node name="Parallax1" type="Sprite2D" parent="parallax/Sky"]
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Sky"]
 modulate = Color(0.76, 0.868, 1, 1)
 position = Vector2(-160, 86)
 scale = Vector2(-1, 1)
 texture = ExtResource("3_qakli")
 
-[node name="Parallax2D3" type="Parallax2D" parent="parallax"]
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
 texture_filter = 3
 scroll_scale = Vector2(0.1, 0)
 repeat_size = Vector2(320, 0)
-repeat_times = 8
+repeat_times = 6
 
-[node name="Parallax1" type="Sprite2D" parent="parallax/Parallax2D3"]
-modulate = Color(0.66868, 0.6424, 0.73, 1)
-position = Vector2(-160, 86)
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D3"]
+modulate = Color(0, 0.584, 0.73, 1)
+self_modulate = Color(1, 1, 1, 0.262745)
+position = Vector2(-160, 91)
 scale = Vector2(-1, 1)
 texture = ExtResource("4_78r31")
 
-[node name="Parallax2D2" type="Parallax2D" parent="parallax"]
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
 texture_filter = 3
 scroll_scale = Vector2(0.3, 0.1)
-repeat_size = Vector2(320, 0)
-repeat_times = 8
+scroll_offset = Vector2(-630, -6)
+repeat_size = Vector2(640, 0)
+repeat_times = 6
 
-[node name="Parallax1" type="Sprite2D" parent="parallax/Parallax2D2"]
-modulate = Color(0.37, 0.685, 1, 1)
-position = Vector2(-160, 86)
-texture = ExtResource("4_78r31")
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Parallax2D2"]
+position = Vector2(-160, 243)
+texture = ExtResource("14_xan07")
 
-[node name="Front" type="Parallax2D" parent="parallax"]
+[node name="Front" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -10
 texture_filter = 3
 scroll_scale = Vector2(0.6, 0.3)
 repeat_size = Vector2(320, 0)
-repeat_times = 8
+repeat_times = 6
 
-[node name="Parallax1" type="Sprite2D" parent="parallax/Front"]
+[node name="Parallax1" type="Sprite2D" parent="ParallaxLayers/Front"]
 modulate = Color(0.4761, 0.56879, 0.69, 1)
-position = Vector2(-160, 105)
+position = Vector2(-159, 133)
 texture = ExtResource("5_b84rr")
-
-[node name="Front2" type="Parallax2D" parent="parallax"]
-visible = false
-z_index = -10
-texture_filter = 3
-scroll_scale = Vector2(0.7, 0.5)
-
-[node name="Path2D2" type="Path2D" parent="parallax/Front2"]
-position = Vector2(0, -215)
-curve = SubResource("Curve2D_k6jcc")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="parallax/Front2/Path2D2"]
-position = Vector2(0, -147)
-rotation = 1.5708
-
-[node name="Titleheli" type="Sprite2D" parent="parallax/Front2/Path2D2/PathFollow2D"]
-texture_filter = 3
-position = Vector2(50, -336)
-rotation = -1.5708
-texture = ExtResource("6_ojxjh")
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(325, 173)

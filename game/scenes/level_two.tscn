@@ -231,6 +231,7 @@ primary_obj = NodePath("Generator")
 secrets = [NodePath("SecretArea2"), NodePath("SecretArea")]
 collect_x_gifts = true
 gift_quantity = 30
+metadata/_edit_vertical_guides_ = [-4086.0]
 
 [node name="ParallaxLayers" type="Node2D" parent="."]
 z_index = -1
