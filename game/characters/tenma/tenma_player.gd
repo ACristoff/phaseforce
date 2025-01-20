@@ -18,6 +18,7 @@ func attack() -> void:
 		new_brick.rotation_degrees = adjusted_angle
 		get_parent().add_child(new_brick)
 	else:
+		muzzle_flash.play("muzzlef")
 		var new_shell = shell.instantiate()
 		new_shell.global_position = shell_spout.global_position
 		get_parent().add_child(new_shell)

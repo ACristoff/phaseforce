@@ -9,6 +9,7 @@ var knockback_force = -4.2
 @onready var final_shot_sound: AudioStreamMP3 = preload("res://assets/sfx/projectiles/M1_PING.mp3")
 
 func attack():
+	muzzle_flash.play("muzzlef")
 	super()
 	if !powered_up:
 		var knockback_vector = (cursor_spout.global_position - global_position) * knockback_force

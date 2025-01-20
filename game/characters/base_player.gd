@@ -290,6 +290,7 @@ func _physics_process(delta: float) -> void:
 		if reload_timer.is_stopped() && gun_magazine > 0:
 			attack_timer.start()
 			AudioManager.play_sfx(gun_sound)
+			#muzzle_flash.play("muzzlef")
 			attack()
 	if Input.is_action_just_pressed("shoot") && gun_magazine <= 0:
 		AudioManager.play_sfx(empty_mag_sound)
@@ -389,10 +390,9 @@ func is_ladder():
 		return false
 
 func attack() -> void:
+	muzzle_flash.play("muzzlef")
 	gun_anim.stop()
 	gun_anim.play("kickback")
-	#muzzle_flash.stop()
-	muzzle_flash.play("muzzlef")
 	var new_bullet = bullet.instantiate()
 	var new_shell = shell.instantiate()
 	new_bullet.damage = bullet_damage
