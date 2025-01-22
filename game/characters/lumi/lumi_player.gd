@@ -148,7 +148,8 @@ func _physics_process(delta: float) -> void:
 	
 	#Flip the sprite whether moving left or right
 	if horizontalDirection:
-		anim_player.play("Run")
+		#anim_player.play("Run")
+		change_animation("Run")
 		sprite.flip_h = (horizontalDirection == -1)
 		face_right = (horizontalDirection == 1)
 		door_detector.scale.x = horizontalDirection
@@ -187,5 +188,6 @@ func _physics_process(delta: float) -> void:
 		power_down()
 	#Idle
 	if velocity == Vector2(0,0) or velocity == Vector2.ZERO:
-		anim_player.play("Idle")
+		#anim_player.play("Idle")
+		change_animation("Idle")
 	move_and_slide()

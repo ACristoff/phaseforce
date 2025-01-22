@@ -15,10 +15,12 @@ func start_teleport(player: BasePlayer):
 	AudioManager.play_sfx(teleport_sound)
 	teleport_timer.start()
 	player.is_teleporting = true
-	player.anim_player.play('teleport')
+	#player.anim_player.play('teleport')
+	player.change_animation('teleport')
 
 func teleport_player(player: BasePlayer):
 	player.global_position = teleport_position.global_position
+	#player_ref.is_teleporting = false
 
 
 func _on_timer_timeout():
