@@ -111,6 +111,7 @@ var current_door: Door
 var is_active: bool = false
 var hud: HUD
 var extract
+var is_teleporting: bool = false
 
 signal took_damage
 signal gained_health
@@ -273,9 +274,10 @@ func jump(force):
 	velocity.y = force
 
 func _physics_process(delta: float) -> void:
-	if is_active == false:
-		#print('I AM MENTALLY DISABLED')
-		return
+	print(is_teleporting)
+	#if is_active == false:
+		##print('I AM MENTALLY DISABLED')
+		#return
 	if extract != null:
 		arrow.look_at(extract.global_position)
 	#if InputEvent.
@@ -449,3 +451,8 @@ func _on_door_detector_body_exited(_body):
 
 func _on_reload_timer_timeout():
 	reload()
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "teleport":
+		is_teleporting = false
