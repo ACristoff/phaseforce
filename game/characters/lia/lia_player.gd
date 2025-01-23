@@ -15,13 +15,13 @@ var current_shot: EnergyBall
 @onready var last_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_LAST.mp3")
 
 func attack():
-	muzzle_flash.play("muzzlef")
 	gun_anim.stop()
 	gun_anim.play("kickback")
 	if powered_up:
 		#var new_shot = charge_shot.instantiate()
 		pass
 	else:
+		muzzle_flash.play("muzzlef")
 		var new_bullet = bullet.instantiate()
 		var new_shell = shell.instantiate()
 		new_bullet.damage = bullet_damage
