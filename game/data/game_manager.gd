@@ -14,7 +14,7 @@ class_name game_manager
 var current_character = "panko"
 @onready var level_man: Level_Manager = $LevelManager
 
-
+##TODO make this programmatic
 var levels_data = {
 	"1": {
 		"secrets": "Secrets found: 0 / 1", 

@@ -58,14 +58,15 @@ func _physics_process(delta):
 				if bounce_timer.is_stopped():
 					bounce_timer.start()
 				bounced_vector = inverse_angle(delta, body)
-				body.emit(self.global_position)
-			elif body is MetalGround && bounced == true:
-				if bounced_vector:
+				#body.emit(self.global_position)
+			elif body is MetalGround:
+				if bounced_vector && bounced == true:
 					queue_free()
 				bounced_vector = inverse_angle(delta, body)
 				if bounce_timer.is_stopped():
 					bounce_timer.start()
-				body.emit(self.global_position)
+				bounced_vector = inverse_angle(delta, body)
+				#body.emit(self.global_position)
 			elif body is Door:
 				if bounced_vector && bounced == true:
 					queue_free()
