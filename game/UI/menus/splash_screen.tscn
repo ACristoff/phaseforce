@@ -90,17 +90,15 @@ script = ExtResource("1_l4twl")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="Beretparadelogo" type="TextureRect" parent="CanvasLayer/ColorRect"]
-modulate = Color(0.0500002, 0, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -115,7 +113,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(960, 540)
-mouse_filter = 2
 texture = ExtResource("1_lyety")
 
 [node name="Splash_Anim" type="AnimationPlayer" parent="."]

@@ -7,7 +7,9 @@ extends Control
 #@onready var SPLASH = preload("res://game/UI/menus/splash_screen.tscn")
 @onready var select_anim = $CanvasLayer/SelectedButtonGraphic/AnimationPlayer
 @onready var select_graphic = $CanvasLayer/SelectedButtonGraphic
+@onready var canvas = $CanvasLayer
 var sway = false
+
 
 signal character_select
 signal credits
@@ -49,7 +51,7 @@ func _on_start_pressed():
 	on_start.emit()
 	pass # Replace with function body.
 
-func _post_splash_cutscene():
+func post_splash_cutscene():
 	cutscene_player.play("cutscene")
 	AudioManager.play_music(music)
 	

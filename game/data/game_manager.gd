@@ -85,7 +85,7 @@ func _on_title_character_select():
 	add_child(char_select)
 	char_select.chosen_character.connect(selected_character.bind(char_select))
 
-func main_menu():
+func main_menu(is_splash: bool = false):
 	var new_title = title_inst.instantiate()
 	add_child(new_title)
 	new_title.character_select.connect(_on_title_character_select.bind())
@@ -93,7 +93,12 @@ func main_menu():
 	new_title.on_start.connect(_on_title_on_start.bind())
 	new_title.to_settings.connect(_on_title_to_settings.bind())
 	title = new_title
-	title._post_splash_cutscene()
+	if is_splash == false:
+		title.title_without_splash()
+		title.canvas.visible = true
+
+func main_cutscene():
+	title.post_splash_cutscene()
 
 func selected_character(new_character, char_screen):
 	current_character = new_character
