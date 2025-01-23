@@ -1,7 +1,7 @@
 extends Control
 
 @onready var pathfollow = $Path2D/PathFollow2D
-@onready var chopper_pfollow = $parallax/Front2/Path2D2/PathFollow2D
+@onready var chopper_pfollow = $ParallaxLayers/Front2/Path2D2/PathFollow2D
 @onready var cutscene_player = $cutscene
 @onready var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
 #@onready var SPLASH = preload("res://game/UI/menus/splash_screen.tscn")
@@ -56,7 +56,8 @@ func post_splash_cutscene():
 	AudioManager.play_music(music)
 	
 func title_without_splash():
-	chopper_pfollow.progress_ratio = .95
+	print(chopper_pfollow)
+	chopper_pfollow.progress_ratio = 0.95
 	sway = true
 
 func _on_credits_pressed():
