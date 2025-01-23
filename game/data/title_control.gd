@@ -56,8 +56,9 @@ func post_splash_cutscene():
 	AudioManager.play_music(music)
 	
 func title_without_splash():
+	$copter/PathFollow2D/Minicopter.visible = false
 	print(chopper_pfollow)
-	chopper_pfollow.progress_ratio = 0.95
+	chopper_pfollow.progress_ratio = 1
 	sway = true
 
 func _on_credits_pressed():

@@ -248,9 +248,9 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 2.8, 3.8, 4.1, 4.5),
-"transitions": PackedFloat32Array(1, 0.392292, 3.24901, 3.36358, 1),
+"transitions": PackedFloat32Array(1, 0.392292, 3.24901, 1.10957, 1),
 "update": 0,
-"values": [0.0, 0.0, 1.0, 0.95, 1.0]
+"values": [0.0, 0.0, 1.0, 0.99, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_86clq"]
