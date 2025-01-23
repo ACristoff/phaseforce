@@ -197,6 +197,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ParallaxLayers/Front2/Path2D2/PathFollow2D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ew8tp"]
 resource_name = "cutscene"
@@ -227,6 +239,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"unlock_sway"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ParallaxLayers/Front2/Path2D2/PathFollow2D:progress_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.8, 3.8, 4.1, 4.5),
+"transitions": PackedFloat32Array(1, 0.392292, 3.24901, 3.36358, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 0.95, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_86clq"]
@@ -456,15 +480,15 @@ texture = ExtResource("5_b84rr")
 z_index = -10
 texture_filter = 3
 scroll_scale = Vector2(0.7, 0.5)
+scroll_offset = Vector2(6, 54)
 
 [node name="Path2D2" type="Path2D" parent="ParallaxLayers/Front2"]
 position = Vector2(0, -215)
 curve = SubResource("Curve2D_jmkal")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="ParallaxLayers/Front2/Path2D2"]
-position = Vector2(0, 235)
+position = Vector2(0, -147)
 rotation = 1.5708
-progress = 382.0
 
 [node name="Titleheli" type="Sprite2D" parent="ParallaxLayers/Front2/Path2D2/PathFollow2D"]
 texture_filter = 3

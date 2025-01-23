@@ -4,6 +4,7 @@ extends Control
 @onready var chopper_pfollow = $parallax/Front2/Path2D2/PathFollow2D
 @onready var cutscene_player = $cutscene
 @onready var music = preload("res://assets/music/PF_MAIN_THEME.mp3")
+#@onready var SPLASH = preload("res://game/UI/menus/splash_screen.tscn")
 @onready var select_anim = $CanvasLayer/SelectedButtonGraphic/AnimationPlayer
 @onready var select_graphic = $CanvasLayer/SelectedButtonGraphic
 var sway = false
@@ -26,7 +27,8 @@ signal to_settings
 ]
 
 func _ready():
-
+	#var splash = SPLASH.instantiate()
+	#self.add_child(splash)
 	pass
 
 func unlock_sway():
