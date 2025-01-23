@@ -274,7 +274,7 @@ func jump(force):
 	velocity.y = force
 
 func _physics_process(delta: float) -> void:
-	print(anim_player.current_animation)
+	#print(anim_player.current_animation)
 	#print(is_teleporting)
 	#if is_active == false:
 		##print('I AM MENTALLY DISABLED')

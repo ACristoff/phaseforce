@@ -300,8 +300,10 @@ position = Vector2(50, 318)
 script = ExtResource("5_4sm7h")
 
 [node name="BulletHitParticle" parent="CanvasLayer/Particles" instance=ExtResource("6_fupyf")]
+visible = false
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer/Particles"]
+visible = false
 material = SubResource("CanvasItemMaterial_h5kjd")
 emitting = false
 amount = 16
@@ -311,8 +313,10 @@ one_shot = true
 explosiveness = 0.9
 
 [node name="SpentShell" parent="CanvasLayer/Particles" instance=ExtResource("8_m8hyq")]
+visible = false
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="CanvasLayer/Particles"]
+visible = false
 texture_filter = 3
 material = SubResource("CanvasItemMaterial_dxliu")
 emitting = false

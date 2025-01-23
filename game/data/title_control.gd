@@ -26,6 +26,7 @@ signal to_settings
 ]
 
 func _ready():
+
 	pass
 
 func unlock_sway():

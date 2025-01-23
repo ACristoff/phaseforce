@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b02wkkladek3f"]
+[gd_scene load_steps=5 format=3 uid="uid://5ooenep8ptyj"]
 
 [ext_resource type="Script" path="res://game/UI/menus/splash_screen.gd" id="1_l4twl"]
 [ext_resource type="Texture2D" uid="uid://drrryt4gklwl4" path="res://assets/ui/title/beretparadelogo.png" id="1_lyety"]
@@ -90,11 +90,13 @@ script = ExtResource("1_l4twl")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Beretparadelogo" type="TextureRect" parent="CanvasLayer/ColorRect"]
@@ -113,7 +115,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(960, 540)
-mouse_filter = 0
+mouse_filter = 2
 texture = ExtResource("1_lyety")
 
 [node name="Splash_Anim" type="AnimationPlayer" parent="."]
@@ -121,3 +123,5 @@ libraries = {
 "": SubResource("AnimationLibrary_05s03")
 }
 autoplay = "splash"
+
+[connection signal="animation_finished" from="Splash_Anim" to="." method="_on_splash_anim_animation_finished"]

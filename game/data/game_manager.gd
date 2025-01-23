@@ -2,10 +2,11 @@ extends Node
 
 class_name game_manager
 
-@onready var title = $Title
+@onready var title
+@onready var splash = $Splash
 
 @onready var level_manager = preload("res://game/data/level_manager.tscn")
-@onready var title_inst = preload("res://game/data/title2.tscn")
+@onready var title_inst = preload("res://game/data/title.tscn")
 @onready var credits = preload("res://game/UI/menus/credits.tscn")
 @onready var level_select = preload("res://game/UI/menus/level_select.tscn")
 @onready var settings = preload("res://game/UI/menus/settings.tscn")
@@ -14,7 +15,7 @@ class_name game_manager
 var current_character = "panko"
 @onready var level_man: Level_Manager = $LevelManager
 
-##TODO make this programmatic
+
 var levels_data = {
 	"1": {
 		"secrets": "Secrets found: 0 / 1", 
@@ -70,7 +71,9 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	DisplayServer.window_set_size(Vector2i(1920, 1080))
 	if debug_mode:
-		title.queue_free()
+		##TODO expand debug mode further
+		#title.queue_free()
+		splash.queue_free()
 		var start_level_man = level_manager.instantiate()
 		add_child(start_level_man)
 		start_level_man.load_level(0)
@@ -90,6 +93,7 @@ func main_menu():
 	new_title.on_start.connect(_on_title_on_start.bind())
 	new_title.to_settings.connect(_on_title_to_settings.bind())
 	title = new_title
+	title._post_splash_cutscene()
 
 func selected_character(new_character, char_screen):
 	current_character = new_character

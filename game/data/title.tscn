@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bo8235t87pkb1"]
+[gd_scene load_steps=38 format=3 uid="uid://bo8235t87pkb1"]
 
 [ext_resource type="Script" path="res://game/data/title_control.gd" id="1_epqi3"]
 [ext_resource type="Texture2D" uid="uid://betqi4sbw8ywd" path="res://assets/ui/title/Title.png" id="2_j6iul"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cx351xvbj2njp" path="res://assets/particles/generator/generator_debris.png" id="7_nlwd2"]
 [ext_resource type="Texture2D" uid="uid://dgdc5tbwblym5" path="res://assets/particles/minicopter.png" id="13_kfgj3"]
 [ext_resource type="Texture2D" uid="uid://berymaptqwybm" path="res://assets/environment/tilesets/parallax_large_mountain.png" id="14_xan07"]
+[ext_resource type="Texture2D" uid="uid://dupigsbyqxg1m" path="res://assets/environment/placeables/decorations/titleheli.png" id="16_m7gwr"]
 
 [sub_resource type="Animation" id="Animation_24t5q"]
 length = 0.001
@@ -124,6 +125,12 @@ angular_velocity_min = 60.0
 angular_velocity_max = 60.0
 gravity = Vector3(0, 98, 0)
 anim_offset_max = 1.0
+
+[sub_resource type="Curve2D" id="Curve2D_jmkal"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -147, 0, 0, 0, 0, 0, 235)
+}
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_trggu"]
 _data = {
@@ -365,6 +372,7 @@ libraries = {
 speed_scale = 3.0
 
 [node name="Particles" type="Node2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(50, 318)
 script = ExtResource("3_4mkg1")
 
@@ -443,6 +451,26 @@ repeat_times = 6
 modulate = Color(0.4761, 0.56879, 0.69, 1)
 position = Vector2(-159, 133)
 texture = ExtResource("5_b84rr")
+
+[node name="Front2" type="Parallax2D" parent="ParallaxLayers"]
+z_index = -10
+texture_filter = 3
+scroll_scale = Vector2(0.7, 0.5)
+
+[node name="Path2D2" type="Path2D" parent="ParallaxLayers/Front2"]
+position = Vector2(0, -215)
+curve = SubResource("Curve2D_jmkal")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ParallaxLayers/Front2/Path2D2"]
+position = Vector2(0, 235)
+rotation = 1.5708
+progress = 382.0
+
+[node name="Titleheli" type="Sprite2D" parent="ParallaxLayers/Front2/Path2D2/PathFollow2D"]
+texture_filter = 3
+position = Vector2(50, -336)
+rotation = -1.5708
+texture = ExtResource("16_m7gwr")
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(325, 173)
