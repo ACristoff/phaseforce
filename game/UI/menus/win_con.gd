@@ -9,6 +9,14 @@ extends Control
 @onready var heli = $InsideHeli
 @onready var select_anim = $CanvasLayer/SelectedButtonGraphic/AnimationPlayer
 @onready var select_graphic = $CanvasLayer/SelectedButtonGraphic
+
+#Characters
+@onready var panko = $PankoSprite
+@onready var lumi = $LumiSprite
+@onready var pippa = $PippaSprite
+@onready var tenma = $TenmaSprite
+@onready var lia = $LiaSprite
+
 @onready var purplestar = preload("res://assets/ui/largestar2.png")
 @onready var victory_music = preload("res://assets/music/VICTORY_A.mp3")
 @onready var victory_music_b = preload("res://assets/music/VICTORY_B.mp3")
@@ -29,6 +37,18 @@ func _ready():
 	AudioManager.music_manager.finished.connect(track_b.bind())
 	game_man = get_tree().get_first_node_in_group("game")
 	level_man = get_tree().get_first_node_in_group("level_manager")
+	print(game_man.current_character)
+	var character = game_man.current_character
+	if character == "panko":
+		panko.visible = true
+	if character == "lumi":
+		lumi.visible = true
+	if character == "pippa":
+		pippa.visible = true
+	if character == "tenma":
+		tenma.visible = true
+	if character == "lia":
+		lia.visible = true
 	#$Timer.start()
 
 func track_b():
