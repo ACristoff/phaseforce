@@ -867,6 +867,9 @@ one_shot = true
 [node name="HeartPickup3" parent="." instance=ExtResource("20_x558a")]
 position = Vector2(-98, 218)
 
+[node name="HeartPickup4" parent="." instance=ExtResource("20_x558a")]
+position = Vector2(-875, 513)
+
 [node name="EnemySpawns" type="Node" parent="."]
 
 [node name="EnemySpawner19" parent="EnemySpawns" instance=ExtResource("21_ypmbf")]

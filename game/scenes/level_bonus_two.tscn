@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://d15o3f48287k0"]
+[gd_scene load_steps=27 format=4 uid="uid://d15o3f48287k0"]
 
 [ext_resource type="Script" path="res://game/world/level.gd" id="1_x7vmv"]
 [ext_resource type="AudioStream" uid="uid://cgope3cx6k1wf" path="res://assets/music/UNDERGROUND_STAGE.mp3" id="2_5iv2u"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://d4miuyj3w3h76" path="res://game/characters/enemies/shield_enemy.tscn" id="19_3nsgn"]
 [ext_resource type="Texture2D" uid="uid://cuqqrfbhjw2k0" path="res://assets/enemies/coming_alive_gun_snowman.png" id="20_t5aja"]
 [ext_resource type="PackedScene" uid="uid://esqwdf2tdfok" path="res://game/world/extract_zone.tscn" id="22_jkhey"]
+[ext_resource type="PackedScene" uid="uid://clgkki5cfqcx1" path="res://game/objects/heart_pickup.tscn" id="23_kg5hk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhc78"]
 texture = ExtResource("4_p04sm")
@@ -678,6 +679,9 @@ enemy_to_spawn_animation = ExtResource("20_t5aja")
 
 [node name="ExtractZone" parent="." instance=ExtResource("22_jkhey")]
 position = Vector2(-419, -200)
+
+[node name="HeartPickup" parent="." instance=ExtResource("23_kg5hk")]
+position = Vector2(-780, -320)
 
 [connection signal="body_entered" from="Death_Barrier" to="." method="_on_death_barrier_body_entered"]
 
