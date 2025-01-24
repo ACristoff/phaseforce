@@ -5,6 +5,7 @@ class_name LevelSelect
 var game_man: game_manager
 var level_man: Level_Manager
 @onready var sfx = preload("res://assets/sfx/UI/CRT_LONG.mp3")
+@onready var level_select_music = preload("res://assets/music/PF_LEVEL_SELECT.mp3")
 
 var levels_data = { 
 	"1": {
@@ -24,6 +25,7 @@ var levels_data = {
 
 func _ready():
 	AudioManager.play_sfx(sfx, 1)
+	AudioManager.play_music(level_select_music)
 	#AudioManager.play_sfx(victory_music)
 	game_man = get_tree().get_first_node_in_group("game")
 	level_man = get_tree().get_first_node_in_group("level_manager")

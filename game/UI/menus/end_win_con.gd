@@ -16,5 +16,5 @@ func _explosion_sfx():
 
 func _on_main_menu_pressed():
 	var game_man: game_manager = get_tree().get_first_node_in_group('game')
-	game_man.
+	#game_man.
 	pass # Replace with function body.
