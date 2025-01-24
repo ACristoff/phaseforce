@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://rdfvq81k6n0n"]
+[gd_scene load_steps=14 format=3 uid="uid://rdfvq81k6n0n"]
 
 [ext_resource type="PackedScene" uid="uid://bcyvqrwjcn8dt" path="res://game/characters/base_player.tscn" id="1_lt403"]
 [ext_resource type="Texture2D" uid="uid://cn0811gmx6ohf" path="res://assets/characters/lumi/base_form/LumiSprite.png" id="2_egiy6"]
@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://enpcqksh8j7r" path="res://game/characters/lumi/lumi_arm_powered_up.tscn" id="5_im003"]
 [ext_resource type="AudioStream" uid="uid://cysn3hmci5two" path="res://assets/sfx/quips/lumi/QUIP_LUMI_TRAIN.mp3" id="5_kdyku"]
 [ext_resource type="AudioStream" uid="uid://bnrlk74mjiknd" path="res://assets/sfx/projectiles/BIG_SWORD_SWING.mp3" id="6_ui7xq"]
-[ext_resource type="Texture2D" uid="uid://cr7ckd0smdea6" path="res://assets/particles/bullets/lumisabershot.png" id="8_oli72"]
+[ext_resource type="Texture2D" uid="uid://li68yxm3bebk" path="res://assets/ui/ammo_types/lumi_sword.png" id="9_3p268"]
 [ext_resource type="AudioStream" uid="uid://upo7inosb7kp" path="res://assets/sfx/projectiles/SciFi_Energy_Sword.mp3" id="9_oxicv"]
+[ext_resource type="Texture2D" uid="uid://dbg604g12o8p" path="res://assets/ui/ammo_types/lumi_energy_sword.png" id="13_51hp8"]
 
 [node name="LumiPlayer" instance=ExtResource("1_lt403")]
 script = ExtResource("2_jp87q")
@@ -29,6 +30,7 @@ normal_bullet_speed = 200
 normal_damage = 100
 normal_gun_sound = ExtResource("6_ui7xq")
 normal_gun_capacity = 1
+normal_bullet_hud_sprite = ExtResource("9_3p268")
 powered_up_gun = ExtResource("5_im003")
 powered_up_sprite = ExtResource("3_uk2km")
 powered_up_fire_rate = 1.0
@@ -38,7 +40,7 @@ powered_up_gun_sound = ExtResource("9_oxicv")
 powered_up_gun_capacity = 1
 powered_up_gun_mags = 25
 powered_up_gun_reload_time = 0.6
-powered_up_bullet_hud_sprite = ExtResource("8_oli72")
+powered_up_bullet_hud_sprite = ExtResource("13_51hp8")
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_egiy6")
