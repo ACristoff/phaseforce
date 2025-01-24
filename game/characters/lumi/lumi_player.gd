@@ -102,6 +102,10 @@ func power_up():
 	trans.global_position = self.global_position
 
 func _physics_process(delta: float) -> void:
+	if is_active == false:
+		##print('I AM MENTALLY DISABLED')
+		velocity = Vector2.ZERO
+		return
 	arrow.look_at(extract.global_position)
 	#if InputEvent.
 	mouse_cursor.position = get_local_mouse_position()

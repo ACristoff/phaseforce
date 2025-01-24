@@ -274,11 +274,13 @@ func jump(force):
 	velocity.y = force
 
 func _physics_process(delta: float) -> void:
+	#print(is_active)
 	#print(anim_player.current_animation)
 	#print(is_teleporting)
-	#if is_active == false:
+	if is_active == false:
 		##print('I AM MENTALLY DISABLED')
-		#return
+		velocity = Vector2.ZERO
+		return
 	if extract != null:
 		arrow.look_at(extract.global_position)
 	#if InputEvent.

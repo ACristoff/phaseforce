@@ -65,6 +65,10 @@ func attack():
 
 
 func _physics_process(delta: float) -> void:
+	if is_active == false:
+		##print('I AM MENTALLY DISABLED')
+		velocity = Vector2.ZERO
+		return
 	mouse_cursor.position = get_local_mouse_position()
 	if health == 0:
 		player_death.emit()
