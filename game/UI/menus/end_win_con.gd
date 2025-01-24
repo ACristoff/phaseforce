@@ -12,3 +12,9 @@ func _process(delta):
 
 func _explosion_sfx():
 	AudioManager.play_sfx(sfx)
+
+
+func _on_main_menu_pressed():
+	var game_man: game_manager = get_tree().get_first_node_in_group('game')
+	game_man.
+	pass # Replace with function body.

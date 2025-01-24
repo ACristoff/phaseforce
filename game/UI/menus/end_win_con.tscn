@@ -216,3 +216,5 @@ offset_bottom = -122.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "Main Menu"
+
+[connection signal="pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_pressed"]

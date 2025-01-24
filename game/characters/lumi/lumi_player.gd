@@ -2,6 +2,7 @@ extends BasePlayer
 
 @onready var moon_jump_sound = preload("res://assets/sfx/characters/MOON_JUMP.mp3")
 @onready var sword_hit_sound = preload("res://assets/sfx/projectiles/BIG_SWORD_HIT.mp3")
+@onready var TRANSEFFECT = preload("res://game/effects/transformation_sequence.tscn")
 
 @export var moon_jump: int = -200
 @export var moon_gravity: int = 700
@@ -91,6 +92,14 @@ func sword_hit_check():
 				body.emit(self.global_position)
 				all_bodies.erase(body)
 		##TODO deflect bullets
+
+func power_up():
+	super()
+	var trans = TRANSEFFECT.instantiate()
+	self.add_child(trans)
+	trans.type = 5
+	trans.begin()
+	trans.global_position = self.global_position
 
 func _physics_process(delta: float) -> void:
 	arrow.look_at(extract.global_position)
