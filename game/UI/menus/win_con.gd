@@ -38,52 +38,34 @@ func _star_three_achieved():
 	starthree.texture = purplestar
 
 func _ready():
-	if all_levels_completed == false:
-		#AudioManager.play_sfx(victory_music)
-		var new_song: AudioStreamPlayer = AudioManager.play_music(victory_music, 0, false)
-		AudioManager.music_manager.finished.connect(track_b.bind())
-		game_man = get_tree().get_first_node_in_group("game")
-		level_man = get_tree().get_first_node_in_group("level_manager")
-		print(game_man.current_character)
-		var character = game_man.current_character
-		if character == "panko":
-			panko.visible = true
-		if character == "lumi":
-			lumi.visible = true
-		if character == "pippa":
-			pippa.visible = true
-		if character == "tenma":
-			tenma.visible = true
-		if character == "lia":
-			lia.visible = true
-		retry_button.visible = true
-		level_select_button.visible = true
-		main_menu_button.visible = true
-		continue_button.visible = false
-		#$Timer.start()
-	else:
-		#AudioManager.play_sfx(victory_music)
-		var new_song: AudioStreamPlayer = AudioManager.play_music(victory_music, 0, false)
-		AudioManager.music_manager.finished.connect(track_b.bind())
-		game_man = get_tree().get_first_node_in_group("game")
-		level_man = get_tree().get_first_node_in_group("level_manager")
-		print(game_man.current_character)
-		var character = game_man.current_character
-		if character == "panko":
-			panko.visible = true
-		if character == "lumi":
-			lumi.visible = true
-		if character == "pippa":
-			pippa.visible = true
-		if character == "tenma":
-			tenma.visible = true
-		if character == "lia":
-			lia.visible = true
-		retry_button.visible = false
-		level_select_button.visible = false
-		main_menu_button.visible = false
-		continue_button.visible = true
-		#$Timer.start()
+	#if all_levels_completed == false:
+	var new_song: AudioStreamPlayer = AudioManager.play_music(victory_music, 0, false)
+	AudioManager.music_manager.finished.connect(track_b.bind())
+	game_man = get_tree().get_first_node_in_group("game")
+	level_man = get_tree().get_first_node_in_group("level_manager")
+	var character = game_man.current_character
+	if character == "panko":
+		panko.visible = true
+	if character == "lumi":
+		lumi.visible = true
+	if character == "pippa":
+		pippa.visible = true
+	if character == "tenma":
+		tenma.visible = true
+	if character == "lia":
+		lia.visible = true
+	retry_button.visible = true
+	level_select_button.visible = true
+	main_menu_button.visible = true
+	continue_button.visible = false
+	#else:
+		#pass
+
+func to_game_end():
+	retry_button.visible = false
+	level_select_button.visible = false
+	main_menu_button.visible = false
+	continue_button.visible = true
 
 func track_b():
 	AudioManager.play_music(victory_music_b)
@@ -101,6 +83,19 @@ func show_stats(data, level_id):
 	kills.text = str(data.kills)
 	#TODO data pass
 	game_man.levels_data[str(level_id)] = data
+	check_for_endgame(level_id)
+
+func check_for_endgame(level_id):
+	var trigger_end_game = true
+	#prints(level_id)
+	for level in game_man.levels_data:
+		#prints(level, game_man.levels_data[level])
+		if game_man.levels_data[level].stars[0] == false:
+			#prints('false star')
+			#trigger_end_game = false
+			pass
+	if trigger_end_game && game_man.beaten_game == false:
+		to_game_end()
 
 func _on_retry_pressed():
 	select_anim.play("selected")
@@ -142,5 +137,7 @@ func _on_continue_pressed() -> void:
 	select_graphic.global_position = $CanvasLayer/MarginContainer/Control/HBoxContainer/Retry.global_position
 	await get_tree().create_timer(.8).timeout
 	# TO WIN CON END HERE
+	game_man.to_end_game()
 	AudioManager.stop_looped()
+	
 	queue_free()

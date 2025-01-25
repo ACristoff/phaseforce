@@ -186,7 +186,6 @@ func _on_extract():
 		optional_completed = true
 	if player.health == 3 && while_full_health:
 		optional_completed = true
-	#print(generate_level_complete_data())
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	level_completed.emit(generate_level_complete_data())
 
@@ -195,7 +194,6 @@ func _on_player_death():
 	game_over.emit()
 
 func _on_player_kill():
-	#prints(kill_x_snowmen, snowmen_killed, kill_quantity)
 	snowmen_killed += 1
 	
 	if kill_x_snowmen && snowmen_killed < kill_quantity:

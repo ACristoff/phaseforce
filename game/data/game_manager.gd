@@ -10,11 +10,12 @@ class_name game_manager
 @onready var credits = preload("res://game/UI/menus/credits.tscn")
 @onready var level_select = preload("res://game/UI/menus/level_select.tscn")
 @onready var settings = preload("res://game/UI/menus/settings.tscn")
+@onready var end_game = preload("res://game/UI/menus/end_win_con.tscn")
 
 @export var debug_mode = false
 var current_character = "panko"
 @onready var level_man: Level_Manager = $LevelManager
-
+var beaten_game = false
 
 var levels_data = {
 	"1": {
@@ -52,16 +53,7 @@ var levels_data = {
 		"stars": [false, false, false], 
 		"time": 0, 
 		"level": 4
-	},
-	"5": {
-		"secrets": "Secrets found: 0 / 1", 
-		"optional_completed": true, 
-		"objective": "Objective completed: :3", 
-		"kills": "Enemies killed: 20", 
-		"stars": [false, false, false], 
-		"time": 0, 
-		"level": 5
-	},
+	}
 }
 
 var is_paused = false
@@ -96,6 +88,12 @@ func main_menu(is_splash: bool = false):
 	if is_splash == false:
 		title.title_without_splash()
 		title.canvas.visible = true
+
+func to_end_game():
+	beaten_game = true
+	var new_end_game =  end_game.instantiate()
+	add_child(new_end_game)
+	new_end_game.to_main_menu.connect(main_menu.bind())
 
 func main_cutscene():
 	title.post_splash_cutscene()
