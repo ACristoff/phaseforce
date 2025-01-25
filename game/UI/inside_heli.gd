@@ -7,7 +7,7 @@ var chopper_sound
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#AudioManager.play_music(choppa)
-	chopper_sound = AudioManager.play_sfx(choppa, 0, true)
+	chopper_sound = AudioManager.play_sfx(choppa, 10, true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

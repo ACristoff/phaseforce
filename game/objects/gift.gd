@@ -8,7 +8,7 @@ signal gift_collected
 
 func _on_body_entered(body):
 	if body is BasePlayer:
-		AudioManager.play_sfx_wav(pickup_sound)
+		AudioManager.play_sfx_wav(pickup_sound, -10)
 		collect_gift()
 
 func collect_gift():

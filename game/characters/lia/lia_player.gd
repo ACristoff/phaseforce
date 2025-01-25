@@ -120,10 +120,10 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("shoot") && attack_timer.is_stopped():
 			if reload_timer.is_stopped() && gun_magazine > 0:
 				attack_timer.start()
-				AudioManager.play_sfx(gun_sound)
+				#AudioManager.play_sfx(gun_sound)
 				attack()
 		if Input.is_action_just_pressed("shoot") && gun_magazine <= 0:
-			AudioManager.play_sfx(empty_mag_sound)
+			AudioManager.play_sfx(empty_mag_sound, 5)
 			start_reload(true)
 		if Input.is_action_just_pressed("reload"):
 			if powered_up:
@@ -164,7 +164,7 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor() && step_timer.is_stopped():
 			step_timer.start()
 			var random = randi_range(0,3)
-			AudioManager.play_sfx(steps[random], -10)
+			AudioManager.play_sfx(steps[random], -15)
 	velocity.x = horizontalDirection * SPEED + knockback.x
 	if knockback.x != 0:
 		knockback = lerp(knockback, Vector2.ZERO, 0.1)

@@ -269,7 +269,7 @@ func power_down():
 	powered_up = false
 
 func jump(force):
-	AudioManager.play_sfx(jump_sound, 10)
+	AudioManager.play_sfx(jump_sound, 0)
 	coyote_timer = 0
 	velocity.y = force
 
@@ -294,11 +294,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("shoot") && attack_timer.is_stopped():
 		if reload_timer.is_stopped() && gun_magazine > 0:
 			attack_timer.start()
-			AudioManager.play_sfx(gun_sound)
 			#muzzle_flash.play("muzzlef")
 			attack()
 	if Input.is_action_just_pressed("shoot") && gun_magazine <= 0:
-		AudioManager.play_sfx(empty_mag_sound)
+		AudioManager.play_sfx(empty_mag_sound, 5)
 		#print("out of ammo")
 		#no_ammo_anim.play("no_ammo")
 		start_reload(true)
@@ -343,7 +342,7 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor() && step_timer.is_stopped():
 			step_timer.start()
 			var random = randi_range(0,3)
-			AudioManager.play_sfx(steps[random], -10)
+			AudioManager.play_sfx(steps[random], -15)
 	
 	velocity.x = horizontalDirection * SPEED + knockback.x
 	
@@ -401,6 +400,7 @@ func is_ladder():
 		return false
 
 func attack() -> void:
+	AudioManager.play_sfx(gun_sound)
 	muzzle_flash.play("muzzlef")
 	gun_anim.stop()
 	gun_anim.play("kickback")

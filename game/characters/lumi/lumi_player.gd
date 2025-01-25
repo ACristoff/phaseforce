@@ -62,6 +62,10 @@ func reload():
 
 
 func attack() -> void:
+	if powered_up:
+		AudioManager.play_sfx(gun_sound, -8)
+	else:
+		AudioManager.play_sfx(gun_sound)
 	gun_anim.stop()
 	gun_anim.play("swing")
 	change_sword_state(true)
@@ -121,10 +125,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("shoot") && attack_timer.is_stopped():
 		if reload_timer.is_stopped() && gun_magazine > 0:
 			attack_timer.start()
-			AudioManager.play_sfx(gun_sound)
+			#AudioManager.play_sfx(gun_sound)
 			attack()
 	if Input.is_action_just_pressed("shoot") && gun_magazine <= 0:
-		AudioManager.play_sfx(empty_mag_sound)
+		AudioManager.play_sfx(empty_mag_sound, 5)
 	if Input.is_action_just_pressed("interact") && current_door:
 		if current_door.closed:
 			current_door.open()
@@ -170,7 +174,7 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor() && step_timer.is_stopped():
 			step_timer.start()
 			var random = randi_range(0,3)
-			AudioManager.play_sfx(steps[random], -10)
+			AudioManager.play_sfx(steps[random], -15)
 	
 	velocity.x = horizontalDirection * SPEED + knockback.x
 	

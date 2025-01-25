@@ -24,7 +24,7 @@ var levels_data = {
 }
 
 func _ready():
-	AudioManager.play_sfx(sfx, 1)
+	AudioManager.play_sfx(sfx, -5)
 	AudioManager.play_music(level_select_music)
 	#AudioManager.play_sfx(victory_music)
 	game_man = get_tree().get_first_node_in_group("game")

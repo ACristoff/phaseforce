@@ -10,7 +10,30 @@ var knockback_force = -4.2
 
 func attack():
 	muzzle_flash.play("muzzlef")
-	super()
+	
+	muzzle_flash.play("muzzlef")
+	gun_anim.stop()
+	gun_anim.play("kickback")
+	var new_bullet = bullet.instantiate()
+	var new_shell = shell.instantiate()
+	new_bullet.damage = bullet_damage
+	new_bullet.speed = bullet_speed
+	new_bullet.global_position = cursor_spout.global_position
+	new_shell.global_position = shell_spout.global_position
+	var adjusted_angle = cursor.rotation_degrees + randi_range(gun_spread[0],gun_spread[1])
+	new_bullet.rotation_degrees = adjusted_angle
+	get_parent().add_child(new_bullet)
+	get_parent().add_child(new_shell)
+	bullet_shot.emit()
+	gun_magazine -= 1
+	if powered_up:
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
+	else:
+		AudioManager.play_sfx(gun_sound, -5)
+		hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ∞"))
+	#print("mag", gun_magazine)
+	if gun_magazine == 0:
+		no_ammo.emit()
 	if !powered_up:
 		var knockback_vector = (cursor_spout.global_position - global_position) * knockback_force
 		if knockback_vector.y < 0:
@@ -36,7 +59,7 @@ func power_up():
 
 
 func _on_in_between_timer_timeout():
-	AudioManager.play_sfx(in_between_shot_sound)
+	AudioManager.play_sfx(in_between_shot_sound, -5)
 	pass # Replace with function body.
 
 

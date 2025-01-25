@@ -84,7 +84,7 @@ func on_extract_timed_out():
 	pass
 
 func play_level_music():
-	AudioManager.play_music(music)
+	AudioManager.play_music(music, 4)
 
 func _on_enemy_spawned(enemy_ref: EnemyBase):
 	enemy_ref.enemy_death.connect(_on_player_kill.bind())

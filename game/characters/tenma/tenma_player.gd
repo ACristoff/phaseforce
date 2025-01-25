@@ -7,6 +7,7 @@ var knockback_force = -4
 @export var shotgun_pellet_count = 5
 
 func attack() -> void:
+	AudioManager.play_sfx(gun_sound)
 	gun_anim.stop()
 	gun_anim.play("kickback")
 	if !powered_up:
