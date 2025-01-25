@@ -337,6 +337,26 @@ text = "Retry"
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="Continue" type="TextureButton" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture_normal = ExtResource("3_krc60")
+texture_hover = ExtResource("4_0ivmy")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Control/HBoxContainer/Continue"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mlu1o")
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="NextLevel" type="TextureButton" parent="CanvasLayer/MarginContainer/Control/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 2
@@ -557,5 +577,6 @@ rotation = 0.819074
 color = Color(0.576471, 0.772549, 0.945098, 1)
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Control/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Control/HBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Control/HBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Control/MarginContainer/MainMenu" to="." method="_on_main_menu_pressed"]
