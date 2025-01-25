@@ -29,11 +29,9 @@ func _ready():
 	#AudioManager.play_sfx(victory_music)
 	game_man = get_tree().get_first_node_in_group("game")
 	level_man = get_tree().get_first_node_in_group("level_manager")
-	#print(dummy_data)
 	var levels = $CanvasLayer/MarginContainer/HBoxContainer.get_children()
 	var count = 1
 	for level in levels:
-		#print(dummy_data[str(count)])
 		var level_data = levels_data[str(count)]
 		if level_data:
 			level.update_labels(level_data)
@@ -41,7 +39,6 @@ func _ready():
 		count += 1
 
 func on_level_selected(level_id):
-	#print(level_id)
 	level_man.current_level = level_id
 	game_man._on_title_character_select()
 	queue_free()

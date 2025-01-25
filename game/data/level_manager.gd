@@ -71,6 +71,6 @@ func _on_level_complete(data):
 
 ##TODO
 func next_level():
-	print('test')
+	#print('test')
 	load_level(current_level + 1)
 	pass

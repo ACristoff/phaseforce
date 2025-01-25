@@ -49,7 +49,6 @@ func _on_start_pressed():
 	select_graphic.global_position = $CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Start2.global_position
 	await get_tree().create_timer(.8).timeout
 	on_start.emit()
-	pass # Replace with function body.
 
 func post_splash_cutscene():
 	cutscene_player.play("cutscene")
@@ -57,7 +56,6 @@ func post_splash_cutscene():
 	
 func title_without_splash():
 	$copter/PathFollow2D/Minicopter.visible = false
-	print(chopper_pfollow)
 	chopper_pfollow.progress_ratio = 1
 	sway = true
 
@@ -66,18 +64,15 @@ func _on_credits_pressed():
 	select_graphic.global_position = $CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Credits.global_position
 	await get_tree().create_timer(.8).timeout
 	credits.emit()
-	pass # Replace with function body.
 
 func _on_quit_pressed():
 	select_anim.play("selected")
 	select_graphic.global_position = $CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Quit.global_position
 	await get_tree().create_timer(.8).timeout
 	get_tree().quit()
-	pass # Replace with function body.
 
 func _on_options_pressed():
 	select_anim.play("selected")
 	select_graphic.global_position = $CanvasLayer/MarginContainer/Butttons_Container/VBoxContainer/Options.global_position
 	await get_tree().create_timer(.8).timeout
 	to_settings.emit()
-	pass # Replace with function body.
