@@ -165,7 +165,7 @@ func add_keycard(_key):
 
 func gain_heart():
 	gained_health.emit()
-	AudioManager.play_sfx_wav(gain_heart_sound)
+	AudioManager.play_sfx_wav(gain_heart_sound, -5)
 	if health < 3:
 		health += 1
 
@@ -247,7 +247,7 @@ func power_up():
 	hud.new_bullet_sprite = powered_up_bullet_hud_sprite
 	hud.change_bullet_sprite()
 	hud.update_bullets(str(gun_magazine, "/", gun_magazine_capacity, " x ", mags))
-	AudioManager.play_sfx_wav(power_up_sound)
+	AudioManager.play_sfx_wav(power_up_sound, -5)
 	quip(power_up_quips)
 
 

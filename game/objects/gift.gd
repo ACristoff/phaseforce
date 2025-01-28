@@ -14,4 +14,3 @@ func _on_body_entered(body):
 func collect_gift():
 	gift_collected.emit()
 	queue_free()
-	pass

@@ -139,7 +139,7 @@ func render_objectives():
 func _on_primary_obj_completed():
 	hud.complete_primary(extract_zone)
 	extract_timer.start()
-	AudioManager.play_music(extract_music)
+	AudioManager.play_music(extract_music, 3)
 	hud.timer_container.visible = true
 	_tween_extraction_label()
 	extract_zone.activate_extract()

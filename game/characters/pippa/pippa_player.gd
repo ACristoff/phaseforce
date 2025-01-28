@@ -7,6 +7,7 @@ var powered_knockback_force = -5
 @onready var pip_rocket = preload("res://game/projectiles/pip_cannon.tscn")
 
 func attack():
+	AudioManager.play_sfx(gun_sound)
 	muzzle_flash.play("muzzlef")
 	gun_anim.stop()
 	gun_anim.play("kickback")
