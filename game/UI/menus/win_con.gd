@@ -87,13 +87,9 @@ func show_stats(data, level_id):
 
 func check_for_endgame(level_id):
 	var trigger_end_game = true
-	#prints(level_id)
 	for level in game_man.levels_data:
-		#prints(level, game_man.levels_data[level])
 		if game_man.levels_data[level].stars[0] == false:
-			#prints('false star')
-			#trigger_end_game = false
-			pass
+			trigger_end_game = false
 	if trigger_end_game && game_man.beaten_game == false:
 		to_game_end()
 
