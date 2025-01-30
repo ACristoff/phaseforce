@@ -15,7 +15,8 @@ var current_shot: EnergyBall
 @onready var last_sound = preload("res://assets/sfx/projectiles/DATA_CANNON_LAST.mp3")
 
 func attack():
-	AudioManager.play_sfx(gun_sound)
+	if !powered_up:
+		AudioManager.play_sfx(gun_sound)
 	gun_anim.stop()
 	gun_anim.play("kickback")
 	if powered_up:
