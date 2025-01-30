@@ -224,7 +224,7 @@ size = Vector2(24, 24)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_04hub"]
 distance = -360.0
 
-[node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets")]
+[node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets") groups=["level"]]
 script = ExtResource("1_a87wf")
 music = ExtResource("2_c7as0")
 primary_obj = NodePath("Generator")

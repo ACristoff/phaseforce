@@ -221,7 +221,7 @@ sources/0 = SubResource("TileSetAtlasSource_dhc78")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_04hub"]
 distance = -360.0
 
-[node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets")]
+[node name="LevelTwo" type="Node2D" node_paths=PackedStringArray("primary_obj", "secrets") groups=["level"]]
 script = ExtResource("1_x7vmv")
 music = ExtResource("2_5iv2u")
 primary_obj = NodePath("Generator")
