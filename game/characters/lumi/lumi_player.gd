@@ -114,7 +114,8 @@ func _physics_process(delta: float) -> void:
 	#if InputEvent.
 	mouse_cursor.position = get_local_mouse_position()
 	if health == 0:
-		player_death.emit()
+		#player_death.emit()
+		die()
 		health = -1
 	
 	if is_sword_active:
@@ -205,6 +206,6 @@ func _physics_process(delta: float) -> void:
 		power_down()
 	#Idle
 	if velocity == Vector2(0,0) or velocity == Vector2.ZERO:
-		#anim_player.play("Idle")
-		change_animation("Idle")
+		if is_active:
+			change_animation("Idle")
 	move_and_slide()

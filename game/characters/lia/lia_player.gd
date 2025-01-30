@@ -72,7 +72,8 @@ func _physics_process(delta: float) -> void:
 		return
 	mouse_cursor.position = get_local_mouse_position()
 	if health == 0:
-		player_death.emit()
+		die()
+		#player_death.emit()
 		health = -1
 	
 	if extract != null:
@@ -193,7 +194,8 @@ func _physics_process(delta: float) -> void:
 	#Idle
 	if velocity == Vector2(0,0) or velocity == Vector2.ZERO:
 		#anim_player.play("Idle")
-		change_animation("Idle")
+		if is_active:
+			change_animation("Idle")
 	move_and_slide()
 
 func power_up():

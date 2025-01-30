@@ -156,7 +156,8 @@ func load_hud():
 
 func die():
 	is_active = false
-	anim_player.play("death")
+	#anim_player.play("death")
+	change_animation("death")
 	await get_tree().create_timer(1).timeout
 	player_death.emit()
 
